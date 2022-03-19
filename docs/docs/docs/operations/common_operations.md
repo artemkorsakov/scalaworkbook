@@ -1,5 +1,5 @@
 ---
-layout: docsplus
+layout: docs
 title: "Общие операции"
 ---
 
