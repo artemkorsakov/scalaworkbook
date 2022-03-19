@@ -10,7 +10,8 @@ object Dependencies {
   }
 
   val workbook = Seq(
-    "org.scalameta" %% "munit" % munit % Test
+    "org.scalameta" %% "munit" % munit % Test,
+    "org.scalameta" %% "munit-scalacheck" % munit % Test
   )
 
 }
