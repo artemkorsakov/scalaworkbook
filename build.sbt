@@ -6,6 +6,8 @@ ThisBuild / scalaVersion := Scala3
 
 ThisBuild / scalacOptions ++= List("-feature", "-deprecation", "-Ykind-projector:underscores", "-source:future")
 
+ThisBuild / githubWorkflowPublishTargetBranches := Seq()
+
 lazy val root = (project in file("."))
   .settings(
     name := "scala_workbook",
