@@ -5,8 +5,8 @@ position: 1
 ---
 
 ### Список источников
-- #### Сайты и статьи
+- #### Статьи
     - ...
 
 - #### Книги:
-    - [Functional Programming in Scala](https://github.com/fpinscala/fpinscala)
+    - [Michael Pilquist, Rúnar Bjarnason, and Paul Chiusano - Functional Programming in Scala, Second Edition](https://www.manning.com/books/functional-programming-in-scala-second-edition?query=Functional%20Programming%20in%20Scala,%20Second%20Edition)

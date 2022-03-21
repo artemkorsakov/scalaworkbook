@@ -1,6 +1,6 @@
 # Scala workbook
 
-Основные понятия функционального программирования на Scala с примерами.
+Разработка на Scala. Рабочая тетрадь.
 
 [Домашняя страница](https://artemkorsakov.github.io/scalaworkbook/)
 <br>[Документация](https://artemkorsakov.github.io/scalaworkbook/docs/)

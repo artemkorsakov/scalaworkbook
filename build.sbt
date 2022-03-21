@@ -20,7 +20,7 @@ lazy val docs = project
   .enablePlugins(MicrositesPlugin)
   .settings(
     micrositeName := "Scala workbook",
-    micrositeDescription := "Основные понятия функционального программирования на Scala с примерами.",
+    micrositeDescription := "Разработка на Scala. Рабочая тетрадь.",
     micrositeUrl := "https://artemkorsakov.github.io",
     micrositeBaseUrl := "/scalaworkbook",
     micrositeDocumentationUrl := "/scalaworkbook/docs",
@@ -30,7 +30,7 @@ lazy val docs = project
     micrositeGithubRepo := "scalaworkbook",
     micrositeTheme := "pattern",
     micrositeEditButton := Some(
-      MicrositeEditButton("Improve this Page", "/edit/master/docs/docs/{{ page.path }}")
+      MicrositeEditButton("Improve this Page", "/edit/main/docs/docs/{{ page.path }}")
     ),
     micrositeGithubToken := sys.env.get("GITHUB_TOKEN"),
     micrositePushSiteWith := GitHub4s,
