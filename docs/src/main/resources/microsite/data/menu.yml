@@ -1,10 +1,10 @@
 options:
-  - title: Введение
+  - title: Рабочая тетрадь
     url: docs/index.html
 
-  - title: Операции
-    url: docs/operations.html
+  - title: Основное
+    url: docs/basic.html
 
     nested_options:
-      - title: Общие операции
-        url: docs/operations/common_operations.html
+      - title: Hello world
+        url: docs/basic/hello_world.html

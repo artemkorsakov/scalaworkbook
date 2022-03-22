@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Введение
+title: Рабочая тетрадь
 ---
 
 ## {{page.title}}
@@ -8,5 +8,6 @@ title: Введение
 @DESCRIPTION@
 
 Рабочая тетрадь основана [на следующих источниках](@SOURCE_LINK@).
+Код написан на версии Scala - @SCALA@.
 
 
