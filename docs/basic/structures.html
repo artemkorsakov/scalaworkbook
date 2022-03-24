@@ -1,0 +1,156 @@
+<!DOCTYPE html><html><head><title>Scala workbook: Основные конструкции</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Artem Korsakov" /><meta name="description" content="Разработка на Scala. Рабочая тетрадь." /><meta name="og:image" content="/scalaworkbook/img/poster.png" /><meta name="image" property="og:image" content="/scalaworkbook/img/poster.png" /><meta name="og:title" content="Scala workbook: Основные конструкции" /><meta name="title" property="og:title" content="Scala workbook: Основные конструкции" /><meta name="og:site_name" content="Scala workbook" /><meta name="og:url" content="" /><meta name="og:type" content="website" /><meta name="og:description" content="Разработка на Scala. Рабочая тетрадь." /><link rel="icon" type="image/png" href="/scalaworkbook/img/favicon.png" /><meta name="twitter:title" content="Scala workbook: Основные конструкции" /><meta name="twitter:image" content="https://artemkorsakov.github.io/scalaworkbook/img/poster.png" /><meta name="twitter:description" content="Разработка на Scala. Рабочая тетрадь." /><meta name="twitter:card" content="summary_large_image" /><link rel="icon" type="image/png" sizes="16x16" href="/scalaworkbook/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/scalaworkbook/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/scalaworkbook/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/scalaworkbook/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/scalaworkbook/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/scalaworkbook/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/scalaworkbook/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/scalaworkbook/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/scalaworkbook/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/scalaworkbook/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/scalaworkbook/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/scalaworkbook/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/scalaworkbook/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/scalaworkbook/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/scalaworkbook/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/scalaworkbook/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/scalaworkbook/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/scalaworkbook/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/scalaworkbook/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/scalaworkbook/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/scalaworkbook/highlight/styles/vs.css" /><link rel="stylesheet" href="/scalaworkbook/css/pattern-style.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/scalaworkbook/" class="brand"><div class="brand-wrapper"><span>Scala workbook</span></div></a></li> <li><a href="/scalaworkbook/docs/index" class="">Рабочая тетрадь</a></li> <li><a href="/scalaworkbook/docs/basic" class="">Scala</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/basic/structures" class=" active ">Основные конструкции</a></li> <li><a href="/scalaworkbook/docs/basic/domain_modeling" class="">Моделирование данных</a></li></ul></li></ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li class="search-nav hidden-xs hidden-sm"><div id="search-dropdown"><label><i class="fa fa-search"></i>Search</label><input id="search-bar" type="text" placeholder="Enter keywords here..." onclick="displayToggleSearch(event)" /><ul id="search-dropdown-content" class="dropdown dropdown-content"></ul></div></li><li id="gh-eyes-item" class="hidden-xs to-uppercase"><a href="https://github.com/artemkorsakov/scalaworkbook" target="_blank" rel="noopener noreferrer"><i class="fa fa-eye"></i><span>Watchers<span id="eyes" class="label label-default">--</span></span></a></li><li id="gh-stars-item" class="hidden-xs to-uppercase"><a href="https://github.com/artemkorsakov/scalaworkbook" target="_blank" rel="noopener noreferrer"><i class="fa fa-star-o"></i><span>Stars<span id="stars" class="label label-default">--</span></span></a></li><li><a href="#" onclick="shareSiteTwitter('Scala workbook Разработка на Scala. Рабочая тетрадь.');"><i class="fa fa-twitter"></i></a></li><li><a href="#" onclick="shareSiteFacebook('Scala workbook Разработка на Scala. Рабочая тетрадь.');"><i class="fa fa-facebook"></i></a></li></ul></div></div></div></div><div id="content" data-github-owner="artemkorsakov" data-github-repo="scalaworkbook"><div class="content-wrapper"><section><h3 id="конструкции-в-scala">Конструкции в Scala</h3>
+
+<h4 id="запуск-main-метода-в-scala">Запуск main метода в Scala:</h4>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@main</span> <span class="k">def</span> <span class="nf">hello</span> <span class="k">=</span> <span class="nf">println</span><span class="o">(</span><span class="s">"Hello, world!"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Метод <code class="language-plaintext highlighter-rouge">hello</code> компилится в отдельный класс на уровне пакета с именем класса равным имени метода.
+В один файл можно добавлять несколько main методов с различными именами.</p>
+
+<h4 id="ifelse">if/else</h4>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">detect</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> 
+  <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">then</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"negative"</span><span class="o">)</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span> <span class="n">then</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"zero"</span><span class="o">)</span>
+  <span class="k">else</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"positive"</span><span class="o">)</span>
+
+<span class="nf">detect</span><span class="o">(-</span><span class="mi">1</span><span class="o">)</span>    
+<span class="c1">// negative    </span>
+<span class="nf">detect</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> 
+<span class="c1">// zero </span>
+<span class="nf">detect</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> 
+<span class="c1">// positive</span>
+</code></pre></div></div>
+
+<h4 id="for-loops-and-expressions">for loops and expressions</h4>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">ints</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">)</span>
+</code></pre></div></div>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="k">&lt;-</span> <span class="n">ints</span> <span class="k">do</span> <span class="nf">print</span><span class="o">(</span><span class="n">s</span><span class="s">"$i "</span><span class="o">)</span>
+<span class="c1">// 1 2 3 4 5</span>
+</code></pre></div></div>
+
+<p>Можно добавлять условия:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span>
+  <span class="n">i</span> <span class="k">&lt;-</span> <span class="n">ints</span>
+  <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">2</span>
+<span class="k">do</span>
+  <span class="nf">print</span><span class="o">(</span><span class="n">s</span><span class="s">"$i "</span><span class="o">)</span>
+<span class="c1">// 3 4 5</span>
+</code></pre></div></div>
+
+<p>А также несколько переменных:</p>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span>
+  <span class="n">i</span> <span class="k">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">3</span>
+  <span class="n">j</span> <span class="k">&lt;-</span> <span class="sc">'a'</span> <span class="n">to</span> <span class="sc">'c'</span>
+  <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span>
+  <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="sc">'b'</span>
+<span class="k">do</span>
+  <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"i = $i, j = $j"</span><span class="o">)</span>
+<span class="c1">// i = 2, j = b</span>
+</code></pre></div></div>
+
+<p>Замена <code class="language-plaintext highlighter-rouge">do</code> на <code class="language-plaintext highlighter-rouge">yield</code> позволяет вычислять выражения:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">fruits</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="s">"apple"</span><span class="o">,</span> <span class="s">"banana"</span><span class="o">,</span> <span class="s">"lime"</span><span class="o">,</span> <span class="s">"orange"</span><span class="o">)</span>
+</code></pre></div></div>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span>
+  <span class="n">f</span> <span class="k">&lt;-</span> <span class="n">fruits</span>
+  <span class="k">if</span> <span class="nv">f</span><span class="o">.</span><span class="py">length</span> <span class="o">&gt;</span> <span class="mi">4</span>
+<span class="k">yield</span>
+  <span class="nv">f</span><span class="o">.</span><span class="py">capitalize</span>
+<span class="c1">// res6: List[String] = List("Apple", "Banana", "Orange")</span>
+</code></pre></div></div>
+
+<h4 id="match-expressions">match expressions</h4>
+
+<p>Сопоставление с шаблоном:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span>
+
+<span class="k">def</span> <span class="nf">getQuote</span><span class="o">(</span><span class="n">p</span><span class="k">:</span> <span class="kt">Person</span><span class="o">)</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="n">p</span> <span class="k">match</span>
+  <span class="k">case</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="o">)</span> <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s">"Fred"</span> <span class="k">=&gt;</span>
+    <span class="n">s</span><span class="s">"$name says, Yubba dubba doo"</span>
+  <span class="k">case</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"Bam Bam"</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="c1">// или даже так</span>
+    <span class="s">"Bam Bam says, Bam bam!"</span>
+  <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="s">"Watch the Flintstones!"</span>
+
+<span class="nf">getQuote</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">"Fred"</span><span class="o">))</span>
+<span class="c1">// res7: String = "Fred says, Yubba dubba doo"</span>
+<span class="nf">getQuote</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">"Bam Bam"</span><span class="o">))</span>
+<span class="c1">// res8: String = "Bam Bam says, Bam bam!"</span>
+<span class="nf">getQuote</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">"Aaron"</span><span class="o">))</span> 
+<span class="c1">// res9: String = "Watch the Flintstones!"</span>
+</code></pre></div></div>
+
+<h4 id="trycatchfinally">try/catch/finally</h4>
+
+<p>Перехват исключений:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">parseInt</span><span class="o">(</span><span class="n">s</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> 
+  <span class="k">try</span>
+    <span class="nc">Some</span><span class="o">(</span><span class="nv">s</span><span class="o">.</span><span class="py">toInt</span><span class="o">)</span>
+  <span class="k">catch</span>
+    <span class="k">case</span> <span class="n">nfe</span><span class="k">:</span> <span class="kt">NumberFormatException</span> <span class="o">=&gt;</span> 
+      <span class="nf">println</span><span class="o">(</span><span class="s">"Got a NumberFormatException."</span><span class="o">)</span>
+      <span class="nc">None</span>
+  <span class="k">finally</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"Clean up your resources here."</span><span class="o">)</span>
+
+<span class="nf">parseInt</span><span class="o">(</span><span class="s">"1"</span><span class="o">)</span>
+<span class="c1">// Clean up your resources here.</span>
+<span class="c1">// res10: Option[Int] = Some(value = 1)</span>
+<span class="nf">parseInt</span><span class="o">(</span><span class="s">"one"</span><span class="o">)</span>
+<span class="c1">// Got a NumberFormatException.</span>
+<span class="c1">// Clean up your resources here.</span>
+<span class="c1">// res11: Option[Int] = None</span>
+</code></pre></div></div>
+
+<h4 id="while-loops">while loops</h4>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">x</span> <span class="k">=</span> <span class="mi">1</span>
+<span class="c1">// x: Int = 1</span>
+<span class="k">while</span>
+  <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">3</span>
+<span class="k">do</span>
+  <span class="nf">println</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+  <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="c1">// 1</span>
+<span class="c1">// 2</span>
+</code></pre></div></div>
+
+<p>В Scala не приветствуется использование изменяемых переменных <code class="language-plaintext highlighter-rouge">var</code>, поэтому следует избегать использования <code class="language-plaintext highlighter-rouge">while</code>.
+Вместо этого можно создать вспомогательный метод:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">loop</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span>
+  <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="n">then</span>
+    <span class="nf">println</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+    <span class="nf">loop</span><span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>  
+  
+<span class="nf">loop</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+<span class="c1">// 1</span>
+<span class="c1">// 2</span>
+</code></pre></div></div>
+</section><div class="edit-button"><a href="https://github.com/artemkorsakov/scalaworkbook/edit/main/docs/docs/docs/basic/structures.md" target="_blank" rel="noopener noreferrer" class="btn-sm btn-info">Improve this Page</a></div></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalaworkbook/highlight/highlight.pack.js"></script><script src="/scalaworkbook/lunr/lunr.js"></script><script>
+// For all code blocks, copy the language from the containing div
+// to the inner code tag (where hljs expects it to be)
+const langPrefix = 'language-';
+document.querySelectorAll(`div[class^='${langPrefix}']`).forEach(function(div) {
+  div.classList.forEach(function(cssClass) {
+    if (cssClass.startsWith(langPrefix)) {
+      const lang = cssClass.substring(langPrefix.length);
+      div.querySelectorAll('pre code').forEach(function(code) {
+        code.classList.add(lang);
+      });
+    }
+  });
+});
+
+hljs.configure({languages:['scala','java','bash']});
+hljs.initHighlightingOnLoad();
+      </script><script>console.info('\x57\x65\x62\x73\x69\x74\x65\x20\x62\x75\x69\x6c\x74\x20\x77\x69\x74\x68\x3a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x5f\x5f\x0a\x20\x20\x20\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x5f\x20\x20\x2f\x20\x2f\x5f\x20\x20\x20\x20\x20\x20\x5f\x5f\x5f\x5f\x20\x5f\x5f\x5f\x20\x20\x28\x5f\x29\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x28\x5f\x29\x20\x2f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x0a\x20\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x60\x5f\x5f\x20\x5c\x2f\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x20\x2f\x20\x5f\x5f\x2f\x20\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x0a\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x5f\x2f\x20\x2f\x20\x2f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x5f\x5f\x2f\x20\x2f\x20\x20\x2f\x20\x2f\x5f\x2f\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x20\x2f\x5f\x2f\x20\x20\x5f\x5f\x28\x5f\x5f\x20\x20\x29\x0a\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2e\x5f\x5f\x5f\x2f\x5c\x5f\x5f\x2f\x20\x20\x20\x20\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x2f\x20\x20\x20\x5c\x5f\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x0a\x0a\x68\x74\x74\x70\x73\x3a\x2f\x2f\x34\x37\x64\x65\x67\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x73\x62\x74\x2d\x6d\x69\x63\x72\x6f\x73\x69\x74\x65\x73')</script><script src="/scalaworkbook/js/search.js"></script><script src="/scalaworkbook/js/main.js"></script></body></html>
