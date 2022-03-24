@@ -3,38 +3,7 @@ layout: docs
 title: "Основные конструкции"
 ---
 
-### Основные изменения в Scala 3
-
-#### Фигурные скобки
-
-Фигурные скобки необязательны, тело метода должно быть отделено отступом.
-Пример:
-
-```scala mdoc
-def hello() = 
-  println("Hello, world!")
-  println("Hello, Scala 3!")
-  println("Hello, everyone!")
-// Определение метода заканчивается там, где с того же отступа начинается следующая конструкция.
-// Например, вызов этого метода  
-hello() 
-```
-
-Несоблюдение отступов приводит к **Syntax Error** - _"expression expected but unindent found"_:
-
-```scala
-object Hello:
-  def invalidHello =
-println("Hello, Scala!")
-```
-
-#### Наследование
-
-В наследовании ключевое слово `with` заменено на `,`:
-`class Dog(name: String) extends Speaker, TailWagger, Runner`
-
-
-### Конструкции в Scala 3
+### Конструкции в Scala
 
 #### Запуск main метода в Scala:
 
@@ -62,8 +31,10 @@ detect(1)
 
 #### for loops and expressions
 
-```scala mdoc
+```scala mdoc:silent
 val ints = List(1, 2, 3, 4, 5)
+```
+```scala mdoc
 for i <- ints do print(s"$i ")
 ```
 
@@ -110,8 +81,8 @@ case class Person(name: String)
 def getQuote(p: Person): String = p match
   case Person(name) if name == "Fred" =>
     s"$name says, Yubba dubba doo"
-  case Person(name) if name == "Bam Bam" =>
-    s"$name says, Bam bam!"
+  case Person("Bam Bam") => // или даже так
+    "Bam Bam says, Bam bam!"
   case _ => "Watch the Flintstones!"
 getQuote(Person("Fred"))
 getQuote(Person("Bam Bam"))
@@ -134,4 +105,26 @@ def parseInt(s: String): Option[Int] =
     println("Clean up your resources here.")
 parseInt("1")
 parseInt("one")
+```
+
+#### while loops
+
+```scala mdoc
+var x = 1
+while
+  x < 3
+do
+  println(x)
+  x += 1
+```
+
+В Scala не приветствуется использование изменяемых переменных `var`, поэтому следует избегать использования `while`.
+Вместо этого можно создать вспомогательный метод:
+
+```scala mdoc
+def loop(x: Int): Unit =
+  if x < 3 then
+    println(x)
+    loop(x + 1)  
+loop(1)
 ```

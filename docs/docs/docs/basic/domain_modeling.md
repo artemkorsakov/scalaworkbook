@@ -61,25 +61,72 @@ cat.stopRunning()
 ### Classes
 
 Классы используются в программировании в стиле ООП. Вот пример класса, который моделирует "человека". 
-В ООП поля обычно изменяемы, поэтому `firstName` и `lastName` объявляются как var:
 
-```scala mdoc:silent
-class Person(var firstName: String, var lastName: String):
-  def fullName() = s"$firstName $lastName"
-val p = Person("John", "Stephens")
-```
 ```scala mdoc
-p.fullName()
-p.lastName = "Legend"
-p.fullName()
+class Person(firstName: String, lastName: String):
+  override def toString: String = s"$firstName $lastName"
+Person("John", "Stephens")
 ```
 
 ## FP Domain Modeling
 
+При написании кода в стиле FP можно использовать такие конструкции:
+- Enums
+- Case classes
+- Traits
+
 ### Enums
 
-Описание
+Конструкция `enum` - отличный способ моделирования алгебраических типов данных. Например:
+
+```scala mdoc
+enum CrustSize:
+  case Small, Medium, Large
+```
+
+`enum` можно использовать в матчинге и условиях:
+
+```scala mdoc
+import CrustSize.*
+val currentCrustSize = Small
+currentCrustSize match
+  case Small => println("Small crust size")
+  case Medium => println("Medium crust size")
+  case Large => println("Large crust size")
+if currentCrustSize == Small then println("Small crust size")
+```
+
+Ещё один пример `enum`-а:
+
+```scala mdoc
+enum Nat:
+  case Zero
+  case Succ(pred: Nat)
+```
 
 ### Case classes
 
-Описание
+Scala `case class` позволяет моделировать концепции с неизменяемыми структурами данных.
+`case class` обладает всеми функциональными возможностями класса, 
+а также имеет встроенные дополнительные функции, которые делают их полезными для функционального программирования. 
+
+`case class` имеет следующие эффекты и преимущества:
+- Параметры конструктора `case class` по умолчанию являются общедоступными полями `val`, поэтому поля являются неизменяемыми, а методы доступа генерируются для каждого параметра.
+- Генерируется метод `unapply`, который позволяет использовать `case class` в `match` выражениях.
+- В классе создается метод `copy`, который позволяет создавать копии объекта без изменения исходного объекта.
+- генерируются методы `equals` и `hashCode` для проверки структурного равенства.
+- генерируется метод `toString`, который полезен для отладки.
+
+Этот код демонстрирует несколько функций `case class`:
+
+```scala mdoc:reset
+case class Person(name: String, vocation: String)
+val p = Person("Reginald Kenneth Dwight", "Singer")
+p.name
+```
+```scala mdoc:fail
+p.name = "Joe"
+```
+```scala mdoc
+val p2 = p.copy(name = "Elton John")
+```

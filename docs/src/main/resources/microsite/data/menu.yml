@@ -2,7 +2,7 @@ options:
   - title: Рабочая тетрадь
     url: docs/index
 
-  - title: Scala 3
+  - title: Scala
     url: docs/basic
 
     nested_options:
