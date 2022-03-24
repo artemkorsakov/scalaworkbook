@@ -1,10 +1,13 @@
 options:
   - title: Рабочая тетрадь
-    url: docs/index.html
+    url: docs/index
 
-  - title: Основное
-    url: docs/basic.html
+  - title: Scala 3
+    url: docs/basic
 
     nested_options:
-      - title: Hello world
-        url: docs/basic/hello_world.html
+      - title: Основные конструкции
+        url: docs/basic/structures
+
+      - title: Моделирование данных
+        url: docs/basic/domain_modeling
