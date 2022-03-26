@@ -130,13 +130,14 @@ val mi = 'C'
 val lastName = "Doe"
 ```
 
-Эти переменные можно скомбинировать так:
+их комбинацию можно получить так:
 
 ```scala mdoc
 s"Name: $firstName $mi $lastName"
 ```
 
 Просто поставьте перед строкой букву `s`, а затем поставьте символ `$` перед именами переменных внутри строки. 
+
 Чтобы вставить произвольные выражения в строку, заключите их в фигурные скобки:
 
 ```scala mdoc:reset
@@ -158,6 +159,7 @@ s"x.abs = ${x.abs}"
 val quote = """The essence of Scala:
                Fusion of functional and object-oriented
                programming in a typed setting."""
+println(quote)               
 ```
 
 Здесь также можно использовать переменные внутри строки.

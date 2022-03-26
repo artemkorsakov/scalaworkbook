@@ -29,5 +29,5 @@ options:
   - title: Абстракции
     url: docs/abstractions
 
-  - title: Верхнеуровневые определения
+  - title: Toplevel definitions
     url: docs/toplevel-definitions
