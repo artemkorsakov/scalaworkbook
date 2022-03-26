@@ -3,6 +3,8 @@ layout: docs
 title: "Singleton objects"
 ---
 
+## {{page.title}}
+
 В Scala ключевое слово `object` создает одноэлементный объект (singleton). 
 Другими словами, объект определяет класс, который имеет ровно один экземпляр.
 
@@ -68,3 +70,8 @@ import MathService.*
 add(1,1)
 multiply(2,2)
 ```
+
+---
+
+**References:**
+- [Scala3 book](https://docs.scala-lang.org/scala3/book/taste-objects.html)

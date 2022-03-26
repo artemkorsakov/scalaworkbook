@@ -3,7 +3,7 @@ layout: docs
 title: "Методы"
 ---
 
-## Методы
+## {{page.title}}
 
 Scala `classes`, `case classes`, `traits`, `enums`, и `objects` могут содержать методы. 
 Синтаксис простого метода выглядит следующим образом:
@@ -84,3 +84,7 @@ extension (s: String)
 "100".makeInt(2)
 ```
 
+---
+
+**References:**
+- [Scala3 book](https://docs.scala-lang.org/scala3/book/taste-methods.html)

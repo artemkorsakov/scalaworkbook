@@ -1,22 +1,33 @@
 options:
-  - title: Рабочая тетрадь
+  - title: Обзор Scala
     url: docs/index
 
-  - title: Scala
-    url: docs/basic
+  - title: Hello, world!
+    url: docs/hello_world
 
-    nested_options:
-      - title: Основные конструкции
-        url: docs/basic/structures
+  - title: Типы данных
+    url: docs/types
 
-      - title: Моделирование данных
-        url: docs/basic/modeling
+  - title: Основные конструкции
+    url: docs/structures
 
-      - title: Методы
-        url: docs/basic/methods
+  - title: Моделирование данных
+    url: docs/modeling
 
-      - title: Функции
-        url: docs/basic/functions
+  - title: Методы
+    url: docs/methods
 
-      - title: Объекты
-        url: docs/basic/objects
+  - title: Функции
+    url: docs/functions
+
+  - title: Объекты
+    url: docs/objects
+
+  - title: Коллекции
+    url: docs/collections
+
+  - title: Абстракции
+    url: docs/abstractions
+
+  - title: Верхнеуровневые определения
+    url: docs/toplevel-definitions

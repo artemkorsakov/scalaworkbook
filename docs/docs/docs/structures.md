@@ -3,18 +3,11 @@ layout: docs
 title: "Основные конструкции"
 ---
 
-### Конструкции в Scala
-
-#### Запуск main метода в Scala:
-
-```scala
-@main def hello = println("Hello, world!")
-```
-
-Метод `hello` компилится в отдельный класс на уровне пакета с именем класса равным имени метода.
-В один файл можно добавлять несколько main методов с различными именами.
+## {{page.title}}
 
 #### if/else
+
+`if/else` управляющая структура выглядит так же, как и в других языках:
 
 ```scala mdoc
 def detect(x: Int) = 
@@ -28,6 +21,16 @@ detect(-1)
 detect(0) 
 detect(1) 
 ```
+
+Обратите внимание, что это действительно выражение, а не утверждение. 
+Это означает, что `if/else` возвращает значение, поэтому его результат можно присвоить переменной:
+
+```scala
+val x = if a < b then a else b 
+```
+
+Как будет видно на протяжении всей этой документации, 
+все структуры управления Scala можно использовать в качестве выражений.
 
 #### for loops and expressions
 
@@ -128,3 +131,8 @@ def loop(x: Int): Unit =
     loop(x + 1)  
 loop(1)
 ```
+
+---
+
+**References:**
+- [Scala3 book](https://docs.scala-lang.org/scala3/book/taste-control-structures.html)

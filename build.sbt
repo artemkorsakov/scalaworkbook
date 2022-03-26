@@ -48,7 +48,6 @@ lazy val docs = project
     apiURL := None,
     mdocVariables := Map(
       "SCALA" -> Scala3,
-      "DESCRIPTION" -> micrositeDescription.value,
       "DOC_SITE" -> s"${micrositeUrl.value}${micrositeDocumentationUrl.value}",
       "SOURCE_LINK" -> s"${micrositeUrl.value}${micrositeBaseUrl.value}/sources.html"
     )

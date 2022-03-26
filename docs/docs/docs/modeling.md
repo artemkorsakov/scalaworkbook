@@ -3,6 +3,8 @@ layout: docs
 title: "Моделирование данных в ООП и ФП"
 ---
 
+## {{page.title}}
+
 ## OOP Domain Modeling
 
 При написании кода в стиле ООП двумя основными инструментами для инкапсуляции данных являются _traits_ и _classes_.
@@ -128,3 +130,8 @@ p.name = "Joe"
 ```scala mdoc
 val p2 = p.copy(name = "Elton John")
 ```
+
+---
+
+**References:**
+- [Scala3 book](https://docs.scala-lang.org/scala3/book/taste-modeling.html)
