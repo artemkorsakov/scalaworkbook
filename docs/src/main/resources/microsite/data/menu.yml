@@ -10,4 +10,13 @@ options:
         url: docs/basic/structures
 
       - title: Моделирование данных
-        url: docs/basic/domain_modeling
+        url: docs/basic/modeling
+
+      - title: Методы
+        url: docs/basic/methods
+
+      - title: Функции
+        url: docs/basic/functions
+
+      - title: Объекты
+        url: docs/basic/objects

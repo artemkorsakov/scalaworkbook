@@ -9,9 +9,9 @@ title: "Моделирование данных в ООП и ФП"
 
 ### Traits
 
-Scala traits можно использовать как простые интерфейсы, но они также могут содержать абстрактные и конкретные методы и поля, 
+`traits` можно использовать как простые интерфейсы, но они также могут содержать абстрактные и конкретные методы и поля, 
 и они могут иметь параметры, как и классы. 
-Классы и объекты могут расширять несколько traits.
+Классы и объекты могут расширять несколько `traits`.
 
 Рассмотрим пример:
 
@@ -26,28 +26,26 @@ trait Runner:
   def stopRunning(): Unit = println("Stopped running") 
 ```
 
-Класс `Dog` может расширить все три trait-а, определяя абстрактный метод `speak`:
+Класс `Dog` может расширить все три `trait`-а, определяя абстрактный метод `speak`:
 
-```scala mdoc
+```scala mdoc:silent
 class Dog(name: String) extends Speaker, TailWagger, Runner:
   def speak(): String = "Woof!"
+val dog = Dog("Rover")  
 ```
 
-Класс также может переопределять методы trait-ов. Рассмотрим пример класса `Cat`:
+Класс также может переопределять методы `trait`-ов. Рассмотрим пример класса `Cat`:
 
-```scala mdoc
+```scala mdoc:silent
 class Cat(name: String) extends Speaker, TailWagger, Runner:
   def speak(): String = "Meow"
   override def startRunning(): Unit = println("Yeah ... I don’t run")
   override def stopRunning(): Unit = println("No need to stop")
+val cat = Cat("Morris")  
 ```
 
 В результате получим:
 
-```scala mdoc:silent
-val dog = Dog("Rover")
-val cat = Cat("Morris")
-```
 ```scala mdoc
 dog.speak()
 dog.startRunning()
@@ -60,7 +58,7 @@ cat.stopRunning()
 
 ### Classes
 
-Классы используются в программировании в стиле ООП. Вот пример класса, который моделирует "человека". 
+Классы используются для разработки в стиле ООП. Вот пример класса, который моделирует "человека". 
 
 ```scala mdoc
 class Person(firstName: String, lastName: String):
