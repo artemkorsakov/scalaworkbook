@@ -386,16 +386,16 @@ isTruthy(" ")
 isTruthy(2F)
 ```
 
-Использование _pattern matching_ в качестве тела метода очень распространено.
+Использование pattern matching в качестве тела метода очень распространено.
 
-#### Использование различных шаблонов в _pattern matching_
+#### Использование различных шаблонов в pattern matching
 
-Для выражения `match` можно использовать много различных шаблонов. Например:
-- Сравнение с константой (такое, как `case 3 =>`)
-- Сравнение с последовательностями (такое, как `case List(els : _*) =>`)
-- Сравнение с кортежами (такое, как `case (x, y) =>`)
-- Сравнение с конструктором класса (такое, как `case Person(first, last) =>`)
-- Сравнение по типу (такое, как `case p: Person =>`)
+Для выражения `match` можно использовать множество различных шаблонов. Например:
+- Сравнение с константой (`case 3 =>`)
+- Сравнение с последовательностями (`case List(els : _*) =>`)
+- Сравнение с кортежами (`case (x, y) =>`)
+- Сравнение с конструктором класса (`case Person(first, last) =>`)
+- Сравнение по типу (`case p: Person =>`)
 
 Все эти виды шаблонов показаны в следующем примере:
 
@@ -403,32 +403,32 @@ isTruthy(2F)
 def pattern(x: Matchable): String = x match
 
   // Сравнение с константой
-  case 0 => "zero"
+  case 0 => "ноль"
   case true => "true"
-  case "hello" => "you said 'hello'"
-  case Nil => "an empty List"
+  case "hello" => "строка 'hello'"
+  case Nil => "пустой List"
 
   // Сравнение с последовательностями
-  case List(0, _, _) => "a 3-element list with 0 as the first element"
-  case List(1, _*) => "list, starts with 1, has any number of elements"
-  case Vector(1, _*) => "vector, starts w/ 1, has any number of elements"
+  case List(0, _, _) => "список из 3 элементов с 0 в качестве первого элемента"
+  case List(1, _*) => "Непустой список, начинающийся с 1, и имеющий любой размер > 0"
+  case Vector(1, _*) => "Vector, начинающийся с 1, и имеющий любой размер > 0"
 
   // Сравнение с кортежами
-  case (a, b) => s"got $a and $b"
-  case (a, b, c) => s"got $a, $b, and $c"
+  case (a, b) => s"получено $a и $b"
+  case (a, b, c) => s"получено $a, $b и $c"
 
   // Сравнение с конструктором класса
   case Person(first, "Alexander") => s"Alexander, first name = $first"
-  case Dog("Zeus") => "found a dog named Zeus"
+  case Dog("Zeus") => "Собака с именем Zeus"
 
   // Сравнение по типу
-  case s: String => s"got a string: $s"
-  case i: Int => s"got an int: $i"
-  case f: Float => s"got a float: $f"
-  case a: Array[Int] => s"array of int: ${a.mkString(",")}"
-  case as: Array[String] => s"string array: ${as.mkString(",")}"
-  case d: Dog => s"dog: ${d.name}"
-  case list: List[?] => s"got a List: $list"
+  case s: String => s"получена строка: $s"
+  case i: Int => s"получено число: $i"
+  case f: Float => s"получено число с плавающей точкой: $f"
+  case a: Array[Int] => s"массив чисел: ${a.mkString(",")}"
+  case as: Array[String] => s"массив строк: ${as.mkString(",")}"
+  case d: Dog => s"Экземпляр класса Dog: ${d.name}"
+  case list: List[?] => s"получен List: $list"
   case m: Map[?, ?] => m.toString
 
   // Сравнение по умолчанию
@@ -439,7 +439,7 @@ def pattern(x: Matchable): String = x match
 
 Как и в Java, в Scala есть конструкция `try`/`catch`/`finally`, позволяющая перехватывать исключения и управлять ими. 
 Для обеспечения согласованности Scala использует тот же синтаксис, что и выражения `match`, 
-и поддерживает _pattern matching_ для различных возможных исключений.
+и поддерживает pattern matching для различных возможных исключений.
 
 В следующем примере `openAndReadAFile` - это метод, который выполняет то, что следует из его названия: 
 он открывает файл и считывает текст в нем, присваивая результат изменяемой переменной `text`:
@@ -456,7 +456,7 @@ finally
 ```
 
 Предполагая, что метод `openAndReadAFile` использует Java `java.io.*` классы для чтения файла 
-и не перехватывают его исключения, попытка открыть и прочитать файл может привести как к `FileNotFoundException`, 
+и не перехватывает его исключения, попытка открыть и прочитать файл может привести как к `FileNotFoundException`, 
 так и к `IOException`, и эти два исключения перехватываются в блоке `catch` этого примера.
 
 ---
