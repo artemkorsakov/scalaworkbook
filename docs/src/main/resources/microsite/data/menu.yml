@@ -8,7 +8,7 @@ options:
   - title: Типы данных
     url: docs/types
 
-  - title: Основные конструкции
+  - title: Структуры управления
     url: docs/structures
 
   - title: Моделирование данных
