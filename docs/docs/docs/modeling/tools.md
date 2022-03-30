@@ -28,19 +28,19 @@ class Book(var title: String, var author: String, var year: Int)
 class Movie(var name: String, var director: String, var year: Int)
 ```
 
-Эти примеры показывают, как в Scala легко объявить класс.
+Эти примеры показывают, как в Scala объявляются классы.
 
 В примере выше все параметры классов определены как поля `var`, что означает, что они изменяемы. 
-Если необходимо, чтобы они были неизменяемыми, можно создать их как `val` или использовать case class.
+Если необходимо, чтобы они были неизменяемыми, можно определить их как `val` или использовать case class.
 
-Новый экземпляр класса создается следующим образов 
-(без ключевого слова new, благодаря [универсальным apply методам](https://docs.scala-lang.org/scala3/reference/other-new-features/creator-applications.html)):
+Новый экземпляр класса создается следующим образом 
+(без ключевого слова `new`, благодаря [универсальным `apply` методам](https://docs.scala-lang.org/scala3/reference/other-new-features/creator-applications.html)):
 
-```scala mdoc
+```scala mdoc:silent
 val p = Person("Robert Allen Zimmerman", "Harmonica Player")
 ```
 
-Если у вас есть экземпляр класса, такого как `p`, вы можете получить доступ к его полям, 
+Если есть экземпляр класса, такого как `p`, то можно получить доступ к его полям, 
 которые в этом примере являются параметрами конструктора:
 
 ```scala mdoc
@@ -50,7 +50,7 @@ p.vocation
 
 Как уже упоминалось, все эти параметры были созданы как поля `var`, поэтому их можно изменять:
 
-```scala mdoc
+```scala mdoc:silent
 p.name = "Bob Dylan"
 p.vocation = "Musician"
 ```
@@ -102,7 +102,7 @@ Socket(linger = 10_000)
 ```
 
 При создании нового экземпляра класса также можно использовать именованные параметры. 
-Это особенно полезно, когда параметры имеют одинаковый тип:
+Это приветствуется и особенно полезно, когда параметры имеют одинаковый тип:
 
 ```scala mdoc
 Socket(10_000, 10_001)
@@ -112,54 +112,38 @@ Socket(linger = 10_000, timeout = 10_001)
 
 #### Вспомогательные конструкторы
 
-Можно определить класс так, чтобы у него было несколько конструкторов, чтобы его можно было создавать разными способами. 
-Например, предположим, что нужно иметь возможность создавать экземпляр `Student` тремя способами:
+В классе можно определить несколько конструкторов. 
+Например, предположим, что нужно определить три конструктора класса `Student`:
 - с именем и государственным ID (1)
-- с именем, государственным ID и дополнительной датой подачи заявления (2)
+- с именем, государственным ID и датой подачи заявления (2)
 - с именем, государственным ID и студенческим ID (3)
 
 Пример описания класса с тремя этими конструкторами:
 
 ```scala mdoc
 import java.time.*
-
-// [1] основной конструктор
-class Student(
-  var name: String,
-  var govtId: String
-):
+class Student(var name: String, var govtId: String): // [1] основной конструктор
   private var _applicationDate: Option[LocalDate] = None
   private var _studentId: Int = 0
 
-  // [2] конструктор с датой подачи заявления
-  def this(
-    name: String,
-    govtId: String,
-    applicationDate: LocalDate
-  ) =
+  def this(name: String, govtId: String, applicationDate: LocalDate) =   // [2] конструктор с датой подачи заявления
     this(name, govtId)
     _applicationDate = Some(applicationDate)
 
-  // [3] конструктор со студенческим id
-  def this(
-    name: String,
-    govtId: String,
-    studentId: Int
-  ) =
+  def this(name: String, govtId: String, studentId: Int) =   // [3] конструктор со студенческим id
     this(name, govtId)
     _studentId = studentId
 ```
 
-Класс имеет три конструктора, заданные пронумерованными комментариями в коде.
 Эти конструкторы могут быть вызваны следующим образом:
 
-```scala mdoc
+```scala mdoc:silent
 Student("Mary", "123")
 Student("Mary", "123", LocalDate.now)
 Student("Mary", "123", 456)
 ```
 
-Для возможности создания классов различными способами можно использовать как параметры по умолчанию, 
+Для возможности создания классов несколькими способами можно использовать как параметры по умолчанию, 
 так и несколько конструкторов, как в примере выше.
 
 ### Objects
@@ -203,11 +187,11 @@ isNullOrEmpty("John Casey")
 
 Можно импортировать только часть методов:
 
-```scala mdoc:reset:fail
+```scala
 import StringUtils.{truncate, containsWhitespace}
 truncate("Charles Carmichael", 7)    
 containsWhitespace("Captain Awesome") 
-isNullOrEmpty("Morgan Grimes")  
+isNullOrEmpty("Morgan Grimes")  // Not found: isNullOrEmpty (error)
 ```
 
 Объекты также могут иметь поля, к которым можно обратиться, как к статистическим методам:
@@ -223,7 +207,8 @@ println(MathConstants.PI)
 
 Объект, который имеет то же имя, что и класс, и объявлен в том же файле, что и класс, 
 называется "сопутствующим объектом" (_companion object_). 
-Аналогично, соответствующий класс называется сопутствующим классом объекта (_companion class_). Сопутствующий класс или объект может получить доступ к закрытым членам своего сопутствующего класса.
+Аналогично, соответствующий класс называется сопутствующим классом объекта (_companion class_). 
+Сопутствующий класс или объект может получить доступ к закрытым членам своего "соседа".
 
 Сопутствующие объекты используются для методов и значений, 
 которые не являются специфичными для экземпляров сопутствующего класса. 
@@ -268,24 +253,19 @@ class Person:
   var name = ""
   var age = 0
   override def toString = s"$name is $age years old"
-
 object Person:
 
-  // a one-arg factory method
-  def apply(name: String): Person =
+  def apply(name: String): Person = // a one-arg factory method
     val p = new Person
     p.name = name
     p
 
-  // a two-arg factory method
-  def apply(name: String, age: Int): Person =
+  def apply(name: String, age: Int): Person =   // a two-arg factory method
     val p = new Person
     p.name = name
     p.age = age
     p
-
 end Person
-
 val joe = Person("Joe")
 val fred = Person("Fred", 29)
 ```
