@@ -14,6 +14,16 @@ options:
   - title: Моделирование данных
     url: docs/modeling
 
+    nested_options:
+      - title: Инструменты
+        url: docs/modeling/tools
+
+      - title: Моделирование ООП
+        url: docs/modeling/oop
+
+      - title: Моделирование FP
+        url: docs/modeling/fp
+
   - title: Методы
     url: docs/methods
 
