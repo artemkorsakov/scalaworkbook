@@ -272,54 +272,99 @@ val fred = Person("Fred", 29)
 
 ### Traits
 
-`traits` можно использовать как простые интерфейсы, но они также могут содержать абстрактные и конкретные методы и поля,
-и они могут иметь параметры, как и классы.
-Классы и объекты могут расширять несколько `traits`.
+Если провести аналогию с Java, то Scala `trait` похож на интерфейс в Java 8+.
+`trait`-ы могут содержать:
+- абстрактные методы и поля
+- конкретные методы и поля
+- могут иметь параметры конструктора, как и классы
 
-Рассмотрим пример:
-
-```scala mdoc
-trait Speaker:
-  def speak(): String
-trait TailWagger:
-  def startTail(): Unit = println("tail is wagging")
-  def stopTail(): Unit = println("tail is stopped")
-trait Runner:
-  def startRunning(): Unit = println("I’m running")
-  def stopRunning(): Unit = println("Stopped running") 
-```
-
-Класс `Dog` может расширить все три `trait`-а, определяя абстрактный метод `speak`:
+В базовом использовании `trait` может использоваться как интерфейс, 
+определяющий только абстрактные члены, которые будут реализованы другими классами:
 
 ```scala mdoc:silent
-class Dog(name: String) extends Speaker, TailWagger, Runner:
-  def speak(): String = "Woof!"
-val dog = Dog("Rover")  
+trait Employee:
+  def id: Int
+  def firstName: String
+  def lastName: String 
 ```
 
-Класс также может переопределять методы `trait`-ов. Рассмотрим пример класса `Cat`:
+`traits` также могут содержать определенные методы:
 
 ```scala mdoc:silent
-class Cat(name: String) extends Speaker, TailWagger, Runner:
-  def speak(): String = "Meow"
-  override def startRunning(): Unit = println("Yeah ... I don’t run")
-  override def stopRunning(): Unit = println("No need to stop")
-val cat = Cat("Morris")  
+trait HasLegs:
+  def numLegs: Int
+  def walk(): Unit
+  def stop() = println("Stopped walking")
+```
+```scala mdoc:silent
+trait HasTail:
+  def tailColor: String
+  def wagTail() = println("Tail is wagging")
+  def stopTail() = println("Tail is stopped")
 ```
 
-В результате получим:
+Классы и объекты могут расширять несколько `traits`, что позволяет с их помощью создавать небольшие модули.
+
+```scala mdoc:silent
+class IrishSetter(name: String) extends HasLegs, HasTail:
+  val numLegs = 4
+  val tailColor = "Red"
+  def walk() = println("I’m walking")
+  override def toString = s"$name is a Dog"
+```
+
+В классе `IrishSetter` реализованы все абстрактные параметры и методы, поэтому можно создать его экземпляр:
 
 ```scala mdoc
-dog.speak()
-dog.startRunning()
-dog.stopRunning()
-cat.speak()
-cat.startRunning()      
-cat.stopRunning()    
+val d = IrishSetter("Big Red")
 ```
 
+Класс также может переопределять методы `trait`-ов при необходимости.
 
+### Абстрактные классы
 
+Когда необходимо написать класс, но известно, что в нем будут абстрактные члены, можно создать либо `trait`, 
+либо абстрактный класс. 
+В большинстве ситуаций желательно использовать `trait`, но исторически сложилось так, что было две ситуации, 
+когда лучше использовать абстрактный класс:
+- необходимо создать базовый класс, который принимает аргументы конструктора
+- код будет вызван из Java-кода
+
+#### Базовый класс, который принимает аргументы конструктора
+
+До Scala 3, когда базовому классу нужно было принимать аргументы конструктора, он объявлялся как абстрактный класс:
+
+```scala
+abstract class Pet(name: String):
+  def greeting: String
+  def age: Int
+  override def toString = s"My name is $name, I say $greeting, and I’m $age"
+
+class Dog(name: String, age: Int) extends Pet(name):
+  val greeting = "Woof"
+
+val d = Dog("Fido", 1)
+```
+
+Однако в Scala 3 `trait`-ы теперь могут иметь параметры, так что теперь в той же ситуации можно использовать `trait`-ы:
+
+```scala
+trait Pet(name: String):
+  def greeting: String
+  def age: Int
+  override def toString = s"My name is $name, I say $greeting, and I’m $age"
+
+class Dog(name: String, var age: Int) extends Pet(name):
+  val greeting = "Woof"
+
+val d = Dog("Fido", 1)
+```
+
+`trait`-ы более гибки в составлении — можно смешивать несколько `trait`-ов, но расширять только один класс — 
+и в большинстве случаев их следует предпочитать классам и абстрактным классам. 
+Эмпирическое правило состоит в том, чтобы использовать классы всякий раз, 
+когда необходимо создавать экземпляры определенного типа, 
+и `trait`-ы, когда желательно разложить и повторно использовать поведение.
 
 ---
 
