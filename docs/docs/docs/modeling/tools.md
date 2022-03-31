@@ -473,14 +473,14 @@ person.name
 
 Необходимо помнить, что поля в `case class`-е неизменяемые:
 
-```scala mdoc:fail
-person.name = "Joe"
+```scala
+person.name = "Joe" // error: Reassignment to val name
 ```
 
 Остальные возможности продемонстрированы в коде:
 
 ```scala mdoc
-println(person) // `toString` method
+println(person)
 person match
   case Person(n, r) => println("name is " + n)
 val elton = Person("Elton John", "Singer")
@@ -493,9 +493,8 @@ val cubs2016 = cubs1908.copy(lastWorldSeriesWin = 2016)
 
 #### Поддержка функционального программирования
 
-Как уже упоминалось ранее, `case class` поддерживают функциональное программирование (FP):
-- FP избегает изменения структур данных. 
-Таким образом, имеет смысл, что поля конструктора по умолчанию имеют значение `val`. 
+Как уже упоминалось ранее, `case class`-ы поддерживают функциональное программирование (FP):
+- FP избегает изменения структур данных. Поэтому поля конструктора по умолчанию имеют значение `val`. 
 Поскольку экземпляры `case class` не могут быть изменены, ими можно легко делиться, не опасаясь мутаций или условий гонки.
 - вместо изменения экземпляра можно использовать метод `copy` в качестве шаблона для создания нового 
 (потенциально измененного) экземпляра. Этот процесс можно назвать "обновлением по мере копирования".
@@ -503,6 +502,35 @@ val cubs2016 = cubs1908.copy(lastWorldSeriesWin = 2016)
 
 
 ### Case objects
+
+`Case object`-ы относятся к объектам так же, как `case class`-ы относятся к классам: 
+они предоставляют ряд автоматически генерируемых методов, чтобы сделать их более мощными.
+`Case object`-ы особенно полезны всякий раз, когда необходим одноэлементный объект, 
+который нуждается в небольшой дополнительной функциональности, 
+например, для использования с сопоставлением шаблонов в выражениях match.
+
+`Case object`-ы полезны, когда необходимо передавать неизменяемые сообщения. 
+Например, представим проект музыкального проигрывателя, и создадим набор команд или сообщений:
+
+```scala
+sealed trait Message
+case class PlaySong(name: String) extends Message
+case class IncreaseVolume(amount: Int) extends Message
+case class DecreaseVolume(amount: Int) extends Message
+case object StopPlaying extends Message
+```
+
+Затем в других частях кода можно написать методы, которые используют сопоставление с образцом 
+для обработки входящего сообщения 
+(при условии, что методы `playSong`, `changeVolume` и `stopPlayingSong` определены где-то еще):
+
+```scala
+def handleMessages(message: Message): Unit = message match
+  case PlaySong(name)         => playSong(name)
+  case IncreaseVolume(amount) => changeVolume(amount)
+  case DecreaseVolume(amount) => changeVolume(-amount)
+  case StopPlaying            => stopPlayingSong()
+```
 
 ---
 
