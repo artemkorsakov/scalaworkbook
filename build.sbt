@@ -36,7 +36,7 @@ lazy val docs = project
     micrositePushSiteWith := GitHub4s,
     micrositeGitterChannel := false,
     micrositePalette := Map(
-      "brand-primary" -> "#5B5988",
+      "brand-primary" -> "#5B59B0",
       "brand-secondary" -> "#292E53",
       "brand-tertiary" -> "#222749",
       "gray-dark" -> "#49494B",
