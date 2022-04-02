@@ -37,14 +37,11 @@ options:
   - title: Функции
     url: docs/functions
 
-  - title: Объекты
-    url: docs/objects
+  - title: Верхнеур. определения
+    url: docs/toplevel-definitions
 
   - title: Коллекции
     url: docs/collections
 
   - title: Абстракции
     url: docs/abstractions
-
-  - title: Верхнеур. определения
-    url: docs/toplevel-definitions
