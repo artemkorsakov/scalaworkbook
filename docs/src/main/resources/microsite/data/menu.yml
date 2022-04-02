@@ -27,6 +27,13 @@ options:
   - title: Методы
     url: docs/methods
 
+    nested_options:
+      - title: Особенности методов
+        url: docs/methods/method-features
+
+      - title: main методы
+        url: docs/methods/main-methods
+
   - title: Функции
     url: docs/functions
 
