@@ -20,7 +20,7 @@ lazy val docs = project
   .enablePlugins(MicrositesPlugin)
   .settings(
     micrositeName := "Scala workbook",
-    micrositeDescription := "Разработка на Scala. Рабочая тетрадь.",
+    micrositeDescription := "Функциональная разработка на Scala.",
     micrositeUrl := "https://artemkorsakov.github.io",
     micrositeBaseUrl := "/scalaworkbook",
     micrositeDocumentationUrl := "/scalaworkbook/docs",

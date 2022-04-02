@@ -1,6 +1,6 @@
-# Scala workbook
+# Функциональная разработка на Scala
 
-Разработка на Scala. Рабочая тетрадь.
+Обзор языка, принципов функциональной разработки на Scala и основных Scala фреймворков.
 
 [Домашняя страница](https://artemkorsakov.github.io/scalaworkbook/)
 
