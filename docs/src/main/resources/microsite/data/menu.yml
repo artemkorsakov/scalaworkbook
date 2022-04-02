@@ -39,5 +39,5 @@ options:
   - title: Абстракции
     url: docs/abstractions
 
-  - title: Toplevel definitions
+  - title: Верхнеур. определения
     url: docs/toplevel-definitions
