@@ -41,6 +41,12 @@ options:
       - title: Анонимные функции
         url: docs/functions/anonymous
 
+      - title: Параметры функции
+        url: docs/functions/variables
+
+      - title: Eta расширение
+        url: docs/functions/eta
+
   - title: Верхнеур. определения
     url: docs/toplevel-definitions
 
