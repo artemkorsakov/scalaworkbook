@@ -37,6 +37,10 @@ options:
   - title: Функции
     url: docs/functions
 
+    nested_options:
+      - title: Анонимные функции
+        url: docs/functions/anonymous
+
   - title: Верхнеур. определения
     url: docs/toplevel-definitions
 
