@@ -37,8 +37,9 @@ val double = (i: Int) => i * 2
 Как можно видеть ниже, `double` имеет тип `Int => Int`, что означает, 
 что он принимает один параметр `Int` и возвращает `Int`:
 
-```scala mdoc
+```scala mdoc:silent
 val double = (i: Int) => i * 2
+// double: Int => Int = ...
 ```
 
 #### Вызов метода
@@ -63,15 +64,15 @@ val triple = (i: Int) => i * 3
 
 можно сохранить их в `List` или `Map`:
 
-```scala mdoc
-val functionList = List(double, triple)
-val functionMap = Map(
+```scala mdoc:silent
+val functionList: List[Int => Int] = List(double, triple)
+val functionMap: Map[String, Int => Int] = Map(
   "2x" -> double,
   "3x" -> triple
 )
 ```
 
-В коде выше видно, какие типы имеют `functionList` и `functionMap`.
+`functionList` имеет тип `List[Int => Int]`, `functionMap` - `Map[String, Int => Int]`.
 
 
 ### Ключевые моменты

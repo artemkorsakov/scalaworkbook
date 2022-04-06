@@ -172,8 +172,10 @@ class Counter:
 Каждый экземпляр класса `Counter` имеет собственное приватное состояние, 
 которое можно наблюдать только через метод `count`, как показано в следующем примере:
 
-```scala mdoc
+```scala mdoc:silent
 val c1 = Counter()
+```
+```scala mdoc
 c1.count
 c1.tick()
 c1.tick()
