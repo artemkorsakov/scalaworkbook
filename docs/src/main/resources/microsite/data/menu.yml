@@ -47,6 +47,15 @@ options:
       - title: Eta расширение
         url: docs/functions/eta
 
+      - title: Функции высшего порядка
+        url: docs/functions/hofs
+
+      - title: Собственный map
+        url: docs/functions/write-map
+
+      - title: Возврат функции в методе
+        url: docs/functions/returns-function
+
   - title: Верхнеур. определения
     url: docs/toplevel-definitions
 
