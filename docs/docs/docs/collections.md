@@ -106,7 +106,7 @@ val (num, str, person) = t
 
 В этом примере показано, как дважды отфильтровать коллекцию, а затем умножить каждый элемент в оставшейся коллекции:
 
-```scala mdoc
+```scala mdoc:reset
 val nums = (1 to 10).toList
 val x = nums.filter(_ > 3)
   .filter(_ < 7)
