@@ -56,6 +56,9 @@ options:
       - title: Возврат функции в методе
         url: docs/functions/returns-function
 
+  - title: Пакеты и импорт
+    url: docs/packaging
+
   - title: Верхнеур. определения
     url: docs/toplevel-definitions
 
