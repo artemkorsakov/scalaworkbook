@@ -9,15 +9,6 @@ title: "Методы в коллекциях"
 
 #### TEMP
 
-```scala mdoc
-(1 to 5).toList
-(1 to 10 by 2).toList
-(1 until 5).toList
-List.range(1, 5)
-List.range(1, 10, 3)
-```
-
-
 
 ### Методы List-а
 

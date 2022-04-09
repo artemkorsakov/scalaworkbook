@@ -15,7 +15,7 @@ title: "Типы коллекций"
 - Последовательности (**Sequences**/**Seq**) представляют собой последовательный набор элементов 
 и могут быть индексированными (как массив) или линейными (как связанный список)
 - Карты (**Maps**) содержат набор пар ключ/значение, например Java `Map`, Python dictionary или Ruby `Hash`
-- Наборы (**Sets**) — это неупорядоченный набор уникальных элементов
+- Множества (**Sets**) — это неупорядоченный набор уникальных элементов
 
 Все они являются базовыми типами и имеют подтипы для конкретных целей, 
 таких как параллелизм (_concurrency_), кэширование (_caching_) и потоковая передача (_streaming_). 
@@ -306,13 +306,13 @@ for name <- names do println(s"My name is $name")
 
 Чтобы использовать `ArrayBuffer`, в отличие от предыдущих рассмотренных классов, его нужно вначале импортировать:
 
-```scala mdoc:silent
+```scala
 import scala.collection.mutable.ArrayBuffer
 ```
 
 Если необходимо начать с пустого `ArrayBuffer`, просто укажите его тип:
 
-```scala mdoc:silent
+```scala
 var strings = ArrayBuffer[String]()
 var ints = ArrayBuffer[Int]()
 var people = ArrayBuffer[Person]()
@@ -320,7 +320,7 @@ var people = ArrayBuffer[Person]()
 
 Если известен примерный размер `ArrayBuffer`, его можно задать:
 
-```scala mdoc:silent
+```scala
 val buf = new ArrayBuffer[Int](100_000)
 ```
 
@@ -342,7 +342,10 @@ val people = ArrayBuffer(
 Также можно использовать текстовый аналог: `append`, `appendAll`, `insert`, `insertAll`, `prepend` и `prependAll`. 
 Вот несколько примеров с `+=` и `++=`:
 
-```scala mdoc:reset
+```scala mdoc:reset:invisible
+import scala.collection.mutable.ArrayBuffer
+```
+```scala mdoc
 val nums = ArrayBuffer(1, 2, 3)
 nums += 4
 nums ++= List(5, 6)
@@ -364,6 +367,9 @@ a --= Set('d', 'e')
 
 Элементы в `ArrayBuffer` можно обновлять, либо переназначать:
 
+```scala mdoc:reset:invisible
+import scala.collection.mutable.ArrayBuffer
+```
 ```scala mdoc
 val a = ArrayBuffer.range(1,5)
 a(2) = 50
@@ -469,9 +475,80 @@ for (k, v) <- states do println(s"key: $k, value: $v")
 В Scala есть много других специализированных типов `Map`, 
 включая `CollisionProofHashMap`, `HashMap`, `LinkedHashMap`, `ListMap`, `SortedMap`, `TreeMap`, `WeakHashMap` и другие.
 
-### Работа с Set
+### Работа с множествами
 
-???
+Множество ([Set](https://scala-lang.org/api/3.x/scala/collection/immutable/Set.html)) - 
+итерируемая коллекция без повторяющихся элементов.
+
+В Scala есть как изменяемые, так и неизменяемые типы `Set`. 
+В этом разделе демонстрируется неизменяемое множество.
+
+#### Создание множества
+
+Создание нового пустого множества:
+
+```scala mdoc:reset
+val nums = Set[Int]()
+val letters = Set[Char]()
+```
+
+Создание множества с исходными данными:
+
+```scala mdoc:reset
+val nums = Set(1, 2, 3, 3, 3)
+val letters = Set('a', 'b', 'c', 'c')
+```
+
+#### Добавление элементов в множество
+
+В неизменяемое множество новые элементы добавляются с помощью `+` и `++`,
+результат присваивается новой переменной:
+
+```scala mdoc
+val a = Set(1, 2)
+val b = a + 3
+val c = b ++ Seq(4, 1, 5, 5)
+```
+
+При попытке добавить повторяющиеся элементы, они не добавляются.
+
+Также стоит отметить, что порядок элементов произвольный.
+
+#### Удаление элементов из множества
+
+Элементы из множества удаляются с помощью методов `-` и `--`:
+
+```scala mdoc:reset
+val a = Set(1, 2, 3, 4, 5)
+val b = a - 5
+val c = b -- Seq(3, 4)
+```
+
+
+### Диапазон (Range)
+
+`Range` часто используется для заполнения структур данных и для повторения циклов `for`. 
+Эти примеры демонстрируют, как создавать диапазоны:
+
+```scala mdoc
+1 to 5
+1 until 5
+1 to 10 by 2
+'a' to 'c'
+```
+
+`Range` можно использовать для заполнения коллекций:
+
+```scala mdoc
+val x = (1 to 5).toList
+val y = (1 to 5).toBuffer
+```
+
+Они также используются в циклах `for`:
+
+```scala mdoc
+for i <- 1 to 3 do println(i)
+```
 
 
 
