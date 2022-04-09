@@ -65,5 +65,12 @@ options:
   - title: Коллекции
     url: docs/collections
 
+    nested_options:
+      - title: Типы коллекций
+        url: docs/collections/classes
+
+      - title: Методы в коллекциях
+        url: docs/collections/methods
+
   - title: Абстракции
     url: docs/abstractions
