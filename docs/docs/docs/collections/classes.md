@@ -594,7 +594,7 @@ val y = (1 to 5).toBuffer
 for i <- 1 to 3 do println(i)
 ```
 
-Во многих коллекциях есть метод range:
+Во многих коллекциях есть метод `range`:
 
 ```scala mdoc
 Vector.range(1, 5)
