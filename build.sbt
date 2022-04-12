@@ -12,11 +12,11 @@ ThisBuild / githubWorkflowBuildPreamble ++= Seq(
     UseRef.Public("ruby", "setup-ruby", "v1"),
     name = Some("Setup Ruby"),
     params = Map("ruby-version" -> "2.7")),
-  WorkflowStep.Run(List("gem install jekyll -v 4.0.0"), name = Some("Install Jekyll"))
+  WorkflowStep.Run(List("gem install jekyll -v 4"), name = Some("Install Jekyll"))
 )
 
 ThisBuild / githubWorkflowBuildPostamble := Seq(
-  WorkflowStep.Sbt(List("publishMicrosite"))
+  WorkflowStep.Sbt(List("publishMicrosite"), name = Some("Publish site"))
 )
 
 ThisBuild / githubWorkflowPublishTargetBranches := Seq()

@@ -56,7 +56,7 @@ jobs:
           ruby-version: 2.7
 
       - name: Install Jekyll
-        run: gem install jekyll -v 4.0.0
+        run: gem install jekyll -v 4
 
       - name: Check that workflows are up to date
         run: sbt ++${{ matrix.scala }} githubWorkflowCheck
@@ -64,4 +64,5 @@ jobs:
       - name: Build project
         run: sbt ++${{ matrix.scala }} test
 
-      - run: sbt ++${{ matrix.scala }} publishMicrosite
+      - name: Publish site
+        run: sbt ++${{ matrix.scala }} publishMicrosite
