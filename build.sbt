@@ -7,15 +7,16 @@ ThisBuild / scalaVersion := Scala3
 
 ThisBuild / scalacOptions ++= List("-feature", "-deprecation", "-Ykind-projector:underscores", "-source:future")
 
-ThisBuild / githubWorkflowBuildPostamble := Seq(
-  WorkflowStep.Run(
-    name = Some("Install jekyll"),
-    commands = List(
-      "gem install bundler jekyll",
+ThisBuild / githubWorkflowBuildPreamble ++= Seq(
+  WorkflowStep.Use(
+    UseRef.Public("ruby", "setup-ruby", "v1"),
+    name = Some("Setup Ruby"),
+    params = Map("ruby-version" -> "2.7")),
+  WorkflowStep.Run(List("gem install jekyll -v 4.0.0"), name = Some("Install Jekyll"))
+)
 
-    )
-  ),
-  WorkflowStep.Sbt(name = Some("Publish microsite"), commands = List("publishMicrosite"))
+ThisBuild / githubWorkflowBuildPostamble := Seq(
+  WorkflowStep.Sbt(List("publishMicrosite"))
 )
 
 ThisBuild / githubWorkflowPublishTargetBranches := Seq()
