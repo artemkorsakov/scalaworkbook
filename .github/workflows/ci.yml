@@ -55,3 +55,6 @@ jobs:
 
       - name: Build project
         run: sbt ++${{ matrix.scala }} test
+
+      - name: Publish microsite
+        run: sbt ++${{ matrix.scala }} publishMicrosite

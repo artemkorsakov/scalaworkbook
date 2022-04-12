@@ -7,7 +7,7 @@ ThisBuild / scalaVersion := Scala3
 
 ThisBuild / scalacOptions ++= List("-feature", "-deprecation", "-Ykind-projector:underscores", "-source:future")
 
-ThisBuild / githubWorkflowBuild := Seq(
+ThisBuild / githubWorkflowBuildPostamble := Seq(
   WorkflowStep.Sbt(name = Some("Publish microsite"), commands = List("publishMicrosite"))
 )
 
