@@ -11,9 +11,8 @@ ThisBuild / githubWorkflowBuildPostamble := Seq(
   WorkflowStep.Run(
     name = Some("Install jekyll"),
     commands = List(
-      "rvm use 2.6.5 --install --fuzzy",
-      "gem update --system",
-      "gem install jekyll -v 4"
+      "gem install bundler jekyll",
+
     )
   ),
   WorkflowStep.Sbt(name = Some("Publish microsite"), commands = List("publishMicrosite"))

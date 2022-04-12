@@ -57,10 +57,7 @@ jobs:
         run: sbt ++${{ matrix.scala }} test
 
       - name: Install jekyll
-        run: |
-          rvm use 2.6.5 --install --fuzzy
-          gem update --system
-          gem install jekyll -v 4
+        run: gem install bundler jekyll
 
       - name: Publish microsite
         run: sbt ++${{ matrix.scala }} publishMicrosite
