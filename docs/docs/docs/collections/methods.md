@@ -321,13 +321,13 @@ names.dropWhile(_ != "chris")
 ### reduce
 
 Метод `reduce` позволяет свертывать коллекцию до одного агрегируемого значения. 
-Он принимает функцию (или анонимную функцию) и применяет эту функцию к последовательным элементам в списке.
+Он принимает функцию (или анонимную функцию) и последовательно применяет эту функцию к элементам в списке.
 
 Лучший способ объяснить `reduce` — создать небольшой вспомогательный метод. 
-Например, это метод `add`, который складывает вместе два целых числа, 
+Например, метод `add`, который складывает вместе два целых числа, 
 а также предоставляет хороший вывод отладочной информации:
 
-```scala mdoc
+```scala mdoc:silent
 def add(x: Int, y: Int): Int =
   val theSum = x + y
   println(s"received $x and $y, their sum is $theSum")
@@ -336,7 +336,7 @@ def add(x: Int, y: Int): Int =
 
 Рассмотрим список:
 
-```scala mdoc
+```scala mdoc:silent
 val a = List(1,2,3,4)                         
 ```
 
@@ -365,9 +365,9 @@ a.reduce(_ * _)
 
 В коллекциях Scala есть десятки дополнительных методов, которые избавят от необходимости писать еще один цикл `for`. 
 Более подробную информацию о коллекциях Scala см. в разделе 
-[Изменяемые и неизменяемые коллекции](https://docs.scala-lang.org/overviews/collections-2.13/overview.html) 
-и [Архитектура коллекций Scala](https://docs.scala-lang.org/overviews/core/architecture-of-scala-213-collections.html).
-А также в [API документации](https://scala-lang.org/api/3.x/scala/collection.html).
+[Изменяемые и неизменяемые коллекции][collections-2.13] 
+и [Архитектура коллекций Scala][architecture-of-scala-213-collections].
+А также в [API][api].
 
 > В качестве последнего примечания, при использовании Java-кода в проекте Scala, 
 > коллекции Java можно преобразовать в коллекции Scala. 
@@ -381,3 +381,10 @@ a.reduce(_ * _)
 **References:**
 - [Scala3 book](https://docs.scala-lang.org/scala3/book/taste-collections.html)
 - [Scala3 book, Collections Methods](https://docs.scala-lang.org/scala3/book/collections-methods.html)
+- [Изменяемые и неизменяемые коллекции][collections-2.13]
+- [Архитектура коллекций Scala][architecture-of-scala-213-collections]
+- [collections API][api]
+
+[collections-2.13]: https://docs.scala-lang.org/ru/overviews/collections-2.13/overview.html
+[architecture-of-scala-213-collections]: https://docs.scala-lang.org/overviews/core/architecture-of-scala-213-collections.html
+[api]: https://scala-lang.org/api/3.x/scala/collection.html
