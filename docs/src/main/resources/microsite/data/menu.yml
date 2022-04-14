@@ -72,5 +72,11 @@ options:
       - title: Методы в коллекциях
         url: docs/collections/methods
 
+  - title: Функц. программирование
+    url: docs/fp
+
   - title: Абстракции
     url: docs/abstractions
+
+  - title: Взаимодействие с Java
+    url: docs/with_java
