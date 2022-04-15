@@ -75,6 +75,22 @@ options:
   - title: Функц. программирование
     url: docs/fp
 
+    nested_options:
+      - title: Что такое ФП?
+        url: docs/fp/what-is-fp
+
+      - title: Неизменяемые значения
+        url: docs/fp/immutable-values
+
+      - title: Чистые функции
+        url: docs/fp/pure-functions
+
+      - title: Функции - это значения
+        url: docs/fp/functions-are-values
+
+      - title: Обработка ошибок
+        url: docs/fp/functional-error-handling
+
   - title: Абстракции
     url: docs/abstractions
 
