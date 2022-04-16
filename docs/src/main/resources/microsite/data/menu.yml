@@ -21,7 +21,7 @@ options:
       - title: Моделирование ООП
         url: docs/modeling/oop
 
-      - title: Моделирование FP
+      - title: Моделирование ФП
         url: docs/modeling/fp
 
   - title: Методы
