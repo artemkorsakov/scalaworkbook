@@ -91,8 +91,47 @@ options:
       - title: Обработка ошибок
         url: docs/fp/functional-error-handling
 
+  - title: Система типов
+    url: docs/type_system
+
+      - title: Определение типов
+        url: docs/type_system/types-inferred
+
+      - title: Generics типы
+        url: docs/type_system/types-generics
+
+      - title: Пересечение типов
+        url: docs/type_system/types-intersection
+
+      - title: Объединение типов
+        url: docs/type_system/types-union
+
+      - title: Алгебр. типы данных
+        url: docs/type_system/types-adts
+
+      - title: Ковариантность
+        url: docs/type_system/types-variance
+
+      - title: Непрозрачные типы
+        url: docs/type_system/types-opaque
+
+      - title: Структурные типы
+        url: docs/type_system/types-structural
+
+      - title: Зависимые типы функций
+        url: docs/type_system/types-dependent-function
+
+      - title: Другие типы
+        url: docs/type_system/types-others
+
   - title: Абстракции
     url: docs/abstractions
+
+  - title: Параллелизм
+    url: docs/concurrency
+
+  - title: Утилиты
+    url: docs/tools
 
   - title: Взаимодействие с Java
     url: docs/with_java

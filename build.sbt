@@ -62,5 +62,6 @@ lazy val docs = project
       "SCALA" -> Scala3,
       "DOC_SITE" -> s"${micrositeUrl.value}${micrositeDocumentationUrl.value}",
       "SOURCE_LINK" -> s"${micrositeUrl.value}${micrositeBaseUrl.value}/sources.html"
-    )
+    ),
+    mdocExtraArguments := List("--no-link-hygiene")
   )
