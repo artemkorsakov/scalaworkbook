@@ -92,37 +92,38 @@ options:
         url: docs/fp/functional-error-handling
 
   - title: Система типов
-    url: docs/type_system
+    url: docs/type-system
 
+    nested_options:
       - title: Определение типов
-        url: docs/type_system/types-inferred
+        url: docs/type-system/types-inferred
 
       - title: Generics типы
-        url: docs/type_system/types-generics
+        url: docs/type-system/types-generics
 
       - title: Пересечение типов
-        url: docs/type_system/types-intersection
+        url: docs/type-system/types-intersection
 
       - title: Объединение типов
-        url: docs/type_system/types-union
+        url: docs/type-system/types-union
 
       - title: Алгебр. типы данных
-        url: docs/type_system/types-adts
+        url: docs/type-system/types-adts
 
       - title: Ковариантность
-        url: docs/type_system/types-variance
+        url: docs/type-system/types-variance
 
       - title: Непрозрачные типы
-        url: docs/type_system/types-opaque
+        url: docs/type-system/types-opaque
 
       - title: Структурные типы
-        url: docs/type_system/types-structural
+        url: docs/type-system/types-structural
 
       - title: Зависимые типы функций
-        url: docs/type_system/types-dependent-function
+        url: docs/type-system/types-dependent-function
 
       - title: Другие типы
-        url: docs/type_system/types-others
+        url: docs/type-system/types-others
 
   - title: Абстракции
     url: docs/abstractions
