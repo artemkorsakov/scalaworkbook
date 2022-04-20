@@ -31,9 +31,11 @@ object Logarithm:
 Метод `apply` сопутствующего объекта позволяет создавать значения типа `Logarithm`, 
 которые можно использовать следующим образом:
 
-```scala mdoc
+```scala mdoc:silent
 val l2 = Logarithm(2.0)
 val l3 = Logarithm(3.0)
+```
+```scala mdoc
 println((l2 * l3).toDouble)
 println((l2 + l3).toDouble)
 ```
@@ -123,7 +125,49 @@ def someComputation(L: Logarithms)(init: L.Logarithm): L.Logarithm = ...
 
 ### Непрозрачные типы
 
-???
+Вместо того, чтобы вручную разбивать компонент `Logarithms` на абстрактную часть и на конкретную реализацию, 
+можно просто использовать opaque типы для достижения аналогичного эффекта:
+
+```scala
+object Logarithms:
+  // !!!
+  opaque type Logarithm = Double
+
+  object Logarithm:
+    def apply(d: Double): Logarithm = math.log(d)
+
+  extension (x: Logarithm)
+    def toDouble: Double = math.exp(x)
+    def + (y: Logarithm): Logarithm = Logarithm(math.exp(x) + math.exp(y))
+    def * (y: Logarithm): Logarithm = x + y
+```
+
+Тот факт, что `Logarithm` совпадает с `Double`, известен только в области, где он определен, 
+которая в приведенном выше примере соответствует объекту `Logarithms`. 
+Равенство `Logarithm = Double` может использоваться для реализации методов (например, `*` и `toDouble`).
+
+Однако за пределами модуля тип `Logarithm` полностью инкапсулирован или "непрозрачен" (opaque). 
+Для пользователей невозможно обнаружить его реализацию:
+
+```scala
+import Logarithms.*
+val l2 = Logarithm(2.0)
+val l3 = Logarithm(3.0)
+println((l2 * l3).toDouble) // prints 6.0
+println((l2 + l3).toDouble) // prints 4.999...
+
+val d: Double = l2 // ERROR: Found Logarithm required Double
+```
+
+Несмотря на то, что мы абстрагировались от `Logarithm`, абстракция предоставляется бесплатно: 
+поскольку существует только одна реализация, 
+во время выполнения не будет накладных расходов на упаковку для примитивных типов, таких как `Double`.
+
+#### Резюме
+
+Непрозрачные типы предлагают надежную абстракцию над деталями реализации, не накладывая расходов на производительность. 
+Как показано выше, непрозрачные типы удобны в использовании и очень хорошо интегрируются с 
+[функцией методов расширения](../methods/method-features#расширяемые-методы).
 
 
 ---
