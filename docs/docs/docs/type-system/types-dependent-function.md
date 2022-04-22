@@ -53,11 +53,11 @@ val res2: Option[Int] = db.get(Age)
 Однако создание значений типа `DB` довольно громоздко:
 
 ```scala
-// a user of a DB
+// создание пользователя DB
 def user(db: DB): Unit =
   db.get(Name) ... db.get(Age)
 
-// creating an instance of the DB and passing it to `user`
+// создание экземпляра DB и передача его `user`
 user(new DB {
   def get(k: Key): Option[k.Value] = ... // implementation of DB
 })
@@ -67,7 +67,7 @@ user(new DB {
 Для кода, основанного на создании множества различных экземпляров `DB`, это очень утомительно.
 
 `DB` trait имеет только один абстрактный метод `get`. 
-Было бы неплохо использовать лямбда-синтаксис в этом месте?
+Было бы неплохо использовать в этом месте лямбда-синтаксис...
 
 ```scala
 user { k =>
@@ -80,7 +80,7 @@ user { k =>
 ```scala
 type DB = (k: Key) => Option[k.Value]
 //        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-//        A dependent function type
+//        зависимый тип функции
 ```
 
 Учитывая это определение `DB`, можно использовать приведенный выше вызов `user`.
@@ -90,7 +90,84 @@ type DB = (k: Key) => Option[k.Value]
 
 ### Практический пример: числовые выражения
 
-???
+Предположим, что необходимо определить модуль, который абстрагируется от внутреннего представления чисел. 
+Это может быть полезно, например, для реализации библиотек для автоматического дифференцирования.
+
+Начнем с определения модуля для чисел:
+
+```scala
+trait Nums:
+  // тип Num оставлен абстрактным
+  type Num
+  
+  // некоторые операции над числами
+  def lit(d: Double): Num
+  def add(l: Num, r: Num): Num
+  def mul(l: Num, r: Num): Num
+```
+
+> Здесь опускается конкретная реализация Nums, но в качестве упражнения можно реализовать Nums, 
+> назначив тип Num = Double и реализуя соответствующие методы.
+
+Программа, использующая числовую абстракцию, теперь имеет следующий тип:
+
+```scala
+type Prog = (n: Nums) => n.Num => n.Num
+
+val ex: Prog = nums => x => nums.add(nums.lit(0.8), x)
+```
+
+Тип функции, которая вычисляет производную, наподобие `ex`:
+
+```scala
+def derivative(input: Prog): Double
+```
+
+Учитывая удобство зависимых типов функций, вызов этой функции в разных программах прост:
+
+```scala
+derivative { nums => x => x }
+derivative { nums => x => nums.add(nums.lit(0.8), x) }
+// ...
+```
+
+Напомним, что та же программа в приведенной выше кодировке будет выглядеть так:
+
+```scala
+derivative(new Prog {
+  def apply(nums: Nums)(x: nums.Num): nums.Num = x
+})
+derivative(new Prog {
+  def apply(nums: Nums)(x: nums.Num): nums.Num = nums.add(nums.lit(0.8), x)
+})
+// ...
+```
+
+#### Комбинация с контекстными функциями
+
+Комбинация методов расширения, [контекстных функций](https://docs.scala-lang.org/scala3/reference/contextual/context-functions.html)
+и зависимых функций обеспечивает мощный инструмент для разработчиков библиотек. 
+Например, мы можем уточнить нашу библиотеку, как указано выше, следующим образом:
+
+```scala
+trait NumsDSL extends Nums:
+  extension (x: Num)
+    def +(y: Num) = add(x, y)
+    def *(y: Num) = mul(x, y)
+
+def const(d: Double)(using n: Nums): n.Num = n.lit(d)
+
+type Prog = (n: NumsDSL) ?=> n.Num => n.Num
+//                       ^^^
+//     prog теперь - контекстная функция, которая неявно предполагает NumsDSL в контексте вызова
+
+def derivative(input: Prog): Double = ...
+
+// теперь нам не нужно упоминать Nums в приведенных ниже примерах
+derivative { x => const(1.0) + x }
+derivative { x => x * x + const(2.0) }
+// ...
+```
 
 
 ---
