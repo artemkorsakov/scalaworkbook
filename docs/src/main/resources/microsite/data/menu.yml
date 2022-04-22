@@ -128,11 +128,43 @@ options:
   - title: Абстракции
     url: docs/abstractions
 
+    nested_options:
+      - title: Given и Using
+        url: docs/abstractions/ca-given-using
+
+      - title: Type классы
+        url: docs/abstractions/type-classes
+
+      - title: Контекстные границы
+        url: docs/abstractions/ca-context-bounds
+
+      - title: Given imports
+        url: docs/abstractions/ca-given-imports
+
+      - title: Методы расширения
+        url: docs/abstractions/ca-extension-methods
+
+      - title: Импл. type классов
+        url: docs/abstractions/ca-type-classes
+
+      - title: Multiversal равенство
+        url: docs/abstractions/ca-multiversal-equality
+
+      - title: Implicit conversions
+        url: docs/abstractions/ca-implicit-conversions
+
   - title: Параллелизм
     url: docs/concurrency
 
   - title: Утилиты
     url: docs/tools
+
+    nested_options:
+      - title: Sbt
+        url: docs/tools/tools-sbt
+
+      - title: Worksheet
+        url: docs/tools/tools-worksheets
 
   - title: Взаимодействие с Java
     url: docs/with_java
