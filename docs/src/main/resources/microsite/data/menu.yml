@@ -132,7 +132,7 @@ options:
       - title: Given и Using
         url: docs/abstractions/ca-given-using
 
-      - title: Type классы
+      - title: Класс типов
         url: docs/abstractions/type-classes
 
       - title: Контекстные границы
