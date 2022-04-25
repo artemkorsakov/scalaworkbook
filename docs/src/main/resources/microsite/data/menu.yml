@@ -135,7 +135,7 @@ options:
       - title: Класс типов
         url: docs/abstractions/type-classes
 
-      - title: Контекстные границы
+      - title: Контекстные привязки
         url: docs/abstractions/ca-context-bounds
 
       - title: Given imports
