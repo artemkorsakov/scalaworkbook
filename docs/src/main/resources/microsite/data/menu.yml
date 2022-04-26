@@ -147,7 +147,7 @@ options:
       - title: Импл. type классов
         url: docs/abstractions/ca-type-classes
 
-      - title: Multiversal равенство
+      - title: Multiversal Equality
         url: docs/abstractions/ca-multiversal-equality
 
       - title: Implicit conversions
