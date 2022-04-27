@@ -4,7 +4,7 @@ import sbt._
 object Dependencies {
 
   object Version {
-    val Scala3 = "3.1.1"
+    val Scala3 = "3.1.2"
 
     val munit = "0.7.29"
   }
