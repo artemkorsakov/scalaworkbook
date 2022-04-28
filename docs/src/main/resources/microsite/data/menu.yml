@@ -5,6 +5,9 @@ options:
   - title: Hello, world!
     url: docs/hello_world
 
+  - title: REPL
+    url: docs/repl
+
   - title: Типы данных
     url: docs/types
 
