@@ -36,13 +36,13 @@ lazy val docs = project
     micrositeUrl := "https://artemkorsakov.github.io",
     micrositeBaseUrl := "/scalaworkbook",
     micrositeDocumentationUrl := "/scalaworkbook/docs",
-    micrositeDocumentationLabelDescription := "Documentation",
+    micrositeDocumentationLabelDescription := "Документация",
     micrositeAuthor := "Artem Korsakov",
     micrositeGithubOwner := "artemkorsakov",
     micrositeGithubRepo := "scalaworkbook",
     micrositeTheme := "pattern",
     micrositeEditButton := Some(
-      MicrositeEditButton("Improve this Page", "/edit/main/docs/docs/{{ page.path }}")
+      MicrositeEditButton("Редактировать страницу", "/edit/main/docs/docs/{{ page.path }}")
     ),
     micrositeGithubToken := sys.env.get("GITHUB_TOKEN"),
     micrositePushSiteWith := GitHub4s,
@@ -60,8 +60,8 @@ lazy val docs = project
     apiURL := None,
     mdocVariables := Map(
       "SCALA" -> Scala3,
+      "SBT_VERSION" -> "1.6.2",
       "DOC_SITE" -> s"${micrositeUrl.value}${micrositeDocumentationUrl.value}",
-      "SOURCE_LINK" -> s"${micrositeUrl.value}${micrositeBaseUrl.value}/sources.html"
     ),
     mdocExtraArguments := List("--no-link-hygiene")
   )
