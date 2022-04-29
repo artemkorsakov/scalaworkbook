@@ -109,7 +109,7 @@ final class happyBirthday {
 > Вместо неё обычные "статические" члены генерируются в Scala с использованием `object`.
 
 > @main методы — это рекомендуемый способ создания программ, вызываемых из командной строки в Scala 3. 
-> Они заменяют [предыдущий подход](https://docs.scala-lang.org/scala3/book/methods-main-methods.html), 
+> Они заменяют [предыдущий подход](https://docs.scala-lang.org/scala3/book/methods-main-methods.html#scala-3-compared-to-scala-2), 
 > который заключался в создании объекта, расширяющего класс App.
 
 
