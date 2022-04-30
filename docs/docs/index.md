@@ -12,4 +12,4 @@ position: 0
 Код написан на версии Scala - @SCALA@.
 
 ### Документация
-- [Обзор Scala](@DOC_SITE@)
+- [Обзор Scala](./docs/)

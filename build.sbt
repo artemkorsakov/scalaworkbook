@@ -8,10 +8,8 @@ ThisBuild / scalaVersion := Scala3
 ThisBuild / scalacOptions ++= List("-feature", "-deprecation", "-Ykind-projector:underscores", "-source:future")
 
 ThisBuild / githubWorkflowBuildPreamble ++= Seq(
-  WorkflowStep.Use(
-    UseRef.Public("ruby", "setup-ruby", "v1"),
-    name = Some("Setup Ruby"),
-    params = Map("ruby-version" -> "2.7")),
+  WorkflowStep
+    .Use(UseRef.Public("ruby", "setup-ruby", "v1"), name = Some("Setup Ruby"), params = Map("ruby-version" -> "2.7")),
   WorkflowStep.Run(List("gem install jekyll -v 4"), name = Some("Install Jekyll"))
 )
 
@@ -37,16 +35,20 @@ lazy val docs = project
     micrositeBaseUrl := "/scalaworkbook",
     micrositeDocumentationUrl := "/scalaworkbook/docs",
     micrositeDocumentationLabelDescription := "Документация",
-    micrositeAuthor := "Artem Korsakov",
+    micrositeAuthor := "Артём Корсаков",
     micrositeGithubOwner := "artemkorsakov",
     micrositeGithubRepo := "scalaworkbook",
-    micrositeTheme := "pattern",
     micrositeEditButton := Some(
       MicrositeEditButton("Редактировать страницу", "/edit/main/docs/docs/{{ page.path }}")
     ),
     micrositeGithubToken := sys.env.get("GITHUB_TOKEN"),
     micrositePushSiteWith := GitHub4s,
     micrositeGitterChannel := false,
+    micrositeShareOnSocial := false,
+    micrositeGithubLinks := false,
+    apiURL := None,
+    mdocExtraArguments := List("--no-link-hygiene"),
+    micrositeTheme := "pattern",
     micrositePalette := Map(
       "brand-primary" -> "#5B59B0",
       "brand-secondary" -> "#292E53",
@@ -57,11 +59,8 @@ lazy val docs = project
       "gray-lighter" -> "#F4F3F4",
       "white-color" -> "#FFFFFF"
     ),
-    apiURL := None,
     mdocVariables := Map(
       "SCALA" -> Scala3,
-      "SBT_VERSION" -> "1.6.2",
-      "DOC_SITE" -> s"${micrositeUrl.value}${micrositeDocumentationUrl.value}",
-    ),
-    mdocExtraArguments := List("--no-link-hygiene")
+      "SBT_VERSION" -> "1.6.2"
+    )
   )
