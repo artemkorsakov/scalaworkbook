@@ -2,6 +2,10 @@ options:
   - title: Обзор Scala
     url: docs/index
 
+    nested_options:
+      - title: С чего начать?
+        url: docs/start/getting-started
+
   - title: Hello, world!
     url: docs/hello_world
 

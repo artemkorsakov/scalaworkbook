@@ -7,7 +7,12 @@ title: "Дополнительные материалы"
 
 --- 
 
-### Scala 3
+### Scala
+- [Community](https://scala-lang.org/community/)
+
+--- 
+
+### Scala
 - [Преимущества 3-й версии Scala](https://docs.scala-lang.org/scala3/book/why-scala-3.html)
 - [Особенности Scala3](https://docs.scala-lang.org/scala3/book/scala-features.html)
 
@@ -23,3 +28,15 @@ title: "Дополнительные материалы"
 ### Упражнения на Scala
 - [scala-exercises](https://www.scala-exercises.org/)
 - [exercism.org](https://exercism.org/tracks/scala)
+- [Tour of Scala](https://tourofscala.com/)
+
+--- 
+
+### Популярные книги по Scala
+- [Список книг](https://docs.scala-lang.org/books.html)
+
+---
+https://scala-lang.org/community/
+### Видео лекции
+- [Introduction to Programming and Problem Solving Using Scala](https://www.youtube.com/playlist?list=PLLMXbkbDbVt9MIJ9DV4ps-_trOzWtphYO)
+- [Object-Orientation, Abstraction, and Data Structures Using Scala](https://www.youtube.com/playlist?list=PLLMXbkbDbVt8JLumqKj-3BlHmEXPIfR42)

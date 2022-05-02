@@ -23,4 +23,4 @@ Scala - это красивый, выразительный язык прогр�
 - [Scala home page][Scala home page]
 - [Scala3 book](https://docs.scala-lang.org/scala3/book/introduction.html)
 
-[Scala home page]: https://docs.scala-lang.org/scala3/getting-started.html
+[Scala home page]: https://www.scala-lang.org/
