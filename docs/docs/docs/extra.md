@@ -26,9 +26,10 @@ title: "Дополнительные материалы"
 ---
 
 ### Упражнения на Scala
-- [scala-exercises](https://www.scala-exercises.org/)
 - [exercism.org](https://exercism.org/tracks/scala)
 - [Tour of Scala](https://tourofscala.com/)
+- [A Tour of Scala](http://scalatutorials.com/tour/)
+- [scala-exercises](https://www.scala-exercises.org/)
 
 --- 
 
@@ -36,7 +37,7 @@ title: "Дополнительные материалы"
 - [Список книг](https://docs.scala-lang.org/books.html)
 
 ---
-https://scala-lang.org/community/
+
 ### Видео лекции
 - [Introduction to Programming and Problem Solving Using Scala](https://www.youtube.com/playlist?list=PLLMXbkbDbVt9MIJ9DV4ps-_trOzWtphYO)
 - [Object-Orientation, Abstraction, and Data Structures Using Scala](https://www.youtube.com/playlist?list=PLLMXbkbDbVt8JLumqKj-3BlHmEXPIfR42)
