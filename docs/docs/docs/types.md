@@ -318,11 +318,26 @@ val y: Float = x
 
 ### Упражнения
 
+По результатам в консоле должно быть выведено сообщение "Тесты завершились успешно!"
+
 #### Упражнение 1: изменяемые и неизменяемые переменные
 
-```scala mdoc:scastie:VsHAuVJwRtS0BH5qblyLoA
+```scala mdoc:scastie:MJFXE5ZBRXGlGyEVzOmQqg
 
 ```
+
+#### Упражнение 2: интерполяция строк
+
+```scala mdoc:scastie:ypq18dEfQBGm2hlR4DH9Yg
+
+```
+
+#### Упражнение 3: приведение типов
+
+```scala mdoc:scastie:3Gy14LdCQwi9w0gfAkqqsg
+
+```
+
 
 ---
 
