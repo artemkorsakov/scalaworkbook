@@ -6,3 +6,17 @@
 blockquote {
     font-size: 13px;
 }
+
+/* Scastie settings */
+div.scastie.embedded {
+    margin: 0px;
+}
+
+.scastie ul.embedded-menu {
+    margin: 0px;
+}
+
+.scastie .embedded-menu > li {
+    font-size: 13px;
+    width: 110px;
+}
