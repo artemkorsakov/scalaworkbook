@@ -22,11 +22,9 @@ title: "Hello, world!"
 
 ---
 
-### Упражнения 
+### Упражнения
 
-```scala mdoc:scastie:TTx9rwhASs6LvoYMDPnXtw
-
-```
+[Упражнения к данной главе](./exercises/hello_world)
 
 ---
 

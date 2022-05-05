@@ -461,6 +461,12 @@ finally
 
 ---
 
+### Упражнения
+
+[Упражнения к данной главе](./exercises/structures)
+
+---
+
 **References:**
 - [Scala3 book, taste Control Structures](https://docs.scala-lang.org/scala3/book/taste-control-structures.html)
 - [Scala3 book, Control Structures](https://docs.scala-lang.org/scala3/book/control-structures.html)
