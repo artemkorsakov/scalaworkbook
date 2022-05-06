@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Given imports"
+prev: ../type-system/types-others
+next: ../abstractions/ca-given-using
 ---
 
 ## {{page.title}}

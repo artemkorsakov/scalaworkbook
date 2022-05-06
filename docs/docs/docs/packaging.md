@@ -1,6 +1,6 @@
 ---
 layout: docsplus
-title: "Распределение по пакетам и импорт"
+title: "Пакеты и импорт"
 prev: ./functions/returns-function
 next: ./toplevel-definitions
 ---

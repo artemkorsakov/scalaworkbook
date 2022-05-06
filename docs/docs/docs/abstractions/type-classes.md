@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Класс типов"
+prev: ../type-system/types-others
+next: ../abstractions/ca-given-using
 ---
 
 ## {{page.title}}

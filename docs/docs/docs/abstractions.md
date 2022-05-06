@@ -1,11 +1,11 @@
 ---
 layout: docsplus
-title: "Контекстуальные абстракции"
+title: "Абстракции"
 prev: ../type-system/types-others
 next: ../abstractions/ca-given-using
 ---
 
-## {{page.title}}
+## Контекстуальные абстракции
 
 ### Background
 

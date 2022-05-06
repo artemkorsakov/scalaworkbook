@@ -1,6 +1,6 @@
 ---
 layout: docsplus
-title: "Написание метода возвращающего функцию"
+title: "Возврат функции в методе"
 prev: write-map
 next: ../packaging
 ---
