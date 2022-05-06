@@ -1,5 +1,5 @@
 ---
-layout: docs
+layout: docsplus
 title: "Параметры функции"
 prev: anonymous
 next: eta

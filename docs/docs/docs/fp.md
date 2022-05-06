@@ -1,8 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Функциональное программирование"
-prev: methods/main-methods
-next: functions/anonymous
+prev: ../methods/main-methods
+next: ../functions/anonymous
 ---
 
 ## {{page.title}}

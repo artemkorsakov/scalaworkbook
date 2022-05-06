@@ -1,5 +1,5 @@
 ---
-layout: docs
+layout: docsplus
 title: "Написание метода возвращающего функцию"
 prev: write-map
 next: ../packaging

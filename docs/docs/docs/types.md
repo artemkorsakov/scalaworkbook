@@ -1,6 +1,6 @@
 ---
 layout: docsplus
-title: "Переменные и типы данных"
+title: "Типы данных"
 prev: repl
 next: structures
 exercises: exercises/types

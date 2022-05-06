@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Алгебраические типы данных"
+prev: ./types-union
+next: ./types-variance
 ---
 
 ## {{page.title}}

@@ -1,8 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Типы коллекций"
-prev: methods/main-methods
-next: functions/anonymous
+prev: ../collections
+next: ./methods
 ---
 
 ## {{page.title}}

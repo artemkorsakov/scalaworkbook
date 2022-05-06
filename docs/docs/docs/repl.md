@@ -1,6 +1,6 @@
 ---
 layout: docsplus
-title: "Read-Evaluate-Print-Loop"
+title: "REPL"
 prev: hello_world
 next: types
 ---

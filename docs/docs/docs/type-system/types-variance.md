@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Ковариантность типов"
+prev: ./types-adts
+next: ./types-opaque
 ---
 
 ## {{page.title}}

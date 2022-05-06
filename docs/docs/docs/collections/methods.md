@@ -1,8 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Методы в коллекциях"
-prev: methods/main-methods
-next: functions/anonymous
+prev: ./classes
+next: ../fp
 ---
 
 ## {{page.title}}

@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Зависимые типы функций"
+prev: ./types-structural
+next: ./types-others
 ---
 
 ## {{page.title}}

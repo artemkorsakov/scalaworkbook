@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Функциональная обработка ошибок"
+prev: ./functions-are-values
+next: ../type-system
 ---
 
 ## {{page.title}}

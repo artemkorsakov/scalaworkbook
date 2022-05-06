@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Определение типов"
+prev: ../type-system
+next: ./types-generics
 ---
 
 ## {{page.title}}

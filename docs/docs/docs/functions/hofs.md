@@ -1,5 +1,5 @@
 ---
-layout: docs
+layout: docsplus
 title: "Функции высшего порядка"
 prev: eta
 next: write-map

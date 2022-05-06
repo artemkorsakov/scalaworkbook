@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Чистые функции"
+prev: ./immutable-values
+next: ./functions-are-values
 ---
 
 ## {{page.title}}

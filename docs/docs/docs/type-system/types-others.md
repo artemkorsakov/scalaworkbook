@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Другие типы"
+prev: ./types-dependent-function
+next: ../abstractions
 ---
 
 ## {{page.title}}

@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Система типов"
+prev: ../fp/functional-error-handling
+next: ../type-system/types-inferred
 ---
 
 ## {{page.title}}

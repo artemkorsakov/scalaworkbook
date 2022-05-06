@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Структурные типы"
+prev: ./types-opaque
+next: ./types-dependent-function
 ---
 
 ## {{page.title}}

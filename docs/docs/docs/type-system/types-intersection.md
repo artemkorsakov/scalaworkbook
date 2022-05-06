@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Пересечение типов"
+prev: ./types-generics
+next: ./types-union
 ---
 
 ## {{page.title}}

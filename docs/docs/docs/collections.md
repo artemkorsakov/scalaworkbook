@@ -1,8 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Коллекции"
-prev: methods/main-methods
-next: functions/anonymous
+prev: ./toplevel-definitions
+next: ./collections/classes
 ---
 
 ## {{page.title}}

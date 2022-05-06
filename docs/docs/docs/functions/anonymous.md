@@ -1,5 +1,5 @@
 ---
-layout: docs
+layout: docsplus
 title: "Анонимные функции"
 prev: ../functions
 next: variables

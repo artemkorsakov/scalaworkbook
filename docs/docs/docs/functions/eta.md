@@ -1,5 +1,5 @@
 ---
-layout: docs
+layout: docsplus
 title: "Eta расширение"
 prev: variables
 next: hofs

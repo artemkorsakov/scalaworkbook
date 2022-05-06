@@ -1,5 +1,5 @@
 ---
-layout: docs
+layout: docsplus
 title: "Написание своего собственного метода map"
 prev: hofs
 next: returns-function

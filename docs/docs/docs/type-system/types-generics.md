@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Generics типы"
+prev: ./types-inferred
+next: ./types-intersection
 ---
 
 ## {{page.title}}

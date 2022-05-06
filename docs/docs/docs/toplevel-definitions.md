@@ -1,8 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Верхнеуровневые определения"
-prev: methods/main-methods
-next: functions/anonymous
+prev: ./packaging
+next: ./collections
 ---
 
 ## {{page.title}}

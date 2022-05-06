@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Что такое функциональное программирование?"
+prev: ../fp
+next: ./immutable-values
 ---
 
 ## {{page.title}}
