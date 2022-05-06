@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Абстракции"
-prev: ../type-system/types-others
-next: ../abstractions/ca-given-using
+prev: ./type-system/types-others
+next: ./abstractions/ca-given-using
 ---
 
 ## Контекстуальные абстракции

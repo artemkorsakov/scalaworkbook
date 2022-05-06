@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Утилиты"
-prev: ../concurrency
-next: ../tools/tools-sbt
+prev: ./concurrency
+next: ./tools/tools-sbt
 ---
 
 ## {{page.title}}

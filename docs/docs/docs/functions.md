@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Функции"
-prev: ../methods/main-methods
-next: ../functions/anonymous
+prev: ./methods/main-methods
+next: ./functions/anonymous
 ---
 
 ## {{page.title}}

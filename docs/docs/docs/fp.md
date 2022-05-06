@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Функц. программирование"
-prev: ../collections/methods
-next: ../fp/what-is-fp
+prev: ./collections/methods
+next: ./fp/what-is-fp
 ---
 
 ## Функциональное программирование

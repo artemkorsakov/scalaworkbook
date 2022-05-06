@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Коллекции"
-prev: ../toplevel-definitions
-next: ../collections/classes
+prev: ./toplevel-definitions
+next: ./collections/classes
 ---
 
 ## {{page.title}}
