@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Моделирование данных"
+prev: structures
+next: modeling/tools
 ---
 
 ## {{page.title}}

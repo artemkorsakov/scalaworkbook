@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Моделирование ООП"
+prev: tools
+next: fp
 ---
 
 ## {{page.title}}

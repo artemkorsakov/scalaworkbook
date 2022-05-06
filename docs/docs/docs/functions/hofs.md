@@ -1,6 +1,8 @@
 ---
 layout: docs
 title: "Функции высшего порядка"
+prev: eta
+next: write-map
 ---
 
 ## {{page.title}}

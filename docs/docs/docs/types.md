@@ -1,6 +1,9 @@
 ---
-layout: docs
+layout: docsplus
 title: "Переменные и типы данных"
+prev: repl
+next: structures
+exercises: exercises/types
 ---
 
 ## {{page.title}}
@@ -313,12 +316,6 @@ val y: Float = x
 
 В то же время `null` почти никогда не следует использовать в коде Scala. 
 Альтернативы `null` обсуждаются в главе о функциональном программировании и в [документации API](https://scala-lang.org/api/3.x/scala/Option.html).
-
----
-
-### Упражнения
-
-[Упражнения к данной главе](./exercises/types)
 
 ---
 

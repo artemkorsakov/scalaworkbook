@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Инструменты"
+prev: ../modeling
+next: oop
 ---
 
 ## {{page.title}}

@@ -1,6 +1,9 @@
 ---
-layout: docs
+layout: docsplus
 title: "Структуры управления"
+prev: types
+next: modeling
+exercises: exercises/structures
 ---
 
 ## {{page.title}}
@@ -458,12 +461,6 @@ finally
 Предполагая, что метод `openAndReadAFile` использует Java `java.io.*` классы для чтения файла 
 и не перехватывает его исключения, попытка открыть и прочитать файл может привести как к `FileNotFoundException`, 
 так и к `IOException`, и эти два исключения перехватываются в блоке `catch` этого примера.
-
----
-
-### Упражнения
-
-[Упражнения к данной главе](./exercises/structures)
 
 ---
 

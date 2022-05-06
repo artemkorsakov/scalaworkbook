@@ -1,6 +1,8 @@
 ---
 layout: docs
 title: "Анонимные функции"
+prev: ../functions
+next: variables
 ---
 
 ## {{page.title}}

@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Read-Evaluate-Print-Loop"
+prev: hello_world
+next: types
 ---
 
 ## {{page.title}}

@@ -1,6 +1,8 @@
 ---
 layout: docs
 title: "Написание своего собственного метода map"
+prev: hofs
+next: returns-function
 ---
 
 ## {{page.title}}

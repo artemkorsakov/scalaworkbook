@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "Особенности методов"
+prev: ../methods
+next: main-methods
 ---
 
 ## {{page.title}}

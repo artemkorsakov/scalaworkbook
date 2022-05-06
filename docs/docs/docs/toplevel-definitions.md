@@ -1,6 +1,8 @@
 ---
 layout: docs
 title: "Верхнеуровневые определения"
+prev: methods/main-methods
+next: functions/anonymous
 ---
 
 ## {{page.title}}

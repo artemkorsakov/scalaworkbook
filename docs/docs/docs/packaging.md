@@ -1,6 +1,8 @@
 ---
 layout: docs
 title: "Распределение по пакетам и импорт"
+prev: methods/main-methods
+next: functions/anonymous
 ---
 
 ## {{page.title}}

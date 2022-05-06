@@ -1,6 +1,8 @@
 ---
 layout: docs
 title: "Eta расширение"
+prev: variables
+next: hofs
 ---
 
 ## {{page.title}}

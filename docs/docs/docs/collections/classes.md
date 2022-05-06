@@ -1,6 +1,8 @@
 ---
 layout: docs
 title: "Типы коллекций"
+prev: methods/main-methods
+next: functions/anonymous
 ---
 
 ## {{page.title}}

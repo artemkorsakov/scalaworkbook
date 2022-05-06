@@ -1,6 +1,8 @@
 ---
 layout: docs
 title: "Написание метода возвращающего функцию"
+prev: write-map
+next: ../packaging
 ---
 
 ## {{page.title}}

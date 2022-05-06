@@ -1,6 +1,8 @@
 ---
 layout: docs
 title: "Параметры функции"
+prev: anonymous
+next: eta
 ---
 
 ## {{page.title}}

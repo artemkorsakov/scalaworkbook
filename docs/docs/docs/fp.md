@@ -1,6 +1,8 @@
 ---
 layout: docs
 title: "Функциональное программирование"
+prev: methods/main-methods
+next: functions/anonymous
 ---
 
 ## {{page.title}}
