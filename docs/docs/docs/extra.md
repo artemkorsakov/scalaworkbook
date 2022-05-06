@@ -1,11 +1,10 @@
 ---
 layout: docsplus
-title: "Дополнительные материалы"
+title: "Доп. материалы"
 prev: ./with_java
-next: ./exercises
 ---
 
-## {{page.title}}
+## Дополнительные материалы
 
 --- 
 

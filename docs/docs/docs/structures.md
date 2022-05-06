@@ -3,7 +3,6 @@ layout: docsplus
 title: "Структуры управления"
 prev: types
 next: modeling
-exercises: exercises/structures
 ---
 
 ## {{page.title}}

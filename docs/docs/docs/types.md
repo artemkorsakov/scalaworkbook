@@ -3,7 +3,6 @@ layout: docsplus
 title: "Типы данных"
 prev: repl
 next: structures
-exercises: exercises/types
 ---
 
 ## {{page.title}}

@@ -3,7 +3,6 @@ layout: docsplus
 title: "Hello, world!"
 prev: start/getting-started
 next: repl
-exercises: exercises/hello_world
 ---
 
 ## {{page.title}}
