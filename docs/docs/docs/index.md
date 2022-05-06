@@ -1,6 +1,7 @@
 ---
-layout: docs
+layout: docsplus
 title: "Обзор Scala"
+next: start/getting-started
 ---
 
 ## {{page.title}}

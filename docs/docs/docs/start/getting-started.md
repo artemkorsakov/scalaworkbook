@@ -1,6 +1,8 @@
 ---
-layout: docs
+layout: docsplus
 title: "С чего начать?"
+prev: start/getting-started
+next: hello_world
 ---
 
 ## {{page.title}}

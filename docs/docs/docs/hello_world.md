@@ -1,6 +1,9 @@
 ---
-layout: docs
+layout: docsplus
 title: "Hello, world!"
+prev: start/getting-started
+next: repl
+exercises: exercises/hello_world
 ---
 
 ## {{page.title}}
@@ -19,12 +22,6 @@ title: "Hello, world!"
 ```
 > scalac Hello.scala
 ```
-
----
-
-### Упражнения
-
-[Упражнения к данной главе](./exercises/hello_world)
 
 ---
 
