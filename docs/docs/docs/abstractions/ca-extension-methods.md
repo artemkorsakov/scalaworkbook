@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Методы расширения"
-prev: ../type-system/types-others
-next: ../abstractions/ca-given-using
+prev: ./ca-given-imports
+next: ./ca-type-classes
 ---
 
 ## {{page.title}}

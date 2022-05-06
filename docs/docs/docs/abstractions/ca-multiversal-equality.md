@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Мультиуниверсальное равенство"
-prev: ../type-system/types-others
-next: ../abstractions/ca-given-using
+prev: ./ca-type-classes
+next: ./ca-implicit-conversions
 ---
 
 ## {{page.title}}

@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Контекстные привязки"
-prev: ../type-system/types-others
-next: ../abstractions/ca-given-using
+prev: ./type-classes
+next: ./ca-given-imports
 ---
 
 ## {{page.title}}

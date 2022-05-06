@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Given и Using"
-prev: ../type-system/types-others
-next: ../abstractions/ca-given-using
+prev: ../abstractions
+next: ./type-classes
 ---
 
 ## {{page.title}}

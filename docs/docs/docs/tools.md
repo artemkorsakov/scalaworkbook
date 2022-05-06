@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Утилиты"
-prev: ../type-system/types-others
-next: ../abstractions/ca-given-using
+prev: ../concurrency
+next: ../tools/tools-sbt
 ---
 
 ## {{page.title}}

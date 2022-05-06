@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Взаимодействие с Java"
-prev: ../type-system/types-others
-next: ../abstractions/ca-given-using
+prev: ./tools/tools-worksheets
+next: ./extra
 ---
 
 ## {{page.title}}

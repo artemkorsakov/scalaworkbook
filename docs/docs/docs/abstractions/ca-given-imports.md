@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Given imports"
-prev: ../type-system/types-others
-next: ../abstractions/ca-given-using
+prev: ./ca-context-bounds
+next: ./ca-extension-methods
 ---
 
 ## {{page.title}}

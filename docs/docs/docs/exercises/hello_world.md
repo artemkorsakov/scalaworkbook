@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Упражнения: Hello, world!"
-prev: ../type-system/types-others
-next: ../abstractions/ca-given-using
+prev: ../exercises
+next: ./types
 ---
 
 ## {{page.title}}

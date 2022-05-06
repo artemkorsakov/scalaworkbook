@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Упражнения: Типы данных"
-prev: ../type-system/types-others
-next: ../abstractions/ca-given-using
+prev: ./hello_world
+next: ./structures
 ---
 
 ## {{page.title}}

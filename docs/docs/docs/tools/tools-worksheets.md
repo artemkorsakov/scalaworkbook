@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Worksheet"
-prev: ../type-system/types-others
-next: ../abstractions/ca-given-using
+prev: ./tools-sbt
+next: ../with_java
 ---
 
 ## {{page.title}}

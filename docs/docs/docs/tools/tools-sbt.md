@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Сборка и тестирование проектов Scala с помощью Sbt"
-prev: ../type-system/types-others
-next: ../abstractions/ca-given-using
+prev: ../tools
+next: ./tools-worksheets
 ---
 
 ## {{page.title}}

@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Параллелизм"
-prev: ../type-system/types-others
-next: ../abstractions/ca-given-using
+prev: ./abstractions/ca-implicit-conversions
+next: ./tools
 ---
 
 ## {{page.title}}

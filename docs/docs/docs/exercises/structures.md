@@ -1,8 +1,7 @@
 ---
 layout: docsplus
 title: "Упражнения: Структуры управления"
-prev: ../type-system/types-others
-next: ../abstractions/ca-given-using
+prev: ./types
 ---
 
 ## {{page.title}}

@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Дополнительные материалы"
-prev: ../type-system/types-others
-next: ../abstractions/ca-given-using
+prev: ./with_java
+next: ./exercises
 ---
 
 ## {{page.title}}

@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Имплементация type классов"
-prev: ../type-system/types-others
-next: ../abstractions/ca-given-using
+prev: ./ca-extension-methods
+next: ./ca-multiversal-equality
 ---
 
 ## {{page.title}}
