@@ -129,6 +129,9 @@ options:
       - title: Зависимые типы функций
         url: docs/type-system/types-dependent-function
 
+      - title: Type Lambdas
+        url: docs/type-system/type-lambdas
+
       - title: Другие типы
         url: docs/type-system/types-others
 

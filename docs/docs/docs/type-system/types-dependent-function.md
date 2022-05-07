@@ -2,7 +2,7 @@
 layout: docsplus
 title: "Зависимые типы функций"
 prev: ./types-structural
-next: ./types-others
+next: ./type-lambdas
 ---
 
 ## {{page.title}}

@@ -1,14 +1,13 @@
 ---
 layout: docsplus
 title: "Другие типы"
-prev: ./types-dependent-function
+prev: ./type-lambdas
 next: ../abstractions
 ---
 
 ## {{page.title}}
 
 В Scala есть несколько других расширенных типов, в том числе: 
-- type lambdas 
 - match types
 - existential types
 - higher-kinded types
