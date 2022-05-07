@@ -132,6 +132,9 @@ options:
       - title: Type Lambdas
         url: docs/type-system/type-lambdas
 
+      - title: Match Types
+        url: docs/type-system/match-types
+
       - title: Другие типы
         url: docs/type-system/types-others
 

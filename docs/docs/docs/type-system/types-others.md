@@ -1,14 +1,13 @@
 ---
 layout: docsplus
 title: "Другие типы"
-prev: ./type-lambdas
+prev: ./match-types
 next: ../abstractions
 ---
 
 ## {{page.title}}
 
 В Scala есть несколько других расширенных типов, в том числе: 
-- match types
 - existential types
 - higher-kinded types
 - singleton types
