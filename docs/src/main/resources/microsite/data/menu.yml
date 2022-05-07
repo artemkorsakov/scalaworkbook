@@ -135,6 +135,9 @@ options:
       - title: Match Types
         url: docs/type-system/match-types
 
+      - title: Полимор. типы функций
+        url: docs/type-system/polymorphic-function-types
+
       - title: Другие типы
         url: docs/type-system/types-others
 

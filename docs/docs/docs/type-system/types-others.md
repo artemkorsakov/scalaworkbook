@@ -1,7 +1,7 @@
 ---
 layout: docsplus
 title: "Другие типы"
-prev: ./match-types
+prev: ./polymorphic-function-types
 next: ../abstractions
 ---
 
@@ -12,7 +12,6 @@ next: ../abstractions
 - higher-kinded types
 - singleton types
 - refinement types
-- kind polymorphism
 
 
 ---

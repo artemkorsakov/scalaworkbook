@@ -2,7 +2,7 @@
 layout: docsplus
 title: "Match Types"
 prev: ./type-lambdas
-next: ./types-others
+next: ./polymorphic-function-types
 ---
 
 ## Типы match
