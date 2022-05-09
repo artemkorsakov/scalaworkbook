@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Абстрактные классы"
-prev: traits
-next: enums
+prev: modeling/traits
+next: modeling/enums
 ---
 
 ## {{page.title}}

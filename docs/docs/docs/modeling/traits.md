@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Traits"
-prev: companion-objects
-next: abstract-class
+prev: modeling/companion-objects
+next: modeling/abstract-class
 ---
 
 ## {{page.title}}

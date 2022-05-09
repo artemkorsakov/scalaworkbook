@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Companion objects"
-prev: objects
-next: traits
+prev: modeling/objects
+next: modeling/traits
 ---
 
 ## {{page.title}}

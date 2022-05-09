@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Методы"
-prev: ./modeling/fp
-next: ./methods/method-features
+prev: modeling/fp
+next: methods/method-features
 ---
 
 ## {{page.title}}

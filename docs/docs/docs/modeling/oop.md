@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Моделирование ООП"
-prev: case-class
-next: fp
+prev: modeling/case-class
+next: modeling/fp
 ---
 
 ## {{page.title}}

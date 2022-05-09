@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Classes"
-prev: ../modeling
-next: objects
+prev: modeling
+next: modeling/objects
 ---
 
 ## {{page.title}}

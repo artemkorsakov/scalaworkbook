@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Enums"
-prev: abstract-class
-next: case-class
+prev: modeling/abstract-class
+next: modeling/case-class
 ---
 
 ## {{page.title}}

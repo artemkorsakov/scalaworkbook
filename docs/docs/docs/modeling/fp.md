@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Моделирование ФП"
-prev: oop
-next: ../methods
+prev: modeling/oop
+next: methods
 ---
 
 ## {{page.title}}

@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Case classes"
-prev: enums
-next: oop
+prev: modeling/enums
+next: modeling/oop
 ---
 
 ## Case classes и Case objects
