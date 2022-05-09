@@ -1,7 +1,7 @@
 ---
 layout: docsplus
 title: "Моделирование ООП"
-prev: tools
+prev: case-class
 next: fp
 ---
 
