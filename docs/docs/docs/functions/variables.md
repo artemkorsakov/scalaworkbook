@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Параметры функции"
-prev: anonymous
-next: eta
+prev: functions/anonymous
+next: functions/eta
 ---
 
 ## {{page.title}}

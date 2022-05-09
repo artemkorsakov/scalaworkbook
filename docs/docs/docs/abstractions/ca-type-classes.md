@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Импл. type классов"
-prev: ./ca-extension-methods
-next: ./ca-multiversal-equality
+prev: abstractions/ca-extension-methods
+next: abstractions/ca-multiversal-equality
 ---
 
 ## Имплементация type классов

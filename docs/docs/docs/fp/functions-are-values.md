@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Функции - это значения"
-prev: ./pure-functions
-next: ./functional-error-handling
+prev: fp/pure-functions
+next: fp/functional-error-handling
 ---
 
 ## {{page.title}}

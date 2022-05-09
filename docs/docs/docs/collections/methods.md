@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Методы в коллекциях"
-prev: ./classes
-next: ../fp
+prev: collections/classes
+next: fp
 ---
 
 ## {{page.title}}

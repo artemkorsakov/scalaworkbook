@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "main методы"
-prev: method-features
-next: ../functions
+prev: methods/method-features
+next: functions
 ---
 
 ## {{page.title}}

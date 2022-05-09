@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Класс типов"
-prev: ./ca-given-using
-next: ./ca-context-bounds
+prev: abstractions/ca-given-using
+next: abstractions/ca-context-bounds
 ---
 
 ## {{page.title}}

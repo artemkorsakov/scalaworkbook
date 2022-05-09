@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Eta расширение"
-prev: variables
-next: hofs
+prev: functions/variables
+next: functions/hofs
 ---
 
 ## {{page.title}}

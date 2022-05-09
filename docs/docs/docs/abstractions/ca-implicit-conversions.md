@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Implicit conversions"
-prev: ./ca-multiversal-equality
-next: ../concurrency
+prev: abstractions/ca-multiversal-equality
+next: concurrency
 ---
 
 ## {{page.title}}

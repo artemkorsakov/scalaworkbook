@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Ковариантность"
-prev: ./types-adts
-next: ./types-opaque
+prev: type-system/types-adts
+next: type-system/types-opaque
 ---
 
 ## Ковариантность типов

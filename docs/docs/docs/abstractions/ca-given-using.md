@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Given и Using"
-prev: ../abstractions
-next: ./type-classes
+prev: abstractions
+next: abstractions/type-classes
 ---
 
 ## {{page.title}}

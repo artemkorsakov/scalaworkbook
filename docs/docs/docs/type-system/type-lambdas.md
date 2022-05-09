@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Type Lambdas"
-prev: ./types-dependent-function
-next: ./match-types
+prev: type-system/types-dependent-function
+next: type-system/match-types
 ---
 
 ## Лямбда-типы

@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Worksheet"
-prev: ./tools-sbt
-next: ../with_java
+prev: tools/tools-sbt
+next: with_java
 ---
 
 ## {{page.title}}

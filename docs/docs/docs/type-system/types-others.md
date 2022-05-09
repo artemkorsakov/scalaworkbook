@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Другие типы"
-prev: ./polymorphic-function-types
-next: ../abstractions
+prev: type-system/polymorphic-function-types
+next: abstractions
 ---
 
 ## {{page.title}}

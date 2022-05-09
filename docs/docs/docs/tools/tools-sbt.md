@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Sbt"
-prev: ../tools
-next: ./tools-worksheets
+prev: tools
+next: tools/tools-worksheets
 ---
 
 ## Сборка и тестирование проектов Scala с помощью Sbt

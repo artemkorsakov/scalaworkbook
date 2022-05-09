@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Собственный map"
-prev: hofs
-next: returns-function
+prev: functions/hofs
+next: functions/returns-function
 ---
 
 ## Написание своего собственного метода map

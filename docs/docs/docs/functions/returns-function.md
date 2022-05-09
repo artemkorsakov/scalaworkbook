@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Возврат функции в методе"
-prev: write-map
-next: ../packaging
+prev: functions/write-map
+next: packaging
 ---
 
 ## {{page.title}}

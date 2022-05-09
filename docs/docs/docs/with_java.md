@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Взаимодействие с Java"
-prev: ./tools/tools-worksheets
-next: ./extra
+prev: tools/tools-worksheets
+next: extra
 ---
 
 ## {{page.title}}

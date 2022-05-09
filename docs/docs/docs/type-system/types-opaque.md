@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Непрозрачные типы"
-prev: ./types-variance
-next: ./types-structural
+prev: type-system/types-variance
+next: type-system/types-structural
 ---
 
 ## {{page.title}}

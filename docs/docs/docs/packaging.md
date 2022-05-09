@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Пакеты и импорт"
-prev: ./functions/returns-function
-next: ./toplevel-definitions
+prev: functions/returns-function
+next: toplevel-definitions
 ---
 
 ## {{page.title}}

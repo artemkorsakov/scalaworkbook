@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Multiversal Equality"
-prev: ./ca-type-classes
-next: ./ca-implicit-conversions
+prev: abstractions/ca-type-classes
+next: abstractions/ca-implicit-conversions
 ---
 
 ## Мультиуниверсальное равенство

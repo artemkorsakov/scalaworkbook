@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Обработка ошибок"
-prev: ./functions-are-values
-next: ../type-system
+prev: fp/functions-are-values
+next: type-system
 ---
 
 ## Функциональная обработка ошибок

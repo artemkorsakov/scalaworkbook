@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Объединение типов"
-prev: ./types-intersection
-next: ./types-adts
+prev: type-system/types-intersection
+next: type-system/types-adts
 ---
 
 ## {{page.title}}

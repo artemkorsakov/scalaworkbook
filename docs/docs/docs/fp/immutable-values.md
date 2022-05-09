@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Неизменяемые значения"
-prev: ./what-is-fp
-next: ./pure-functions
+prev: fp/what-is-fp
+next: fp/pure-functions
 ---
 
 ## {{page.title}}

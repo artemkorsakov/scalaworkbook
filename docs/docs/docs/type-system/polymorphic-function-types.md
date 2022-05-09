@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Полимор. типы функций"
-prev: ./match-types
-next: ./types-others
+prev: type-system/match-types
+next: type-system/types-others
 ---
 
 ## Полиморфные типы функций

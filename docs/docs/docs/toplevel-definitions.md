@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Верхнеур. определения"
-prev: ./packaging
-next: ./collections
+prev: packaging
+next: collections
 ---
 
 ## Верхнеуровневые определения

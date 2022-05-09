@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Особенности методов"
-prev: ../methods
-next: main-methods
+prev: methods
+next: methods/main-methods
 ---
 
 ## {{page.title}}

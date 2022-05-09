@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Given imports"
-prev: ./ca-context-bounds
-next: ./ca-extension-methods
+prev: abstractions/ca-context-bounds
+next: abstractions/ca-extension-methods
 ---
 
 ## {{page.title}}

@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Анонимные функции"
-prev: ../functions
-next: variables
+prev: functions
+next: functions/variables
 ---
 
 ## {{page.title}}

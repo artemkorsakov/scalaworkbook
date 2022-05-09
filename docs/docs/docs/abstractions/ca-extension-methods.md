@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Методы расширения"
-prev: ./ca-given-imports
-next: ./ca-type-classes
+prev: abstractions/ca-given-imports
+next: abstractions/ca-type-classes
 ---
 
 ## {{page.title}}

@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Типы коллекций"
-prev: ../collections
-next: ./methods
+prev: collections
+next: collections/methods
 ---
 
 ## {{page.title}}

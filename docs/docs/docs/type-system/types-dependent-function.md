@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Зависимые типы функций"
-prev: ./types-structural
-next: ./type-lambdas
+prev: type-system/types-structural
+next: type-system/type-lambdas
 ---
 
 ## {{page.title}}

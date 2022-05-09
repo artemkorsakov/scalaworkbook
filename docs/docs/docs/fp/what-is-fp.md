@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Что такое ФП?"
-prev: ../fp
-next: ./immutable-values
+prev: fp
+next: fp/immutable-values
 ---
 
 ## Что такое функциональное программирование?

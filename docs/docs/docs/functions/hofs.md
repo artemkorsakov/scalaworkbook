@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Функции высшего порядка"
-prev: eta
-next: write-map
+prev: functions/eta
+next: functions/write-map
 ---
 
 ## {{page.title}}

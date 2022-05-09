@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Определение типов"
-prev: ../type-system
-next: ./types-generics
+prev: type-system
+next: type-system/types-generics
 ---
 
 ## {{page.title}}

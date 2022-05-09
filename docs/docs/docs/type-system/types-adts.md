@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Алгебр. типы данных"
-prev: ./types-union
-next: ./types-variance
+prev: type-system/types-union
+next: type-system/types-variance
 ---
 
 ## Алгебраические типы данных
