@@ -22,25 +22,25 @@ options:
     url: docs/modeling
 
     nested_options:
-      - title: Инструменты
+      - title: Classes
         url: docs/modeling/classes
 
-      - title: Инструменты
+      - title: Objects
         url: docs/modeling/objects
 
-      - title: Инструменты
+      - title: Companion objects
         url: docs/modeling/companion-objects
 
-      - title: Инструменты
+      - title: Traits
         url: docs/modeling/traits
 
-      - title: Инструменты
+      - title: Абстрактные классы
         url: docs/modeling/abstract-class
 
-      - title: Инструменты
+      - title: Enums
         url: docs/modeling/enums
 
-      - title: Инструменты
+      - title: Case classes
         url: docs/modeling/case-class
 
       - title: Моделирование ООП
