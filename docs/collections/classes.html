@@ -1,0 +1,773 @@
+<!DOCTYPE html><html><head><title>Scala workbook: Типы коллекций</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Артём Корсаков" /><meta name="description" content="Функциональная разработка на Scala." /><meta name="og:image" content="/scalaworkbook/img/poster.png" /><meta name="image" property="og:image" content="/scalaworkbook/img/poster.png" /><meta name="og:title" content="Scala workbook: Типы коллекций" /><meta name="title" property="og:title" content="Scala workbook: Типы коллекций" /><meta name="og:site_name" content="Scala workbook" /><meta name="og:url" content="" /><meta name="og:type" content="website" /><meta name="og:description" content="Функциональная разработка на Scala." /><link rel="icon" type="image/png" href="/scalaworkbook/img/favicon.png" /><meta name="twitter:title" content="Scala workbook: Типы коллекций" /><meta name="twitter:image" content="https://artemkorsakov.github.io/scalaworkbook/img/poster.png" /><meta name="twitter:description" content="Функциональная разработка на Scala." /><meta name="twitter:card" content="summary_large_image" /><link rel="icon" type="image/png" sizes="16x16" href="/scalaworkbook/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/scalaworkbook/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/scalaworkbook/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/scalaworkbook/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/scalaworkbook/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/scalaworkbook/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/scalaworkbook/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/scalaworkbook/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/scalaworkbook/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/scalaworkbook/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/scalaworkbook/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/scalaworkbook/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/scalaworkbook/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/scalaworkbook/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/scalaworkbook/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/scalaworkbook/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/scalaworkbook/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/scalaworkbook/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/scalaworkbook/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/scalaworkbook/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/scalaworkbook/highlight/styles/vs.css" /><link rel="stylesheet" href="/scalaworkbook/css/pattern-style.css" /><link rel="stylesheet" href="/scalaworkbook/css/override.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/scalaworkbook/" class="brand"><div class="brand-wrapper"><span>Scala workbook</span></div></a></li> <li><a href="/scalaworkbook/docs/index" class="">Обзор Scala</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/start/getting-started" class="">С чего начать?</a></li></ul></li> <li><a href="/scalaworkbook/docs/hello_world" class="">Hello, world!</a></li> <li><a href="/scalaworkbook/docs/repl" class="">REPL</a></li> <li><a href="/scalaworkbook/docs/types" class="">Типы данных</a></li> <li><a href="/scalaworkbook/docs/structures" class="">Структуры управления</a></li> <li><a href="/scalaworkbook/docs/modeling" class="">Моделирование данных</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/modeling/classes" class="">Classes</a></li> <li><a href="/scalaworkbook/docs/modeling/objects" class="">Objects</a></li> <li><a href="/scalaworkbook/docs/modeling/companion-objects" class="">Companion objects</a></li> <li><a href="/scalaworkbook/docs/modeling/traits" class="">Traits</a></li> <li><a href="/scalaworkbook/docs/modeling/abstract-class" class="">Абстрактные классы</a></li> <li><a href="/scalaworkbook/docs/modeling/enums" class="">Enums</a></li> <li><a href="/scalaworkbook/docs/modeling/case-class" class="">Case classes</a></li> <li><a href="/scalaworkbook/docs/modeling/oop" class="">Моделирование ООП</a></li> <li><a href="/scalaworkbook/docs/modeling/fp" class="">Моделирование ФП</a></li></ul></li> <li><a href="/scalaworkbook/docs/methods" class="">Методы</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/methods/method-features" class="">Особенности методов</a></li> <li><a href="/scalaworkbook/docs/methods/main-methods" class="">main методы</a></li></ul></li> <li><a href="/scalaworkbook/docs/functions" class="">Функции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/functions/anonymous" class="">Анонимные функции</a></li> <li><a href="/scalaworkbook/docs/functions/variables" class="">Параметры функции</a></li> <li><a href="/scalaworkbook/docs/functions/eta" class="">Eta расширение</a></li> <li><a href="/scalaworkbook/docs/functions/hofs" class="">Функции высшего порядка</a></li> <li><a href="/scalaworkbook/docs/functions/write-map" class="">Собственный map</a></li> <li><a href="/scalaworkbook/docs/functions/returns-function" class="">Возврат функции в методе</a></li></ul></li> <li><a href="/scalaworkbook/docs/packaging" class="">Пакеты и импорт</a></li> <li><a href="/scalaworkbook/docs/toplevel-definitions" class="">Верхнеур. определения</a></li> <li><a href="/scalaworkbook/docs/collections" class="">Коллекции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/collections/classes" class=" active ">Типы коллекций</a></li> <li><a href="/scalaworkbook/docs/collections/methods" class="">Методы в коллекциях</a></li></ul></li> <li><a href="/scalaworkbook/docs/fp" class="">Функц. программирование</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/fp/what-is-fp" class="">Что такое ФП?</a></li> <li><a href="/scalaworkbook/docs/fp/immutable-values" class="">Неизменяемые значения</a></li> <li><a href="/scalaworkbook/docs/fp/pure-functions" class="">Чистые функции</a></li> <li><a href="/scalaworkbook/docs/fp/functions-are-values" class="">Функции - это значения</a></li> <li><a href="/scalaworkbook/docs/fp/functional-error-handling" class="">Обработка ошибок</a></li></ul></li> <li><a href="/scalaworkbook/docs/type-system" class="">Система типов</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/type-system/types-inferred" class="">Определение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-generics" class="">Generics типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-intersection" class="">Пересечение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-union" class="">Объединение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-adts" class="">Алгебр. типы данных</a></li> <li><a href="/scalaworkbook/docs/type-system/types-variance" class="">Ковариантность</a></li> <li><a href="/scalaworkbook/docs/type-system/types-opaque" class="">Непрозрачные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-structural" class="">Структурные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-dependent-function" class="">Зависимые типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/type-lambdas" class="">Type Lambdas</a></li> <li><a href="/scalaworkbook/docs/type-system/match-types" class="">Match Types</a></li> <li><a href="/scalaworkbook/docs/type-system/polymorphic-function-types" class="">Полимор. типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/types-others" class="">Другие типы</a></li></ul></li> <li><a href="/scalaworkbook/docs/abstractions" class="">Абстракции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/abstractions/ca-given-using" class="">Given и Using</a></li> <li><a href="/scalaworkbook/docs/abstractions/type-classes" class="">Класс типов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-context-bounds" class="">Контекстные привязки</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-given-imports" class="">Given imports</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-extension-methods" class="">Методы расширения</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-classes" class="">Импл. type классов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-multiversal-equality" class="">Multiversal Equality</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-implicit-conversions" class="">Implicit conversions</a></li></ul></li> <li><a href="/scalaworkbook/docs/concurrency" class="">Параллелизм</a></li> <li><a href="/scalaworkbook/docs/tools" class="">Утилиты</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/tools/tools-sbt" class="">Sbt</a></li> <li><a href="/scalaworkbook/docs/tools/tools-worksheets" class="">Worksheet</a></li></ul></li> <li><a href="/scalaworkbook/docs/with_java" class="">Взаимодействие с Java</a></li> <li><a href="/scalaworkbook/docs/extra" class="">Доп. материалы</a></li></ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li class="search-nav hidden-xs hidden-sm"><div id="search-dropdown"><label><i class="fa fa-search"></i>Search</label><input id="search-bar" type="text" placeholder="Enter keywords here..." onclick="displayToggleSearch(event)" /><ul id="search-dropdown-content" class="dropdown dropdown-content"></ul></div></li></ul></div></div></div></div><div id="content" data-github-owner="artemkorsakov" data-github-repo="scalaworkbook"><div class="content-wrapper"><section><h2 id="типы-коллекций">Типы коллекций</h2>
+
+<p>В этом разделе продемонстрированы наиболее распространенные типы коллекций и их методы. 
+В конце этого раздела для получения более подробной информации представлены дополнительные ссылки 
+для более глубокого изучения коллекций.</p>
+
+<h3 id="три-основные-категории-коллекций">Три основные категории коллекций</h3>
+
+<p>Для коллекций Scala можно выделить три основные категории:</p>
+<ul>
+  <li>Последовательности (<strong>Sequences</strong>/<strong>Seq</strong>) представляют собой последовательный набор элементов 
+и могут быть индексированными (как массив) или линейными (как связанный список)</li>
+  <li>Карты (<strong>Maps</strong>) содержат набор пар ключ/значение, например Java <code class="highlighter-rouge">Map</code>, Python dictionary или Ruby <code class="highlighter-rouge">Hash</code></li>
+  <li>Множества (<strong>Sets</strong>) — это неупорядоченный набор уникальных элементов</li>
+</ul>
+
+<p>Все они являются базовыми типами и имеют подтипы для конкретных целей, 
+таких как параллелизм (<em>concurrency</em>), кэширование (<em>caching</em>) и потоковая передача (<em>streaming</em>). 
+В дополнение к этим трем основным категориям существуют и другие полезные типы коллекций, 
+включая диапазоны (<em>ranges</em>), стеки (<em>stacks</em>) и очереди (<em>queues</em>).</p>
+
+<h4 id="иерархия-коллекций">Иерархия коллекций</h4>
+
+<p>В качестве краткого обзора следующие три рисунка показывают иерархию классов и трейтов в коллекциях Scala.</p>
+
+<p>На первом рисунке показаны типы коллекций в пакете <code class="highlighter-rouge">scala.collection</code>. 
+Все это высокоуровневые абстрактные классы или трейты, которые обычно имеют неизменяемые и изменяемые реализации.</p>
+
+<p><img src="https://docs.scala-lang.org/resources/images/tour/collections-diagram-213.svg" alt="General collection hierarchy" /></p>
+
+<p>На этом рисунке показаны все коллекции в пакете <code class="highlighter-rouge">scala.collection.immutable</code>:</p>
+
+<p><img src="https://docs.scala-lang.org/resources/images/tour/collections-immutable-diagram-213.svg" alt="Immutable collection hierarchy" /></p>
+
+<p>А на этом рисунке показаны все коллекции в пакете <code class="highlighter-rouge">scala.collection.mutable</code>:</p>
+
+<p><img src="https://docs.scala-lang.org/resources/images/tour/collections-mutable-diagram-213.svg" alt="Mutable collection hierarchy" /></p>
+
+<p>В следующих разделах представлены некоторые из распространенных типов.</p>
+
+<h3 id="общие-коллекции">Общие коллекции</h3>
+
+<p>Основные коллекции, используемые чаще всего:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Тип коллекции</th>
+      <th>Неизменяемая</th>
+      <th>Изменяемая</th>
+      <th>Описание</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">List</code></td>
+      <td>✓</td>
+      <td> </td>
+      <td>Линейная неизменяемая последовательность (связный список)</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Vector</code></td>
+      <td>✓</td>
+      <td> </td>
+      <td>Индексированная неизменяемая последовательность</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">LazyList</code></td>
+      <td>✓</td>
+      <td> </td>
+      <td>Ленивый неизменяемый связанный список, элементы которого вычисляются только тогда, когда они необходимы; подходит для больших или бесконечных последовательностей.</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">ArrayBuffer</code></td>
+      <td> </td>
+      <td>✓</td>
+      <td>Подходящий тип для изменяемой индексированной последовательности</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">ListBuffer</code></td>
+      <td> </td>
+      <td>✓</td>
+      <td>Используется, когда вам нужен изменяемый список; обычно преобразуется в <code class="highlighter-rouge">List</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Map</code></td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>Итерируемая коллекция, состоящая из пар ключей и значений</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Set</code></td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>Итерируемая коллекция без повторяющихся элементов</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Как показано, <code class="highlighter-rouge">Map</code> и <code class="highlighter-rouge">Set</code> бывают как неизменяемыми, так и изменяемыми.</p>
+
+<p>Основы каждого типа демонстрируются в следующих разделах.</p>
+
+<blockquote>
+  <p>В Scala буфер, такой как <code class="highlighter-rouge">ArrayBuffer</code> или <code class="highlighter-rouge">ListBuffer</code>, представляет собой последовательность, 
+которая может увеличиваться и уменьшаться.</p>
+</blockquote>
+
+<h5 id="примечание-о-неизменяемых-коллекциях">Примечание о неизменяемых коллекциях</h5>
+
+<p>В последующих разделах всякий раз, когда используется слово <em>immutable</em>, 
+можно с уверенностью сказать, что тип предназначен для использования в стиле функционального программирования (ФП). 
+С помощью таких типов коллекция не меняется, 
+а при вызове функциональных методов возвращается новый результат - новая коллекция.</p>
+
+<h3 id="выбор-последовательности">Выбор последовательности</h3>
+
+<p>При выборе последовательности нужно руководствоваться двумя основными вопросами:</p>
+<ul>
+  <li>должна ли последовательность индексироваться (как массив), обеспечивая быстрый доступ к любому элементу, 
+или она должна быть реализована как линейный связанный список?</li>
+  <li>необходима изменяемая или неизменяемая коллекция?</li>
+</ul>
+
+<p>Рекомендуемые универсальные последовательности:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Тип \ Категория</th>
+      <th>Неизменяемая</th>
+      <th>Изменяемая</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>индексируемая</td>
+      <td><code class="highlighter-rouge">Vector</code></td>
+      <td><code class="highlighter-rouge">ArrayBuffer</code></td>
+    </tr>
+    <tr>
+      <td>линейный связанный список</td>
+      <td><code class="highlighter-rouge">List</code></td>
+      <td><code class="highlighter-rouge">ListBuffer</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Например, если нужна неизменяемая индексированная коллекция, в общем случае следует использовать <code class="highlighter-rouge">Vector</code>. 
+И наоборот, если нужна изменяемая индексированная коллекция, используйте <code class="highlighter-rouge">ArrayBuffer</code>.</p>
+
+<blockquote>
+  <p><code class="highlighter-rouge">List</code> и <code class="highlighter-rouge">Vector</code> часто используются при написании кода в функциональном стиле. 
+<code class="highlighter-rouge">ArrayBuffer</code> обычно используется при написании кода в императивном стиле. 
+<code class="highlighter-rouge">ListBuffer</code> используется, когда стили смешиваются, например, при создании списка.</p>
+</blockquote>
+
+<p>Следующие несколько разделов кратко демонстрируют типы <code class="highlighter-rouge">List</code>, <code class="highlighter-rouge">Vector</code> и <code class="highlighter-rouge">ArrayBuffer</code>.</p>
+
+<h3 id="list">List</h3>
+
+<p><a href="https://scala-lang.org/api/3.x/scala/collection/immutable/List.html">List</a> 
+представляет собой линейную неизменяемую последовательность. 
+Каждый раз, когда в список добавляются или удаляются элементы, по сути создается новый список из существующего.</p>
+
+<h4 id="создание-списка">Создание списка</h4>
+
+<p>Список можно создать различными способами:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">ints</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+<span class="c1">// ints: List[Int] = List(1, 2, 3)</span>
+<span class="k">val</span> <span class="nv">names</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="s">"Joel"</span><span class="o">,</span> <span class="s">"Chris"</span><span class="o">,</span> <span class="s">"Ed"</span><span class="o">)</span>
+<span class="c1">// names: List[String] = List("Joel", "Chris", "Ed")</span>
+<span class="k">val</span> <span class="nv">namesAgain</span> <span class="k">=</span> <span class="s">"Joel"</span> <span class="o">::</span> <span class="s">"Chris"</span> <span class="o">::</span> <span class="s">"Ed"</span> <span class="o">::</span> <span class="nc">Nil</span>
+<span class="c1">// namesAgain: List[String] = List("Joel", "Chris", "Ed")</span>
+</code></pre></div></div>
+
+<p>При желании тип списка можно объявить, хотя обычно в этом нет необходимости:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">ints</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+<span class="c1">// ints: List[Int] = List(1, 2, 3)</span>
+<span class="k">val</span> <span class="nv">names</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="s">"Joel"</span><span class="o">,</span> <span class="s">"Chris"</span><span class="o">,</span> <span class="s">"Ed"</span><span class="o">)</span>
+<span class="c1">// names: List[String] = List("Joel", "Chris", "Ed")</span>
+</code></pre></div></div>
+
+<p>Одно исключение — когда в коллекции смешанные типы; в этом случае тип желательно указывать явно:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">things</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Any</span><span class="o">]</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"two"</span><span class="o">,</span> <span class="mf">3.0</span><span class="o">)</span>
+<span class="c1">// things: List[Any] = List(1, "two", 3.0)</span>
+</code></pre></div></div>
+
+<h4 id="добавление-элементов-в-список">Добавление элементов в список</h4>
+
+<p>Поскольку список неизменяем, в него нельзя добавлять новые элементы. 
+Вместо этого создается новый список с добавленными к существующему списку элементами. 
+Например, учитывая этот список:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">a</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Для добавления одного элемента используется метод <code class="highlighter-rouge">::</code>, для добавления нескольких — <code class="highlighter-rouge">:::</code>, как показано здесь:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">b</span> <span class="k">=</span> <span class="mi">0</span> <span class="o">::</span> <span class="n">a</span>
+<span class="c1">// b: List[Int] = List(0, 1, 2, 3)</span>
+<span class="k">val</span> <span class="nv">c</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="o">:::</span> <span class="n">a</span>
+<span class="c1">// c: List[Int] = List(-1, 0, 1, 2, 3)</span>
+</code></pre></div></div>
+
+<p>Также можно добавить элементы в конец списка, но, поскольку список является односвязным, 
+следует добавлять к нему элементы только в начало; 
+добавление элементов в конец списка — 
+относительно медленная операция, особенно при работе с большими последовательностями.</p>
+
+<blockquote>
+  <p>Если необходимо добавлять к неизменяемой последовательности элементы в начало и конец, используйте <code class="highlighter-rouge">Vector</code>.</p>
+</blockquote>
+
+<p>Поскольку <code class="highlighter-rouge">List</code> является связанным списком, 
+крайне нежелательно пытаться получить доступ к элементам больших списков по значению их индекса. 
+Например, если есть <code class="highlighter-rouge">List</code> с миллионом элементов, доступ к такому элементу, как <code class="highlighter-rouge">myList(999_999)</code>, 
+займет относительно много времени, потому что этот запрос должен пройти почти через все элементы. 
+Если есть большая коллекция и необходимо получать доступ к элементам по их индексу, 
+вместо <code class="highlighter-rouge">List</code> используйте <code class="highlighter-rouge">Vector</code> или <code class="highlighter-rouge">ArrayBuffer</code>.</p>
+
+<h4 id="как-запомнить-названия-методов">Как запомнить названия методов</h4>
+
+<p>В методах Scala символ <code class="highlighter-rouge">:</code> представляет сторону, на которой находится последовательность, 
+поэтому, когда используется метод <code class="highlighter-rouge">+:</code>, список нужно указывать справа:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span> <span class="o">+:</span> <span class="n">a</span>
+<span class="c1">// res2: List[Int] = List(0, 1, 2, 3)</span>
+</code></pre></div></div>
+
+<p>Аналогично, если используется <code class="highlighter-rouge">:+</code>, список должен быть слева:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">:+</span> <span class="mi">4</span>
+<span class="c1">// res3: List[Int] = List(1, 2, 3, 4)</span>
+</code></pre></div></div>
+
+<p>Кроме того, хорошей особенностью этих символических имен методов является то, что они стандартизированы. 
+Те же имена методов используются с другими неизменяемыми последовательностями, такими как <code class="highlighter-rouge">Seq</code> и <code class="highlighter-rouge">Vector</code>. 
+Также можно использовать несимволические имена методов для добавления элементов 
+в начало (<code class="highlighter-rouge">a.prepended(4)</code>) или конец (<code class="highlighter-rouge">a.appended(4)</code>).</p>
+
+<h4 id="как-пройтись-по-списку">Как пройтись по списку</h4>
+
+<p>Представим, что есть список имён:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">names</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="s">"Joel"</span><span class="o">,</span> <span class="s">"Chris"</span><span class="o">,</span> <span class="s">"Ed"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Напечатать каждое имя можно следующим способом:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">name</span> <span class="k">&lt;-</span> <span class="n">names</span> <span class="k">do</span> <span class="nf">println</span><span class="o">(</span><span class="n">name</span><span class="o">)</span>
+<span class="c1">// Joel</span>
+<span class="c1">// Chris</span>
+<span class="c1">// Ed</span>
+</code></pre></div></div>
+
+<p>Преимуществом использования циклов <code class="highlighter-rouge">for</code> с коллекциями заключается в том, что Scala стандартизирован, 
+и один и тот же подход работает со всеми последовательностями, 
+включая <code class="highlighter-rouge">Array</code>, <code class="highlighter-rouge">ArrayBuffer</code>, <code class="highlighter-rouge">List</code>, <code class="highlighter-rouge">Seq</code>, <code class="highlighter-rouge">Vector</code>, <code class="highlighter-rouge">Map</code>, <code class="highlighter-rouge">Set</code> и т. д.</p>
+
+<h4 id="немного-истории">Немного истории</h4>
+
+<p>Список Scala подобен списку из <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)">языка программирования Lisp</a>, 
+который был впервые представлен в 1958 году. 
+Действительно, в дополнение к привычному способу создания списка:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">ints</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+<span class="c1">// ints: List[Int] = List(1, 2, 3)</span>
+</code></pre></div></div>
+
+<p>точно такой же список можно создать следующим образом:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">list</span> <span class="k">=</span> <span class="mi">1</span> <span class="o">::</span> <span class="mi">2</span> <span class="o">::</span> <span class="mi">3</span> <span class="o">::</span> <span class="nc">Nil</span>
+<span class="c1">// list: List[Int] = List(1, 2, 3)</span>
+</code></pre></div></div>
+
+<p>Это работает, потому что <code class="highlighter-rouge">List</code> — односвязный список, оканчивающийся элементом <code class="highlighter-rouge">Nil</code>, 
+а <code class="highlighter-rouge">::</code> — это метод <code class="highlighter-rouge">List</code>, работающий как оператор “cons” в Lisp.</p>
+
+<h4 id="lazylist">LazyList</h4>
+
+<p>Коллекции Scala также включают <a href="https://scala-lang.org/api/3.x/scala/collection/immutable/LazyList.html">LazyList</a>, 
+который представляет собой ленивый неизменяемый связанный список. 
+Он называется «ленивым» — или нестрогим — потому что вычисляет свои элементы только тогда, когда они необходимы.</p>
+
+<p>Примеры:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">x</span> <span class="k">=</span> <span class="nv">LazyList</span><span class="o">.</span><span class="py">range</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nv">Int</span><span class="o">.</span><span class="py">MaxValue</span><span class="o">)</span>
+<span class="nv">x</span><span class="o">.</span><span class="py">take</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>    
+<span class="nv">x</span><span class="o">.</span><span class="py">take</span><span class="o">(</span><span class="mi">5</span><span class="o">)</span>    
+<span class="nv">x</span><span class="o">.</span><span class="py">map</span><span class="o">(</span><span class="k">_</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> 
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">LazyList</code> начинает вычислять свои элементы только при вызове некоторых методов, например, <code class="highlighter-rouge">foreach</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">x</span><span class="o">.</span><span class="py">take</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="py">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">)</span>
+<span class="c1">// 1</span>
+</code></pre></div></div>
+
+<p>Для получения дополнительной информации об использовании, преимуществах и недостатках 
+строгих и нестрогих (ленивых) коллекций см. 
+обсуждение “строгих” и “нестрогих” коллекций на странице 
+<a href="https://docs.scala-lang.org/overviews/core/architecture-of-scala-213-collections.html">“Архитектура Scala 2.13’s Collections”</a>.</p>
+
+<h3 id="vector">Vector</h3>
+
+<p><a href="https://scala-lang.org/api/3.x/scala/collection/immutable/Vector.html">Vector</a> - 
+это индексируемая неизменяемая последовательность. 
+“Индексируемая” часть описания означает, что она обеспечивает произвольный доступ 
+и обновление за практически постоянное время, 
+поэтому можно быстро получить доступ к элементам <code class="highlighter-rouge">Vector</code> по значению их индекса, 
+например, получить доступ к <code class="highlighter-rouge">listOfPeople(123_456_789)</code>.</p>
+
+<p>В общем, за исключением той разницы, что (а) <code class="highlighter-rouge">Vector</code> индексируется, а <code class="highlighter-rouge">List</code> - нет, 
+и (б) <code class="highlighter-rouge">List</code> имеет метод <code class="highlighter-rouge">::</code>, эти два типа работают одинаково.</p>
+
+<p>Вот несколько способов создания <code class="highlighter-rouge">Vector</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">nums</span> <span class="k">=</span> <span class="nc">Vector</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">)</span>
+<span class="c1">// nums: Vector[Int] = Vector(1, 2, 3, 4, 5)</span>
+<span class="k">val</span> <span class="nv">strings</span> <span class="k">=</span> <span class="nc">Vector</span><span class="o">(</span><span class="s">"one"</span><span class="o">,</span> <span class="s">"two"</span><span class="o">)</span>
+<span class="c1">// strings: Vector[String] = Vector("one", "two")</span>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">people</span> <span class="k">=</span> <span class="nc">Vector</span><span class="o">(</span>
+  <span class="nc">Person</span><span class="o">(</span><span class="s">"Bert"</span><span class="o">),</span>
+  <span class="nc">Person</span><span class="o">(</span><span class="s">"Ernie"</span><span class="o">),</span>
+  <span class="nc">Person</span><span class="o">(</span><span class="s">"Grover"</span><span class="o">)</span>
+<span class="o">)</span>
+<span class="c1">// people: Vector[Person] = Vector(</span>
+<span class="c1">//   Person(name = "Bert"),</span>
+<span class="c1">//   Person(name = "Ernie"),</span>
+<span class="c1">//   Person(name = "Grover")</span>
+<span class="c1">// )</span>
+</code></pre></div></div>
+
+<p>Поскольку <code class="highlighter-rouge">Vector</code> неизменяем, в него нельзя добавить новые элементы. 
+Вместо этого создается новая последовательность, 
+с добавленными к существующему <code class="highlighter-rouge">Vector</code> в начало или в конец элементами.</p>
+
+<p>Например, так элементы добавляются в конец:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">a</span> <span class="k">=</span> <span class="nc">Vector</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">)</span>
+<span class="c1">// a: Vector[Int] = Vector(1, 2, 3)</span>
+<span class="k">val</span> <span class="nv">b</span> <span class="k">=</span> <span class="n">a</span> <span class="o">:+</span> <span class="mi">4</span>
+<span class="c1">// b: Vector[Int] = Vector(1, 2, 3, 4)</span>
+<span class="k">val</span> <span class="nv">c</span> <span class="k">=</span> <span class="n">a</span> <span class="o">++</span> <span class="nc">Vector</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">)</span>
+<span class="c1">// c: Vector[Int] = Vector(1, 2, 3, 4, 5)</span>
+</code></pre></div></div>
+
+<p>А так - в начало <code class="highlighter-rouge">Vector</code>-а:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">a</span> <span class="k">=</span> <span class="nc">Vector</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">)</span>
+<span class="c1">// a: Vector[Int] = Vector(1, 2, 3)</span>
+<span class="k">val</span> <span class="nv">b</span> <span class="k">=</span> <span class="mi">0</span> <span class="o">+:</span> <span class="n">a</span>
+<span class="c1">// b: Vector[Int] = Vector(0, 1, 2, 3)</span>
+<span class="k">val</span> <span class="nv">c</span> <span class="k">=</span> <span class="nc">Vector</span><span class="o">(-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="o">++:</span> <span class="n">a</span>
+<span class="c1">// c: Vector[Int] = Vector(-1, 0, 1, 2, 3)</span>
+</code></pre></div></div>
+
+<p>В дополнение к быстрому произвольному доступу и обновлениям, 
+<code class="highlighter-rouge">Vector</code> обеспечивает быстрое добавление в начало и конец.</p>
+
+<blockquote>
+  <p>Подробную информацию о производительности <code class="highlighter-rouge">Vector</code> и других коллекций см. в 
+<a href="https://docs.scala-lang.org/overviews/collections-2.13/performance-characteristics.html">характеристиках производительности коллекций</a>.</p>
+</blockquote>
+
+<p>Наконец, <code class="highlighter-rouge">Vector</code> в цикле <code class="highlighter-rouge">for</code> используется точно так же, как <code class="highlighter-rouge">List</code>, <code class="highlighter-rouge">ArrayBuffer</code> или любая другая последовательность:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">names</span> <span class="k">=</span> <span class="nc">Vector</span><span class="o">(</span><span class="s">"Joel"</span><span class="o">,</span> <span class="s">"Chris"</span><span class="o">,</span> <span class="s">"Ed"</span><span class="o">)</span>
+<span class="c1">// names: Vector[String] = Vector("Joel", "Chris", "Ed")</span>
+<span class="k">for</span> <span class="n">name</span> <span class="k">&lt;-</span> <span class="n">names</span> <span class="k">do</span> <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"My name is $name"</span><span class="o">)</span>
+<span class="c1">// My name is Joel</span>
+<span class="c1">// My name is Chris</span>
+<span class="c1">// My name is Ed</span>
+</code></pre></div></div>
+
+<h3 id="arraybuffer">ArrayBuffer</h3>
+
+<p><code class="highlighter-rouge">ArrayBuffer</code> используется тогда, когда нужна изменяемая индексированная последовательность общего назначения. 
+Поскольку <code class="highlighter-rouge">ArrayBuffer</code> индексирован, произвольный доступ к элементам выполняется быстро.</p>
+
+<h4 id="создание-arraybuffer">Создание ArrayBuffer</h4>
+
+<p>Чтобы использовать <code class="highlighter-rouge">ArrayBuffer</code>, в отличие от предыдущих рассмотренных классов, его нужно вначале импортировать:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">scala.collection.mutable.ArrayBuffer</span>
+</code></pre></div></div>
+
+<p>Если необходимо начать с пустого <code class="highlighter-rouge">ArrayBuffer</code>, просто укажите его тип:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">strings</span> <span class="k">=</span> <span class="nc">ArrayBuffer</span><span class="o">[</span><span class="kt">String</span><span class="o">]()</span>
+<span class="k">var</span> <span class="n">ints</span> <span class="k">=</span> <span class="nc">ArrayBuffer</span><span class="o">[</span><span class="kt">Int</span><span class="o">]()</span>
+<span class="k">var</span> <span class="n">people</span> <span class="k">=</span> <span class="nc">ArrayBuffer</span><span class="o">[</span><span class="kt">Person</span><span class="o">]()</span>
+</code></pre></div></div>
+
+<p>Если известен примерный размер <code class="highlighter-rouge">ArrayBuffer</code>, его можно задать:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">buf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ArrayBuffer</span><span class="o">[</span><span class="kt">Int</span><span class="o">](</span><span class="mi">100</span><span class="n">_000</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Чтобы создать новый <code class="highlighter-rouge">ArrayBuffer</code> с начальными элементами, достаточно просто указать начальные элементы, 
+как для <code class="highlighter-rouge">List</code> или <code class="highlighter-rouge">Vector</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">nums</span> <span class="k">=</span> <span class="nc">ArrayBuffer</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">people</span> <span class="k">=</span> <span class="nc">ArrayBuffer</span><span class="o">(</span>
+  <span class="nc">Person</span><span class="o">(</span><span class="s">"Bert"</span><span class="o">),</span>
+  <span class="nc">Person</span><span class="o">(</span><span class="s">"Ernie"</span><span class="o">),</span>
+  <span class="nc">Person</span><span class="o">(</span><span class="s">"Grover"</span><span class="o">)</span>
+<span class="o">)</span>
+</code></pre></div></div>
+
+<h4 id="добавление-элементов-в-arraybuffer">Добавление элементов в ArrayBuffer</h4>
+
+<p>Новые элементы добавляются в <code class="highlighter-rouge">ArrayBuffer</code> с помощью методов <code class="highlighter-rouge">+=</code> и <code class="highlighter-rouge">++=</code>. 
+Также можно использовать текстовый аналог: <code class="highlighter-rouge">append</code>, <code class="highlighter-rouge">appendAll</code>, <code class="highlighter-rouge">insert</code>, <code class="highlighter-rouge">insertAll</code>, <code class="highlighter-rouge">prepend</code> и <code class="highlighter-rouge">prependAll</code>. 
+Вот несколько примеров с <code class="highlighter-rouge">+=</code> и <code class="highlighter-rouge">++=</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">nums</span> <span class="k">=</span> <span class="nc">ArrayBuffer</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+<span class="c1">// nums: ArrayBuffer[Int] = ArrayBuffer(1, 2, 3)</span>
+</code></pre></div></div>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nums</span> <span class="o">+=</span> <span class="mi">4</span>
+<span class="c1">// res15: ArrayBuffer[Int] = ArrayBuffer(1, 2, 3, 4)</span>
+</code></pre></div></div>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nums</span> <span class="o">++=</span> <span class="nc">List</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="o">)</span>
+<span class="c1">// res18: ArrayBuffer[Int] = ArrayBuffer(1, 2, 3, 4, 5, 6)</span>
+</code></pre></div></div>
+
+<h4 id="удаление-элементов-из-arraybuffer">Удаление элементов из ArrayBuffer</h4>
+
+<p><code class="highlighter-rouge">ArrayBuffer</code> является изменяемым, поэтому у него есть такие методы, как <code class="highlighter-rouge">-=</code>, <code class="highlighter-rouge">--=</code>, <code class="highlighter-rouge">clear</code>, <code class="highlighter-rouge">remove</code> и другие. 
+Примеры с <code class="highlighter-rouge">-=</code> и <code class="highlighter-rouge">--=</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">a</span> <span class="k">=</span> <span class="nv">ArrayBuffer</span><span class="o">.</span><span class="py">range</span><span class="o">(</span><span class="sc">'a'</span><span class="o">,</span> <span class="sc">'h'</span><span class="o">)</span>
+<span class="c1">// a: ArrayBuffer[Char] = ArrayBuffer('a', 'b', 'c', 'd', 'e', 'f', 'g')</span>
+</code></pre></div></div>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">-=</span> <span class="sc">'a'</span>
+<span class="c1">// res20: ArrayBuffer[Char] = ArrayBuffer('b', 'c', 'd', 'e', 'f', 'g')</span>
+</code></pre></div></div>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">--=</span> <span class="nc">Seq</span><span class="o">(</span><span class="sc">'b'</span><span class="o">,</span> <span class="sc">'c'</span><span class="o">)</span>
+<span class="c1">// res23: ArrayBuffer[Char] = ArrayBuffer('d', 'e', 'f', 'g')</span>
+</code></pre></div></div>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">--=</span> <span class="nc">Set</span><span class="o">(</span><span class="sc">'d'</span><span class="o">,</span> <span class="sc">'e'</span><span class="o">)</span>
+<span class="c1">// res27: ArrayBuffer[Char] = ArrayBuffer('f', 'g')</span>
+</code></pre></div></div>
+
+<h4 id="обновление-элементов-в-arraybuffer">Обновление элементов в ArrayBuffer</h4>
+
+<p>Элементы в <code class="highlighter-rouge">ArrayBuffer</code> можно обновлять, либо переназначать:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">a</span> <span class="k">=</span> <span class="nv">ArrayBuffer</span><span class="o">.</span><span class="py">range</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">5</span><span class="o">)</span>
+<span class="c1">// a: ArrayBuffer[Int] = ArrayBuffer(1, 2, 3, 4)</span>
+</code></pre></div></div>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">a</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span> <span class="k">=</span> <span class="mi">50</span>
+<span class="nf">println</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+<span class="c1">// ArrayBuffer(1, 2, 50, 4)</span>
+</code></pre></div></div>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">a</span><span class="o">.</span><span class="py">update</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">10</span><span class="o">)</span>
+<span class="nf">println</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+<span class="c1">// ArrayBuffer(10, 2, 50, 4)</span>
+</code></pre></div></div>
+
+<h3 id="maps">Maps</h3>
+
+<p><code class="highlighter-rouge">Map</code> — это итерируемая коллекция, состоящая из пар ключей и значений. 
+В Scala есть как изменяемые, так и неизменяемые типы <code class="highlighter-rouge">Map</code>. 
+В этом разделе показано, как использовать неизменяемый <code class="highlighter-rouge">Map</code>.</p>
+
+<h4 id="создание-map">Создание Map</h4>
+
+<p>Неизменяемая <code class="highlighter-rouge">Map</code> создается следующим образом:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">states</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span>
+  <span class="s">"AK"</span> <span class="o">-&gt;</span> <span class="s">"Alaska"</span><span class="o">,</span>
+  <span class="s">"AL"</span> <span class="o">-&gt;</span> <span class="s">"Alabama"</span><span class="o">,</span>
+  <span class="s">"AZ"</span> <span class="o">-&gt;</span> <span class="s">"Arizona"</span>
+<span class="o">)</span>
+</code></pre></div></div>
+
+<p>Перемещаться по элементам <code class="highlighter-rouge">Map</code> в цикле <code class="highlighter-rouge">for</code> можно следующим образом:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">for</span> <span class="o">(</span><span class="n">k</span><span class="o">,</span> <span class="n">v</span><span class="o">)</span> <span class="k">&lt;-</span> <span class="n">states</span> <span class="k">do</span> <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"key: $k, value: $v"</span><span class="o">)</span>
+<span class="c1">// key: AK, value: Alaska</span>
+<span class="c1">// key: AL, value: Alabama</span>
+<span class="c1">// key: AZ, value: Arizona</span>
+</code></pre></div></div>
+
+<h4 id="доступ-к-элементам-map">Доступ к элементам Map</h4>
+
+<p>Доступ к элементам <code class="highlighter-rouge">Map</code> осуществляется через указание в скобках значения ключа:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">ak</span> <span class="k">=</span> <span class="nf">states</span><span class="o">(</span><span class="s">"AK"</span><span class="o">)</span>
+<span class="c1">// ak: String = "Alaska"</span>
+<span class="k">val</span> <span class="nv">al</span> <span class="k">=</span> <span class="nf">states</span><span class="o">(</span><span class="s">"AL"</span><span class="o">)</span>
+<span class="c1">// al: String = "Alabama"</span>
+</code></pre></div></div>
+
+<p>На практике также используются такие методы, как <code class="highlighter-rouge">keys</code>, <code class="highlighter-rouge">keySet</code>, <code class="highlighter-rouge">keysIterator</code>, циклы <code class="highlighter-rouge">for</code> 
+и функции высшего порядка, такие как <code class="highlighter-rouge">map</code>, для работы с ключами и значениями <code class="highlighter-rouge">Map</code>.</p>
+
+<h4 id="добавление-элемента-в-map">Добавление элемента в Map</h4>
+
+<p>При добавлении элементов в неизменяемую карту с помощью <code class="highlighter-rouge">+</code> и <code class="highlighter-rouge">++</code>, создается новая карта:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">a</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span><span class="mi">1</span> <span class="o">-&gt;</span> <span class="s">"one"</span><span class="o">)</span>
+<span class="c1">// a: Map[Int, String] = Map(1 -&gt; "one")</span>
+<span class="k">val</span> <span class="nv">b</span> <span class="k">=</span> <span class="n">a</span> <span class="o">+</span> <span class="o">(</span><span class="mi">2</span> <span class="o">-&gt;</span> <span class="s">"two"</span><span class="o">)</span>
+<span class="c1">// b: Map[Int, String] = Map(1 -&gt; "one", 2 -&gt; "two")</span>
+<span class="k">val</span> <span class="nv">c</span> <span class="k">=</span> <span class="n">b</span> <span class="o">++</span> <span class="nc">Seq</span><span class="o">(</span>
+  <span class="mi">3</span> <span class="o">-&gt;</span> <span class="s">"three"</span><span class="o">,</span>
+  <span class="mi">4</span> <span class="o">-&gt;</span> <span class="s">"four"</span>
+<span class="o">)</span>
+<span class="c1">// c: Map[Int, String] = Map(1 -&gt; "one", 2 -&gt; "two", 3 -&gt; "three", 4 -&gt; "four")</span>
+</code></pre></div></div>
+
+<h4 id="удаление-элементов-из-map">Удаление элементов из Map</h4>
+
+<p>Элементы удаляются с помощью методов <code class="highlighter-rouge">-</code> или <code class="highlighter-rouge">--</code>. 
+В случае неизменяемой <code class="highlighter-rouge">Map</code> создается новый экземпляр, который нужно присвоить новой переменной:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">a</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span>
+  <span class="mi">1</span> <span class="o">-&gt;</span> <span class="s">"one"</span><span class="o">,</span>
+  <span class="mi">2</span> <span class="o">-&gt;</span> <span class="s">"two"</span><span class="o">,</span>
+  <span class="mi">3</span> <span class="o">-&gt;</span> <span class="s">"three"</span><span class="o">,</span>
+  <span class="mi">4</span> <span class="o">-&gt;</span> <span class="s">"four"</span>
+<span class="o">)</span>
+<span class="c1">// a: Map[Int, String] = Map(1 -&gt; "one", 2 -&gt; "two", 3 -&gt; "three", 4 -&gt; "four")</span>
+<span class="k">val</span> <span class="nv">b</span> <span class="k">=</span> <span class="n">a</span> <span class="o">-</span> <span class="mi">4</span>    
+<span class="c1">// b: Map[Int, String] = Map(1 -&gt; "one", 2 -&gt; "two", 3 -&gt; "three")    </span>
+<span class="k">val</span> <span class="nv">c</span> <span class="k">=</span> <span class="n">a</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">-</span> <span class="mi">3</span>
+<span class="c1">// c: Map[Int, String] = Map(1 -&gt; "one", 2 -&gt; "two")</span>
+</code></pre></div></div>
+
+<h4 id="обновление-элементов-в-map">Обновление элементов в Map</h4>
+
+<p>Чтобы обновить элементы на неизменяемой <code class="highlighter-rouge">Map</code>, используется метод <code class="highlighter-rouge">update</code> (или оператор <code class="highlighter-rouge">+</code>):</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">a</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span>
+  <span class="mi">1</span> <span class="o">-&gt;</span> <span class="s">"one"</span><span class="o">,</span>
+  <span class="mi">2</span> <span class="o">-&gt;</span> <span class="s">"two"</span><span class="o">,</span>
+  <span class="mi">3</span> <span class="o">-&gt;</span> <span class="s">"three"</span>
+<span class="o">)</span>
+<span class="c1">// a: Map[Int, String] = Map(1 -&gt; "one", 2 -&gt; "two", 3 -&gt; "three")</span>
+<span class="k">val</span> <span class="nv">b</span> <span class="k">=</span> <span class="nv">a</span><span class="o">.</span><span class="py">updated</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="s">"THREE!"</span><span class="o">)</span>
+<span class="c1">// b: Map[Int, String] = Map(1 -&gt; "one", 2 -&gt; "two", 3 -&gt; "THREE!")</span>
+<span class="k">val</span> <span class="nv">c</span> <span class="k">=</span> <span class="n">a</span> <span class="o">+</span> <span class="o">(</span><span class="mi">2</span> <span class="o">-&gt;</span> <span class="s">"TWO..."</span><span class="o">)</span>
+<span class="c1">// c: Map[Int, String] = Map(1 -&gt; "one", 2 -&gt; "TWO...", 3 -&gt; "three")</span>
+</code></pre></div></div>
+
+<h4 id="перебор-элементов-в-map">Перебор элементов в Map</h4>
+
+<p>Элементы в <code class="highlighter-rouge">Map</code> можно перебрать с помощью цикла <code class="highlighter-rouge">for</code>, как и для остальных коллекций:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">states</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span>
+  <span class="s">"AK"</span> <span class="o">-&gt;</span> <span class="s">"Alaska"</span><span class="o">,</span>
+  <span class="s">"AL"</span> <span class="o">-&gt;</span> <span class="s">"Alabama"</span><span class="o">,</span>
+  <span class="s">"AZ"</span> <span class="o">-&gt;</span> <span class="s">"Arizona"</span>
+<span class="o">)</span>
+<span class="c1">// states: Map[String, String] = Map(</span>
+<span class="c1">//   "AK" -&gt; "Alaska",</span>
+<span class="c1">//   "AL" -&gt; "Alabama",</span>
+<span class="c1">//   "AZ" -&gt; "Arizona"</span>
+<span class="c1">// )</span>
+<span class="nf">for</span> <span class="o">(</span><span class="n">k</span><span class="o">,</span> <span class="n">v</span><span class="o">)</span> <span class="k">&lt;-</span> <span class="n">states</span> <span class="k">do</span> <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"key: $k, value: $v"</span><span class="o">)</span>
+<span class="c1">// key: AK, value: Alaska</span>
+<span class="c1">// key: AL, value: Alabama</span>
+<span class="c1">// key: AZ, value: Arizona</span>
+</code></pre></div></div>
+
+<p>Существует много способов работы с ключами и значениями на <code class="highlighter-rouge">Map</code>. 
+Общие методы <code class="highlighter-rouge">Map</code> включают <code class="highlighter-rouge">foreach</code>, <code class="highlighter-rouge">map</code>, <code class="highlighter-rouge">keys</code> и <code class="highlighter-rouge">values</code>.</p>
+
+<p>В Scala есть много других специализированных типов <code class="highlighter-rouge">Map</code>, 
+включая <code class="highlighter-rouge">CollisionProofHashMap</code>, <code class="highlighter-rouge">HashMap</code>, <code class="highlighter-rouge">LinkedHashMap</code>, <code class="highlighter-rouge">ListMap</code>, <code class="highlighter-rouge">SortedMap</code>, <code class="highlighter-rouge">TreeMap</code>, <code class="highlighter-rouge">WeakHashMap</code> и другие.</p>
+
+<h3 id="работа-с-множествами">Работа с множествами</h3>
+
+<p>Множество (<a href="https://scala-lang.org/api/3.x/scala/collection/immutable/Set.html">Set</a>) - 
+итерируемая коллекция без повторяющихся элементов.</p>
+
+<p>В Scala есть как изменяемые, так и неизменяемые типы <code class="highlighter-rouge">Set</code>. 
+В этом разделе демонстрируется неизменяемое множество.</p>
+
+<h4 id="создание-множества">Создание множества</h4>
+
+<p>Создание нового пустого множества:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">nums</span> <span class="k">=</span> <span class="nc">Set</span><span class="o">[</span><span class="kt">Int</span><span class="o">]()</span>
+<span class="c1">// nums: Set[Int] = Set()</span>
+<span class="k">val</span> <span class="nv">letters</span> <span class="k">=</span> <span class="nc">Set</span><span class="o">[</span><span class="kt">Char</span><span class="o">]()</span>
+<span class="c1">// letters: Set[Char] = Set()</span>
+</code></pre></div></div>
+
+<p>Создание множества с исходными данными:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">nums</span> <span class="k">=</span> <span class="nc">Set</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+<span class="c1">// nums: Set[Int] = Set(1, 2, 3)</span>
+<span class="k">val</span> <span class="nv">letters</span> <span class="k">=</span> <span class="nc">Set</span><span class="o">(</span><span class="sc">'a'</span><span class="o">,</span> <span class="sc">'b'</span><span class="o">,</span> <span class="sc">'c'</span><span class="o">,</span> <span class="sc">'c'</span><span class="o">)</span>
+<span class="c1">// letters: Set[Char] = Set('a', 'b', 'c')</span>
+</code></pre></div></div>
+
+<h4 id="добавление-элементов-в-множество">Добавление элементов в множество</h4>
+
+<p>В неизменяемое множество новые элементы добавляются с помощью <code class="highlighter-rouge">+</code> и <code class="highlighter-rouge">++</code>,
+результат присваивается новой переменной:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">a</span> <span class="k">=</span> <span class="nc">Set</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span>
+<span class="c1">// a: Set[Int] = Set(1, 2)</span>
+<span class="k">val</span> <span class="nv">b</span> <span class="k">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">3</span>
+<span class="c1">// b: Set[Int] = Set(1, 2, 3)</span>
+<span class="k">val</span> <span class="nv">c</span> <span class="k">=</span> <span class="n">b</span> <span class="o">++</span> <span class="nc">Seq</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">5</span><span class="o">)</span>
+<span class="c1">// c: Set[Int] = HashSet(5, 1, 2, 3, 4)</span>
+</code></pre></div></div>
+
+<p>Стоит отметить, что повторяющиеся элементы не добавляются в множество, а также, что порядок элементов произвольный.</p>
+
+<h4 id="удаление-элементов-из-множества">Удаление элементов из множества</h4>
+
+<p>Элементы из множества удаляются с помощью методов <code class="highlighter-rouge">-</code> и <code class="highlighter-rouge">--</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">a</span> <span class="k">=</span> <span class="nc">Set</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">)</span>
+<span class="c1">// a: Set[Int] = HashSet(5, 1, 2, 3, 4)</span>
+<span class="k">val</span> <span class="nv">b</span> <span class="k">=</span> <span class="n">a</span> <span class="o">-</span> <span class="mi">5</span>
+<span class="c1">// b: Set[Int] = HashSet(1, 2, 3, 4)</span>
+<span class="k">val</span> <span class="nv">c</span> <span class="k">=</span> <span class="n">b</span> <span class="o">--</span> <span class="nc">Seq</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">)</span>
+<span class="c1">// c: Set[Int] = HashSet(1, 2)</span>
+</code></pre></div></div>
+
+<h3 id="диапазон-range">Диапазон (Range)</h3>
+
+<p><code class="highlighter-rouge">Range</code> часто используется для заполнения структур данных и для циклов <code class="highlighter-rouge">for</code>. 
+Эти примеры демонстрируют, как создавать диапазоны:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span> <span class="n">to</span> <span class="mi">5</span>
+<span class="c1">// res45: Inclusive = Range(1, 2, 3, 4, 5)</span>
+<span class="mi">1</span> <span class="n">until</span> <span class="mi">5</span>
+<span class="c1">// res46: Range = Range(1, 2, 3, 4)</span>
+<span class="mi">1</span> <span class="n">to</span> <span class="mi">10</span> <span class="n">by</span> <span class="mi">2</span>
+<span class="c1">// res47: Range = Range(1, 3, 5, 7, 9)</span>
+<span class="sc">'a'</span> <span class="n">to</span> <span class="sc">'c'</span>
+<span class="c1">// res48: Inclusive[Char] = NumericRange('a', 'b', 'c')</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">Range</code> можно использовать для заполнения коллекций:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">x</span> <span class="k">=</span> <span class="o">(</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">5</span><span class="o">).</span><span class="py">toList</span>
+<span class="c1">// x: List[Int] = List(1, 2, 3, 4, 5)</span>
+<span class="k">val</span> <span class="nv">y</span> <span class="k">=</span> <span class="o">(</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">5</span><span class="o">).</span><span class="py">toBuffer</span>
+<span class="c1">// y: Buffer[Int] = ArrayBuffer(1, 2, 3, 4, 5)</span>
+</code></pre></div></div>
+
+<p>Они также используются в циклах <code class="highlighter-rouge">for</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="k">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">3</span> <span class="k">do</span> <span class="nf">println</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
+<span class="c1">// 1</span>
+<span class="c1">// 2</span>
+<span class="c1">// 3</span>
+</code></pre></div></div>
+
+<p>Во многих коллекциях есть метод <code class="highlighter-rouge">range</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">Vector</span><span class="o">.</span><span class="py">range</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">5</span><span class="o">)</span>
+<span class="c1">// res50: Vector[Int] = Vector(1, 2, 3, 4)</span>
+<span class="nv">List</span><span class="o">.</span><span class="py">range</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span>
+<span class="c1">// res51: List[Int] = List(1, 3, 5, 7, 9)</span>
+<span class="nv">Set</span><span class="o">.</span><span class="py">range</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">10</span><span class="o">)</span>
+<span class="c1">// res52: Set[Int] = HashSet(5, 1, 6, 9, 2, 7, 3, 8, 4)</span>
+</code></pre></div></div>
+
+<p>Диапазоны также полезны для создания тестовых коллекций:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">evens</span> <span class="k">=</span> <span class="o">(</span><span class="mi">0</span> <span class="n">to</span> <span class="mi">10</span> <span class="n">by</span> <span class="mi">2</span><span class="o">).</span><span class="py">toList</span>
+<span class="c1">// evens: List[Int] = List(0, 2, 4, 6, 8, 10)</span>
+<span class="k">val</span> <span class="nv">odds</span> <span class="k">=</span> <span class="o">(</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">10</span> <span class="n">by</span> <span class="mi">2</span><span class="o">).</span><span class="py">toList</span>
+<span class="c1">// odds: List[Int] = List(1, 3, 5, 7, 9)</span>
+<span class="k">val</span> <span class="nv">doubles</span> <span class="k">=</span> <span class="o">(</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">5</span><span class="o">).</span><span class="py">map</span><span class="o">(</span><span class="k">_</span> <span class="o">*</span> <span class="mf">2.0</span><span class="o">)</span>
+<span class="c1">// doubles: IndexedSeq[Double] = Vector(2.0, 4.0, 6.0, 8.0, 10.0)</span>
+<span class="k">val</span> <span class="nv">map</span> <span class="k">=</span> <span class="o">(</span><span class="mi">1</span> <span class="n">to</span> <span class="mi">3</span><span class="o">).</span><span class="py">map</span><span class="o">(</span><span class="n">e</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">e</span><span class="o">,</span><span class="n">s</span><span class="s">"$e"</span><span class="o">)).</span><span class="py">toMap</span>
+<span class="c1">// map: Map[Int, String] = Map(1 -&gt; "1", 2 -&gt; "2", 3 -&gt; "3")</span>
+</code></pre></div></div>
+
+<h3 id="tuple-кортежи">Tuple (кортежи)</h3>
+
+<p>Scala <code class="highlighter-rouge">tuple</code> - это тип, который позволяет помещать коллекцию разных типов в один и тот же контейнер.
+Например, учитывая <code class="highlighter-rouge">case class Person</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>можно построить кортеж, содержащий <code class="highlighter-rouge">Int</code>, <code class="highlighter-rouge">String</code> и <code class="highlighter-rouge">Person</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">t</span> <span class="k">=</span> <span class="o">(</span><span class="mi">11</span><span class="o">,</span> <span class="s">"eleven"</span><span class="o">,</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"Eleven"</span><span class="o">))</span>
+<span class="c1">// t: Tuple3[Int, String, Person] = (11, "eleven", Person(name = "Eleven"))</span>
+</code></pre></div></div>
+
+<p>Доступ к значениям кортежа осуществляется через индекс (начиная с 0):</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">t</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+<span class="c1">// res53: Int = 11</span>
+<span class="nf">t</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+<span class="c1">// res54: String = "eleven"</span>
+<span class="nf">t</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span>
+<span class="c1">// res55: Person = Person(name = "Eleven")</span>
+</code></pre></div></div>
+
+<p>либо через методы вида <code class="highlighter-rouge">._i</code>, где <code class="highlighter-rouge">i</code> - порядковый номер (начиная с 1, в отличие от индекса)</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">t</span><span class="o">.</span><span class="py">_1</span>
+<span class="c1">// res56: Int = 11</span>
+<span class="nv">t</span><span class="o">.</span><span class="py">_2</span>
+<span class="c1">// res57: String = "eleven"</span>
+<span class="nv">t</span><span class="o">.</span><span class="py">_3</span>
+<span class="c1">// res58: Person = Person(name = "Eleven")</span>
+</code></pre></div></div>
+
+<p>Также можно использовать <code class="highlighter-rouge">extractor</code> для присвоения переменным значений полей кортежа:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">val</span> <span class="o">(</span><span class="n">num</span><span class="o">,</span> <span class="n">str</span><span class="o">,</span> <span class="n">person</span><span class="o">)</span> <span class="k">=</span> <span class="n">t</span>
+<span class="c1">// num: Int = 11</span>
+<span class="c1">// str: String = "eleven"</span>
+<span class="c1">// person: Person = Person(name = "Eleven")</span>
+</code></pre></div></div>
+
+<p>Кортежи хороши для случаев, когда необходимо поместить коллекцию разнородных типов 
+в небольшую структуру, похожую на коллекцию.</p>
+
+<h3 id="подробнее">Подробнее</h3>
+
+<p>Для дополнительной информации о коллекциях, см. следующие ресурсы:</p>
+<ul>
+  <li><a href="https://docs.scala-lang.org/overviews/collections-2.13/concrete-immutable-collection-classes.html">Неизменяемые классы коллекций</a></li>
+  <li><a href="https://docs.scala-lang.org/overviews/collections-2.13/concrete-mutable-collection-classes.html">Изменяемые классы коллекций</a></li>
+  <li><a href="https://docs.scala-lang.org/tutorials/FAQ/index.html">Как устроены коллекции? Какую из них выбирать?</a></li>
+</ul>
+
+<hr />
+
+<p><strong>References:</strong></p>
+<ul>
+  <li><a href="https://docs.scala-lang.org/scala3/book/taste-collections.html">Scala3 book</a></li>
+  <li><a href="https://docs.scala-lang.org/scala3/book/collections-classes.html">Scala3 book, Collections Types</a></li>
+</ul>
+
+
+<hr>
+<div class="edit-button" style="display: flex; justify-content: space-between;">
+    
+    <a href="/scalaworkbook/docs/collections" class="btn-sm btn-info btn-left"><-- Предыдущая</a>
+    
+    
+    <a href="/scalaworkbook/docs/collections/methods" class="btn-sm btn-info btn-right">Следующая --></a>
+    
+</div></section><div class="edit-button"><a href="https://github.com/artemkorsakov/scalaworkbook/edit/main/docs/docs/docs/collections/classes.md" target="_blank" rel="noopener noreferrer" class="btn-sm btn-info">Редактировать страницу</a></div></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalaworkbook/highlight/highlight.pack.js"></script><script src="/scalaworkbook/lunr/lunr.js"></script><script>
+// For all code blocks, copy the language from the containing div
+// to the inner code tag (where hljs expects it to be)
+const langPrefix = 'language-';
+document.querySelectorAll(`div[class^='${langPrefix}']`).forEach(function(div) {
+  div.classList.forEach(function(cssClass) {
+    if (cssClass.startsWith(langPrefix)) {
+      const lang = cssClass.substring(langPrefix.length);
+      div.querySelectorAll('pre code').forEach(function(code) {
+        code.classList.add(lang);
+      });
+    }
+  });
+});
+
+hljs.configure({languages:['scala','java','bash']});
+hljs.initHighlightingOnLoad();
+      </script><script>console.info('\x57\x65\x62\x73\x69\x74\x65\x20\x62\x75\x69\x6c\x74\x20\x77\x69\x74\x68\x3a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x5f\x5f\x0a\x20\x20\x20\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x5f\x20\x20\x2f\x20\x2f\x5f\x20\x20\x20\x20\x20\x20\x5f\x5f\x5f\x5f\x20\x5f\x5f\x5f\x20\x20\x28\x5f\x29\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x28\x5f\x29\x20\x2f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x0a\x20\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x60\x5f\x5f\x20\x5c\x2f\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x20\x2f\x20\x5f\x5f\x2f\x20\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x0a\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x5f\x2f\x20\x2f\x20\x2f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x5f\x5f\x2f\x20\x2f\x20\x20\x2f\x20\x2f\x5f\x2f\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x20\x2f\x5f\x2f\x20\x20\x5f\x5f\x28\x5f\x5f\x20\x20\x29\x0a\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2e\x5f\x5f\x5f\x2f\x5c\x5f\x5f\x2f\x20\x20\x20\x20\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x2f\x20\x20\x20\x5c\x5f\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x0a\x0a\x68\x74\x74\x70\x73\x3a\x2f\x2f\x34\x37\x64\x65\x67\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x73\x62\x74\x2d\x6d\x69\x63\x72\x6f\x73\x69\x74\x65\x73')</script><script src="/scalaworkbook/js/search.js"></script><script src="/scalaworkbook/js/main.js"></script></body></html>
