@@ -1,0 +1,276 @@
+<!DOCTYPE html><html><head><title>Scala workbook: Обработка ошибок</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Артём Корсаков" /><meta name="description" content="Функциональная разработка на Scala." /><meta name="og:image" content="/scalaworkbook/img/poster.png" /><meta name="image" property="og:image" content="/scalaworkbook/img/poster.png" /><meta name="og:title" content="Scala workbook: Обработка ошибок" /><meta name="title" property="og:title" content="Scala workbook: Обработка ошибок" /><meta name="og:site_name" content="Scala workbook" /><meta name="og:url" content="" /><meta name="og:type" content="website" /><meta name="og:description" content="Функциональная разработка на Scala." /><link rel="icon" type="image/png" href="/scalaworkbook/img/favicon.png" /><meta name="twitter:title" content="Scala workbook: Обработка ошибок" /><meta name="twitter:image" content="https://artemkorsakov.github.io/scalaworkbook/img/poster.png" /><meta name="twitter:description" content="Функциональная разработка на Scala." /><meta name="twitter:card" content="summary_large_image" /><link rel="icon" type="image/png" sizes="16x16" href="/scalaworkbook/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/scalaworkbook/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/scalaworkbook/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/scalaworkbook/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/scalaworkbook/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/scalaworkbook/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/scalaworkbook/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/scalaworkbook/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/scalaworkbook/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/scalaworkbook/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/scalaworkbook/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/scalaworkbook/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/scalaworkbook/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/scalaworkbook/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/scalaworkbook/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/scalaworkbook/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/scalaworkbook/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/scalaworkbook/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/scalaworkbook/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/scalaworkbook/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/scalaworkbook/highlight/styles/vs.css" /><link rel="stylesheet" href="/scalaworkbook/css/pattern-style.css" /><link rel="stylesheet" href="/scalaworkbook/css/override.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/scalaworkbook/" class="brand"><div class="brand-wrapper"><span>Scala workbook</span></div></a></li> <li><a href="/scalaworkbook/docs/index" class="">Обзор Scala</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/start/getting-started" class="">С чего начать?</a></li></ul></li> <li><a href="/scalaworkbook/docs/hello_world" class="">Hello, world!</a></li> <li><a href="/scalaworkbook/docs/repl" class="">REPL</a></li> <li><a href="/scalaworkbook/docs/types" class="">Типы данных</a></li> <li><a href="/scalaworkbook/docs/structures" class="">Структуры управления</a></li> <li><a href="/scalaworkbook/docs/modeling" class="">Моделирование данных</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/modeling/classes" class="">Classes</a></li> <li><a href="/scalaworkbook/docs/modeling/objects" class="">Objects</a></li> <li><a href="/scalaworkbook/docs/modeling/companion-objects" class="">Companion objects</a></li> <li><a href="/scalaworkbook/docs/modeling/traits" class="">Traits</a></li> <li><a href="/scalaworkbook/docs/modeling/abstract-class" class="">Абстрактные классы</a></li> <li><a href="/scalaworkbook/docs/modeling/enums" class="">Enums</a></li> <li><a href="/scalaworkbook/docs/modeling/case-class" class="">Case classes</a></li> <li><a href="/scalaworkbook/docs/modeling/oop" class="">Моделирование ООП</a></li> <li><a href="/scalaworkbook/docs/modeling/fp" class="">Моделирование ФП</a></li></ul></li> <li><a href="/scalaworkbook/docs/methods" class="">Методы</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/methods/method-features" class="">Особенности методов</a></li> <li><a href="/scalaworkbook/docs/methods/main-methods" class="">main методы</a></li></ul></li> <li><a href="/scalaworkbook/docs/functions" class="">Функции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/functions/anonymous" class="">Анонимные функции</a></li> <li><a href="/scalaworkbook/docs/functions/variables" class="">Параметры функции</a></li> <li><a href="/scalaworkbook/docs/functions/eta" class="">Eta расширение</a></li> <li><a href="/scalaworkbook/docs/functions/hofs" class="">Функции высшего порядка</a></li> <li><a href="/scalaworkbook/docs/functions/write-map" class="">Собственный map</a></li> <li><a href="/scalaworkbook/docs/functions/returns-function" class="">Возврат функции в методе</a></li></ul></li> <li><a href="/scalaworkbook/docs/packaging" class="">Пакеты и импорт</a></li> <li><a href="/scalaworkbook/docs/toplevel-definitions" class="">Верхнеур. определения</a></li> <li><a href="/scalaworkbook/docs/collections" class="">Коллекции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/collections/classes" class="">Типы коллекций</a></li> <li><a href="/scalaworkbook/docs/collections/methods" class="">Методы в коллекциях</a></li></ul></li> <li><a href="/scalaworkbook/docs/fp" class="">Функц. программирование</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/fp/what-is-fp" class="">Что такое ФП?</a></li> <li><a href="/scalaworkbook/docs/fp/immutable-values" class="">Неизменяемые значения</a></li> <li><a href="/scalaworkbook/docs/fp/pure-functions" class="">Чистые функции</a></li> <li><a href="/scalaworkbook/docs/fp/functions-are-values" class="">Функции - это значения</a></li> <li><a href="/scalaworkbook/docs/fp/functional-error-handling" class=" active ">Обработка ошибок</a></li></ul></li> <li><a href="/scalaworkbook/docs/type-system" class="">Система типов</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/type-system/types-inferred" class="">Определение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-generics" class="">Generics типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-intersection" class="">Пересечение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-union" class="">Объединение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-adts" class="">Алгебр. типы данных</a></li> <li><a href="/scalaworkbook/docs/type-system/types-variance" class="">Ковариантность</a></li> <li><a href="/scalaworkbook/docs/type-system/types-opaque" class="">Непрозрачные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-structural" class="">Структурные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-dependent-function" class="">Зависимые типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/type-lambdas" class="">Type Lambdas</a></li> <li><a href="/scalaworkbook/docs/type-system/match-types" class="">Match Types</a></li> <li><a href="/scalaworkbook/docs/type-system/polymorphic-function-types" class="">Полимор. типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/types-others" class="">Другие типы</a></li></ul></li> <li><a href="/scalaworkbook/docs/abstractions" class="">Абстракции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/abstractions/ca-given-using" class="">Given и Using</a></li> <li><a href="/scalaworkbook/docs/abstractions/type-classes" class="">Класс типов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-context-bounds" class="">Контекстные привязки</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-given-imports" class="">Given imports</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-extension-methods" class="">Методы расширения</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-classes" class="">Импл. type классов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-multiversal-equality" class="">Multiversal Equality</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-implicit-conversions" class="">Implicit conversions</a></li></ul></li> <li><a href="/scalaworkbook/docs/concurrency" class="">Параллелизм</a></li> <li><a href="/scalaworkbook/docs/tools" class="">Утилиты</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/tools/tools-sbt" class="">Sbt</a></li> <li><a href="/scalaworkbook/docs/tools/tools-worksheets" class="">Worksheet</a></li></ul></li> <li><a href="/scalaworkbook/docs/with_java" class="">Взаимодействие с Java</a></li> <li><a href="/scalaworkbook/docs/extra" class="">Доп. материалы</a></li></ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li class="search-nav hidden-xs hidden-sm"><div id="search-dropdown"><label><i class="fa fa-search"></i>Search</label><input id="search-bar" type="text" placeholder="Enter keywords here..." onclick="displayToggleSearch(event)" /><ul id="search-dropdown-content" class="dropdown dropdown-content"></ul></div></li></ul></div></div></div></div><div id="content" data-github-owner="artemkorsakov" data-github-repo="scalaworkbook"><div class="content-wrapper"><section><h2 id="функциональная-обработка-ошибок">Функциональная обработка ошибок</h2>
+
+<p>Функциональное программирование похоже на написание ряда алгебраических уравнений, 
+и поскольку алгебра не имеет null значений или исключений, эти функции не используются в ФП. 
+Это поднимает интересный вопрос: 
+что делать в ситуациях, когда в коде ООП обычно используются null значение или исключение?</p>
+
+<p>Решение Scala заключается в использовании конструкций, подобных классам <code class="highlighter-rouge">Option</code>/<code class="highlighter-rouge">Some</code>/<code class="highlighter-rouge">None</code>.</p>
+
+<p>Примечание:</p>
+<ul>
+  <li>классы <code class="highlighter-rouge">Some</code> и <code class="highlighter-rouge">None</code> являются подклассами <code class="highlighter-rouge">Option</code></li>
+  <li>вместо того чтобы многократно повторять “<code class="highlighter-rouge">Option</code>/<code class="highlighter-rouge">Some</code>/<code class="highlighter-rouge">None</code>”, 
+следующий текст обычно просто ссылается на “<code class="highlighter-rouge">Option</code>” или “классы <code class="highlighter-rouge">Option</code>”</li>
+</ul>
+
+<h3 id="первый-пример">Первый пример</h3>
+
+<p>Хотя этот первый пример не имеет дело со значениями null, это хороший способ познакомиться с классами <code class="highlighter-rouge">Option</code>.</p>
+
+<p>Представим, что нужно написать метод, который упрощает преобразование строк в целочисленные значения. 
+И нужен элегантный способ обработки исключения, которое возникает, когда метод получает строку типа <code class="highlighter-rouge">"Hello"</code> вместо <code class="highlighter-rouge">"1"</code>. 
+Первое предположение о таком методе может выглядеть следующим образом:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">makeInt</span><span class="o">(</span><span class="n">s</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span>
+  <span class="k">try</span>
+    <span class="nv">Integer</span><span class="o">.</span><span class="py">parseInt</span><span class="o">(</span><span class="nv">s</span><span class="o">.</span><span class="py">trim</span><span class="o">)</span>
+  <span class="k">catch</span>
+    <span class="k">case</span> <span class="n">e</span><span class="k">:</span> <span class="kt">Exception</span> <span class="o">=&gt;</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<p>Если преобразование работает, метод возвращает правильное значение <code class="highlighter-rouge">Int</code>, но в случае сбоя метод возвращает <code class="highlighter-rouge">0</code>. 
+Для некоторых целей это может быть хорошо, но не совсем точно. 
+Например, метод мог получить <code class="highlighter-rouge">"0"</code>, но мог также получить <code class="highlighter-rouge">"foo"</code>, <code class="highlighter-rouge">"bar"</code> 
+или бесконечное количество других строк, которые выдадут исключение. 
+Это реальная проблема: как определить, когда метод действительно получил <code class="highlighter-rouge">"0"</code>, а когда получил что-то еще? 
+При таком подходе нет способа узнать правильный ответ наверняка.</p>
+
+<h3 id="использование-optionsomenone">Использование Option/Some/None</h3>
+
+<p>Распространенным решением этой проблемы в Scala является использование классов, известных как <code class="highlighter-rouge">Option</code>, <code class="highlighter-rouge">Some</code> и <code class="highlighter-rouge">None</code>. 
+Классы <code class="highlighter-rouge">Some</code> и <code class="highlighter-rouge">None</code> являются подклассами <code class="highlighter-rouge">Option</code>, поэтому решение работает следующим образом:</p>
+<ul>
+  <li>объявляется, что <code class="highlighter-rouge">makeInt</code> возвращает тип <code class="highlighter-rouge">Option</code></li>
+  <li>если <code class="highlighter-rouge">makeInt</code> получает строку, которую он может преобразовать в <code class="highlighter-rouge">Int</code>, ответ помещается внутрь <code class="highlighter-rouge">Some</code></li>
+  <li>если <code class="highlighter-rouge">makeInt</code> получает строку, которую не может преобразовать, то возвращает <code class="highlighter-rouge">None</code></li>
+</ul>
+
+<p>Вот доработанная версия <code class="highlighter-rouge">makeInt</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">makeInt</span><span class="o">(</span><span class="n">s</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span>
+  <span class="k">try</span>
+    <span class="nc">Some</span><span class="o">(</span><span class="nv">Integer</span><span class="o">.</span><span class="py">parseInt</span><span class="o">(</span><span class="nv">s</span><span class="o">.</span><span class="py">trim</span><span class="o">))</span>
+  <span class="k">catch</span>
+    <span class="k">case</span> <span class="n">e</span><span class="k">:</span> <span class="kt">Exception</span> <span class="o">=&gt;</span> <span class="nc">None</span>
+</code></pre></div></div>
+
+<p>Этот код можно прочитать следующим образом: 
+“Когда данная строка преобразуется в целое число, верните значение <code class="highlighter-rouge">Int</code>, заключенное в <code class="highlighter-rouge">Some</code>, например <code class="highlighter-rouge">Some(1)</code>. 
+Когда строка не может быть преобразована в целое число и генерируется исключение, метод возвращает значение <code class="highlighter-rouge">None</code>.”</p>
+
+<p>Эти примеры показывают, как работает <code class="highlighter-rouge">makeInt</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">a</span> <span class="k">=</span> <span class="nf">makeInt</span><span class="o">(</span><span class="s">"1"</span><span class="o">)</span>  
+<span class="c1">// a: Option[Int] = Some(value = 1)  </span>
+<span class="k">val</span> <span class="nv">b</span> <span class="k">=</span> <span class="nf">makeInt</span><span class="o">(</span><span class="s">"one"</span><span class="o">)</span>
+<span class="c1">// b: Option[Int] = None</span>
+</code></pre></div></div>
+
+<p>Как показано, строка <code class="highlighter-rouge">"1"</code> приводится к <code class="highlighter-rouge">Some(1)</code>, а строка <code class="highlighter-rouge">"one"</code> - к <code class="highlighter-rouge">None</code>. 
+В этом суть альтернативного подхода к обработке ошибок. 
+Данная техника используется для того, чтобы методы могли возвращать значения вместо исключений. 
+В других ситуациях значения <code class="highlighter-rouge">Option</code> также используются для замены <code class="highlighter-rouge">null</code> значений.</p>
+
+<p>Примечание:</p>
+<ul>
+  <li>этот подход используется во всех классах библиотеки Scala, а также в сторонних библиотеках Scala</li>
+  <li>ключевым моментом примера является то, что функциональные методы не генерируют исключения; 
+вместо этого они возвращают такие значения, как <code class="highlighter-rouge">Option</code></li>
+</ul>
+
+<h3 id="потребитель-makeint">Потребитель makeInt</h3>
+
+<p>Теперь представим, что мы являемся потребителем метода <code class="highlighter-rouge">makeInt</code>. 
+Известно, что он возвращает подкласс <code class="highlighter-rouge">Option[Int]</code>, поэтому возникает вопрос: 
+как работать с этими возвращаемыми типами?</p>
+
+<p>Есть два распространенных ответа, в зависимости от потребностей:</p>
+<ul>
+  <li>использование <code class="highlighter-rouge">match</code> выражений</li>
+  <li>использование <code class="highlighter-rouge">for</code> выражений</li>
+</ul>
+
+<h3 id="использование-match-выражений">Использование match выражений</h3>
+
+<p>Одним из возможных решений является использование выражения <code class="highlighter-rouge">match</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">makeInt</span><span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="k">match</span>
+  <span class="k">case</span> <span class="nc">Some</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
+  <span class="k">case</span> <span class="nc">None</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"That didn’t work."</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>В этом примере, если <code class="highlighter-rouge">x</code> можно преобразовать в <code class="highlighter-rouge">Int</code>, вычисляется выражение в правой части первого предложения <code class="highlighter-rouge">case</code>; 
+если <code class="highlighter-rouge">x</code> не может быть преобразован в <code class="highlighter-rouge">Int</code>, оценивается выражение в правой части второго предложения <code class="highlighter-rouge">case</code>.</p>
+
+<h3 id="использование-for-выражений">Использование for выражений</h3>
+
+<p>Другим распространенным решением является использование выражения <code class="highlighter-rouge">for</code>, то есть комбинации <code class="highlighter-rouge">for</code>/<code class="highlighter-rouge">yield</code>. 
+Например, представим, что необходимо преобразовать три строки в целочисленные значения, а затем сложить их. 
+Решение задачи с использованием выражения <code class="highlighter-rouge">for</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">y</span> <span class="k">=</span> <span class="k">for</span>
+  <span class="n">a</span> <span class="k">&lt;-</span> <span class="nf">makeInt</span><span class="o">(</span><span class="n">stringA</span><span class="o">)</span>
+  <span class="n">b</span> <span class="k">&lt;-</span> <span class="nf">makeInt</span><span class="o">(</span><span class="n">stringB</span><span class="o">)</span>
+  <span class="n">c</span> <span class="k">&lt;-</span> <span class="nf">makeInt</span><span class="o">(</span><span class="n">stringC</span><span class="o">)</span>
+<span class="k">yield</span>
+  <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span>
+</code></pre></div></div>
+
+<p>После выполнения этого выражения <code class="highlighter-rouge">y</code> может принять одно из двух значений:</p>
+<ul>
+  <li>если <em>все</em> три строки конвертируются в значения <code class="highlighter-rouge">Int</code>, <code class="highlighter-rouge">y</code> будет равно <code class="highlighter-rouge">Some[Int]</code>, 
+т. е. целым числом, обернутым внутри <code class="highlighter-rouge">Some</code></li>
+  <li>если <em>какая-либо</em> из трех строк не может быть преобразована в <code class="highlighter-rouge">Int</code>, <code class="highlighter-rouge">y</code> равен <code class="highlighter-rouge">None</code></li>
+</ul>
+
+<p>Это можно проверить на примере:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">stringA</span> <span class="k">=</span> <span class="s">"1"</span>
+<span class="k">val</span> <span class="nv">stringB</span> <span class="k">=</span> <span class="s">"2"</span>
+<span class="k">val</span> <span class="nv">stringC</span> <span class="k">=</span> <span class="s">"3"</span>
+</code></pre></div></div>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">y</span> <span class="k">=</span> <span class="k">for</span>
+  <span class="n">a</span> <span class="k">&lt;-</span> <span class="nf">makeInt</span><span class="o">(</span><span class="n">stringA</span><span class="o">)</span>
+  <span class="n">b</span> <span class="k">&lt;-</span> <span class="nf">makeInt</span><span class="o">(</span><span class="n">stringB</span><span class="o">)</span>
+  <span class="n">c</span> <span class="k">&lt;-</span> <span class="nf">makeInt</span><span class="o">(</span><span class="n">stringC</span><span class="o">)</span>
+<span class="k">yield</span>
+  <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span>
+<span class="c1">// y: Option[Int] = Some(value = 6)</span>
+</code></pre></div></div>
+
+<p>Чтобы увидеть негативный кейс, достаточно изменить любую из строк на что-то, что нельзя преобразовать в целое число. 
+В этом случае <code class="highlighter-rouge">y</code> равно <code class="highlighter-rouge">None</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="nc">None</span>
+</code></pre></div></div>
+
+<h3 id="восприятие-option-как-контейнера">Восприятие Option, как контейнера</h3>
+
+<p>Для лучшего восприятия <code class="highlighter-rouge">Option</code>, его можно представить как контейнер:</p>
+<ul>
+  <li><code class="highlighter-rouge">Some</code> представляет собой контейнер с одним элементов</li>
+  <li><code class="highlighter-rouge">None</code> не является контейнером, в нем ничего нет</li>
+</ul>
+
+<p>Если предпочтительнее думать об <code class="highlighter-rouge">Option</code> как о ящике, то <code class="highlighter-rouge">None</code> подобен пустому ящику. 
+Что-то в нём могло быть, но нет.</p>
+
+<h3 id="использование-option-для-замены-null">Использование Option для замены null</h3>
+
+<p>Возвращаясь к значениям <code class="highlighter-rouge">null</code>, место, где <code class="highlighter-rouge">null</code> значение может незаметно проникнуть в код, — класс, подобный этому:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Address</span><span class="o">(</span>
+  <span class="k">var</span> <span class="n">street1</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span>
+  <span class="k">var</span> <span class="n">street2</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span>
+  <span class="k">var</span> <span class="n">city</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span>
+  <span class="k">var</span> <span class="n">state</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span>
+  <span class="k">var</span> <span class="n">zip</span><span class="k">:</span> <span class="kt">String</span>
+<span class="o">)</span>
+</code></pre></div></div>
+
+<p>Хотя каждый адрес имеет значение <code class="highlighter-rouge">street1</code>, значение <code class="highlighter-rouge">street2</code> не является обязательным. 
+В результате полю <code class="highlighter-rouge">street2</code> можно присвоить значение <code class="highlighter-rouge">null</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">santa</span> <span class="k">=</span> <span class="nc">Address</span><span class="o">(</span>
+  <span class="s">"1 Main Street"</span><span class="o">,</span>
+  <span class="kc">null</span><span class="o">,</span>            
+  <span class="s">"North Pole"</span><span class="o">,</span>
+  <span class="s">"Alaska"</span><span class="o">,</span>
+  <span class="s">"99705"</span>
+<span class="o">)</span>
+</code></pre></div></div>
+
+<p>Исторически сложилось так, что в этой ситуации разработчики использовали пустые строки и значения null, 
+оба из которых “взламывают” решения основной проблемы: <code class="highlighter-rouge">street2</code> - необязательное поле. 
+В Scala и других современных языках правильное решение состоит в том, 
+чтобы заранее объявить, что <code class="highlighter-rouge">street2</code> является необязательным:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Address</span><span class="o">(</span>
+  <span class="k">var</span> <span class="n">street1</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span>
+  <span class="k">var</span> <span class="n">street2</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">String</span><span class="o">],</span>  
+  <span class="k">var</span> <span class="n">city</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span>
+  <span class="k">var</span> <span class="n">state</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span>
+  <span class="k">var</span> <span class="n">zip</span><span class="k">:</span> <span class="kt">String</span>
+<span class="o">)</span>
+</code></pre></div></div>
+
+<p>Теперь можно написать более точный код:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">santa</span> <span class="k">=</span> <span class="nc">Address</span><span class="o">(</span>
+  <span class="s">"1 Main Street"</span><span class="o">,</span>
+  <span class="nc">None</span><span class="o">,</span>         
+  <span class="s">"North Pole"</span><span class="o">,</span>
+  <span class="s">"Alaska"</span><span class="o">,</span>
+  <span class="s">"99705"</span>
+<span class="o">)</span>
+</code></pre></div></div>
+
+<p>или так:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">santa</span> <span class="k">=</span> <span class="nc">Address</span><span class="o">(</span>
+  <span class="s">"123 Main Street"</span><span class="o">,</span>
+  <span class="nc">Some</span><span class="o">(</span><span class="s">"Apt. 2B"</span><span class="o">),</span>
+  <span class="s">"Talkeetna"</span><span class="o">,</span>
+  <span class="s">"Alaska"</span><span class="o">,</span>
+  <span class="s">"99676"</span>
+<span class="o">)</span>
+</code></pre></div></div>
+
+<h3 id="option--не-единственное-решение">Option — не единственное решение</h3>
+
+<p>В этом разделе основное внимание уделялось <code class="highlighter-rouge">Option</code> классам, но у Scala есть несколько других альтернатив.</p>
+
+<p>Например, три класса, известные как <code class="highlighter-rouge">Try</code>/<code class="highlighter-rouge">Success</code>/<code class="highlighter-rouge">Failure</code>, работают также, 
+но (а) эти классы в основном используются, когда код может генерировать исключения, 
+и (б) желательно использовать класс <code class="highlighter-rouge">Failure</code>, потому что он дает доступ к сообщению об исключении. 
+Например, классы <code class="highlighter-rouge">Try</code> обычно используются при написании методов, 
+которые взаимодействуют с файлами, базами данных или интернет-службами, 
+поскольку эти функции могут легко создавать исключения.</p>
+
+<h3 id="краткое-ревью">Краткое ревью</h3>
+
+<p>Краткое ревью:</p>
+<ul>
+  <li>функциональные программисты не используют <code class="highlighter-rouge">null</code> значения</li>
+  <li>основной заменой <code class="highlighter-rouge">null</code> значениям является использование классов <code class="highlighter-rouge">Option</code></li>
+  <li>функциональные методы не выдают исключений; вместо этого они возвращают такие значения, как <code class="highlighter-rouge">Option</code>, <code class="highlighter-rouge">Try</code> или <code class="highlighter-rouge">Either</code></li>
+  <li>распространенными способами работы со значениями <code class="highlighter-rouge">Option</code> являются выражения <code class="highlighter-rouge">match</code> и <code class="highlighter-rouge">for</code></li>
+  <li><code class="highlighter-rouge">Option</code> можно рассматривать как контейнеры с одним элементом (<code class="highlighter-rouge">Some</code>) и без элементов (<code class="highlighter-rouge">None</code>)</li>
+  <li><code class="highlighter-rouge">Option</code> также можно использовать для дополнительных параметров конструктора или метода</li>
+</ul>
+
+<hr />
+
+<p><strong>References:</strong></p>
+<ul>
+  <li><a href="https://docs.scala-lang.org/scala3/book/fp-functional-error-handling.html">Scala3 book</a></li>
+</ul>
+
+
+<hr>
+<div class="edit-button" style="display: flex; justify-content: space-between;">
+    
+    <a href="/scalaworkbook/docs/./functions-are-values" class="btn-sm btn-info btn-left"><-- Предыдущая</a>
+    
+    
+    <a href="/scalaworkbook/docs/../type-system" class="btn-sm btn-info btn-right">Следующая --></a>
+    
+</div></section><div class="edit-button"><a href="https://github.com/artemkorsakov/scalaworkbook/edit/main/docs/docs/docs/fp/functional-error-handling.md" target="_blank" rel="noopener noreferrer" class="btn-sm btn-info">Редактировать страницу</a></div></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalaworkbook/highlight/highlight.pack.js"></script><script src="/scalaworkbook/lunr/lunr.js"></script><script>
+// For all code blocks, copy the language from the containing div
+// to the inner code tag (where hljs expects it to be)
+const langPrefix = 'language-';
+document.querySelectorAll(`div[class^='${langPrefix}']`).forEach(function(div) {
+  div.classList.forEach(function(cssClass) {
+    if (cssClass.startsWith(langPrefix)) {
+      const lang = cssClass.substring(langPrefix.length);
+      div.querySelectorAll('pre code').forEach(function(code) {
+        code.classList.add(lang);
+      });
+    }
+  });
+});
+
+hljs.configure({languages:['scala','java','bash']});
+hljs.initHighlightingOnLoad();
+      </script><script>console.info('\x57\x65\x62\x73\x69\x74\x65\x20\x62\x75\x69\x6c\x74\x20\x77\x69\x74\x68\x3a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x5f\x5f\x0a\x20\x20\x20\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x5f\x20\x20\x2f\x20\x2f\x5f\x20\x20\x20\x20\x20\x20\x5f\x5f\x5f\x5f\x20\x5f\x5f\x5f\x20\x20\x28\x5f\x29\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x28\x5f\x29\x20\x2f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x0a\x20\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x60\x5f\x5f\x20\x5c\x2f\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x20\x2f\x20\x5f\x5f\x2f\x20\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x0a\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x5f\x2f\x20\x2f\x20\x2f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x5f\x5f\x2f\x20\x2f\x20\x20\x2f\x20\x2f\x5f\x2f\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x20\x2f\x5f\x2f\x20\x20\x5f\x5f\x28\x5f\x5f\x20\x20\x29\x0a\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2e\x5f\x5f\x5f\x2f\x5c\x5f\x5f\x2f\x20\x20\x20\x20\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x2f\x20\x20\x20\x5c\x5f\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x0a\x0a\x68\x74\x74\x70\x73\x3a\x2f\x2f\x34\x37\x64\x65\x67\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x73\x62\x74\x2d\x6d\x69\x63\x72\x6f\x73\x69\x74\x65\x73')</script><script src="/scalaworkbook/js/search.js"></script><script src="/scalaworkbook/js/main.js"></script></body></html>
