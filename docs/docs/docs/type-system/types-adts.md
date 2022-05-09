@@ -5,64 +5,9 @@ prev: type-system/types-union
 next: type-system/types-variance
 ---
 
-## Алгебраические типы данных
+## Алгебраические типы данных (ADT)
 
-Алгебраические типы данных (_ADT_) могут быть созданы с помощью конструкции `enum`, 
-поэтому кратко рассмотрим перечисления, прежде чем рассматривать _ADT_.
-
-### Перечисления
-
-Перечисление используется для определения типа, состоящего из набора именованных значений:
-
-```scala
-enum Color:
-  case Red, Green, Blue
-```
-
-который можно рассматривать как сокращение для:
-
-```scala mdoc:silent
-enum Color(val rgb: Int):
-  case Red   extends Color(0xFF0000)
-  case Green extends Color(0x00FF00)
-  case Blue  extends Color(0x0000FF)
-```
-
-Таким образом, каждый из различных вариантов имеет параметр `rgb`, которому присваивается соответствующее значение:
-
-```scala mdoc
-println(Color.Green.rgb)
-```
-
-#### Кастомные перечисления
-
-Перечисления также могут иметь кастомные определения:
-
-```scala mdoc:silent
-enum Planet(mass: Double, radius: Double):
-
-  private final val G = 6.67300E-11
-  def surfaceGravity = G * mass / (radius * radius)
-  def surfaceWeight(otherMass: Double) =  otherMass * surfaceGravity
-
-  case Mercury extends Planet(3.303e+23, 2.4397e6)
-  case Venus   extends Planet(4.869e+24, 6.0518e6)
-  case Earth   extends Planet(5.976e+24, 6.37814e6)
-  // остальные планеты ...
-```
-
-Подобно классам и case классам, для перечисления также можно определить сопутствующий объект:
-
-```scala mdoc:silent
-object Planet:
-  def main(args: Array[String]) =
-    val earthWeight = args(0).toDouble
-    val mass = earthWeight / Earth.surfaceGravity
-    for (p <- values)
-      println(s"Your weight on $p is ${p.surfaceWeight(mass)}")
-```
-
-### Алгебраические типы данных (ADT)
+Алгебраические типы данных (_ADT_) могут быть созданы с помощью [конструкции `enum`](@DOCS_LINK@modeling/enums).
 
 Концепция `enum` является достаточно общей, чтобы также поддерживать алгебраические типы данных (_ADT_) 
 и их обобщенную версию (_GADT_). 
@@ -93,6 +38,17 @@ enum Option[+T]:
 ```scala mdoc
 Option.Some("hello")
 Option.None
+```
+
+Обратите внимание, что тип приведенных выше выражений всегда `Option`. 
+Как правило, тип case enum будет расширен до базового типа enum, если не ожидается более конкретный тип. 
+Это тонкая разница по сравнению с обычными case class-ами. 
+Классы, составляющие case enum, существуют, и их можно использовать, 
+либо создав их непосредственно с помощью `new`, либо явно указав ожидаемый тип.
+
+```scala mdoc
+new Option.Some(2)
+val x: Option.Some[Int] = Option.Some(3)
 ```
 
 Как и в других случаях использования перечисления, 
@@ -173,8 +129,8 @@ def extract[T](b: Box[T]): T = b match
 
 ### Дешугаризация перечислений
 
-Концептуально перечисления можно рассматривать как определение закрытого класса вместе с сопутствующим ему объектом. 
-Давайте посмотрим на дешугаризацию перечисления `Color`:
+Концептуально перечисления можно рассматривать как определение `sealed` класса вместе с сопутствующим объектом. 
+Посмотрим на дешугаризацию перечисления `Color`:
 
 ```scala
 sealed abstract class Color(val rgb: Int) extends scala.reflect.Enum
@@ -191,7 +147,8 @@ object Color:
     case _ => throw new NoSuchElementException(ordinal.toString)
 ```
 
-Вышеописанная дешугаризация упрощена, и [некоторые детали](https://docs.scala-lang.org/scala3/reference/enums/desugarEnums.html) были опущены намеренно.
+Вышеописанная дешугаризация упрощена, 
+[детали доступны по ссылке](https://docs.scala-lang.org/scala3/reference/enums/desugarEnums.html).
 
 Хотя перечисления можно кодировать вручную с помощью других конструкций, 
 использование `enum` является более кратким, 
@@ -202,3 +159,4 @@ object Color:
 
 **References:**
 - [Scala3 book](https://docs.scala-lang.org/scala3/book/types-adts-gadts.html)
+- [Scala 3 Reference](https://docs.scala-lang.org/scala3/reference/enums/adts.html)
