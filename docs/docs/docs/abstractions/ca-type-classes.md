@@ -110,10 +110,83 @@ trait HasLegs[A]:
     def run(): Unit
 ```
 
-#### Реальный пример
+### Распространенные классы типов
 
-Реальный пример того, как классы типов используются в Scala 3, см. в обсуждении `CanEqual` 
-в разделе [Multiversal Equality](./ca-multiversal-equality).
+#### Полугруппы и моноиды
+
+Вот определение класса типа `Monoid`:
+
+```scala mdoc:silent
+trait SemiGroup[T]:
+  extension (x: T) def combine (y: T): T
+
+trait Monoid[T] extends SemiGroup[T]:
+  def unit: T
+```
+
+Реализация класса типа `Monoid` для типа String может быть следующей:
+
+```scala mdoc:silent
+given Monoid[String] with
+  extension (x: String) def combine (y: String): String = x.concat(y)
+  def unit: String = ""
+```
+
+Тогда как для типа `Int` можно было бы написать следующее:
+
+```scala mdoc:silent
+given Monoid[Int] with
+  extension (x: Int) def combine (y: Int): Int = x + y
+  def unit: Int = 0
+```
+
+Этот моноид теперь можно использовать в качестве привязки к контексту в следующем методе `combineAll`:
+
+```scala mdoc:silent
+def combineAll[T: Monoid](xs: List[T]): T =
+  xs.foldLeft(summon[Monoid[T]].unit)(_.combine(_))
+```
+
+Чтобы избавиться от `summon[...]` можно определить объект `Monoid` следующим образом:
+
+```scala mdoc:silent
+object Monoid:
+  def apply[T](using m: Monoid[T]) = m
+```
+
+Что позволило бы переписать метод `combineAll` следующим образом:
+
+```scala mdoc:silent
+def combineAll[T: Monoid](xs: List[T]): T =
+  xs.foldLeft(Monoid[T].unit)(_.combine(_))
+```
+
+#### Функторы
+
+Тип `Functor` предоставляет возможность "отображать" свои значения, 
+т.е. применять функцию, которая трансформируется внутри значения, сохраняя при этом его форму. 
+Например, чтобы изменить каждый элемент коллекции, не удаляя и не добавляя их. 
+Можно представить все типы, которые могут быть "отображены" с помощью `F`. 
+Это конструктор типа: тип его значений становится конкретным, когда предоставляется аргумент типа. 
+Поэтому мы пишем его `F[_]`, намекая, что тип `F` принимает в качестве аргумента другой тип. 
+Таким образом, определение generic `Functor` будет записано как:
+
+```scala mdoc:silent
+trait Functor[F[_]]:
+  def map[A, B](x: F[A], f: A => B): F[B]
+```
+
+Что можно было бы прочитать следующим образом: 
+"Конструктор `Functor` типа `F[_]` представляет собой возможность преобразования `F[A]` к `F[B]` 
+посредством применения функции `f` с типом `A => B`". 
+Мы называем здесь определение `Functor` классом типов. 
+Экземпляр `Functor` для типа `List` можно определить следующим образом:
+
+```scala mdoc:silent
+given Functor[List] with
+  def map[A, B](x: List[A], f: A => B): List[B] =
+    x.map(f) // List already has a `map` method
+```
 
 
 ---

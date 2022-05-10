@@ -146,10 +146,11 @@ def minimum[T](xs: List[T])(using Ord[T]) =
 С этой настройкой все следующие вызовы нормализуются так:
 
 ```scala mdoc
-val xs = List(1,3,2,4)
+val xs = List(List(1,2,3), Nil)
 minimum(xs)
 maximum(xs)(using descending)
-maximum(xs)(using descending(using intOrd))
+maximum(xs)(using descending(using listOrd))
+maximum(xs)(using descending(using listOrd(using intOrd)))
 ```
 
 ### Несколько using
