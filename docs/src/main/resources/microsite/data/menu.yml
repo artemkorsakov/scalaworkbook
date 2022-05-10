@@ -163,8 +163,11 @@ options:
     url: docs/abstractions
 
     nested_options:
-      - title: Given и Using
-        url: docs/abstractions/ca-given-using
+      - title: Given
+        url: docs/abstractions/ca-given
+
+      - title: Using
+        url: docs/abstractions/ca-using
 
       - title: Класс типов
         url: docs/abstractions/type-classes
@@ -184,7 +187,7 @@ options:
       - title: Multiversal Equality
         url: docs/abstractions/ca-multiversal-equality
 
-      - title: Implicit conversions
+      - title: Неявные преобр.
         url: docs/abstractions/ca-implicit-conversions
 
   - title: Параллелизм

@@ -1,11 +1,11 @@
 ---
 layout: docsplus
-title: "Implicit conversions"
+title: "Неявные преобр."
 prev: abstractions/ca-multiversal-equality
 next: concurrency
 ---
 
-## {{page.title}}
+## Неявные преобразования типов
 
 Неявные преобразования определяются экземплярами `given` класса `scala.Conversion`. 
 Например, без учета возможных ошибок преобразования, этот код определяет неявное преобразование из `String` в `Int`:
@@ -15,7 +15,7 @@ given Conversion[String, Int] with
   def apply(s: String): Int = Integer.parseInt(s)
 ```
 
-Используя псевдоним, это можно выразить более кратко:
+Используя псевдоним, можно выразиться более кратко:
 
 ```scala
 given Conversion[String, Int] = Integer.parseInt(_)

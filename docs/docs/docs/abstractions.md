@@ -2,7 +2,7 @@
 layout: docsplus
 title: "Абстракции"
 prev: type-system/types-others
-next: abstractions/ca-given-using
+next: abstractions/ca-given
 ---
 
 ## Контекстуальные абстракции
@@ -18,10 +18,16 @@ Implicits представляют собой единую парадигму с
 - выражение возможностей
 - вычисление новых типов и доказательство взаимосвязей между ними
 
-С тех пор этому примеру последовали другие языки, например, traits в Rust или protocol extensions в Swift. 
-Предложения по дизайну также представлены для Kotlin в качестве разрешения зависимостей во время компиляции, 
-для C# в качестве Shapes и Extensions или для F# в качестве Traits.
-Implicits также являются общей особенностью тех, кто доказывает теоремы, таких как Coq или Agda.
+С тех пор этому примеру последовали другие языки, например, 
+[traits в Rust](https://doc.rust-lang.org/rust-by-example/trait.html) 
+или [protocol extensions в Swift](https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#ID521). 
+Предложения по дизайну также представлены для 
+[Kotlin в качестве разрешения зависимостей во время компиляции](https://github.com/Kotlin/KEEP/blob/e863b25f8b3f2e9b9aaac361c6ee52be31453ee0/proposals/compile-time-dependency-resolution.md), 
+для C# [в качестве Shapes и Extensions](https://github.com/dotnet/csharplang/discussions/164) 
+или для [F# в качестве Traits](https://github.com/MattWindsor91/visualfsharp/blob/hackathon-vs/examples/fsconcepts.md).
+Implicits также являются общей особенностью тех, кто доказывает теоремы, 
+таких как [Coq](https://coq.inria.fr/refman/language/extensions/implicit-arguments.html)
+или [Agda](https://agda.readthedocs.io/en/latest/language/implicit-arguments.html).
 
 Несмотря на то, что в этих проектах используется разная терминология, 
 все они являются вариантами основной идеи вывода терминов (_term inference_): 
@@ -38,7 +44,7 @@ Scala 3 включает в себя переработку контекстны
 Вместо того, чтобы предлагать одну очень мощную функцию имплицитов, 
 Scala 3 предлагает несколько функций, ориентированных на варианты использования:
 - **Отвлечение контекстной информации**. 
-[Предложения Using](@DOCS_LINK@abstractions/ca-given-using) 
+[Предложения Using](@DOCS_LINK@abstractions/ca-using) 
 позволяют программистам абстрагироваться от информации, которая доступна в контексте вызова и должна передаваться неявно. 
 В качестве улучшения по сравнению со Scala 2 подразумевается, 
 что предложения using могут быть указаны по типу, 
@@ -46,11 +52,11 @@ Scala 3 предлагает несколько функций, ориентир
 - **Предоставление экземпляров Type-class**. 
 [Given экземпляры](@DOCS_LINK@abstractions/ca-type-classes) позволяют программистам определять каноническое значение определенного типа. 
 Это делает программирование с type-classes более простым без утечек деталей реализации.
-- **Ретроактивное продление классов**. 
+- **Расширение классов**. 
 В Scala 2 методы расширения должны были кодироваться с использованием неявных преобразований или неявных классов. 
 Напротив, в Scala 3 [методы расширения](@DOCS_LINK@abstractions/ca-extension-methods) 
 теперь встроены непосредственно в язык, что приводит к улучшению сообщений об ошибках и улучшению вывода типов.
-- **Просмотр одного типа как другого**.
+- **Неявное преобразование одного типа в другой**.
 Неявное преобразование было [переработано](@DOCS_LINK@abstractions/ca-implicit-conversions) с нуля 
 как экземпляры type-class `Conversion`.
 - **Контекстные абстракции более высокого порядка**. 
@@ -85,3 +91,4 @@ Scala 3 предлагает несколько функций, ориентир
 
 **References:**
 - [Scala3 book, Contextual Abstractions](https://docs.scala-lang.org/scala3/book/ca-contextual-abstractions-intro.html)
+- [Scala 3 Reference](https://docs.scala-lang.org/scala3/reference/contextual/index.html)
