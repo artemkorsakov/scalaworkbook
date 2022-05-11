@@ -62,6 +62,6 @@ lazy val docs = project
     mdocVariables := Map(
       "SCALA" -> Scala3,
       "SBT_VERSION" -> "1.6.2",
-      "DOCS_LINK" -> "/scalaworkbook/docs/"
+      "DOC" -> "/scalaworkbook/docs/"
     )
   )

@@ -13,7 +13,7 @@ next: abstractions/type-classes
 Здесь могут помочь параметры контекста, поскольку они позволяют компилятору синтезировать повторяющиеся аргументы 
 вместо того, чтобы каждый раз записывать их явно.
 
-Например, с [экземплярами given intOrd и listOrd](@DOCS_LINK@abstractions/ca-given) функция `max`, 
+Например, с [экземплярами given intOrd и listOrd](@DOC@abstractions/ca-given) функция `max`, 
 которая работает для любых аргументов с возможностью упорядочивания, может быть определена следующим образом:
 
 ```scala mdoc:invisible
@@ -119,7 +119,7 @@ class GivenIntBox2(using givenInt: Int):
   //def n = summon[Int] // неопределенность
 ```
 
-Элемент `given` можно импортировать, как описано в разделе об [импорте givens](@DOCS_LINK@abstractions/ca-given-imports):
+Элемент `given` можно импортировать, как описано в разделе об [импорте givens](@DOC@abstractions/ca-given-imports):
 
 ```scala
 val b = GivenIntBox(using 23)

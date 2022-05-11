@@ -8,7 +8,7 @@ next: abstractions/ca-using
 ## Экземпляры given
 
 _Given instances_ (или просто "givens") определяют "канонические" значения определенных типов, 
-которые служат для синтеза аргументов [в параметрах контекста](@DOCS_LINK@abstractions/ca-using). 
+которые служат для синтеза аргументов [в параметрах контекста](@DOC@abstractions/ca-using). 
 Пример:
 
 ```scala mdoc:silent
@@ -38,7 +38,7 @@ given listOrd[T](using ord: Ord[T]): Ord[List[T]] with
 которые поставляются с `given` экземпляром `Ord[T]`. 
 Предложение `using` в `listOrd` определяет условие: 
 для существования `given` типа `Ord[List[T]]` должен существовать `given` тип `Ord[T]`. 
-Такие условия расширяются компилятором [до параметров контекста](@DOCS_LINK@abstractions/ca-using).
+Такие условия расширяются компилятором [до параметров контекста](@DOC@abstractions/ca-using).
 
 Результат:
 
