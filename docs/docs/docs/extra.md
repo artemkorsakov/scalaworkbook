@@ -1,7 +1,7 @@
 ---
 layout: docsplus
 title: "Доп. материалы"
-prev: with_java
+prev: metaprogramming
 ---
 
 ## Дополнительные материалы

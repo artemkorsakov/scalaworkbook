@@ -209,5 +209,8 @@ options:
   - title: Взаимодействие с Java
     url: docs/with_java
 
+  - title: Metaprogramming
+    url: docs/metaprogramming
+
   - title: Доп. материалы
     url: docs/extra

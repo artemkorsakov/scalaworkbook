@@ -2,7 +2,7 @@
 layout: docsplus
 title: "Взаимодействие с Java"
 prev: tools/tools-worksheets
-next: extra
+next: metaprogramming
 ---
 
 ## {{page.title}}
