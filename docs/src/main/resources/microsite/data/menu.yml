@@ -184,6 +184,9 @@ options:
       - title: Импл. type классов
         url: docs/abstractions/ca-type-classes
 
+      - title: Type Class Derivation
+        url: docs/abstractions/ca-type-class-derivation
+
       - title: Multiversal Equality
         url: docs/abstractions/ca-multiversal-equality
 

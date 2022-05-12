@@ -1,11 +1,11 @@
 ---
 layout: docsplus
 title: "Multiversal Equality"
-prev: abstractions/ca-type-classes
+prev: abstractions/ca-type-class-derivation
 next: abstractions/ca-implicit-conversions
 ---
 
-## Мультиуниверсальное равенство
+## Многостороннее равенство
 
 Раньше в Scala было универсальное равенство (_universal equality_): 
 два значения любых типов можно было сравнивать друг с другом с помощью `==` и `!=`. 
