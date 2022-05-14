@@ -190,6 +190,9 @@ options:
       - title: Multiversal Equality
         url: docs/abstractions/ca-multiversal-equality
 
+      - title: Контекстные функции
+        url: docs/abstractions/context-functions
+
       - title: Неявные преобр.
         url: docs/abstractions/ca-implicit-conversions
 

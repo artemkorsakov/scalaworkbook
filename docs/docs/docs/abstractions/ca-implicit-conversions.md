@@ -1,7 +1,7 @@
 ---
 layout: docsplus
 title: "Неявные преобр."
-prev: abstractions/ca-multiversal-equality
+prev: abstractions/context-functions
 next: concurrency
 ---
 

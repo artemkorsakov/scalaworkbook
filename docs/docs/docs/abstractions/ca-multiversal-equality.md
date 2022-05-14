@@ -2,7 +2,7 @@
 layout: docsplus
 title: "Multiversal Equality"
 prev: abstractions/ca-type-class-derivation
-next: abstractions/ca-implicit-conversions
+next: abstractions/context-functions
 ---
 
 ## Многостороннее равенство
