@@ -1,7 +1,7 @@
 ---
 layout: docsplus
 title: "Параллелизм"
-prev: abstractions/ca-implicit-conversions
+prev: abstractions/ca-by-name-parameters
 next: tools
 ---
 

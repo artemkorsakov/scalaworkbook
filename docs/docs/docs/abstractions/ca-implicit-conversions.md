@@ -2,7 +2,7 @@
 layout: docsplus
 title: "Неявные преобр."
 prev: abstractions/context-functions
-next: concurrency
+next: abstractions/ca-by-name-parameters
 ---
 
 ## Неявные преобразования типов

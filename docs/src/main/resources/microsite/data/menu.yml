@@ -196,6 +196,9 @@ options:
       - title: Неявные преобр.
         url: docs/abstractions/ca-implicit-conversions
 
+      - title: Конт. пар. по имени
+        url: docs/abstractions/ca-by-name-parameters
+
   - title: Параллелизм
     url: docs/concurrency
 
