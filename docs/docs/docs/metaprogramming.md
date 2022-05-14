@@ -2,7 +2,7 @@
 layout: docsplus
 title: "Metaprogramming"
 prev: with_java
-next: extra
+next: metaprogramming/inline
 ---
 
 ## {{page.title}}

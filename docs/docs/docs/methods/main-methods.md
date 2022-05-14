@@ -1,7 +1,7 @@
 ---
 layout: docsplus
 title: "main методы"
-prev: methods/method-features
+prev: methods/extension-methods
 next: functions
 ---
 

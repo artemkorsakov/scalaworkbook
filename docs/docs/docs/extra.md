@@ -1,7 +1,7 @@
 ---
 layout: docsplus
 title: "Доп. материалы"
-prev: metaprogramming
+prev: metaprogramming/inline
 ---
 
 ## Дополнительные материалы

@@ -53,8 +53,20 @@ options:
     url: docs/methods
 
     nested_options:
-      - title: Особенности методов
+      - title: Определение методов
         url: docs/methods/method-features
+
+      - title: Параметры по умолчанию
+        url: docs/methods/default-parameters
+
+      - title: Именованные параметры
+        url: docs/methods/named-parameters
+
+      - title: Параметры по имени
+        url: docs/methods/by-name-parameter
+
+      - title: Расширение
+        url: docs/methods/extension-methods
 
       - title: main методы
         url: docs/methods/main-methods
@@ -217,6 +229,10 @@ options:
 
   - title: Metaprogramming
     url: docs/metaprogramming
+
+    nested_options:
+      - title: Inline
+        url: docs/metaprogramming/inline
 
   - title: Доп. материалы
     url: docs/extra
