@@ -1,11 +1,11 @@
 ---
 layout: docsplus
-title: "Методы расширения"
+title: "Методы расш. - детали"
 prev: abstractions/ca-given-imports
 next: abstractions/ca-type-classes
 ---
 
-## {{page.title}}
+## Методы расширения
 
 Методы расширения (_extension methods_) позволяют добавлять методы к типу после его определения, 
 т.е. позволяют добавлять новые методы в закрытые классы. 

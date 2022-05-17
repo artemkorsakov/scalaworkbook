@@ -1,8 +1,8 @@
 ---
 layout: docsplus
-title: "Параметры по имени"
-prev: methods/named-parameters
-next: methods/partially-applied-functions
+title: "Каррирование"
+prev: methods/by-name-parameter
+next: methods/vararg-parameters
 ---
 
 ## {{page.title}}

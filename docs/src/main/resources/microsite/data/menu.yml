@@ -65,7 +65,16 @@ options:
       - title: Параметры по имени
         url: docs/methods/by-name-parameter
 
-      - title: Расширение
+      - title: Каррирование
+        url: docs/methods/partially-applied-functions
+
+      - title: Variable Arguments
+        url: docs/methods/vararg-parameters
+
+      - title: Generic параметры
+        url: docs/methods/generic-parameter
+
+      - title: Методы расширения
         url: docs/methods/extension-methods
 
       - title: main методы
@@ -190,7 +199,7 @@ options:
       - title: Given imports
         url: docs/abstractions/ca-given-imports
 
-      - title: Методы расширения
+      - title: Методы расш. - детали
         url: docs/abstractions/ca-extension-methods
 
       - title: Импл. type классов

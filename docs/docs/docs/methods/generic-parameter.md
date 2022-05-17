@@ -1,8 +1,8 @@
 ---
 layout: docsplus
-title: "Параметры по имени"
-prev: methods/named-parameters
-next: methods/partially-applied-functions
+title: "Generic параметры"
+prev: methods/vararg-parameters
+next: methods/extension-methods
 ---
 
 ## {{page.title}}
