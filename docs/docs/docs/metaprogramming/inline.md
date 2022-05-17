@@ -2,7 +2,7 @@
 layout: docsplus
 title: "Inline"
 prev: metaprogramming
-next: extra
+next: metaprogramming/compile-time-ops
 ---
 
 ## {{page.title}}

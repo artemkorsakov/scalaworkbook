@@ -1,7 +1,7 @@
 ---
 layout: docsplus
 title: "Доп. материалы"
-prev: metaprogramming/inline
+prev: metaprogramming/tasty-inspection
 ---
 
 ## Дополнительные материалы

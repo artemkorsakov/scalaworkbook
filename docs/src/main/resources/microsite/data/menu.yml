@@ -243,5 +243,20 @@ options:
       - title: Inline
         url: docs/metaprogramming/inline
 
+      - title: Compile-time ops
+        url: docs/metaprogramming/compile-time-ops
+
+      - title: Macros
+        url: docs/metaprogramming/macros
+
+      - title: Runtime Staging
+        url: docs/metaprogramming/runtime-staging
+
+      - title: Reflection
+        url: docs/metaprogramming/reflection
+
+      - title: TASTy Inspection
+        url: docs/metaprogramming/tasty-inspection
+
   - title: Доп. материалы
     url: docs/extra
