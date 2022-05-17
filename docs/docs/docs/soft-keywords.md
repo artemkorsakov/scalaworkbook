@@ -1,8 +1,8 @@
 ---
 layout: docsplus
-title: "Metaprogramming"
-prev: with_java
-next: metaprogramming/inline
+title: "Soft Keywords"
+prev: metaprogramming/tasty-inspection
+next: extra
 ---
 
 ## {{page.title}}

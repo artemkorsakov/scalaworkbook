@@ -1,7 +1,7 @@
 ---
 layout: docsplus
 title: "Доп. материалы"
-prev: metaprogramming/tasty-inspection
+prev: soft-keywords
 ---
 
 ## Дополнительные материалы

@@ -2,7 +2,7 @@
 layout: docsplus
 title: "TASTy Inspection"
 prev: metaprogramming/reflection
-next: extra
+next: soft-keywords
 ---
 
 ## {{page.title}}
