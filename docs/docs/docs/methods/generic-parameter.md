@@ -7,6 +7,15 @@ next: methods/extension-methods
 
 ## {{page.title}}
 
+Методы могут быть обобщенными. Пример:
+
+```scala mdoc
+def pack[A](a: A): List[A] =
+  List(a)
+
+pack[Int](42)
+pack[String]("word")
+```
 
 
 ---

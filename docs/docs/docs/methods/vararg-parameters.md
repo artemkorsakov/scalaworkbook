@@ -7,6 +7,18 @@ next: methods/generic-parameter
 
 ## Методы с неопределенным количеством параметров
 
+Метод может иметь неопределенное количество параметров одного типа.
+Они указываются с помощью синтаксиса `T*`. Пример:
+
+```scala mdoc
+def printAll(args: String*): Unit =
+  args.foreach(println)
+
+printAll("Adam")
+printAll("Adam", "Bob")
+printAll("Adam", "Bob", "Celin")
+printAll("Adam", "Bob", "Celin", "David")
+```
 
 
 ---
