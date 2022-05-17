@@ -1,0 +1,182 @@
+<!DOCTYPE html><html><head><title>Scala workbook: С чего начать?</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Артём Корсаков" /><meta name="description" content="Функциональная разработка на Scala." /><meta name="og:image" content="/scalaworkbook/img/poster.png" /><meta name="image" property="og:image" content="/scalaworkbook/img/poster.png" /><meta name="og:title" content="Scala workbook: С чего начать?" /><meta name="title" property="og:title" content="Scala workbook: С чего начать?" /><meta name="og:site_name" content="Scala workbook" /><meta name="og:url" content="" /><meta name="og:type" content="website" /><meta name="og:description" content="Функциональная разработка на Scala." /><link rel="icon" type="image/png" href="/scalaworkbook/img/favicon.png" /><meta name="twitter:title" content="Scala workbook: С чего начать?" /><meta name="twitter:image" content="https://artemkorsakov.github.io/scalaworkbook/img/poster.png" /><meta name="twitter:description" content="Функциональная разработка на Scala." /><meta name="twitter:card" content="summary_large_image" /><link rel="icon" type="image/png" sizes="16x16" href="/scalaworkbook/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/scalaworkbook/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/scalaworkbook/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/scalaworkbook/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/scalaworkbook/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/scalaworkbook/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/scalaworkbook/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/scalaworkbook/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/scalaworkbook/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/scalaworkbook/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/scalaworkbook/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/scalaworkbook/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/scalaworkbook/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/scalaworkbook/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/scalaworkbook/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/scalaworkbook/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/scalaworkbook/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/scalaworkbook/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/scalaworkbook/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/scalaworkbook/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/scalaworkbook/highlight/styles/vs.css" /><link rel="stylesheet" href="/scalaworkbook/css/pattern-style.css" /><link rel="stylesheet" href="/scalaworkbook/css/override.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/scalaworkbook/" class="brand"><div class="brand-wrapper"><span>Scala workbook</span></div></a></li> <li><a href="/scalaworkbook/docs/index" class="">Обзор Scala</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/start/getting-started" class=" active ">С чего начать?</a></li></ul></li> <li><a href="/scalaworkbook/docs/hello_world" class="">Hello, world!</a></li> <li><a href="/scalaworkbook/docs/repl" class="">REPL</a></li> <li><a href="/scalaworkbook/docs/types" class="">Типы данных</a></li> <li><a href="/scalaworkbook/docs/structures" class="">Структуры управления</a></li> <li><a href="/scalaworkbook/docs/modeling" class="">Моделирование данных</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/modeling/classes" class="">Classes</a></li> <li><a href="/scalaworkbook/docs/modeling/objects" class="">Objects</a></li> <li><a href="/scalaworkbook/docs/modeling/companion-objects" class="">Companion objects</a></li> <li><a href="/scalaworkbook/docs/modeling/traits" class="">Traits</a></li> <li><a href="/scalaworkbook/docs/modeling/abstract-class" class="">Абстрактные классы</a></li> <li><a href="/scalaworkbook/docs/modeling/enums" class="">Enums</a></li> <li><a href="/scalaworkbook/docs/modeling/case-class" class="">Case classes</a></li> <li><a href="/scalaworkbook/docs/modeling/oop" class="">Моделирование ООП</a></li> <li><a href="/scalaworkbook/docs/modeling/fp" class="">Моделирование ФП</a></li></ul></li> <li><a href="/scalaworkbook/docs/methods" class="">Методы</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/methods/method-features" class="">Определение методов</a></li> <li><a href="/scalaworkbook/docs/methods/default-parameters" class="">Параметры по умолчанию</a></li> <li><a href="/scalaworkbook/docs/methods/named-parameters" class="">Именованные параметры</a></li> <li><a href="/scalaworkbook/docs/methods/by-name-parameter" class="">Параметры по имени</a></li> <li><a href="/scalaworkbook/docs/methods/partially-applied-functions" class="">Каррирование</a></li> <li><a href="/scalaworkbook/docs/methods/vararg-parameters" class="">Variable Arguments</a></li> <li><a href="/scalaworkbook/docs/methods/generic-parameter" class="">Generic параметры</a></li> <li><a href="/scalaworkbook/docs/methods/extension-methods" class="">Методы расширения</a></li> <li><a href="/scalaworkbook/docs/methods/main-methods" class="">main методы</a></li></ul></li> <li><a href="/scalaworkbook/docs/functions" class="">Функции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/functions/anonymous" class="">Анонимные функции</a></li> <li><a href="/scalaworkbook/docs/functions/variables" class="">Параметры функции</a></li> <li><a href="/scalaworkbook/docs/functions/eta" class="">Eta расширение</a></li> <li><a href="/scalaworkbook/docs/functions/hofs" class="">Функции высшего порядка</a></li> <li><a href="/scalaworkbook/docs/functions/write-map" class="">Собственный map</a></li> <li><a href="/scalaworkbook/docs/functions/returns-function" class="">Возврат функции в методе</a></li></ul></li> <li><a href="/scalaworkbook/docs/packaging" class="">Пакеты и импорт</a></li> <li><a href="/scalaworkbook/docs/toplevel-definitions" class="">Верхнеур. определения</a></li> <li><a href="/scalaworkbook/docs/collections" class="">Коллекции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/collections/classes" class="">Типы коллекций</a></li> <li><a href="/scalaworkbook/docs/collections/methods" class="">Методы в коллекциях</a></li></ul></li> <li><a href="/scalaworkbook/docs/fp" class="">Функц. программирование</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/fp/what-is-fp" class="">Что такое ФП?</a></li> <li><a href="/scalaworkbook/docs/fp/immutable-values" class="">Неизменяемые значения</a></li> <li><a href="/scalaworkbook/docs/fp/pure-functions" class="">Чистые функции</a></li> <li><a href="/scalaworkbook/docs/fp/functions-are-values" class="">Функции - это значения</a></li> <li><a href="/scalaworkbook/docs/fp/functional-error-handling" class="">Обработка ошибок</a></li></ul></li> <li><a href="/scalaworkbook/docs/type-system" class="">Система типов</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/type-system/types-inferred" class="">Определение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-generics" class="">Generics типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-intersection" class="">Пересечение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-union" class="">Объединение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-adts" class="">Алгебр. типы данных</a></li> <li><a href="/scalaworkbook/docs/type-system/types-variance" class="">Ковариантность</a></li> <li><a href="/scalaworkbook/docs/type-system/types-opaque" class="">Непрозрачные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-structural" class="">Структурные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-dependent-function" class="">Зависимые типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/type-lambdas" class="">Type Lambdas</a></li> <li><a href="/scalaworkbook/docs/type-system/match-types" class="">Match Types</a></li> <li><a href="/scalaworkbook/docs/type-system/polymorphic-function-types" class="">Полимор. типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/types-others" class="">Другие типы</a></li></ul></li> <li><a href="/scalaworkbook/docs/abstractions" class="">Абстракции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/abstractions/ca-given" class="">Given</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-using" class="">Using</a></li> <li><a href="/scalaworkbook/docs/abstractions/type-classes" class="">Класс типов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-context-bounds" class="">Контекстные границы</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-given-imports" class="">Given imports</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-extension-methods" class="">Методы расш. - детали</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-classes" class="">Импл. type классов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-class-derivation" class="">Type Class Derivation</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-multiversal-equality" class="">Multiversal Equality</a></li> <li><a href="/scalaworkbook/docs/abstractions/context-functions" class="">Контекстные функции</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-implicit-conversions" class="">Неявные преобр.</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-by-name-parameters" class="">Конт. пар. по имени</a></li></ul></li> <li><a href="/scalaworkbook/docs/concurrency" class="">Параллелизм</a></li> <li><a href="/scalaworkbook/docs/tools" class="">Утилиты</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/tools/tools-sbt" class="">Sbt</a></li> <li><a href="/scalaworkbook/docs/tools/tools-worksheets" class="">Worksheet</a></li></ul></li> <li><a href="/scalaworkbook/docs/with_java" class="">Взаимодействие с Java</a></li> <li><a href="/scalaworkbook/docs/metaprogramming" class="">Metaprogramming</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/metaprogramming/inline" class="">Inline</a></li></ul></li> <li><a href="/scalaworkbook/docs/extra" class="">Доп. материалы</a></li></ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li class="search-nav hidden-xs hidden-sm"><div id="search-dropdown"><label><i class="fa fa-search"></i>Search</label><input id="search-bar" type="text" placeholder="Enter keywords here..." onclick="displayToggleSearch(event)" /><ul id="search-dropdown-content" class="dropdown dropdown-content"></ul></div></li></ul></div></div></div></div><div id="content" data-github-owner="artemkorsakov" data-github-repo="scalaworkbook"><div class="content-wrapper"><section><h2 id="с-чего-начать">С чего начать?</h2>
+
+<h3 id="scala-без-предварительной-установки">Scala без предварительной установки</h3>
+
+<p>Чтобы сразу начать экспериментировать со Scala, используйте <a href="https://scastie.scala-lang.org/pEBYc5VMT02wAGaDrfLnyw">“Scastie” в своем браузере</a>. 
+Scastie — это онлайн-площадка, где можно поэкспериментировать с примерами Scala, 
+чтобы увидеть, как все работает, с доступом ко всем компиляторам Scala и опубликованным библиотекам.</p>
+
+<blockquote>
+  <p>Scastie поддерживает как Scala 3, так и Scala 2, но по умолчанию используется Scala 3.</p>
+</blockquote>
+
+<h3 id="установка-scala-на-компьютер">Установка Scala на компьютер</h3>
+
+<p>Установка Scala означает установку различных инструментов командной строки, 
+таких как компилятор Scala и инструменты сборки. 
+Рекомендуется использовать инструмент установки “Coursier”, 
+который автоматически устанавливает все зависимости, 
+но также возможно каждый инструмент установить по отдельности вручную.</p>
+
+<h4 id="использование-scala-installer-рекомендованный-путь">Использование Scala Installer (рекомендованный путь)</h4>
+
+<p>Установщик Scala — это инструмент <a href="https://get-coursier.io/docs/cli-overview">Coursier</a>, 
+основная команда которого называется <code class="highlighter-rouge">cs</code>. 
+Он гарантирует, что в системе установлены JVM и стандартные инструменты Scala. 
+Установите его в своей системе, <a href="https://get-coursier.io/docs/cli-installation">следуя следующим инструкциям</a>.</p>
+
+<p>Наряду с JVM программа установки <code class="highlighter-rouge">cs</code> также устанавливает полезные инструменты командной строки:</p>
+<ul>
+  <li>JDK (если его еще нет)</li>
+  <li>Инструмент сборки <a href="https://www.scala-sbt.org/">sbt</a></li>
+  <li><a href="https://ammonite.io/">Ammonite</a>, улучшенный REPL</li>
+  <li><a href="https://scalameta.org/scalafmt/">scalafmt</a>, средство форматирования кода Scala</li>
+  <li><code class="highlighter-rouge">scalac</code> (компилятор Scala)</li>
+  <li><code class="highlighter-rouge">scala</code> (Scala REPL и средство запуска сценариев)</li>
+</ul>
+
+<p>Дополнительная информация о <code class="highlighter-rouge">cs</code> <a href="https://get-coursier.io/docs/cli-overview">доступна по ссылке</a>.</p>
+
+<h4 id="или-вручную">…или вручную</h4>
+
+<p>Для компиляции, запуска, тестирования и упаковки проекта Scala нужны только два инструмента: Java 8 или 11 и sbt. 
+Чтобы установить их вручную:</p>
+<ul>
+  <li>если не установлена Java 8 или 11, загрузите Java из 
+<a href="https://www.oracle.com/java/technologies/downloads/#java8">Oracle Java 8</a>, 
+<a href="https://www.oracle.com/java/technologies/downloads/#java11">Oracle Java 11</a> 
+или <a href="https://adoptopenjdk.net/">AdoptOpenJDK 8/11</a>.
+Подробную информацию о совместимости Scala/Java см. в разделе 
+<a href="https://docs.scala-lang.org/overviews/jdk-compatibility/overview.html">Совместимость с JDK</a>.</li>
+  <li>установить <a href="https://www.scala-sbt.org/download.html">sbt</a></li>
+</ul>
+
+<h3 id="создание-проекта-hello-world-с-помощью-sbt">Создание проекта “Hello World” с помощью sbt</h3>
+
+<p>Для создания проекта можно использовать командную строку или IDE.</p>
+
+<h4 id="использование-командной-строки">Использование командной строки</h4>
+
+<p>sbt — это инструмент сборки для Scala. 
+sbt компилирует, запускает и тестирует Scala код 
+(Он также может публиковать библиотеки и выполнять множество других задач).</p>
+
+<p>Чтобы создать новый проект Scala с помощью sbt:</p>
+<ol>
+  <li><code class="highlighter-rouge">cd</code> в пустую папку.</li>
+  <li>Запустите команду <code class="highlighter-rouge">sbt new scala/scala3.g8</code>, чтобы создать проект Scala 3. 
+Она извлекает шаблон проекта из GitHub, а также создаёт папку <code class="highlighter-rouge">target</code>.</li>
+  <li>При появлении запроса назовите приложение <code class="highlighter-rouge">hello-world</code>. Это создаст проект под этим названием.</li>
+  <li>Будет сгенерировано следующее:</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- hello-world
+    - project (sbt использует эту папку для собственных файлов)
+        - build.properties
+    - build.sbt (sbt's build definition file)
+    - src
+        - main
+            - scala (здесь весь Scala code)
+                - Main.scala (Точка входа в программу) &lt;-- это все, что сейчас нужно
+</code></pre></div></div>
+
+<p>Дополнительную документацию по sbt можно найти в <a href="../tools/tools-sbt">соответствующей главе</a> 
+и в <a href="https://www.scala-sbt.org/1.x/docs/index.html">официальной документации sbt</a>.</p>
+
+<h3 id="открытие-проекта-в-ide">Открытие проекта в IDE</h3>
+
+<p>Для открытия проекта желательно использовать IDE. Самые популярные из них — IntelliJ и VSCode. 
+Оба предлагают богатые возможности, 
+но также можно использовать <a href="https://scalameta.org/metals/docs/">множество других редакторов</a>.</p>
+
+<h4 id="использование-intellij">Использование IntelliJ</h4>
+
+<ol>
+  <li>Загрузите и установите <a href="https://www.jetbrains.com/idea/download/">IntelliJ Community Edition</a>.</li>
+  <li>Установите plugin Scala, следуя <a href="https://www.jetbrains.com/help/idea/managing-plugins.html">инструкциям по установке</a>.</li>
+  <li>Откройте файл <code class="highlighter-rouge">build.sbt</code>, затем выберите <em>Open as a project</em>.</li>
+</ol>
+
+<h4 id="использование-vscode-с-metals">Использование VSCode с metals</h4>
+
+<ol>
+  <li>Скачайте <a href="https://code.visualstudio.com/Download">VSCode</a>.</li>
+  <li>Установите расширение Metals из <a href="https://marketplace.visualstudio.com/items?itemName=scalameta.metals">Marketplace</a>.</li>
+  <li>Затем откройте каталог, содержащий файл <code class="highlighter-rouge">build.sbt</code> (это должен быть каталог <code class="highlighter-rouge">hello-world</code>). 
+Когда будет предложено, выберите <em>Import build</em>.</li>
+</ol>
+
+<blockquote>
+  <p><a href="https://scalameta.org/metals/">Metals</a> — это “языковой сервер Scala”, 
+обеспечивающий поддержку написания кода Scala в VS Code и других редакторах, 
+таких как <a href="https://scalameta.org/metals/docs/">Atom, Sublime Text и других</a>, 
+с использованием протокола Language Server.</p>
+
+  <p>Под капотом Metals взаимодействует со средством сборки 
+с помощью <a href="https://build-server-protocol.github.io/"> Build Server Protocol (BSP)</a>. 
+Подробнее о том, как работает Metals, см. 
+<a href="https://www.scala-lang.org/2019/04/16/metals.html">“Написание Scala в VS Code, Vim, Emacs, Atom и Sublime Text с помощью Metals”</a>.</p>
+</blockquote>
+
+<h4 id="исходный-код">Исходный код</h4>
+
+<p>Просмотрите эти два файла в своей IDE:</p>
+<ul>
+  <li><em>build.sbt</em></li>
+  <li><em>src/main/scala/Main.scala</em></li>
+</ul>
+
+<p>При запуске проекта на следующем шаге, конфигурация в <em>build.sbt</em> 
+будет использована для запуска кода в <em>src/main/scala/Main.scala</em>.</p>
+
+<h3 id="запуск-hello-world">Запуск Hello World</h3>
+
+<p>Код в <code class="highlighter-rouge">Main.scala</code> можно запускать из IDE, если удобно.</p>
+
+<p>Но также можно запустить приложение из терминала, выполнив следующие действия:</p>
+<ol>
+  <li><code class="highlighter-rouge">cd</code> в <code class="highlighter-rouge">hello-world</code>.</li>
+  <li>Запустить <code class="highlighter-rouge">sbt</code>. Эта команда открывает sbt-консоль.</li>
+  <li>В консоле введите <code class="highlighter-rouge">~run</code>. <code class="highlighter-rouge">~</code> является необязательным, 
+но заставляет sbt повторно запускаться при каждом сохранении файла, 
+обеспечивая быстрый цикл редактирования/запуска/отладки. 
+sbt также создаст директорию <code class="highlighter-rouge">target</code>, которую пока можно игнорировать.</li>
+</ol>
+
+<p>После окончания экспериментирования с проектом, нажмите <code class="highlighter-rouge">[Enter]</code>, чтобы прервать команду <code class="highlighter-rouge">run</code>. 
+Затем введите <code class="highlighter-rouge">exit</code> или нажмите <code class="highlighter-rouge">[Ctrl+D]</code>, чтобы выйти из sbt и вернуться в командную строку.</p>
+
+<hr />
+
+<p><strong>References:</strong></p>
+<ul>
+  <li><a href="https://docs.scala-lang.org/scala3/getting-started.html">Scala, Getting started</a></li>
+</ul>
+
+
+<hr>
+<div class="edit-button" style="display: flex; justify-content: space-between;">
+    
+    <a href="/scalaworkbook/docs/index" class="btn-sm btn-info btn-left"><-- Предыдущая</a>
+    
+    
+    <a href="/scalaworkbook/docs/hello_world" class="btn-sm btn-info btn-right">Следующая --></a>
+    
+</div></section><div class="edit-button"><a href="https://github.com/artemkorsakov/scalaworkbook/edit/main/docs/docs/docs/start/getting-started.md" target="_blank" rel="noopener noreferrer" class="btn-sm btn-info">Редактировать страницу</a></div></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalaworkbook/highlight/highlight.pack.js"></script><script src="/scalaworkbook/lunr/lunr.js"></script><script>
+// For all code blocks, copy the language from the containing div
+// to the inner code tag (where hljs expects it to be)
+const langPrefix = 'language-';
+document.querySelectorAll(`div[class^='${langPrefix}']`).forEach(function(div) {
+  div.classList.forEach(function(cssClass) {
+    if (cssClass.startsWith(langPrefix)) {
+      const lang = cssClass.substring(langPrefix.length);
+      div.querySelectorAll('pre code').forEach(function(code) {
+        code.classList.add(lang);
+      });
+    }
+  });
+});
+
+hljs.configure({languages:['scala','java','bash']});
+hljs.initHighlightingOnLoad();
+      </script><script>console.info('\x57\x65\x62\x73\x69\x74\x65\x20\x62\x75\x69\x6c\x74\x20\x77\x69\x74\x68\x3a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x5f\x5f\x0a\x20\x20\x20\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x5f\x20\x20\x2f\x20\x2f\x5f\x20\x20\x20\x20\x20\x20\x5f\x5f\x5f\x5f\x20\x5f\x5f\x5f\x20\x20\x28\x5f\x29\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x28\x5f\x29\x20\x2f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x0a\x20\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x60\x5f\x5f\x20\x5c\x2f\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x20\x2f\x20\x5f\x5f\x2f\x20\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x0a\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x5f\x2f\x20\x2f\x20\x2f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x5f\x5f\x2f\x20\x2f\x20\x20\x2f\x20\x2f\x5f\x2f\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x20\x2f\x5f\x2f\x20\x20\x5f\x5f\x28\x5f\x5f\x20\x20\x29\x0a\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2e\x5f\x5f\x5f\x2f\x5c\x5f\x5f\x2f\x20\x20\x20\x20\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x2f\x20\x20\x20\x5c\x5f\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x0a\x0a\x68\x74\x74\x70\x73\x3a\x2f\x2f\x34\x37\x64\x65\x67\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x73\x62\x74\x2d\x6d\x69\x63\x72\x6f\x73\x69\x74\x65\x73')</script><script src="/scalaworkbook/js/search.js"></script><script src="/scalaworkbook/js/main.js"></script></body></html>
