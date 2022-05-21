@@ -249,6 +249,9 @@ options:
       - title: Macros
         url: docs/metaprogramming/macros
 
+      - title: Quoted Code
+        url: docs/metaprogramming/quoted-code
+
       - title: Runtime Staging
         url: docs/metaprogramming/runtime-staging
 
