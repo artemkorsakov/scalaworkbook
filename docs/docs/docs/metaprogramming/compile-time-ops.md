@@ -53,7 +53,7 @@ doSomething(bool)
 Если желательно включить часть исходного кода аргументов в сообщение об ошибке,
 можно использовать метод `codeOf`.
 
-```scala mdoc:reset:fail
+```scala
 import scala.compiletime.{codeOf, error}
 
 inline def doSomething(inline mode: Boolean): Unit =
@@ -63,6 +63,9 @@ inline def doSomething(inline mode: Boolean): Unit =
 
 val bool: Boolean = true
 doSomething(bool)
+  |doSomething(bool)
+  |^^^^^^^^^^^^^^^^^
+  |Mode must be a known value but got: bool
 ```
 
 
