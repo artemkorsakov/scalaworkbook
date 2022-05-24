@@ -22,9 +22,7 @@ val printHello = '{ print($msg) }
 println(printHello.show) // print("Hello")
 ```
 
-Как правило, цитаты задерживают выполнение, в то время как склейка делает это раньше окружающего кода. 
-Это обобщение позволяет также придавать значение `${ ... }`, которое не находится в цитатах. 
-Это оценивает код в склейках во время компиляции и помещает результат в сгенерированный код. 
+Как правило, цитаты задерживают выполнение, в то время как склейка делает это раньше окружающего кода.
 Из-за некоторых технических соображений непосредственно внутри `inline` определений, 
 которые называются [макросами](@DOC@metaprogramming/macros), 
 разрешены только склейки верхнего уровня.
@@ -46,7 +44,7 @@ def myBadCounter1(using Quotes): Expr[Int] = {
 
 Проблема с этим кодом в том, что `x` существует во время компиляции, 
 но затем мы пытаемся использовать его после завершения компиляции (возможно, даже на другой машине). 
-Ясно, что было бы невозможно получить доступ к его значению и обновить его.
+Ясно, что невозможно получить доступ к его значению и обновить `x`.
 
 Теперь рассмотрим двойную версию, где определяется переменная во время выполнения 
 и происходит попытка получить к ней доступ во время компиляции:
@@ -103,7 +101,7 @@ def evalAndUse[T](x: Expr[T])(using Quotes) = '{
 ```
 
 Здесь будет получено сообщение об ошибке, сообщающее, что не хватает контекстного параметра `Type[T]`. 
-Поэтому можно легко это исправить, написав:
+Это можно легко исправить, написав:
 
 ```scala
 def evalAndUse[T](x: Expr[T])(using Type[T])(using Quotes) = '{
@@ -112,7 +110,7 @@ def evalAndUse[T](x: Expr[T])(using Type[T])(using Quotes) = '{
 }
 ```
 
-Этот код будет эквивалентен такой более подробной версии:
+Код будет эквивалентен такой более подробной версии:
 
 ```scala
 def evalAndUse[T](x: Expr[T])(using t: Type[T])(using Quotes) = '{
@@ -129,8 +127,8 @@ def evalAndUse[T](x: Expr[T])(using t: Type[T])(using Quotes) = '{
 В некоторых случаях не будет статически известен тип внутри `Type` 
 и нужно будет использовать `t.Underlying` для ссылки на него.
 
-Когда нам нужен этот дополнительный `Type` параметр?
-- Когда тип является абстрактным и используется на уровне выше текущего
+Когда нужен этот дополнительный `Type` параметр?
+- когда тип является абстрактным и используется на уровне выше текущего
 
 Когда добавляется контекстный параметр `Type` в метод, 
 он либо получается из другого параметра контекста, либо неявно с помощью вызова `Type.of`:
@@ -162,6 +160,255 @@ def evalAndUse[T](x: Expr[T])(using Quotes) =
 
 ### ToExpr
 
+Метод `Expr.apply` использует экземпляры `ToExpr` для создания выражения, которое создаст копию значения.
+
+```scala
+object Expr:
+  def apply[T](x: T)(using Quotes, ToExpr[T]): Expr[T] =
+    summon[ToExpr[T]].apply(x)
+```
+
+`ToExpr` определяется следующим образом:
+
+```scala
+trait ToExpr[T]:
+  def apply(x: T)(using Quotes): Expr[T]
+```
+
+Метод `ToExpr.apply` примет значение `T` и сгенерирует код, который создаст копию этого значения во время выполнения.
+
+Можно определить собственные `ToExpr`-ы, например:
+
+```scala
+given ToExpr[Boolean] with {
+  def apply(x: Boolean)(using Quotes) =
+    if x then '{true}
+    else '{false}
+}
+
+given ToExpr[StringContext] with {
+  def apply(x: StringContext)(using Quotes) =
+    val parts = Varargs(stringContext.parts.map(Expr(_)))
+    '{ StringContext($parts: _*) }
+}
+```
+
+Конструктор `Varargs` просто создает `Expr[Seq[T]]`, который можно эффективно склеить как varargs. 
+В общем, любую последовательность `$mySeq: _*` можно соединить, чтобы соединить ее как varargs.
+
+### Шаблоны цитат
+
+Цитаты также можно использовать для проверки эквивалентности одного выражения другому 
+или для деконструкции выражения на части.
+
+#### Соответствие точному выражению
+
+Самое простое, что можно сделать, - это проверить, соответствует ли выражение другому известному выражению. 
+Пример:
+
+```scala
+def valueOfBoolean(x: Expr[Boolean])(using Quotes): Option[Boolean] =
+  x match
+    case '{ true } => Some(true)
+    case '{ false } => Some(false)
+    case _ => None
+
+def valueOfBooleanOption(x: Expr[Option[Boolean]])(using Quotes): Option[Option[Boolean]] =
+  x match
+    case '{ Some(true) } => Some(Some(true))
+    case '{ Some(false) } => Some(Some(false))
+    case '{ None } => Some(None)
+    case _ => None
+```
+
+#### Соответствующее частичное выражение
+
+Для большей компактности, можно сопоставить часть выражения, используя склейку (`$`), 
+чтобы сматчить произвольный код и извлечь его.
+
+```scala
+def valueOfBooleanOption(x: Expr[Option[Boolean]])(using Quotes): Option[Option[Boolean]] =
+  x match
+    case '{ Some($boolExpr) } => Some(valueOfBoolean(boolExpr))
+    case '{ None } => Some(None)
+    case _ => None
+```
+
+#### Соответствие типов выражений
+
+Также можно сопоставлять код произвольного типа `T`. 
+Ниже матчится `$x` типа `T` и на выходе получается `x` типа `Expr[T]`.
+
+```scala
+def exprOfOption[T: Type](x: Expr[Option[T]])(using Quotes): Option[Expr[T]] =
+  x match
+    case '{ Some($x) } => Some(x) // x: Expr[T]
+    case '{ None } => Some(None)
+    case _ => None
+```
+
+Также можно проверить тип выражения:
+
+```scala
+def valueOf(x: Expr[Any])(using Quotes): Option[Any] =
+  x match
+    case '{ $x: Boolean } => valueOfBoolean(x) // x: Expr[Boolean]
+    case '{ $x: Option[Boolean] }  => valueOfBooleanOption(x) // x: Expr[Option[Boolean]]
+    case _ => None
+```
+
+Или аналогично для частичного выражения:
+
+```scala
+case '{ Some($x: Boolean) } => // x: Expr[Boolean]
+```
+
+#### Соответствующий приемник методов
+
+Когда желательно сопоставить получателя метода, нужно явно указать его тип:
+
+```scala
+case '{ ($ls: List[Int]).sum } =>
+```
+
+Если бы было написано `$ls.sum`, то нельзя было бы узнать тип `ls` и метод `sum`, который вызывается.
+
+Другой распространенный случай, когда нужны аннотации типов, — это инфиксные операции:
+
+```scala
+case '{ ($x: Int) + ($y: Int) } =>
+case '{ ($x: Double) + ($y: Double) } =>
+case ...
+```
+
+#### Сопоставление типов
+
+До сих пор предполагалось, что типы внутри паттернов цитат будут известны статически. 
+Шаблоны цитат также допускают общие типы и экзистенциальные типы.
+
+##### Общие типы в шаблонах
+
+Рассмотрим функцию `exprOfOption`:
+
+```scala
+def exprOfOption[T: Type](x: Expr[Option[T]])(using Quotes): Option[Expr[T]] =
+  x match
+    case '{ Some($x: T) } => Some(x) // x: Expr[T]
+                // ^^^ type ascription with generic type T
+    ...
+```
+
+Обратите внимание, что на этот раз `T` добавлен в шаблон явно, хотя его можно было бы вывести. 
+Ссылаясь на универсальный тип `T` в шаблоне, в области видимости должен быть доступен `given Type[T]`. 
+Это означает, что `$x: T` будет матчиться, только если `x` имеет тип `Expr[T]`. 
+В данном конкретном случае это условие всегда будет истинным.
+
+Теперь рассмотрим следующий вариант, где `x` - необязательное значение со (статически) неизвестным типом элемента:
+
+```scala
+def exprOfOptionOf[T: Type](x: Expr[Option[Any]])(using Quotes): Option[Expr[T]] =
+  x match
+    case '{ Some($x: T) } => Some(x) // x: Expr[T]
+    case _ => None
+```
+
+На этот раз шаблон будет соответствовать только в том случае, если `Some($x: T)` - тип `.OptionSome[T]`
+
+```scala
+exprOfOptionOf[Int]('{ Some(3) })   // Some('{3})
+exprOfOptionOf[Int]('{ Some("a") }) // None
+```
+
+##### Введите переменные в шаблоны в кавычках
+
+Код в кавычках может содержать типы, неизвестные вне кавычек. 
+Можно сопоставить их, используя переменные типа шаблона. 
+Как и в обычном шаблоне, переменные типа записываются с использованием имен нижнего регистра.
+
+```scala
+def exprOptionToList(x: Expr[Option[Any]])(using Quotes): Option[Expr[List[Any]]] =
+  x match
+    case '{ Some($x: t) } =>
+                // ^^^ this binds the type `t` in the body of the case
+      Some('{ List[t]($x) }) // x: Expr[List[t]]
+    case '{ None } =>
+      Some('{ Nil })
+    case _ => None
+```
+
+Шаблон `$x: t` будет соответствовать выражению любого типа и `t` будет привязан к типу шаблона. 
+Эта переменная типа доступна только в правой части case. 
+В этом примере переменная используется для построения списка `List[t]($x)`(`List($x)` тоже сработает). 
+Поскольку это тип, который неизвестен статически, нужен `given Type[t]` в области видимости. 
+К счастью, приведенный шаблон автоматически это предоставит.
+
+Простой шаблон `case '{ $expr: tpe } =>` очень полезен, если необходимо знать точный тип выражения.
+
+```scala
+val expr: Expr[Option[Int]] = ...
+expr match
+  case '{ $expr: tpe } =>
+    Type.show[tpe] // could be: Option[Int], Some[Int], None, Option[1], Option[2], ...
+    '{ val x: tpe = $expr; x } // binds the value without widening the type
+    ...
+```
+
+В некоторых случаях необходимо определить переменную шаблона, 
+на которую ссылаются несколько раз или имеющую некоторые ограничения типа. 
+Для этого можно создать переменные шаблона в начале шаблона, используя `type t` переменную шаблона типа.
+
+```scala
+/**
+ * Use: Converts a redundant `list.map(f).map(g)` to only use one call
+ * to `map`: `list.map(y => g(f(y)))`.
+ */
+def fuseMap[T: Type](x: Expr[List[T]])(using Quotes): Expr[List[T]] = x match {
+  case '{
+    type u
+    type v
+    ($ls: List[`u`])
+      .map($f: `u` => `v`)
+      .map($g: `v` => T)
+    } =>
+    '{ $ls.map(y => $g($f(y))) }
+  case _ => x
+}
+```
+
+Здесь определяются две переменные типа `u` и `v`, 
+а затем к ним идет обращение с помощью `&#96;u&#96;` and `&#96;v&#96;`. 
+Обращение идет не напрямую `u` или `v` (без обратных кавычек), 
+потому что они будут интерпретироваться как переменные нового типа с тем же именем переменной. 
+Эта нотация следует обычному синтаксису 
+[шаблонов стабильных идентификаторов (stable identifier patterns)](https://www.scala-lang.org/files/archive/spec/2.13/08-pattern-matching.html#stable-identifier-patterns). 
+Кроме того, если переменная типа должна быть ограничена, 
+можно добавить ограничения непосредственно к определению типа `case '{ type u <: AnyRef; ... } =>:`
+
+Обратите внимание, что предыдущий случай также может быть записан как `case '{ ($ls: List[u]).map[v]($f).map[T]($g) =>`.
+
+##### Quote types patterns
+
+Типы, представленные с помощью `Type[T]`, можно сопоставить с помощью шаблона `case '[...] =>`.
+
+```scala
+def mirrorFields[T: Type](using Quotes): List[String] =
+  Type.of[T] match
+    case '[field *: fields] =>
+      Type.show[field] :: mirrorFields[fields]
+    case '[EmptyTuple] =>
+      Nil
+    case _ =>
+      compiletime.error("Expected known tuple but got: " + Type.show[T])
+
+mirrorFields[EmptyTuple]         // Nil
+mirrorFields[(Int, String, Int)] // List("Int", "String", "Int")
+mirrorFields[Tuple]              // error: Expected known tuple but got: Tuple
+```
+
+Как и в случае выражений шаблонов в кавычках, переменные типа представлены с использованием имен нижнего регистра.
+
+### FromExpr
+
 
 
 
@@ -169,3 +416,4 @@ def evalAndUse[T](x: Expr[T])(using Quotes) =
 
 **References:**
 - [Scala 3 Guide](https://docs.scala-lang.org/scala3/guides/macros/quotes.html)
+- [Scala 3 Reference](https://docs.scala-lang.org/scala3/reference/metaprogramming/macros.html)
