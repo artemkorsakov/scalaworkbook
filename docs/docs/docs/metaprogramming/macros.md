@@ -105,7 +105,7 @@ inline def power(x: Double, inline n: Int): Double =
 
 В оставшейся части этого раздела будет определен макрос, 
 который вычисляет `xⁿ` для статически известных значений `x` и `n`. 
-Хотя это также возможно только с помощью `inline`, 
+Хотя это также возможно с помощью `inline`, 
 реализация с помощью макросов проиллюстрирует несколько вещей.
 
 ```scala
@@ -239,10 +239,68 @@ def sumCode(nums: Expr[Seq[Int]])(using Quotes): Expr[Int] =
 
 ### Сложные выражения
 
+Было показано, как создавать и распаковывать выражения, соответствующие простым значениям. 
+Для работы с более сложными выражениями Scala предлагает различные средства метапрограммирования, начиная от
+- дополнительные конструкторы, такие как `Expr.apply`,
+- [сопоставление с образцом в цитатах](@DOC@metaprogramming/quoted-code),
+- [reflection API](@DOC@metaprogramming/reflection);
 
+каждый из них усложняется и потенциально теряет гарантии безопасности. 
+Обычно рекомендуется чаще использовать простые API. 
+В оставшейся части этого раздела вводятся еще несколько дополнительных конструкторов и деструкторов, 
+а в последующих главах представлены более продвинутые API.
 
+#### Коллекции
 
+Было показано, как преобразовать `List[Int]` в `Expr[List[Int]]` используя `Expr.apply`. 
+Как насчет преобразования `List[Expr[Int]]` в `Expr[List[Int]]`? 
+Упоминалось, что `Varargs.apply` может сделать это для последовательностей; 
+аналогично, для других типов коллекций доступны соответствующие методы:
+- `Expr.ofList`: преобразует `List[Expr[T]]` в `Expr[List[T]]`
+- `Expr.ofSeq`: преобразует `Seq[Expr[T]]` в `Expr[Seq[T]]` (так же, как Varargs)
+- `Expr.ofTupleFromSeq`: преобразует `Seq[Expr[T]]` в `Expr[Tuple]`
+- `Expr.ofTuple`: преобразует `(Expr[T1], ..., Expr[Tn])` в `Expr[(T1, ..., Tn)]`
 
+#### Простые блоки
+
+Конструктор `Expr.block` предоставляет простой способ создания блока кода `{ stat1; ...; statn; expr }`. 
+Его первые аргументы — это список со всеми операторами, а второй аргумент — выражение в конце блока.
+
+```scala
+inline def test(inline ignore: Boolean, computation: => Unit): Boolean =
+  ${ testCode('ignore, 'computation) }
+
+def testCode(ignore: Expr[Boolean], computation: Expr[Unit])(using Quotes) =
+  if ignore.valueOrError then Expr(false)
+  else Expr.block(List(computation), Expr(true))
+```
+
+Конструктор `Expr.block` полезен, когда необходимо сгенерировать код, содержащий несколько побочных эффектов. 
+Вызов макроса `test(false, EXPRESSION)` будет генерировать `{ EXPRESSION; true}`, 
+в то время как вызов `test(true, EXPRESSION)` приведет к `false`.
+
+#### Простое сопоставление
+
+Этот метод `Expr.matches` можно использовать для проверки равенства одного выражения другому. 
+С помощью этого метода можно было бы реализовать `value` операцию `Expr[Boolean]` следующим образом:
+
+```scala
+def value(boolExpr: Expr[Boolean]): Option[Boolean] =
+  if boolExpr.matches(Expr(true)) then Some(true)
+  else if boolExpr.matches(Expr(false)) then Some(false)
+  else None
+```
+
+Его также можно использовать для сравнения двух написанных пользователем выражений. 
+Обратите внимание, что `matches` выполняется только ограниченная нормализация, 
+и хотя, например, Scala выражение `2` соответствует выражению `{ 2 }`, 
+это не относится к выражению `{ val x: Int = 2; x }`.
+
+#### Произвольные выражения
+
+Можно создать произвольный код Scala `Expr[T]`, заключив его [в цитаты](@DOC@metaprogramming/quoted-code). 
+Например, `'{ ${expr}; true }` сгенерирует `Expr[Int]` эквивалент `Expr.block(List(expr), Expr(true))`. 
+В следующем разделе, посвященном [Quoted Code](@DOC@metaprogramming/quoted-code), цитаты представлены более подробно.
 
 
 ---
