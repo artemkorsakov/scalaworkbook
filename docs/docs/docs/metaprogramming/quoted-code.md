@@ -408,7 +408,196 @@ mirrorFields[Tuple]              // error: Expected known tuple but got: Tuple
 
 ### FromExpr
 
+Методы `Expr.value`, `Expr.valueOrError` и `Expr.unapply` 
+используют экземпляры `FromExpr` для извлечения значения, если это возможно.
 
+```scala
+extension [T](expr: Expr[T]):
+  def value(using Quotes)(using fromExpr: FromExpr[T]): Option[T] =
+    fromExpr.unapply(expr)
+
+  def valueOrError(using Quotes)(using fromExpr: FromExpr[T]): T =
+    fromExpr.unapply(expr).getOrElse(eport.throwError("...", expr))
+end extension
+
+object Expr:
+  def unapply[T](expr: Expr[T])(using Quotes)(using fromExpr: FromExpr[T]): Option[T] =
+    fromExpr.unapply(expr)
+```
+
+`FromExpr` определяется следующим образом:
+
+```scala
+trait FromExpr[T]:
+  def unapply(x: Expr[T])(using Quotes): Option[T]
+```
+
+Метод `FromExpr.unapply` примет значение `x` и сгенерирует код, 
+который создаст копию этого значения во время выполнения.
+
+Можно определить собственные `FromExprs` следующим образом:
+
+```scala
+given FromExpr[Boolean] with {
+  def unapply(x: Expr[Boolean])(using Quotes): Option[Boolean] =
+    x match
+      case '{ true } => Some(true)
+      case '{ false } => Some(false)
+      case _ => None
+}
+
+given FromExpr[StringContext] with {
+  def unapply(x: Expr[StringContext])(using Quotes): Option[StringContext] = x match {
+    case '{ new StringContext(${Varargs(Exprs(args))}: _*) } => Some(StringContext(args: _*))
+    case '{     StringContext(${Varargs(Exprs(args))}: _*) } => Some(StringContext(args: _*))
+    case _ => None
+  }
+}
+```
+
+Стоит обратить внимание на то, что были рассмотрены два случая `StringContext`. 
+Поскольку это объект _case class_, его можно создать 
+с помощью `new StringContext` или `StringContext.apply` из объекта-компаньона. 
+Также был использован `Varargs` экстрактор для сопоставления аргументов 
+типа `Expr[Seq[String]]` с `Seq[Expr[String]]`. 
+Затем был использован `Exprs`, чтобы сопоставить известные константы в `Seq[Expr[String]]` для получения `Seq[String]`.
+
+
+### Цитаты
+
+`Quotes` - основная точка входа для создания всех цитат. 
+Этот контекст обычно просто передается через контекстные абстракции (`using` и `?=>`). 
+Каждая область цитаты будет иметь свой собственный `Quotes`. 
+Новые области вводятся каждый раз, когда вводится соединение (`${ ... }`). 
+Хотя кажется, что splice принимает выражение в качестве аргумента, на самом деле он принимает `Quotes ?=> Expr[T]`. 
+Следовательно, можно было бы написать это явно как `${ (using q) => ... }`. 
+Это может быть полезно при отладке, чтобы избежать создания имен для этих областей.
+
+Метод `scala.quoted.quotes` обеспечивает простой способ использования `Quotes` без его именования. 
+Обычно он импортируется вместе с `Quotes` используя `import scala.quoted.*`.
+
+```scala
+${ (using q1) => body(using q1) }
+// equivalent to
+${ body(using quotes) }
+```
+
+Предупреждение: если вы явно назовете `Quotes` `quotes`, вы перетрёте это определение.
+
+Когда пишется splice верхнего уровня в макросе, вызывается что-то похожее на следующее определение. 
+Этот splice обеспечит начальное значение `Quotes`, связанное с расширением макроса.
+
+```scala
+def $[T](x: Quotes ?=> Expr[T]): T = ...
+```
+
+Когда есть splice внутри цитаты, внутренний контекст цитаты будет зависеть от внешнего. 
+Эта ссылка представлена с использованием типа `Quotes.Nested`. 
+Пользователям цитат почти никогда не понадобится использовать `Quotes.Nested`. 
+Эти сведения полезны только для расширенных макросов, 
+которые будут проверять код и могут столкнуться с деталями кавычек и splice-ов.
+
+```scala
+def f(using q1: Quotes) = '{
+  ${ (using q2: q1.Nested) ?=>
+      ...
+  }
+}
+```
+
+Можно представить, что вложенный splice подобен следующему методу, где `ctx` - контекст, полученный окружающей цитатой.
+
+```scala
+def $[T](using q: Quotes)(x: q.Nested ?=> Expr[T]): T = ...
+```
+
+### β-reduction
+
+Когда есть лямбда, применяемая к аргументу в кавычке `'{ ((x: Int) => x + x)(y) }`, 
+она не уменьшается внутри кавычки; код сохраняется как есть. 
+Существует оптимизация, которая будет β-редуцировать все лямбда-выражения, непосредственно применяемые к параметрам, 
+чтобы избежать создания замыкания. 
+Это не будет видно с точки зрения цитаты.
+
+Иногда бывает полезно выполнить эту β-редукцию непосредственно на цитатах. 
+Для этого используется функция `Expr.betaReduce[T]`, которая получает `Expr[T]` и β-редуцирует, 
+если она непосредственно содержит применяемую лямбду.
+
+```scala
+Expr.betaReduce('{ ((x: Int) => x + x)(y) }) // returns '{ val x = y; x + x }
+```
+
+### Summon values
+
+Есть два способа вызвать значения в макросе.
+Во-первых, использовать using параметр во встроенном методе, который явно передается реализации макроса.
+
+```scala
+inline def setOf[T](using ord: Ordering[T]): Set[T] =
+  ${ setOfCode[T]('ord) }
+
+def setOfCode[T: Type](ord: Expr[Ordering[T]])(using Quotes): Expr[Set[T]] =
+  '{ TreeSet.empty[T](using $ord) }
+```
+
+В этом случае параметр контекста обнаруживается до развертывания макроса. Если не найден, макрос не будет раскрыт.
+
+Второй способ — использование `Expr.summon`. 
+Это позволяет программно искать различные given выражения. 
+Следующий пример аналогичен предыдущему примеру:
+
+```scala
+inline def setOf[T]: Set[T] =
+  ${ setOfCode[T] }
+
+def setOfCode[T: Type](using Quotes): Expr[Set[T]] =
+  Expr.summon[Ordering[T]] match
+    case Some(ord) => '{ TreeSet.empty[T](using $ord) }
+    case _ => '{ HashSet.empty[T] }
+```
+
+Разница в том, что во втором сценарии макрос разворачивается перед выполнением неявного поиска. 
+Поэтому можно написать произвольный код для обработки случая, когда элемент `Ordering[T]` не найден. 
+Здесь используется `HashSet` вместо `TreeSet`, потому что первый не нуждается в `Ordering`.
+
+### Цитатные классы типов
+
+В предыдущем примере было показано, как явно использовать класс типа `Expr[Ordering[T]]`, 
+используя предложение аргумента `using`. 
+Это хорошо, но не очень удобно, если нужно использовать класс типов несколько раз. 
+Чтобы показать это, будем использовать функцию `powerCode`, 
+которую можно использовать для любого числового типа.
+
+Во-первых, может быть полезно сделать так, чтобы класс типа `Expr` мог сделать его given параметром. 
+Для этого нужно явно указать `powerCode` в `power`, 
+потому что есть given `Numeric[Num]`, но требуется `Expr[Numeric[Num]]`. 
+Но тогда можно игнорировать его в `powerMacro` и в любом другом месте, которое только его передает.
+
+```scala
+inline def power[Num](x: Num, inline n: Int)(using num: Numeric[Num]) =
+  ${ powerMacro('x, 'n)(using 'num) }
+
+def powerMacro[Num: Type](x: Expr[Num], n: Expr[Int])(using Expr[Numeric[Num]])(using Quotes): Expr[Num] =
+  powerCode(x, n.valueOrAbort)
+```
+
+Чтобы использовать этот класс типа, нужен given `Numeric[Num]`,но у нас есть `Expr[Numeric[Num]]`, 
+и поэтому нужно склеить это выражение в сгенерированном коде. 
+Чтобы сделать его доступным, можно просто соединить его с заданным определением.
+
+```scala
+def powerCode[Num: Type](x: Expr[Num], n: Int)(using num: Expr[Numeric[Num]])(using Quotes): Expr[Num] =
+  if (n == 0) '{ $num.one }
+  else if (n % 2 == 0) '{
+    given Numeric[Num] = $num
+    val y = $x * $x
+    ${ powerCode('y, n / 2) }
+  }
+  else '{
+    given Numeric[Num] = $num
+    $x * ${ powerCode(x, n - 1) }
+  }
+```
 
 
 ---
