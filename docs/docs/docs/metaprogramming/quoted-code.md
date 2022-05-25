@@ -187,7 +187,7 @@ given ToExpr[Boolean] with {
 }
 
 given ToExpr[StringContext] with {
-  def apply(x: StringContext)(using Quotes) =
+  def apply(stringContext: StringContext)(using Quotes) =
     val parts = Varargs(stringContext.parts.map(Expr(_)))
     '{ StringContext($parts: _*) }
 }
@@ -319,7 +319,7 @@ exprOfOptionOf[Int]('{ Some(3) })   // Some('{3})
 exprOfOptionOf[Int]('{ Some("a") }) // None
 ```
 
-##### Введите переменные в шаблоны в кавычках
+##### Переменные типа в шаблонах
 
 Код в кавычках может содержать типы, неизвестные вне кавычек. 
 Можно сопоставить их, используя переменные типа шаблона. 
@@ -375,8 +375,7 @@ def fuseMap[T: Type](x: Expr[List[T]])(using Quotes): Expr[List[T]] = x match {
 }
 ```
 
-Здесь определяются две переменные типа `u` и `v`, 
-а затем к ним идет обращение с помощью `&#96;u&#96;` and `&#96;v&#96;`. 
+Здесь определяются две переменные типа `u` и `v`, а затем к ним идет обращение. 
 Обращение идет не напрямую `u` или `v` (без обратных кавычек), 
 потому что они будут интерпретироваться как переменные нового типа с тем же именем переменной. 
 Эта нотация следует обычному синтаксису 
