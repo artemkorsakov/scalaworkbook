@@ -131,7 +131,6 @@ class F(using iname: ImpliedName) extends
 
 ```scala mdoc
 given ImpliedName: ImpliedName("Bob")
-
 (new F).msg
 ```
 
@@ -140,7 +139,7 @@ given ImpliedName: ImpliedName("Bob")
 
 Trait-ы используются в двух случаях:
 - как примеси для других классов и trait-ов
-- как типы константы, определений или параметров
+- как типы констант, определений или параметров
 
 Некоторые trait-ы используются преимущественно в первой роли, и обычно их нежелательно видеть в выводимых типах. 
 Примером может служить [`trait Product`](https://scala-lang.org/api/3.x/scala/Product.html), 
@@ -158,7 +157,7 @@ val x = Set(if condition then Val else Var)
 Здесь предполагаемый тип `x` равен `Set[Kind & Product & Serializable]`, 
 тогда как можно было бы надеяться, что это будет `Set[Kind]`. 
 Основания для выделения именно этого типа следующие:
-- тип условного оператора, приведенного выше, является [типом объединения](@DOC@type-system/types-union) `Val` | `Var`.
+- тип условного оператора, приведенного выше, является [типом объединения](@DOC@type-system/types-union) `Val | Var`.
 - тип объединения расширяется в выводе типа до наименьшего супертипа, который не является типом объединения. 
 В примере - это тип `Kind & Product & Serializable`, так как все три trait-а являются trait-ами обоих `Val` и `Var`. 
 Таким образом, этот тип становится предполагаемым типом элемента набора.
@@ -180,7 +179,7 @@ val x = Set(if condition then Val else Var)
 
 Trait-ы [scala.Product](https://scala-lang.org/api/3.x/scala/Product.html), 
 [java.io.Serializable](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/Serializable.html)
-и [java.lang.Comparable](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Comparable.html)  
+и [java.lang.Comparable](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Comparable.html) 
 автоматически считаются `transparent`.
 Другие трейты превращаются в `transparent trait` с помощью модификатора `transparent`. 
 

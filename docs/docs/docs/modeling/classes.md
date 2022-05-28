@@ -22,7 +22,7 @@ class Movie(var name: String, var director: String, var year: Int)
 Если необходимо, чтобы они были неизменяемыми, можно определить их как `val` или использовать case class.
 
 Новый экземпляр класса создается следующим образом 
-(без ключевого слова `new`, благодаря [универсальным `apply` методам](https://docs.scala-lang.org/scala3/reference/other-new-features/creator-applications.html)):
+(без ключевого слова `new`, благодаря универсальным `apply` методам, см. ниже):
 
 ```scala mdoc:silent
 val p = Person("Robert Allen Zimmerman", "Harmonica Player")
@@ -135,9 +135,53 @@ Student("Mary", "123", 456)
 так и несколько конструкторов, как в примере выше.
 
 
+### Универсальные apply методы
+
+Scala 3 обобщает схему генерации `apply` методов на все конкретные классы. 
+Т.е., как упоминалось выше, можно создавать экземпляры класса без ключевого слова `new`.
+Пример:
+
+```scala
+class StringBuilder(s: String):
+  def this() = this("")
+
+StringBuilder("abc")  // устаревший вариант: new StringBuilder("abc")
+StringBuilder()       // устаревший вариант: new StringBuilder()
+```
+
+Это работает, поскольку вместе с классом создается сопутствующий объект с двумя `apply` методами. 
+Объект выглядит так:
+
+```scala
+object StringBuilder:
+  inline def apply(s: String): StringBuilder = new StringBuilder(s)
+  inline def apply(): StringBuilder = new StringBuilder()
+```
+
+Синтетический объект `StringBuilder` и его `apply` методы называются _прокси-конструкторами_. 
+Прокси-конструкторы генерируются даже для классов Java и классов из Scala 2. 
+Точные правила следующие:
+- прокси-конструктор сопутствующего объекта `object C` создается для конкретного класса `C` при условии, 
+что класс еще не имеет сопутствующего объекта, а также нет другого значения или метода с именем `C`, 
+определенным или унаследованным в области, в которой он определен.
+- прокси-конструкторы `apply` методов генерируются для предоставленного конкретного класса если:
+  - у класса есть объект-компаньон (который мог быть сгенерирован на шаге 1) и
+  - этот сопутствующий объект еще не определяет элемент с именем `apply`.
+- каждый сгенерированный `apply` метод пересылается одному конструктору класса. 
+Он имеет те же параметры типа и значения, что и конструктор.
+
+Прокси-конструкторы сопутствующего объекта не могут использоваться в качестве значений сами по себе. 
+Они должны быть выбраны с помощью `apply` (или применены к аргументам, и в этом случае `apply` неявно вставляется).
+
+Прокси-конструкторы также не могут затенять обычные определения. 
+То есть, если идентификатор разрешается в прокси конструктор, 
+и тот же идентификатор также определен или импортирован в какой-либо другой области, сообщается о неоднозначности.
+
+
 ---
 
 **References:**
 - [Scala3 book, domain modeling tools](https://docs.scala-lang.org/scala3/book/domain-modeling-tools.html)
 - [Scala3 book, taste modeling](https://docs.scala-lang.org/scala3/book/taste-modeling.html)
 - [Scala3 book, taste objects](https://docs.scala-lang.org/scala3/book/taste-objects.html)
+- [Scala 3 Reference, Universal Apply Methods](https://docs.scala-lang.org/scala3/reference/other-new-features/creator-applications.html)
