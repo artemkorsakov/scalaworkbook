@@ -1,0 +1,585 @@
+<!DOCTYPE html><html><head><title>Scala workbook: Type Class Derivation</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Артём Корсаков" /><meta name="description" content="Функциональная разработка на Scala." /><meta name="og:image" content="/scalaworkbook/img/poster.png" /><meta name="image" property="og:image" content="/scalaworkbook/img/poster.png" /><meta name="og:title" content="Scala workbook: Type Class Derivation" /><meta name="title" property="og:title" content="Scala workbook: Type Class Derivation" /><meta name="og:site_name" content="Scala workbook" /><meta name="og:url" content="" /><meta name="og:type" content="website" /><meta name="og:description" content="Функциональная разработка на Scala." /><link rel="icon" type="image/png" href="/scalaworkbook/img/favicon.png" /><meta name="twitter:title" content="Scala workbook: Type Class Derivation" /><meta name="twitter:image" content="https://artemkorsakov.github.io/scalaworkbook/img/poster.png" /><meta name="twitter:description" content="Функциональная разработка на Scala." /><meta name="twitter:card" content="summary_large_image" /><link rel="icon" type="image/png" sizes="16x16" href="/scalaworkbook/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/scalaworkbook/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/scalaworkbook/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/scalaworkbook/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/scalaworkbook/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/scalaworkbook/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/scalaworkbook/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/scalaworkbook/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/scalaworkbook/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/scalaworkbook/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/scalaworkbook/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/scalaworkbook/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/scalaworkbook/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/scalaworkbook/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/scalaworkbook/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/scalaworkbook/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/scalaworkbook/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/scalaworkbook/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/scalaworkbook/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/scalaworkbook/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/scalaworkbook/highlight/styles/vs.css" /><link rel="stylesheet" href="/scalaworkbook/css/pattern-style.css" /><link rel="stylesheet" href="/scalaworkbook/css/override.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/scalaworkbook/" class="brand"><div class="brand-wrapper"><span>Scala workbook</span></div></a></li> <li><a href="/scalaworkbook/docs/index" class="">Обзор Scala</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/start/getting-started" class="">С чего начать?</a></li></ul></li> <li><a href="/scalaworkbook/docs/hello_world" class="">Hello, world!</a></li> <li><a href="/scalaworkbook/docs/repl" class="">REPL</a></li> <li><a href="/scalaworkbook/docs/types" class="">Типы данных</a></li> <li><a href="/scalaworkbook/docs/structures" class="">Структуры управления</a></li> <li><a href="/scalaworkbook/docs/modeling" class="">Моделирование данных</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/modeling/classes" class="">Classes</a></li> <li><a href="/scalaworkbook/docs/modeling/objects" class="">Objects</a></li> <li><a href="/scalaworkbook/docs/modeling/companion-objects" class="">Companion objects</a></li> <li><a href="/scalaworkbook/docs/modeling/traits" class="">Traits</a></li> <li><a href="/scalaworkbook/docs/modeling/abstract-class" class="">Абстрактные классы</a></li> <li><a href="/scalaworkbook/docs/modeling/enums" class="">Enums</a></li> <li><a href="/scalaworkbook/docs/modeling/case-class" class="">Case classes</a></li> <li><a href="/scalaworkbook/docs/modeling/oop" class="">Моделирование ООП</a></li> <li><a href="/scalaworkbook/docs/modeling/fp" class="">Моделирование ФП</a></li></ul></li> <li><a href="/scalaworkbook/docs/methods" class="">Методы</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/methods/method-features" class="">Определение методов</a></li> <li><a href="/scalaworkbook/docs/methods/default-parameters" class="">Параметры по умолчанию</a></li> <li><a href="/scalaworkbook/docs/methods/named-parameters" class="">Именованные параметры</a></li> <li><a href="/scalaworkbook/docs/methods/by-name-parameter" class="">Параметры по имени</a></li> <li><a href="/scalaworkbook/docs/methods/partially-applied-functions" class="">Каррирование</a></li> <li><a href="/scalaworkbook/docs/methods/vararg-parameters" class="">Variable Arguments</a></li> <li><a href="/scalaworkbook/docs/methods/generic-parameter" class="">Generic параметры</a></li> <li><a href="/scalaworkbook/docs/methods/extension-methods" class="">Методы расширения</a></li> <li><a href="/scalaworkbook/docs/methods/main-methods" class="">main методы</a></li></ul></li> <li><a href="/scalaworkbook/docs/functions" class="">Функции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/functions/anonymous" class="">Анонимные функции</a></li> <li><a href="/scalaworkbook/docs/functions/variables" class="">Параметры функции</a></li> <li><a href="/scalaworkbook/docs/functions/eta" class="">Eta расширение</a></li> <li><a href="/scalaworkbook/docs/functions/hofs" class="">Функции высшего порядка</a></li> <li><a href="/scalaworkbook/docs/functions/write-map" class="">Собственный map</a></li> <li><a href="/scalaworkbook/docs/functions/returns-function" class="">Возврат функции в методе</a></li></ul></li> <li><a href="/scalaworkbook/docs/packaging" class="">Пакеты и импорт</a></li> <li><a href="/scalaworkbook/docs/toplevel-definitions" class="">Верхнеур. определения</a></li> <li><a href="/scalaworkbook/docs/collections" class="">Коллекции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/collections/classes" class="">Типы коллекций</a></li> <li><a href="/scalaworkbook/docs/collections/methods" class="">Методы в коллекциях</a></li></ul></li> <li><a href="/scalaworkbook/docs/fp" class="">Функц. программирование</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/fp/what-is-fp" class="">Что такое ФП?</a></li> <li><a href="/scalaworkbook/docs/fp/immutable-values" class="">Неизменяемые значения</a></li> <li><a href="/scalaworkbook/docs/fp/pure-functions" class="">Чистые функции</a></li> <li><a href="/scalaworkbook/docs/fp/functions-are-values" class="">Функции - это значения</a></li> <li><a href="/scalaworkbook/docs/fp/functional-error-handling" class="">Обработка ошибок</a></li></ul></li> <li><a href="/scalaworkbook/docs/type-system" class="">Система типов</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/type-system/types-inferred" class="">Определение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-generics" class="">Generics типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-intersection" class="">Пересечение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-union" class="">Объединение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-adts" class="">Алгебр. типы данных</a></li> <li><a href="/scalaworkbook/docs/type-system/types-variance" class="">Ковариантность</a></li> <li><a href="/scalaworkbook/docs/type-system/types-opaque" class="">Непрозрачные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-structural" class="">Структурные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-dependent-function" class="">Зависимые типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/type-lambdas" class="">Type Lambdas</a></li> <li><a href="/scalaworkbook/docs/type-system/match-types" class="">Match Types</a></li> <li><a href="/scalaworkbook/docs/type-system/polymorphic-function-types" class="">Полимор. типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/types-others" class="">Другие типы</a></li></ul></li> <li><a href="/scalaworkbook/docs/abstractions" class="">Абстракции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/abstractions/ca-given" class="">Given</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-using" class="">Using</a></li> <li><a href="/scalaworkbook/docs/abstractions/type-classes" class="">Класс типов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-context-bounds" class="">Контекстные границы</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-given-imports" class="">Given imports</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-extension-methods" class="">Методы расш. - детали</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-classes" class="">Импл. type классов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-class-derivation" class=" active ">Type Class Derivation</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-multiversal-equality" class="">Multiversal Equality</a></li> <li><a href="/scalaworkbook/docs/abstractions/context-functions" class="">Контекстные функции</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-implicit-conversions" class="">Неявные преобр.</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-by-name-parameters" class="">Конт. пар. по имени</a></li> <li><a href="/scalaworkbook/docs/abstractions/export-causes" class="">Предложения export</a></li> <li><a href="/scalaworkbook/docs/abstractions/parameter-untupling" class="">Распаковка параметров</a></li></ul></li> <li><a href="/scalaworkbook/docs/concurrency" class="">Параллелизм</a></li> <li><a href="/scalaworkbook/docs/tools" class="">Утилиты</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/tools/tools-sbt" class="">Sbt</a></li> <li><a href="/scalaworkbook/docs/tools/tools-worksheets" class="">Worksheet</a></li></ul></li> <li><a href="/scalaworkbook/docs/with_java" class="">Взаимодействие с Java</a></li> <li><a href="/scalaworkbook/docs/metaprogramming" class="">Metaprogramming</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/metaprogramming/inline" class="">Inline</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/compile-time-ops" class="">Compile-time ops</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/macros" class="">Macros</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/quoted-code" class="">Quoted Code</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/runtime-staging" class="">Runtime Staging</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/reflection" class="">Reflection</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/tasty-inspection" class="">TASTy Inspection</a></li></ul></li> <li><a href="/scalaworkbook/docs/soft-keywords" class="">Soft Keywords</a></li> <li><a href="/scalaworkbook/docs/extra" class="">Доп. материалы</a></li></ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li class="search-nav hidden-xs hidden-sm"><div id="search-dropdown"><label><i class="fa fa-search"></i>Search</label><input id="search-bar" type="text" placeholder="Enter keywords here..." onclick="displayToggleSearch(event)" /><ul id="search-dropdown-content" class="dropdown dropdown-content"></ul></div></li></ul></div></div></div></div><div id="content" data-github-owner="artemkorsakov" data-github-repo="scalaworkbook"><div class="content-wrapper"><section><h2 id="type-class-derivation">Type Class Derivation</h2>
+
+<p>Type class derivation - это способ автоматического создания экземпляров <code class="highlighter-rouge">given</code> классов типов, 
+которые удовлетворяют некоторым простым условиям. 
+Класс типов в этом смысле — это любой trait 
+или класс с параметром типа, определяющим тип, над которым выполняется операция. 
+Общие примеры: <code class="highlighter-rouge">Eq</code>, <code class="highlighter-rouge">Ordering</code> или <code class="highlighter-rouge">Show</code>. 
+Пример, для следующего алгебраического типа данных (ADT) <code class="highlighter-rouge">Tree</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">enum</span> <span class="nc">Tree</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="n">derives</span> <span class="nc">Eq</span><span class="o">,</span> <span class="nc">Ordering</span><span class="o">,</span> <span class="nc">Show</span><span class="k">:</span>
+  <span class="kt">case</span> <span class="kt">Branch</span><span class="o">(</span><span class="kt">left:</span> <span class="kt">Tree</span><span class="o">[</span><span class="kt">T</span><span class="o">],</span> <span class="n">right</span><span class="k">:</span> <span class="kt">Tree</span><span class="o">[</span><span class="kt">T</span><span class="o">])</span>
+  <span class="k">case</span> <span class="nc">Leaf</span><span class="o">(</span><span class="n">elem</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Предложение <code class="highlighter-rouge">derives</code> создает следующие экземпляры <code class="highlighter-rouge">given</code> 
+для классов типов <code class="highlighter-rouge">Eq</code>, <code class="highlighter-rouge">Ordering</code> и <code class="highlighter-rouge">Show</code> в сопутствующем объекте <code class="highlighter-rouge">Tree</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">given</span> <span class="o">[</span><span class="kt">T:</span> <span class="kt">Eq</span><span class="o">]</span>       <span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">Tree</span><span class="o">[</span><span class="kt">T</span><span class="o">]]</span>    <span class="k">=</span> <span class="nv">Eq</span><span class="o">.</span><span class="py">derived</span>
+<span class="n">given</span> <span class="o">[</span><span class="kt">T:</span> <span class="kt">Ordering</span><span class="o">]</span> <span class="k">:</span> <span class="kt">Ordering</span><span class="o">[</span><span class="kt">Tree</span><span class="o">]</span> <span class="k">=</span> <span class="nv">Ordering</span><span class="o">.</span><span class="py">derived</span>
+<span class="n">given</span> <span class="o">[</span><span class="kt">T:</span> <span class="kt">Show</span><span class="o">]</span>     <span class="k">:</span> <span class="kt">Show</span><span class="o">[</span><span class="kt">Tree</span><span class="o">]</span>     <span class="k">=</span> <span class="nv">Show</span><span class="o">.</span><span class="py">derived</span>
+</code></pre></div></div>
+
+<p>Говорится, что <code class="highlighter-rouge">Tree</code> - это производный тип (<em>deriving type</em>), 
+а экземпляры <code class="highlighter-rouge">Eq</code>, <code class="highlighter-rouge">Ordering</code> и <code class="highlighter-rouge">Show</code> являются производными экземплярами (<em>derived instances</em>).</p>
+
+<h3 id="типы-вспомогательных-derives-предложений">Типы вспомогательных derives предложений</h3>
+
+<p>Все типы данных могут содержать предложение <code class="highlighter-rouge">derives</code>. 
+В этом документе основное внимание уделяется типам данных, 
+для которых также доступен given экземпляр класса типа <code class="highlighter-rouge">Mirror</code>. 
+Экземпляры класса типа <code class="highlighter-rouge">Mirror</code> автоматически генерируются компилятором для,</p>
+<ul>
+  <li>enums и enum cases</li>
+  <li>case classes и case objects</li>
+  <li>sealed классы или trait-ы, которые содержат в качестве потомков только case classes и case objects</li>
+</ul>
+
+<p>Экземпляры класса типа <code class="highlighter-rouge">Mirror</code> предоставляют информацию на уровне типа о компонентах и маркировке типа. 
+Они также обеспечивают минимальную инфраструктуру уровня терминов, 
+позволяющую библиотекам более высокого уровня обеспечивать всестороннюю поддержку деривации.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">sealed</span> <span class="k">trait</span> <span class="nc">Mirror</span><span class="k">:</span>
+
+  <span class="kt">/**</span> <span class="kt">the</span> <span class="k">type</span> <span class="kt">being</span> <span class="kt">mirrored</span> <span class="kt">*/</span>
+  <span class="k">type</span> <span class="kt">MirroredType</span>
+
+  <span class="cm">/** the type of the elements of the mirrored type */</span>
+  <span class="k">type</span> <span class="kt">MirroredElemTypes</span>
+
+  <span class="cm">/** The mirrored *-type */</span>
+  <span class="k">type</span> <span class="kt">MirroredMonoType</span>
+
+  <span class="cm">/** The name of the type */</span>
+  <span class="k">type</span> <span class="kt">MirroredLabel</span> <span class="k">&lt;:</span> <span class="kt">String</span>
+
+  <span class="cm">/** The names of the elements of the type */</span>
+  <span class="k">type</span> <span class="kt">MirroredElemLabels</span> <span class="k">&lt;:</span> <span class="kt">Tuple</span>
+
+<span class="k">object</span> <span class="nc">Mirror</span><span class="k">:</span>
+
+  <span class="kt">/**</span> <span class="kt">The</span> <span class="kt">Mirror</span> <span class="kt">for</span> <span class="kt">a</span> <span class="kt">product</span> <span class="k">type</span> <span class="kt">*/</span>
+  <span class="kt">trait</span> <span class="kt">Product</span> <span class="kt">extends</span> <span class="kt">Mirror:</span>
+
+    <span class="kt">/**</span> <span class="kt">Create</span> <span class="kt">a</span> <span class="kt">new</span> <span class="kt">instance</span> <span class="kt">of</span> <span class="k">type</span> <span class="kt">`T`</span> <span class="kt">with</span> <span class="kt">elements</span>
+     <span class="o">*</span>  <span class="n">taken</span> <span class="n">from</span> <span class="n">product</span> <span class="n">`p`</span><span class="o">.</span>
+     <span class="o">*/</span>
+    <span class="k">def</span> <span class="nf">fromProduct</span><span class="o">(</span><span class="n">p</span><span class="k">:</span> <span class="kt">scala.Product</span><span class="o">)</span><span class="k">:</span> <span class="kt">MirroredMonoType</span>
+
+  <span class="k">trait</span> <span class="nc">Sum</span> <span class="k">extends</span> <span class="nc">Mirror</span><span class="k">:</span>
+
+    <span class="kt">/**</span> <span class="kt">The</span> <span class="kt">ordinal</span> <span class="kt">number</span> <span class="kt">of</span> <span class="kt">the</span> <span class="kt">case</span> <span class="kt">class</span> <span class="kt">of</span> <span class="kt">`x`.</span>
+     <span class="kt">*</span>  <span class="kt">For</span> <span class="kt">enums</span><span class="o">,</span> <span class="n">`ordinal(x) == x.ordinal`</span>
+     <span class="o">*/</span>
+    <span class="k">def</span> <span class="nf">ordinal</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">MirroredMonoType</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span>
+
+<span class="n">end</span> <span class="nc">Mirror</span>
+</code></pre></div></div>
+
+<p>Типы продуктов (т.е. case классы и case объекты, а также enum case) имеют зеркала, 
+которые являются подтипами <code class="highlighter-rouge">Mirror.Product</code>. 
+Типы суммы (т.е. закрытый (<code class="highlighter-rouge">sealed</code>) класс или trait-ы с дочерними продуктами и перечисления) имеют зеркала, 
+которые являются подтипами <code class="highlighter-rouge">Mirror.Sum</code>.</p>
+
+<p>Для <code class="highlighter-rouge">Tree</code> ADT, описанного выше, следующие экземпляры <code class="highlighter-rouge">Mirror</code> будут автоматически предоставлены компилятором:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Mirror for Tree</span>
+<span class="k">new</span> <span class="nv">Mirror</span><span class="o">.</span><span class="py">Sum</span><span class="k">:</span>
+  <span class="k">type</span> <span class="kt">MirroredType</span> <span class="o">=</span> <span class="nc">Tree</span>
+  <span class="k">type</span> <span class="kt">MirroredElemTypes</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span> <span class="o">(</span><span class="nc">Branch</span><span class="o">[</span><span class="kt">T</span><span class="o">],</span> <span class="nc">Leaf</span><span class="o">[</span><span class="kt">T</span><span class="o">])</span>
+  <span class="k">type</span> <span class="kt">MirroredMonoType</span> <span class="o">=</span> <span class="nc">Tree</span><span class="o">[</span><span class="k">_</span><span class="o">]</span>
+  <span class="k">type</span> <span class="kt">MirroredLabel</span> <span class="o">=</span> <span class="s">"Tree"</span>
+  <span class="k">type</span> <span class="kt">MirroredElemLabels</span> <span class="o">=</span> <span class="o">(</span><span class="s">"Branch"</span><span class="o">,</span> <span class="s">"Leaf"</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="nf">ordinal</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">MirroredMonoType</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">x</span> <span class="k">match</span>
+    <span class="k">case</span> <span class="k">_:</span> <span class="kt">Branch</span><span class="o">[</span><span class="k">_</span><span class="o">]</span> <span class="k">=&gt;</span> <span class="mi">0</span>
+    <span class="k">case</span> <span class="k">_:</span> <span class="kt">Leaf</span><span class="o">[</span><span class="k">_</span><span class="o">]</span> <span class="k">=&gt;</span> <span class="mi">1</span>
+
+<span class="c1">// Mirror for Branch</span>
+<span class="k">new</span> <span class="nv">Mirror</span><span class="o">.</span><span class="py">Product</span><span class="k">:</span>
+  <span class="k">type</span> <span class="kt">MirroredType</span> <span class="o">=</span> <span class="nc">Branch</span>
+  <span class="k">type</span> <span class="kt">MirroredElemTypes</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span> <span class="o">(</span><span class="nc">Tree</span><span class="o">[</span><span class="kt">T</span><span class="o">],</span> <span class="nc">Tree</span><span class="o">[</span><span class="kt">T</span><span class="o">])</span>
+  <span class="k">type</span> <span class="kt">MirroredMonoType</span> <span class="o">=</span> <span class="nc">Branch</span><span class="o">[</span><span class="k">_</span><span class="o">]</span>
+  <span class="k">type</span> <span class="kt">MirroredLabel</span> <span class="o">=</span> <span class="s">"Branch"</span>
+  <span class="k">type</span> <span class="kt">MirroredElemLabels</span> <span class="o">=</span> <span class="o">(</span><span class="s">"left"</span><span class="o">,</span> <span class="s">"right"</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="nf">fromProduct</span><span class="o">(</span><span class="n">p</span><span class="k">:</span> <span class="kt">Product</span><span class="o">)</span><span class="k">:</span> <span class="kt">MirroredMonoType</span> <span class="o">=</span>
+    <span class="k">new</span> <span class="nc">Branch</span><span class="o">(...)</span>
+
+<span class="c1">// Mirror for Leaf</span>
+<span class="k">new</span> <span class="nv">Mirror</span><span class="o">.</span><span class="py">Product</span><span class="k">:</span>
+  <span class="k">type</span> <span class="kt">MirroredType</span> <span class="o">=</span> <span class="nc">Leaf</span>
+  <span class="k">type</span> <span class="kt">MirroredElemTypes</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Tuple1</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span>
+  <span class="k">type</span> <span class="kt">MirroredMonoType</span> <span class="o">=</span> <span class="nc">Leaf</span><span class="o">[</span><span class="k">_</span><span class="o">]</span>
+  <span class="k">type</span> <span class="kt">MirroredLabel</span> <span class="o">=</span> <span class="s">"Leaf"</span>
+  <span class="k">type</span> <span class="kt">MirroredElemLabels</span> <span class="o">=</span> <span class="nc">Tuple1</span><span class="o">[</span><span class="err">"</span><span class="kt">elem</span><span class="err">"</span><span class="o">]</span>
+
+  <span class="k">def</span> <span class="nf">fromProduct</span><span class="o">(</span><span class="n">p</span><span class="k">:</span> <span class="kt">Product</span><span class="o">)</span><span class="k">:</span> <span class="kt">MirroredMonoType</span> <span class="o">=</span>
+    <span class="k">new</span> <span class="nc">Leaf</span><span class="o">(...)</span>
+</code></pre></div></div>
+
+<p>Обратите внимание на следующие свойства типов <code class="highlighter-rouge">Mirror</code>:</p>
+<ul>
+  <li>Свойства кодируются с использованием типов, а не терминов. 
+Это означает, что они не влияют на время выполнения, если не используются, 
+а также что они являются функцией времени компиляции для использования со средствами метапрограммирования Scala 3.</li>
+  <li>Типы <code class="highlighter-rouge">MirroredType</code> и <code class="highlighter-rouge">MirroredElemTypes</code> соответствуют типам данных, экземпляром которых является зеркало. 
+Это позволяет <code class="highlighter-rouge">Mirrors</code> поддерживать ADT всех видов.</li>
+  <li>Нет отдельного типа представления для сумм или произведений 
+(т.е. нет типа <code class="highlighter-rouge">HList</code> или <code class="highlighter-rouge">Coproduct</code>, как в версиях Shapeless для Scala 2). 
+Вместо этого набор дочерних типов типа данных представлен обычным, возможно, параметризованным типом кортежа. 
+Средства метапрограммирования Scala 3 можно использовать для работы с этими типами кортежей как есть, 
+а поверх них можно создавать библиотеки более высокого уровня.</li>
+  <li>Как для типов произведения, так и для суммы, 
+элементы <code class="highlighter-rouge">MirroredElemTypes</code> располагаются в порядке определения 
+(т.е. <code class="highlighter-rouge">Branch[T]</code> предшествуют <code class="highlighter-rouge">Leaf[T]</code>, потому что они определены раньше в исходном файле). 
+Это означает, что в этом отношении оно отличается от общего представления Shapeless для ADT в Scala 2, 
+где конструкторы упорядочены в алфавитном порядке по именам.</li>
+  <li>Методы <code class="highlighter-rouge">ordinal</code> и <code class="highlighter-rouge">fromProduct</code> определяются в терминах того <code class="highlighter-rouge">MirroredMonoType</code>, 
+который получается из <code class="highlighter-rouge">MirroredType</code> с подстановочными знаками в его параметрах типа.</li>
+</ul>
+
+<h3 id="классы-типов-поддерживающие-автоматическую-деривиацию">Классы типов, поддерживающие автоматическую деривиацию</h3>
+
+<p>Trait или класс могут появиться в предложении <code class="highlighter-rouge">derives</code>, 
+если их сопутствующий объект определяет метод с именем <code class="highlighter-rouge">derived</code>. 
+Сигнатура и реализация <code class="highlighter-rouge">derived</code> метода для класса типов <code class="highlighter-rouge">TC[_]</code> произвольны, 
+но обычно имеют следующую форму:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">scala.deriving.Mirror</span>
+
+<span class="k">def</span> <span class="nf">derived</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">using</span> <span class="nv">Mirror</span><span class="o">.</span><span class="py">Of</span><span class="o">[</span><span class="kt">T</span><span class="o">])</span><span class="k">:</span> <span class="kt">TC</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span> <span class="o">...</span>
+</code></pre></div></div>
+
+<p>То есть метод <code class="highlighter-rouge">derived</code> принимает контекстный параметр типа <code class="highlighter-rouge">Mirror</code> (некоторого подтипа), 
+который определяет форму производного типа <code class="highlighter-rouge">T</code>, и вычисляет реализацию класса типа в соответствии с этой формой. 
+Это все, что поставщик ADT с предложением <code class="highlighter-rouge">derives</code> должен знать о порождении экземпляра класса типов.</p>
+
+<p>Обратите внимание, что методы <code class="highlighter-rouge">derived</code> могут косвенно иметь параметры контекста <code class="highlighter-rouge">Mirror</code> 
+(например, иметь аргумент контекста, который, в свою очередь, имеет параметр контекста <code class="highlighter-rouge">Mirror</code>, 
+или вообще не иметь 
+(например, они могут использовать какой-то совершенно другой механизм, предоставленный пользователем, 
+например, с помощью макросов Scala 3 или runtime reflection)).
+Ожидается, что наиболее распространенными будут (прямые или непрямые) реализации <code class="highlighter-rouge">Mirror</code>.</p>
+
+<p>Авторы классов типов, скорее всего, будут использовать производные библиотеки более высокого уровня 
+или универсальные библиотеки программирования для реализации методов <code class="highlighter-rouge">derived</code>. 
+Пример того, как метод <code class="highlighter-rouge">derived</code> может быть реализован с использованием только средств низкого уровня, описанных выше, 
+и общих возможностей метапрограммирования Scala 3, приведен ниже. 
+Не предполагается, что авторы классов типов обычно будут реализовывать метод <code class="highlighter-rouge">derived</code> таким образом, 
+однако это пошаговое руководство можно рассматривать 
+как руководство для авторов библиотек деривации более высокого уровня
+(для полностью проработанного примера о такой библиотеке см. <a href="https://github.com/typelevel/shapeless-3">Shapeless 3</a>).</p>
+
+<h4 id="как-написать-метод-derived-класса-типов-используя-низкоуровневые-механизмы">Как написать метод derived класса типов, используя низкоуровневые механизмы</h4>
+
+<p>Низкоуровневый метод, который будет использоваться для реализации метода <code class="highlighter-rouge">derived</code> класса типа в этом примере, 
+использует три новые конструкции уровня типа в Scala 3: 
+встроенные методы (<em>inline methods</em>), 
+встроенные совпадения (<em>inline matches</em>)
+и неявный поиск через <code class="highlighter-rouge">summonInline</code> или <code class="highlighter-rouge">summonFrom</code>. 
+Учитывая это определение класса типа <code class="highlighter-rouge">Eq</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span><span class="nc">:</span>
+  <span class="k">def</span> <span class="nf">eqv</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">T</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span>
+</code></pre></div></div>
+
+<p>нужно реализовать метод <code class="highlighter-rouge">Eq.derived</code> для сопутствующего объекта <code class="highlighter-rouge">Eq</code>, 
+который создает экземпляр <code class="highlighter-rouge">given</code> для <code class="highlighter-rouge">Eq[T]</code> заданного <code class="highlighter-rouge">Mirror[T]</code>. 
+Вот возможная реализация:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">scala.deriving.Mirror</span>
+
+<span class="n">inline</span> <span class="n">given</span> <span class="n">derived</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">using</span> <span class="n">m</span><span class="k">:</span> <span class="kt">Mirror.Of</span><span class="o">[</span><span class="kt">T</span><span class="o">])</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span>
+  <span class="k">val</span> <span class="nv">elemInstances</span> <span class="k">=</span> <span class="n">summonAll</span><span class="o">[</span><span class="kt">m.MirroredElemTypes</span><span class="o">]</span>           <span class="c1">// (1)</span>
+  <span class="n">inline</span> <span class="n">m</span> <span class="k">match</span>                                               <span class="c1">// (2)</span>
+    <span class="k">case</span> <span class="n">s</span><span class="k">:</span> <span class="kt">Mirror.SumOf</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span>     <span class="k">=&gt;</span> <span class="nf">eqSum</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">elemInstances</span><span class="o">)</span>
+    <span class="k">case</span> <span class="n">p</span><span class="k">:</span> <span class="kt">Mirror.ProductOf</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=&gt;</span> <span class="nf">eqProduct</span><span class="o">(</span><span class="n">p</span><span class="o">,</span> <span class="n">elemInstances</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Обратите внимание, что <code class="highlighter-rouge">derived</code> определяется как <code class="highlighter-rouge">inline given</code>. 
+Это означает, что метод будет расширен в местах вызова 
+(например, компилятор сгенерировал определения экземпляров в сопутствующих объектах ADT, 
+которые содержат <code class="highlighter-rouge">derived Eq</code> предложение), 
+а также, что его можно будет использовать рекурсивно, если необходимо, 
+для вычисления экземпляров для дочерних элементов.</p>
+
+<p>Тело этого метода (1) сначала материализует экземпляры <code class="highlighter-rouge">Eq</code> для всех дочерних типов типа, 
+для которого создается экземпляр. 
+Это либо все ветви типа суммы, либо все поля типа продукта. 
+Реализация <code class="highlighter-rouge">summonAll</code> - <code class="highlighter-rouge">inline</code> и использует конструкцию Scala 3 <code class="highlighter-rouge">summonInline</code> для сбора экземпляров в виде <code class="highlighter-rouge">List</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inline</span> <span class="k">def</span> <span class="nf">summonAll</span><span class="o">[</span><span class="kt">T</span> <span class="k">&lt;:</span> <span class="kt">Tuple</span><span class="o">]</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="k">_</span><span class="o">]]</span> <span class="k">=</span>
+  <span class="n">inline</span> <span class="n">erasedValue</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">match</span>
+    <span class="k">case</span> <span class="k">_:</span> <span class="kt">EmptyTuple</span> <span class="o">=&gt;</span> <span class="nc">Nil</span>
+    <span class="k">case</span> <span class="nf">_:</span> <span class="o">(</span><span class="n">t</span> <span class="o">*:</span> <span class="n">ts</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">summonInline</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="kt">t</span><span class="o">]]</span> <span class="o">::</span> <span class="n">summonAll</span><span class="o">[</span><span class="kt">ts</span><span class="o">]</span>
+</code></pre></div></div>
+
+<p>с экземплярами для дочерних элементов метод <code class="highlighter-rouge">derived</code> использует <code class="highlighter-rouge">inline match</code> для отправки методов, 
+которые могут создавать экземпляры либо для сумм, либо для произведений (2). 
+Обратите внимание, что поскольку <code class="highlighter-rouge">derived</code> - <code class="highlighter-rouge">inline</code> совпадение будет разрешено во время компиляции, 
+и только левая часть совпадающего случая будет встроена в сгенерированный код с уточненными типами, 
+выявленными в результате совпадения.</p>
+
+<p>В случае суммы, <code class="highlighter-rouge">eqSum</code>, используются <code class="highlighter-rouge">ordinal</code> runtime значения аргументов <code class="highlighter-rouge">eqv</code>, 
+чтобы сначала проверить, относятся ли два значения к одному и тому же подтипу ADT (3), 
+а затем, если подтипы совпадают, 
+для дальнейшей проверки на равенство на основе экземпляра <code class="highlighter-rouge">Eq</code> 
+для соответствующего подтипа ADT с помощью вспомогательного метода <code class="highlighter-rouge">check</code> (4).</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">scala.deriving.Mirror</span>
+
+<span class="k">def</span> <span class="nf">eqSum</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">s</span><span class="k">:</span> <span class="kt">Mirror.SumOf</span><span class="o">[</span><span class="kt">T</span><span class="o">],</span> <span class="n">elems</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="k">_</span><span class="o">]])</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span>
+  <span class="k">new</span> <span class="nc">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span><span class="k">:</span>
+    <span class="kt">def</span> <span class="kt">eqv</span><span class="o">(</span><span class="kt">x:</span> <span class="kt">T</span><span class="o">,</span> <span class="kt">y:</span> <span class="kt">T</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span>
+      <span class="k">val</span> <span class="nv">ordx</span> <span class="k">=</span> <span class="nv">s</span><span class="o">.</span><span class="py">ordinal</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>                            <span class="c1">// (3)</span>
+      <span class="o">(</span><span class="nv">s</span><span class="o">.</span><span class="py">ordinal</span><span class="o">(</span><span class="n">y</span><span class="o">)</span> <span class="o">==</span> <span class="n">ordx</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="nf">check</span><span class="o">(</span><span class="nf">elems</span><span class="o">(</span><span class="n">ordx</span><span class="o">))(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="c1">// (4)</span>
+</code></pre></div></div>
+
+<p>В случае продукта <code class="highlighter-rouge">eqProduct</code> мы проверяем runtime значения аргументов <code class="highlighter-rouge">eqv</code> на равенство 
+как продукты на основе экземпляров <code class="highlighter-rouge">Eq</code> для полей типа данных (5):</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">scala.deriving.Mirror</span>
+
+<span class="k">def</span> <span class="nf">eqProduct</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">p</span><span class="k">:</span> <span class="kt">Mirror.ProductOf</span><span class="o">[</span><span class="kt">T</span><span class="o">],</span> <span class="n">elems</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="k">_</span><span class="o">]])</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span>
+  <span class="k">new</span> <span class="nc">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span><span class="k">:</span>
+    <span class="kt">def</span> <span class="kt">eqv</span><span class="o">(</span><span class="kt">x:</span> <span class="kt">T</span><span class="o">,</span> <span class="kt">y:</span> <span class="kt">T</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span>
+      <span class="nf">iterator</span><span class="o">(</span><span class="n">x</span><span class="o">).</span><span class="py">zip</span><span class="o">(</span><span class="nf">iterator</span><span class="o">(</span><span class="n">y</span><span class="o">)).</span><span class="py">zip</span><span class="o">(</span><span class="nv">elems</span><span class="o">.</span><span class="py">iterator</span><span class="o">).</span><span class="py">forall</span> <span class="o">{</span>  <span class="c1">// (5)</span>
+        <span class="nf">case</span> <span class="o">((</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">),</span> <span class="n">elem</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nf">check</span><span class="o">(</span><span class="n">elem</span><span class="o">)(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span>
+      <span class="o">}</span>
+</code></pre></div></div>
+
+<p>Собрав все это вместе, получается следующая полная реализация:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">scala.deriving.</span><span class="o">*</span>
+<span class="k">import</span> <span class="nn">scala.compiletime.</span><span class="o">{</span><span class="n">erasedValue</span><span class="o">,</span> <span class="n">summonInline</span><span class="o">}</span>
+
+<span class="n">inline</span> <span class="k">def</span> <span class="nf">summonAll</span><span class="o">[</span><span class="kt">T</span> <span class="k">&lt;:</span> <span class="kt">Tuple</span><span class="o">]</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="k">_</span><span class="o">]]</span> <span class="k">=</span>
+  <span class="n">inline</span> <span class="n">erasedValue</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">match</span>
+    <span class="k">case</span> <span class="k">_:</span> <span class="kt">EmptyTuple</span> <span class="o">=&gt;</span> <span class="nc">Nil</span>
+    <span class="k">case</span> <span class="nf">_:</span> <span class="o">(</span><span class="n">t</span> <span class="o">*:</span> <span class="n">ts</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">summonInline</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="kt">t</span><span class="o">]]</span> <span class="o">::</span> <span class="n">summonAll</span><span class="o">[</span><span class="kt">ts</span><span class="o">]</span>
+
+<span class="k">trait</span> <span class="nc">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span><span class="nc">:</span>
+  <span class="k">def</span> <span class="nf">eqv</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">T</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span>
+
+<span class="k">object</span> <span class="nc">Eq</span><span class="k">:</span>
+  <span class="kt">given</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">with</span>
+    <span class="k">def</span> <span class="nf">eqv</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span>
+
+  <span class="k">def</span> <span class="nf">check</span><span class="o">(</span><span class="n">elem</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="k">_</span><span class="o">])(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Any</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Any</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span>
+    <span class="nv">elem</span><span class="o">.</span><span class="py">asInstanceOf</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="kt">Any</span><span class="o">]].</span><span class="py">eqv</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="nf">iterator</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">p</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span> <span class="k">=</span> <span class="nv">p</span><span class="o">.</span><span class="py">asInstanceOf</span><span class="o">[</span><span class="kt">Product</span><span class="o">].</span><span class="py">productIterator</span>
+
+  <span class="k">def</span> <span class="nf">eqSum</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">s</span><span class="k">:</span> <span class="kt">Mirror.SumOf</span><span class="o">[</span><span class="kt">T</span><span class="o">],</span> <span class="n">elems</span><span class="k">:</span> <span class="o">=&gt;</span> <span class="nc">List</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="k">_</span><span class="o">]])</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span>
+    <span class="k">new</span> <span class="nc">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span><span class="k">:</span>
+      <span class="kt">def</span> <span class="kt">eqv</span><span class="o">(</span><span class="kt">x:</span> <span class="kt">T</span><span class="o">,</span> <span class="kt">y:</span> <span class="kt">T</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span>
+        <span class="k">val</span> <span class="nv">ordx</span> <span class="k">=</span> <span class="nv">s</span><span class="o">.</span><span class="py">ordinal</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+        <span class="o">(</span><span class="nv">s</span><span class="o">.</span><span class="py">ordinal</span><span class="o">(</span><span class="n">y</span><span class="o">)</span> <span class="o">==</span> <span class="n">ordx</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="nf">check</span><span class="o">(</span><span class="nf">elems</span><span class="o">(</span><span class="n">ordx</span><span class="o">))(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="nf">eqProduct</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">p</span><span class="k">:</span> <span class="kt">Mirror.ProductOf</span><span class="o">[</span><span class="kt">T</span><span class="o">],</span> <span class="n">elems</span><span class="k">:</span> <span class="o">=&gt;</span> <span class="nc">List</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="k">_</span><span class="o">]])</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span>
+    <span class="k">new</span> <span class="nc">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span><span class="k">:</span>
+      <span class="kt">def</span> <span class="kt">eqv</span><span class="o">(</span><span class="kt">x:</span> <span class="kt">T</span><span class="o">,</span> <span class="kt">y:</span> <span class="kt">T</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span>
+        <span class="nf">iterator</span><span class="o">(</span><span class="n">x</span><span class="o">).</span><span class="py">zip</span><span class="o">(</span><span class="nf">iterator</span><span class="o">(</span><span class="n">y</span><span class="o">)).</span><span class="py">zip</span><span class="o">(</span><span class="nv">elems</span><span class="o">.</span><span class="py">iterator</span><span class="o">).</span><span class="py">forall</span> <span class="o">{</span>
+          <span class="nf">case</span> <span class="o">((</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">),</span> <span class="n">elem</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nf">check</span><span class="o">(</span><span class="n">elem</span><span class="o">)(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span>
+        <span class="o">}</span>
+
+  <span class="n">inline</span> <span class="n">given</span> <span class="n">derived</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">using</span> <span class="n">m</span><span class="k">:</span> <span class="kt">Mirror.Of</span><span class="o">[</span><span class="kt">T</span><span class="o">])</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span>
+    <span class="k">lazy</span> <span class="k">val</span> <span class="nv">elemInstances</span> <span class="k">=</span> <span class="n">summonAll</span><span class="o">[</span><span class="kt">m.MirroredElemTypes</span><span class="o">]</span>
+    <span class="n">inline</span> <span class="n">m</span> <span class="k">match</span>
+      <span class="k">case</span> <span class="n">s</span><span class="k">:</span> <span class="kt">Mirror.SumOf</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span>     <span class="k">=&gt;</span> <span class="nf">eqSum</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">elemInstances</span><span class="o">)</span>
+      <span class="k">case</span> <span class="n">p</span><span class="k">:</span> <span class="kt">Mirror.ProductOf</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=&gt;</span> <span class="nf">eqProduct</span><span class="o">(</span><span class="n">p</span><span class="o">,</span> <span class="n">elemInstances</span><span class="o">)</span>
+<span class="n">end</span> <span class="nc">Eq</span>
+</code></pre></div></div>
+
+<p>Получившийся результат можно проверить относительно простого ADT, например:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">enum</span> <span class="nc">Opt</span><span class="o">[</span><span class="kt">+T</span><span class="o">]</span> <span class="n">derives</span> <span class="nc">Eq</span><span class="k">:</span>
+  <span class="kt">case</span> <span class="kt">Sm</span><span class="o">(</span><span class="kt">t:</span> <span class="kt">T</span><span class="o">)</span>
+  <span class="kt">case</span> <span class="kt">Nn</span>
+
+<span class="nd">@main</span> <span class="k">def</span> <span class="nf">test</span><span class="o">()</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span>
+  <span class="k">import</span> <span class="nn">Opt.</span><span class="o">*</span>
+  <span class="k">val</span> <span class="nv">eqoi</span> <span class="k">=</span> <span class="n">summon</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="kt">Opt</span><span class="o">[</span><span class="kt">Int</span><span class="o">]]]</span>
+  <span class="nf">assert</span><span class="o">(</span><span class="nv">eqoi</span><span class="o">.</span><span class="py">eqv</span><span class="o">(</span><span class="nc">Sm</span><span class="o">(</span><span class="mi">23</span><span class="o">),</span> <span class="nc">Sm</span><span class="o">(</span><span class="mi">23</span><span class="o">)))</span>
+  <span class="nf">assert</span><span class="o">(!</span><span class="nv">eqoi</span><span class="o">.</span><span class="py">eqv</span><span class="o">(</span><span class="nc">Sm</span><span class="o">(</span><span class="mi">23</span><span class="o">),</span> <span class="nc">Sm</span><span class="o">(</span><span class="mi">13</span><span class="o">)))</span>
+  <span class="nf">assert</span><span class="o">(!</span><span class="nv">eqoi</span><span class="o">.</span><span class="py">eqv</span><span class="o">(</span><span class="nc">Sm</span><span class="o">(</span><span class="mi">23</span><span class="o">),</span> <span class="nc">Nn</span><span class="o">))</span>
+</code></pre></div></div>
+
+<p>В этом случае код, сгенерированный встроенным расширением для derived экземпляра <code class="highlighter-rouge">Eq</code> для <code class="highlighter-rouge">Opt</code>, 
+после небольшой доработки выглядит следующим образом:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">given</span> <span class="n">derived$Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">using</span> <span class="n">eqT</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">])</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">Opt</span><span class="o">[</span><span class="kt">T</span><span class="o">]]</span> <span class="k">=</span>
+  <span class="nf">eqSum</span><span class="o">(</span>
+    <span class="n">summon</span><span class="o">[</span><span class="kt">Mirror</span><span class="o">[</span><span class="kt">Opt</span><span class="o">[</span><span class="kt">T</span><span class="o">]]],</span>
+    <span class="nc">List</span><span class="o">(</span>
+      <span class="nf">eqProduct</span><span class="o">(</span><span class="n">summon</span><span class="o">[</span><span class="kt">Mirror</span><span class="o">[</span><span class="kt">Sm</span><span class="o">[</span><span class="kt">T</span><span class="o">]]],</span> <span class="nc">List</span><span class="o">(</span><span class="n">summon</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]])),</span>
+      <span class="nf">eqProduct</span><span class="o">(</span><span class="n">summon</span><span class="o">[</span><span class="kt">Mirror</span><span class="o">[</span><span class="kt">Nn.</span><span class="k">type</span><span class="o">]],</span> <span class="nc">Nil</span><span class="o">)</span>
+    <span class="o">)</span>
+  <span class="o">)</span>
+</code></pre></div></div>
+
+<p>Можно использовать альтернативные подходы к определению derived методов. 
+Например, более агрессивно встроенные варианты с использованием макросов Scala 3, 
+хотя и более используемы авторами классов типов, чем в приведенном выше примере, 
+могут создавать код для классов типов наподобие <code class="highlighter-rouge">Eq</code>, который устраняет все артефакты абстракции 
+(например, дочерние экземпляры <code class="highlighter-rouge">List</code>-а в приведенном выше примере)
+и генерировать код, который неотличим от того, что программист мог бы написать вручную. 
+В качестве третьего примера, используя библиотеку более высокого уровня, такую как Shapeless, 
+автор класса типов может определить эквивалентный derived метод как:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">given</span> <span class="n">eqSum</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">using</span> <span class="n">inst</span><span class="k">:</span> <span class="o">=&gt;</span> <span class="nv">K0</span><span class="o">.</span><span class="py">CoproductInstances</span><span class="o">[</span><span class="kt">Eq</span>, <span class="kt">A</span><span class="o">])</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="k">with</span>
+  <span class="k">def</span> <span class="nf">eqv</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">A</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">A</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="nv">inst</span><span class="o">.</span><span class="py">fold2</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)(</span><span class="kc">false</span><span class="o">)(</span>
+    <span class="o">[</span><span class="kt">t</span><span class="o">]</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">eqt</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">t</span><span class="o">],</span> <span class="n">t0</span><span class="k">:</span> <span class="kt">t</span><span class="o">,</span> <span class="n">t1</span><span class="k">:</span> <span class="kt">t</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nv">eqt</span><span class="o">.</span><span class="py">eqv</span><span class="o">(</span><span class="n">t0</span><span class="o">,</span> <span class="n">t1</span><span class="o">)</span>
+  <span class="o">)</span>
+
+<span class="n">given</span> <span class="n">eqProduct</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">using</span> <span class="n">inst</span><span class="k">:</span> <span class="kt">K0.ProductInstances</span><span class="o">[</span><span class="kt">Eq</span>, <span class="kt">A</span><span class="o">])</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="k">with</span>
+  <span class="k">def</span> <span class="nf">eqv</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">A</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">A</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="nv">inst</span><span class="o">.</span><span class="py">foldLeft2</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)(</span><span class="kc">true</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">)(</span>
+    <span class="o">[</span><span class="kt">t</span><span class="o">]</span> <span class="k">=&gt;</span> <span class="o">(</span><span class="n">acc</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">,</span> <span class="n">eqt</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">t</span><span class="o">],</span> <span class="n">t0</span><span class="k">:</span> <span class="kt">t</span><span class="o">,</span> <span class="n">t1</span><span class="k">:</span> <span class="kt">t</span><span class="o">)</span> <span class="k">=&gt;</span>
+      <span class="nc">Complete</span><span class="o">(!</span><span class="nv">eqt</span><span class="o">.</span><span class="py">eqv</span><span class="o">(</span><span class="n">t0</span><span class="o">,</span> <span class="n">t1</span><span class="o">))(</span><span class="kc">false</span><span class="o">)(</span><span class="kc">true</span><span class="o">)</span>
+  <span class="o">)</span>
+
+<span class="n">inline</span> <span class="k">def</span> <span class="nf">derived</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">using</span> <span class="n">gen</span><span class="k">:</span> <span class="kt">K0.Generic</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="k">=</span>
+  <span class="nv">gen</span><span class="o">.</span><span class="py">derive</span><span class="o">(</span><span class="n">eqProduct</span><span class="o">,</span> <span class="n">eqSum</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Описанная здесь структура позволяет использовать все три этих подхода, не навязывая ни один из них.</p>
+
+<h4 id="получение-экземпляров-в-другом-месте">Получение экземпляров в другом месте</h4>
+
+<p>Иногда требуется создать экземпляр класса типов для ADT после того, как ADT определен, 
+без возможности изменения кода самого ADT. 
+Для этого просто определите экземпляр, используя метод <code class="highlighter-rouge">derived</code> класса типа в правой части. 
+Например, для реализации <code class="highlighter-rouge">Ordering</code> для определения <code class="highlighter-rouge">Option</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">given</span> <span class="o">[</span><span class="kt">T:</span> <span class="kt">Ordering</span><span class="o">]</span><span class="k">:</span> <span class="kt">Ordering</span><span class="o">[</span><span class="kt">Option</span><span class="o">[</span><span class="kt">T</span><span class="o">]]</span> <span class="k">=</span> <span class="nv">Ordering</span><span class="o">.</span><span class="py">derived</span>
+</code></pre></div></div>
+
+<p>Предполагая, что у метода <code class="highlighter-rouge">Ordering.derived</code> есть контекстный параметр типа <code class="highlighter-rouge">Mirror[T]</code>, 
+сгенерированным компилятором экземпляр <code class="highlighter-rouge">Mirror</code> для <code class="highlighter-rouge">Option</code> будет достаточен, 
+а вывод экземпляра будет расширен в правой части этого определения так же, 
+как экземпляр, определенный в сопутствующих объектах ADT.</p>
+
+<h4 id="как-написать-метод-derived-класса-типов-используя-макросы">Как написать метод derived класса типов, используя макросы</h4>
+
+<p>Ниже демонстрируется, как реализовать derived метод класса типа, используя только макросы. 
+Мы следуем тому же примеру deriving экземпляров <code class="highlighter-rouge">Eq</code> 
+и для простоты поддерживаем тип <code class="highlighter-rouge">Product</code>, например класс case <code class="highlighter-rouge">Person</code>. 
+Низкоуровневый метод, который будет использовать для реализации метода <code class="highlighter-rouge">derived</code>, 
+использует кавычки, соединения как выражений, так и типов, 
+а также <code class="highlighter-rouge">scala.quoted.Expr.summon</code> метод, эквивалентный методу <code class="highlighter-rouge">summonFrom</code>. 
+Первый подходит для использования в контексте кавычек, используемых в макросах.</p>
+
+<p>Как и в исходном коде, определение класса типа такое же:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span><span class="nc">:</span>
+  <span class="k">def</span> <span class="nf">eqv</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">T</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span>
+</code></pre></div></div>
+
+<p>нам нужно реализовать метод <code class="highlighter-rouge">Eq.derived</code> для сопутствующего объекта <code class="highlighter-rouge">Eq</code>, 
+который создает quoted экземпляр для <code class="highlighter-rouge">Eq[T]</code>. 
+Вот возможная подпись:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">given</span> <span class="n">derived</span><span class="o">[</span><span class="kt">T:</span> <span class="kt">Type</span><span class="o">](</span><span class="n">using</span> <span class="nc">Quotes</span><span class="o">)</span><span class="k">:</span> <span class="kt">Expr</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]]</span>
+</code></pre></div></div>
+
+<p>и для сравнения дадим ту же подпись, что и у нас с <code class="highlighter-rouge">inline</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inline</span> <span class="n">given</span> <span class="n">derived</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span><span class="k">:</span> <span class="o">(</span><span class="kt">m:</span> <span class="kt">Mirror.Of</span><span class="o">[</span><span class="kt">T</span><span class="o">])</span> <span class="k">=&gt;</span> <span class="nc">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span> <span class="o">???</span>
+</code></pre></div></div>
+
+<p>Обратите внимание, что поскольку тип используется на последующем этапе, его необходимо поднять до <code class="highlighter-rouge">Type</code> 
+с помощью соответствующей привязки контекста. 
+Кроме того, мы не можем вызвать quoted <code class="highlighter-rouge">Mirror</code> внутри тела <code class="highlighter-rouge">derived</code>, мы можем опустить его из подписи. 
+Тело метода <code class="highlighter-rouge">derived</code> показано ниже:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">given</span> <span class="n">derived</span><span class="o">[</span><span class="kt">T:</span> <span class="kt">Type</span><span class="o">](</span><span class="n">using</span> <span class="nc">Quotes</span><span class="o">)</span><span class="k">:</span> <span class="kt">Expr</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]]</span> <span class="k">=</span>
+  <span class="k">import</span> <span class="nn">quotes.reflect.</span><span class="o">*</span>
+
+  <span class="k">val</span> <span class="nv">ev</span><span class="k">:</span> <span class="kt">Expr</span><span class="o">[</span><span class="kt">Mirror.Of</span><span class="o">[</span><span class="kt">T</span><span class="o">]]</span> <span class="k">=</span> <span class="nv">Expr</span><span class="o">.</span><span class="py">summon</span><span class="o">[</span><span class="kt">Mirror.Of</span><span class="o">[</span><span class="kt">T</span><span class="o">]].</span><span class="py">get</span>
+
+  <span class="n">ev</span> <span class="k">match</span>
+    <span class="k">case</span> <span class="o">'{</span> <span class="nc">$m</span><span class="k">:</span> <span class="kt">Mirror.ProductOf</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="o">{</span> <span class="k">type</span> <span class="kt">MirroredElemTypes</span> <span class="o">=</span> <span class="n">elementTypes</span> <span class="o">}}</span> <span class="k">=&gt;</span>
+      <span class="k">val</span> <span class="nv">elemInstances</span> <span class="k">=</span> <span class="n">summonAll</span><span class="o">[</span><span class="kt">elementTypes</span><span class="o">]</span>
+      <span class="k">val</span> <span class="nv">eqProductBody</span><span class="k">:</span> <span class="o">(</span><span class="kt">Expr</span><span class="o">[</span><span class="kt">T</span><span class="o">],</span> <span class="nc">Expr</span><span class="o">[</span><span class="kt">T</span><span class="o">])</span> <span class="k">=&gt;</span> <span class="nc">Expr</span><span class="o">[</span><span class="kt">Boolean</span><span class="o">]</span> <span class="k">=</span> <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="k">=&gt;</span>
+        <span class="nv">elemInstances</span><span class="o">.</span><span class="py">zipWithIndex</span><span class="o">.</span><span class="py">foldLeft</span><span class="o">(</span><span class="nc">Expr</span><span class="o">(</span><span class="kc">true</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">))</span> <span class="o">{</span>
+          <span class="nf">case</span> <span class="o">(</span><span class="n">acc</span><span class="o">,</span> <span class="o">(</span><span class="n">elem</span><span class="o">,</span> <span class="n">index</span><span class="o">))</span> <span class="k">=&gt;</span>
+            <span class="k">val</span> <span class="nv">e1</span> <span class="k">=</span> <span class="o">'{</span><span class="nv">$x</span><span class="o">.</span><span class="py">asInstanceOf</span><span class="o">[</span><span class="kt">Product</span><span class="o">].</span><span class="py">productElement</span><span class="o">(</span><span class="n">$</span><span class="o">{</span><span class="nc">Expr</span><span class="o">(</span><span class="n">index</span><span class="o">)})}</span>
+            <span class="k">val</span> <span class="nv">e2</span> <span class="k">=</span> <span class="o">'{</span><span class="nv">$y</span><span class="o">.</span><span class="py">asInstanceOf</span><span class="o">[</span><span class="kt">Product</span><span class="o">].</span><span class="py">productElement</span><span class="o">(</span><span class="n">$</span><span class="o">{</span><span class="nc">Expr</span><span class="o">(</span><span class="n">index</span><span class="o">)})}</span>
+            <span class="o">'{</span> <span class="nc">$acc</span> <span class="o">&amp;&amp;</span> <span class="nv">$elem</span><span class="o">.</span><span class="py">asInstanceOf</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="kt">Any</span><span class="o">]].</span><span class="py">eqv</span><span class="o">(</span><span class="nc">$e1</span><span class="o">,</span> <span class="nc">$e2</span><span class="o">)</span> <span class="o">}</span>
+        <span class="o">}</span>
+
+      <span class="o">'{</span> <span class="nf">eqProduct</span><span class="o">((</span><span class="n">x</span><span class="k">:</span> <span class="kt">T</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">$</span><span class="o">{</span><span class="nf">eqProductBody</span><span class="o">(</span><span class="ss">'x</span><span class="o">,</span> <span class="ss">'y</span><span class="o">)})</span> <span class="o">}</span>
+
+  <span class="c1">// case for Mirror.ProductOf[T]</span>
+  <span class="c1">// ...</span>
+</code></pre></div></div>
+
+<p>Обратите внимание, что в этом <code class="highlighter-rouge">inline</code> случае 
+можно просто написать <code class="highlighter-rouge">summonAll[m.MirroredElemTypes]</code> внутри встроенного метода, 
+но здесь, поскольку это необходимо <code class="highlighter-rouge">Expr.summon</code>, можно извлечь типы элементов в виде макроса. 
+Находясь внутри макроса, нашей первой реакцией было бы написать приведенный ниже код. 
+Поскольку путь внутри аргумента типа нестабилен, его нельзя использовать:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">'{</span>
+  <span class="n">summonAll</span><span class="o">[</span><span class="kt">$m.MirroredElemTypes</span><span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Вместо этого мы извлекаем тип кортежа для типов элементов, 
+используя сопоставление с образцом по кавычкам и, более конкретно, уточненный тип:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">case</span> <span class="o">'{</span> <span class="nc">$m</span><span class="k">:</span> <span class="kt">Mirror.ProductOf</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="o">{</span> <span class="k">type</span> <span class="kt">MirroredElemTypes</span> <span class="o">=</span> <span class="n">elementTypes</span> <span class="o">}}</span> <span class="k">=&gt;</span> <span class="o">...</span>
+</code></pre></div></div>
+
+<p>Ниже показана реализация <code class="highlighter-rouge">summonAll</code> в виде макроса. 
+Предполагается, что given экземпляры для примитивных типов существуют.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">summonAll</span><span class="o">[</span><span class="kt">T:</span> <span class="kt">Type</span><span class="o">](</span><span class="n">using</span> <span class="nc">Quotes</span><span class="o">)</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Expr</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="k">_</span><span class="o">]]]</span> <span class="k">=</span>
+   <span class="nv">Type</span><span class="o">.</span><span class="py">of</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">match</span>
+      <span class="k">case</span> <span class="o">'[</span><span class="kt">String</span> <span class="kt">*:</span> <span class="kt">tpes</span><span class="o">]</span> <span class="k">=&gt;</span> <span class="o">'{</span> <span class="n">summon</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="kt">String</span><span class="o">]]</span> <span class="o">}</span> <span class="o">::</span> <span class="n">summonAll</span><span class="o">[</span><span class="kt">tpes</span><span class="o">]</span>
+      <span class="k">case</span> <span class="o">'[</span><span class="kt">Int</span> <span class="kt">*:</span> <span class="kt">tpes</span><span class="o">]</span>    <span class="k">=&gt;</span> <span class="o">'{</span> <span class="n">summon</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="kt">Int</span><span class="o">]]</span> <span class="o">}</span>    <span class="o">::</span> <span class="n">summonAll</span><span class="o">[</span><span class="kt">tpes</span><span class="o">]</span>
+      <span class="k">case</span> <span class="o">'[</span><span class="kt">tpe</span> <span class="kt">*:</span> <span class="kt">tpes</span><span class="o">]</span>    <span class="k">=&gt;</span> <span class="n">derived</span><span class="o">[</span><span class="kt">tpe</span><span class="o">]</span> <span class="o">::</span> <span class="n">summonAll</span><span class="o">[</span><span class="kt">tpes</span><span class="o">]</span>
+      <span class="k">case</span> <span class="o">'[</span><span class="kt">EmptyTuple</span><span class="o">]</span>     <span class="k">=&gt;</span> <span class="nc">Nil</span>
+</code></pre></div></div>
+
+<p>Еще одно отличие тела <code class="highlighter-rouge">derived</code> здесь от тела с <code class="highlighter-rouge">inline</code> заключается в том, 
+что с макросами нужно синтезировать тело кода во время макрорасширения. 
+Это обоснование функции <code class="highlighter-rouge">eqProductBody</code>. 
+Предполагая, что мы вычисляем равенство двух <code class="highlighter-rouge">Persons</code>, определенных с case классом, 
+который содержит имя типа <code class="highlighter-rouge">String</code> и возраст типа <code class="highlighter-rouge">Int</code>, 
+проверка на равенство, которую хотим сгенерировать, выглядит следующим образом:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kc">true</span>
+   <span class="o">&amp;&amp;</span> <span class="nc">Eq</span><span class="o">[</span><span class="kt">String</span><span class="o">].</span><span class="py">eqv</span><span class="o">(</span><span class="nv">x</span><span class="o">.</span><span class="py">productElement</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span><span class="nv">y</span><span class="o">.</span><span class="py">productElement</span><span class="o">(</span><span class="mi">0</span><span class="o">))</span>
+   <span class="o">&amp;&amp;</span> <span class="nc">Eq</span><span class="o">[</span><span class="kt">Int</span><span class="o">].</span><span class="py">eqv</span><span class="o">(</span><span class="nv">x</span><span class="o">.</span><span class="py">productElement</span><span class="o">(</span><span class="mi">1</span><span class="o">),</span> <span class="nv">y</span><span class="o">.</span><span class="py">productElement</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span>
+</code></pre></div></div>
+
+<h4 id="вызов-производного-метода-внутри-макроса">Вызов производного метода внутри макроса</h4>
+
+<p>Следуя правилам <a href="/scalaworkbook/docs/metaprogramming">макросов</a>, мы создаем два метода. 
+Первый, в котором размещается соединение верхнего уровня <code class="highlighter-rouge">eqv</code>, и второй - реализация. 
+В качестве альтернативы показанного ниже, можно вызвать метод <code class="highlighter-rouge">eqv</code> напрямую. 
+<code class="highlighter-rouge">eqGen</code> может вызвать деривацию.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">extension</span> <span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">inline</span> <span class="n">x</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span>
+   <span class="n">inline</span> <span class="k">def</span> <span class="nf">===</span> <span class="o">(</span><span class="n">inline</span> <span class="n">y</span><span class="k">:</span> <span class="kt">T</span><span class="o">)(</span><span class="n">using</span> <span class="n">eq</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">])</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="nv">eq</span><span class="o">.</span><span class="py">eqv</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span>
+
+<span class="n">inline</span> <span class="n">given</span> <span class="n">eqGen</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span> <span class="n">$</span><span class="o">{</span> <span class="nv">Eq</span><span class="o">.</span><span class="py">derived</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="o">}</span>
+</code></pre></div></div>
+
+<p>Обратите внимание, что используется синтаксис inline метода, 
+и можно сравнивать экземпляры, <code class="highlighter-rouge">Sm(Person("Test", 23)) === Sm(Person("Test", 24))</code>, например, для следующих двух типов:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">age</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
+
+<span class="n">enum</span> <span class="nc">Opt</span><span class="o">[</span><span class="kt">+T</span><span class="o">]</span><span class="k">:</span>
+   <span class="kt">case</span> <span class="kt">Sm</span><span class="o">(</span><span class="kt">t:</span> <span class="kt">T</span><span class="o">)</span>
+   <span class="kt">case</span> <span class="kt">Nn</span>
+</code></pre></div></div>
+
+<p>Полный код показан ниже:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">scala.deriving.</span><span class="o">*</span>
+<span class="k">import</span> <span class="nn">scala.quoted.</span><span class="o">*</span>
+
+
+<span class="k">trait</span> <span class="nc">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span><span class="nc">:</span>
+   <span class="k">def</span> <span class="nf">eqv</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">T</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span>
+
+<span class="k">object</span> <span class="nc">Eq</span><span class="k">:</span>
+   <span class="kt">given</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">with</span>
+      <span class="k">def</span> <span class="nf">eqv</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">=</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span>
+
+   <span class="n">given</span> <span class="nc">Eq</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">with</span>
+      <span class="k">def</span> <span class="nf">eqv</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span>
+
+   <span class="k">def</span> <span class="nf">eqProduct</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">body</span><span class="k">:</span> <span class="o">(</span><span class="kt">T</span><span class="o">,</span> <span class="kt">T</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Boolean</span><span class="o">)</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span>
+      <span class="k">new</span> <span class="nc">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span><span class="k">:</span>
+         <span class="kt">def</span> <span class="kt">eqv</span><span class="o">(</span><span class="kt">x:</span> <span class="kt">T</span><span class="o">,</span> <span class="kt">y:</span> <span class="kt">T</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="nf">body</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span>
+
+   <span class="k">def</span> <span class="nf">eqSum</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">body</span><span class="k">:</span> <span class="o">(</span><span class="kt">T</span><span class="o">,</span> <span class="kt">T</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Boolean</span><span class="o">)</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span>
+      <span class="k">new</span> <span class="nc">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span><span class="k">:</span>
+         <span class="kt">def</span> <span class="kt">eqv</span><span class="o">(</span><span class="kt">x:</span> <span class="kt">T</span><span class="o">,</span> <span class="kt">y:</span> <span class="kt">T</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="nf">body</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span>
+
+   <span class="k">def</span> <span class="nf">summonAll</span><span class="o">[</span><span class="kt">T:</span> <span class="kt">Type</span><span class="o">](</span><span class="n">using</span> <span class="nc">Quotes</span><span class="o">)</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Expr</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="k">_</span><span class="o">]]]</span> <span class="k">=</span>
+      <span class="nv">Type</span><span class="o">.</span><span class="py">of</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">match</span>
+         <span class="k">case</span> <span class="o">'[</span><span class="kt">String</span> <span class="kt">*:</span> <span class="kt">tpes</span><span class="o">]</span> <span class="k">=&gt;</span> <span class="o">'{</span> <span class="n">summon</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="kt">String</span><span class="o">]]</span> <span class="o">}</span> <span class="o">::</span> <span class="n">summonAll</span><span class="o">[</span><span class="kt">tpes</span><span class="o">]</span>
+         <span class="k">case</span> <span class="o">'[</span><span class="kt">Int</span> <span class="kt">*:</span> <span class="kt">tpes</span><span class="o">]</span>    <span class="k">=&gt;</span> <span class="o">'{</span> <span class="n">summon</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="kt">Int</span><span class="o">]]</span> <span class="o">}</span>    <span class="o">::</span> <span class="n">summonAll</span><span class="o">[</span><span class="kt">tpes</span><span class="o">]</span>
+         <span class="k">case</span> <span class="o">'[</span><span class="kt">tpe</span> <span class="kt">*:</span> <span class="kt">tpes</span><span class="o">]</span>    <span class="k">=&gt;</span> <span class="n">derived</span><span class="o">[</span><span class="kt">tpe</span><span class="o">]</span> <span class="o">::</span> <span class="n">summonAll</span><span class="o">[</span><span class="kt">tpes</span><span class="o">]</span>
+         <span class="k">case</span> <span class="o">'[</span><span class="kt">EmptyTuple</span><span class="o">]</span>     <span class="k">=&gt;</span> <span class="nc">Nil</span>
+
+   <span class="n">given</span> <span class="n">derived</span><span class="o">[</span><span class="kt">T:</span> <span class="kt">Type</span><span class="o">](</span><span class="n">using</span> <span class="n">q</span><span class="k">:</span> <span class="kt">Quotes</span><span class="o">)</span><span class="k">:</span> <span class="kt">Expr</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]]</span> <span class="k">=</span>
+      <span class="k">import</span> <span class="nn">quotes.reflect.</span><span class="o">*</span>
+
+      <span class="k">val</span> <span class="nv">ev</span><span class="k">:</span> <span class="kt">Expr</span><span class="o">[</span><span class="kt">Mirror.Of</span><span class="o">[</span><span class="kt">T</span><span class="o">]]</span> <span class="k">=</span> <span class="nv">Expr</span><span class="o">.</span><span class="py">summon</span><span class="o">[</span><span class="kt">Mirror.Of</span><span class="o">[</span><span class="kt">T</span><span class="o">]].</span><span class="py">get</span>
+
+      <span class="n">ev</span> <span class="k">match</span>
+         <span class="k">case</span> <span class="o">'{</span> <span class="nc">$m</span><span class="k">:</span> <span class="kt">Mirror.ProductOf</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="o">{</span> <span class="k">type</span> <span class="kt">MirroredElemTypes</span> <span class="o">=</span> <span class="n">elementTypes</span> <span class="o">}}</span> <span class="k">=&gt;</span>
+            <span class="k">val</span> <span class="nv">elemInstances</span> <span class="k">=</span> <span class="n">summonAll</span><span class="o">[</span><span class="kt">elementTypes</span><span class="o">]</span>
+            <span class="k">val</span> <span class="nv">eqProductBody</span><span class="k">:</span> <span class="o">(</span><span class="kt">Expr</span><span class="o">[</span><span class="kt">T</span><span class="o">],</span> <span class="nc">Expr</span><span class="o">[</span><span class="kt">T</span><span class="o">])</span> <span class="k">=&gt;</span> <span class="nc">Expr</span><span class="o">[</span><span class="kt">Boolean</span><span class="o">]</span> <span class="k">=</span> <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="k">=&gt;</span>
+               <span class="nv">elemInstances</span><span class="o">.</span><span class="py">zipWithIndex</span><span class="o">.</span><span class="py">foldLeft</span><span class="o">(</span><span class="nc">Expr</span><span class="o">(</span><span class="kc">true</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">))</span> <span class="o">{</span>
+                  <span class="nf">case</span> <span class="o">(</span><span class="n">acc</span><span class="o">,</span> <span class="o">(</span><span class="n">elem</span><span class="o">,</span> <span class="n">index</span><span class="o">))</span> <span class="k">=&gt;</span>
+                     <span class="k">val</span> <span class="nv">e1</span> <span class="k">=</span> <span class="o">'{</span><span class="nv">$x</span><span class="o">.</span><span class="py">asInstanceOf</span><span class="o">[</span><span class="kt">Product</span><span class="o">].</span><span class="py">productElement</span><span class="o">(</span><span class="n">$</span><span class="o">{</span><span class="nc">Expr</span><span class="o">(</span><span class="n">index</span><span class="o">)})}</span>
+                     <span class="k">val</span> <span class="nv">e2</span> <span class="k">=</span> <span class="o">'{</span><span class="nv">$y</span><span class="o">.</span><span class="py">asInstanceOf</span><span class="o">[</span><span class="kt">Product</span><span class="o">].</span><span class="py">productElement</span><span class="o">(</span><span class="n">$</span><span class="o">{</span><span class="nc">Expr</span><span class="o">(</span><span class="n">index</span><span class="o">)})}</span>
+
+                     <span class="o">'{</span> <span class="nc">$acc</span> <span class="o">&amp;&amp;</span> <span class="nv">$elem</span><span class="o">.</span><span class="py">asInstanceOf</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="kt">Any</span><span class="o">]].</span><span class="py">eqv</span><span class="o">(</span><span class="nc">$e1</span><span class="o">,</span> <span class="nc">$e2</span><span class="o">)</span> <span class="o">}</span>
+               <span class="o">}</span>
+            <span class="o">'{</span> <span class="nf">eqProduct</span><span class="o">((</span><span class="n">x</span><span class="k">:</span> <span class="kt">T</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">$</span><span class="o">{</span><span class="nf">eqProductBody</span><span class="o">(</span><span class="ss">'x</span><span class="o">,</span> <span class="ss">'y</span><span class="o">)})</span> <span class="o">}</span>
+
+         <span class="k">case</span> <span class="o">'{</span> <span class="nc">$m</span><span class="k">:</span> <span class="kt">Mirror.SumOf</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="o">{</span> <span class="k">type</span> <span class="kt">MirroredElemTypes</span> <span class="o">=</span> <span class="n">elementTypes</span> <span class="o">}}</span> <span class="k">=&gt;</span>
+            <span class="k">val</span> <span class="nv">elemInstances</span> <span class="k">=</span> <span class="n">summonAll</span><span class="o">[</span><span class="kt">elementTypes</span><span class="o">]</span>
+            <span class="k">val</span> <span class="nv">eqSumBody</span><span class="k">:</span> <span class="o">(</span><span class="kt">Expr</span><span class="o">[</span><span class="kt">T</span><span class="o">],</span> <span class="nc">Expr</span><span class="o">[</span><span class="kt">T</span><span class="o">])</span> <span class="k">=&gt;</span> <span class="nc">Expr</span><span class="o">[</span><span class="kt">Boolean</span><span class="o">]</span> <span class="k">=</span> <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="k">=&gt;</span>
+               <span class="k">val</span> <span class="nv">ordx</span> <span class="k">=</span> <span class="o">'{</span> <span class="nv">$m</span><span class="o">.</span><span class="py">ordinal</span><span class="o">(</span><span class="nc">$x</span><span class="o">)</span> <span class="o">}</span>
+               <span class="k">val</span> <span class="nv">ordy</span> <span class="k">=</span> <span class="o">'{</span> <span class="nv">$m</span><span class="o">.</span><span class="py">ordinal</span><span class="o">(</span><span class="nc">$y</span><span class="o">)</span> <span class="o">}</span>
+
+               <span class="k">val</span> <span class="nv">elements</span> <span class="k">=</span> <span class="nv">Expr</span><span class="o">.</span><span class="py">ofList</span><span class="o">(</span><span class="n">elemInstances</span><span class="o">)</span>
+               <span class="o">'{</span> <span class="nc">$ordx</span> <span class="o">==</span> <span class="nc">$ordy</span> <span class="o">&amp;&amp;</span> <span class="nc">$elements</span><span class="o">(</span><span class="nc">$ordx</span><span class="o">).</span><span class="py">asInstanceOf</span><span class="o">[</span><span class="kt">Eq</span><span class="o">[</span><span class="kt">Any</span><span class="o">]].</span><span class="py">eqv</span><span class="o">(</span><span class="nc">$x</span><span class="o">,</span> <span class="nc">$y</span><span class="o">)</span> <span class="o">}</span>
+
+         <span class="o">'{</span> <span class="nf">eqSum</span><span class="o">((</span><span class="n">x</span><span class="k">:</span> <span class="kt">T</span><span class="o">,</span> <span class="n">y</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">$</span><span class="o">{</span><span class="nf">eqSumBody</span><span class="o">(</span><span class="ss">'x</span><span class="o">,</span> <span class="ss">'y</span><span class="o">)})</span> <span class="o">}</span>
+   <span class="n">end</span> <span class="n">derived</span>
+<span class="n">end</span> <span class="nc">Eq</span>
+
+<span class="k">object</span> <span class="nc">Macro3</span><span class="k">:</span>
+   <span class="kt">extension</span> <span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">inline</span> <span class="n">x</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span>
+      <span class="n">inline</span> <span class="k">def</span> <span class="nf">===</span> <span class="o">(</span><span class="n">inline</span> <span class="n">y</span><span class="k">:</span> <span class="kt">T</span><span class="o">)(</span><span class="n">using</span> <span class="n">eq</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">])</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="nv">eq</span><span class="o">.</span><span class="py">eqv</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span>
+
+   <span class="n">inline</span> <span class="n">given</span> <span class="n">eqGen</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span><span class="k">:</span> <span class="kt">Eq</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="k">=</span> <span class="n">$</span><span class="o">{</span> <span class="nv">Eq</span><span class="o">.</span><span class="py">derived</span><span class="o">[</span><span class="kt">T</span><span class="o">]</span> <span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>References:</strong></p>
+<ul>
+  <li><a href="https://docs.scala-lang.org/scala3/reference/contextual/derivation.html">Scala 3 Reference</a></li>
+  <li><a href="https://docs.scala-lang.org/scala3/reference/contextual/derivation-macro.html">Scala 3 Reference, Derivation macros</a></li>
+</ul>
+
+
+
+<hr>
+<div class="edit-button" style="display: flex; justify-content: space-between;">
+    
+    <a href="/scalaworkbook/docs/abstractions/ca-type-classes" class="btn-sm btn-info btn-left"><-- Предыдущая</a>
+    
+    
+    <a href="/scalaworkbook/docs/abstractions/ca-multiversal-equality" class="btn-sm btn-info btn-right">Следующая --></a>
+    
+</div></section><div class="edit-button"><a href="https://github.com/artemkorsakov/scalaworkbook/edit/main/docs/docs/docs/abstractions/ca-type-class-derivation.md" target="_blank" rel="noopener noreferrer" class="btn-sm btn-info">Редактировать страницу</a></div></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalaworkbook/highlight/highlight.pack.js"></script><script src="/scalaworkbook/lunr/lunr.js"></script><script>
+// For all code blocks, copy the language from the containing div
+// to the inner code tag (where hljs expects it to be)
+const langPrefix = 'language-';
+document.querySelectorAll(`div[class^='${langPrefix}']`).forEach(function(div) {
+  div.classList.forEach(function(cssClass) {
+    if (cssClass.startsWith(langPrefix)) {
+      const lang = cssClass.substring(langPrefix.length);
+      div.querySelectorAll('pre code').forEach(function(code) {
+        code.classList.add(lang);
+      });
+    }
+  });
+});
+
+hljs.configure({languages:['scala','java','bash']});
+hljs.initHighlightingOnLoad();
+      </script><script>console.info('\x57\x65\x62\x73\x69\x74\x65\x20\x62\x75\x69\x6c\x74\x20\x77\x69\x74\x68\x3a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x5f\x5f\x0a\x20\x20\x20\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x5f\x20\x20\x2f\x20\x2f\x5f\x20\x20\x20\x20\x20\x20\x5f\x5f\x5f\x5f\x20\x5f\x5f\x5f\x20\x20\x28\x5f\x29\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x28\x5f\x29\x20\x2f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x0a\x20\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x60\x5f\x5f\x20\x5c\x2f\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x20\x2f\x20\x5f\x5f\x2f\x20\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x0a\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x5f\x2f\x20\x2f\x20\x2f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x5f\x5f\x2f\x20\x2f\x20\x20\x2f\x20\x2f\x5f\x2f\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x20\x2f\x5f\x2f\x20\x20\x5f\x5f\x28\x5f\x5f\x20\x20\x29\x0a\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2e\x5f\x5f\x5f\x2f\x5c\x5f\x5f\x2f\x20\x20\x20\x20\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x2f\x20\x20\x20\x5c\x5f\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x0a\x0a\x68\x74\x74\x70\x73\x3a\x2f\x2f\x34\x37\x64\x65\x67\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x73\x62\x74\x2d\x6d\x69\x63\x72\x6f\x73\x69\x74\x65\x73')</script><script src="/scalaworkbook/js/search.js"></script><script src="/scalaworkbook/js/main.js"></script></body></html>
