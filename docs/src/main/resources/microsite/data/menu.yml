@@ -220,6 +220,9 @@ options:
       - title: Конт. пар. по имени
         url: docs/abstractions/ca-by-name-parameters
 
+      - title: Предложения export
+        url: docs/abstractions/export-causes
+
   - title: Параллелизм
     url: docs/concurrency
 

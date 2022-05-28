@@ -1,7 +1,7 @@
 ---
 layout: docsplus
 title: "Параллелизм"
-prev: abstractions/ca-by-name-parameters
+prev: abstractions/export-causes
 next: tools
 ---
 
