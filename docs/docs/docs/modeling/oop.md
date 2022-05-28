@@ -159,6 +159,46 @@ open class Person(name: String)
 В частности, это требует, чтобы разработчики библиотек явно планировали расширение 
 и, например, документировали классы, помеченные как открытые.
 
+Пример:
+
+```scala
+// File Writer.scala
+package p
+
+open class Writer[T]:
+
+  /** Sends to stdout, can be overridden */
+  def send(x: T) = println(x)
+
+  /** Sends all arguments using `send` */
+  def sendAll(xs: T*) = xs.foreach(send)
+end Writer
+
+// File EncryptedWriter.scala
+package p
+
+class EncryptedWriter[T: Encryptable] extends Writer[T]:
+  override def send(x: T) = super.send(encrypt(x))
+```
+
+Открытый класс обычно поставляется с некоторой документацией, 
+описывающей внутренние шаблоны вызовов между методами класса, а также хуки, которые можно переопределить. 
+Это называется контрактом расширения класса (_extension contract_). 
+Он отличается от внешнего контракта (_external contract_) между классом и его пользователями.
+
+Классы без модификатора `open` все же могут быть расширены, 
+но только при соблюдении хотя бы одного из двух альтернативных условий:
+- Расширяющий класс находится в том же исходном файле, что и расширенный класс. 
+В этом случае расширение обычно является внутренним вопросом реализации.
+- Для класса расширения включена языковая функция
+[adhocExtensions](https://scala-lang.org/api/3.x/scala/runtime/stdLibPatches/language$$adhocExtensions$.html). 
+Обычно она включается предложением импорта в исходном файле расширения: `import scala.language.adhocExtensions`
+Кроме того, эту функцию можно включить с помощью опции компилятора `-language:adhocExtensions`. 
+Если эта функция не включена, компилятор выдаст  "feature" warning.
+
+[Подробности об open классах](https://docs.scala-lang.org/scala3/reference/other-new-features/open-classes.html).
+
+
 ### Экземпляры и приватное изменяемое состояние
 
 Как и в других языках с поддержкой ООП, `trait`-ы и классы в Scala могут определять изменяемые поля:
@@ -322,6 +362,8 @@ s2.changeValue(3)
 - [Scala3 book, taste modeling](https://docs.scala-lang.org/scala3/book/taste-modeling.html)
 - [Scala3 book, taste objects](https://docs.scala-lang.org/scala3/book/taste-objects.html)
 - [Odersky and Zenger. Scalable component abstractions][Odersky and Zenger]
+- [Scala 3 Reference, Open classes](https://docs.scala-lang.org/scala3/reference/other-new-features/open-classes.html)
+
 
 
 [Odersky and Zenger]: https://dl.acm.org/doi/10.1145/1103845.1094815
