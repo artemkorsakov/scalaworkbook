@@ -1,7 +1,7 @@
 ---
 layout: docsplus
 title: "Параллелизм"
-prev: abstractions/export-causes
+prev: abstractions/parameter-untupling
 next: tools
 ---
 

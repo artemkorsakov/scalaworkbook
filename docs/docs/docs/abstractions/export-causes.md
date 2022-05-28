@@ -2,7 +2,7 @@
 layout: docsplus
 title: "Предложения export"
 prev: abstractions/ca-by-name-parameters
-next: concurrency
+next: abstractions/parameter-untupling
 ---
 
 ## {{page.title}}

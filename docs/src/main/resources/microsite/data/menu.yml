@@ -223,6 +223,9 @@ options:
       - title: Предложения export
         url: docs/abstractions/export-causes
 
+      - title: Распаковка параметров
+        url: docs/abstractions/parameter-untupling
+
   - title: Параллелизм
     url: docs/concurrency
 
