@@ -339,10 +339,10 @@ def +(a: Int, b: Int) = a + b
 но в Scala можно указать "альтернативное" имя для метода — псевдоним, который будет работать в Java:
 
 ```java
-import scala.annotation.alpha
+import scala.annotation.targetName
 
 class Adder:
-  @alpha("add") def +(a: Int, b: Int) = a + b
+  @targetName("add") def +(a: Int, b: Int) = a + b
 ```
 
 Теперь в Java-коде можно использовать псевдоним имени метода `add`:
@@ -358,3 +358,4 @@ System.out.printf("x = %d\n", x);
 
 **References:**
 - [Scala3 book](https://docs.scala-lang.org/scala3/book/interacting-with-java.html)
+- [Scala 3 Reference](https://docs.scala-lang.org/scala3/reference/other-new-features/targetName.html)
