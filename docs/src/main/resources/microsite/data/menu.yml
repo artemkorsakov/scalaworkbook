@@ -226,6 +226,9 @@ options:
       - title: Распаковка параметров
         url: docs/abstractions/parameter-untupling
 
+      - title: Проверка типа
+        url: docs/abstractions/type-test
+
   - title: Параллелизм
     url: docs/concurrency
 

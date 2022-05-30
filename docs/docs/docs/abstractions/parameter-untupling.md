@@ -2,7 +2,7 @@
 layout: docsplus
 title: "Распаковка параметров"
 prev: abstractions/export-causes
-next: concurrency
+next: abstractions/type-test
 ---
 
 ## {{page.title}}

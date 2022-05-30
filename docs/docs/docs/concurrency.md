@@ -1,7 +1,7 @@
 ---
 layout: docsplus
 title: "Параллелизм"
-prev: abstractions/parameter-untupling
+prev: abstractions/type-test
 next: tools
 ---
 
