@@ -105,8 +105,8 @@ def f[T: Typeable]: Boolean =
     case x: T => true
     case _ => false
 
-f[String] // true
-f[Int] // false
+f[String]
+f[Int]
 ```
 
 ### Пример
@@ -163,20 +163,19 @@ object PeanoInt extends Peano:
 можно написать следующую программу:
 
 ```scala mdoc
-@main def test =
-  import PeanoInt.*
+import PeanoInt.*
 
-  def divOpt(m: Nat, n: Nat): Option[(Nat, Nat)] =
-    n match
-      case Zero => None
-      case s @ Succ(_) => Some(safeDiv(m, s))
+def divOpt(m: Nat, n: Nat): Option[(Nat, Nat)] =
+  n match
+    case Zero => None
+    case s @ Succ(_) => Some(safeDiv(m, s))
 
-  val two = Succ(Succ(Zero))
-  val five = Succ(Succ(Succ(two)))
+val two = Succ(Succ(Zero))
+val five = Succ(Succ(Succ(two)))
 
-  println(divOpt(five, two))  // prints "Some((2,1))"
-  println(divOpt(two, five))  // prints "Some((0,2))"
-  println(divOpt(two, Zero))  // prints "None"
+println(divOpt(five, two))
+println(divOpt(two, five))
+println(divOpt(two, Zero))
 ```
 
 Обратите внимание, что без `TypeTest[Nat, Succ]` паттерн `Succ.unapply(nat: Succ)` был бы `unchecked`.
