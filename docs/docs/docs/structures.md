@@ -437,6 +437,24 @@ def pattern(x: Matchable): String = x match
   case _ => "Unknown"
 ```
 
+#### Дополнительные возможности выражений match
+
+`match` выражения могут быть объединены в цепочку:
+
+```scala mdoc:reset
+def chain(xs: List[Int]) =
+  xs match
+    case Nil => "empty"
+    case _   => "nonempty"
+  match
+    case "empty"    => 0
+    case "nonempty" => 1
+
+chain(List.empty[Int])
+chain(List(1, 2, 3))
+```
+
+
 ### try/catch/finally
 
 Как и в Java, в Scala есть конструкция `try`/`catch`/`finally`, позволяющая перехватывать исключения и управлять ими. 
@@ -466,3 +484,4 @@ finally
 **References:**
 - [Scala3 book, taste Control Structures](https://docs.scala-lang.org/scala3/book/taste-control-structures.html)
 - [Scala3 book, Control Structures](https://docs.scala-lang.org/scala3/book/control-structures.html)
+- [Scala 3 Reference](https://docs.scala-lang.org/scala3/reference/changed-features/match-syntax.html)
