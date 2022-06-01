@@ -235,6 +235,14 @@ s"x.abs = ${x.abs}"
 Кроме того, интерполятор строк - это всего лишь специальный метод, и его можно определить самостоятельно. 
 Например, некоторые библиотеки баз данных определяют очень мощный интерполятор `sql`.
 
+Для экранирования символа `"` в интерполяции используется символ `$`:
+
+```scala mdoc
+val inventor = "Thomas Edison"
+val interpolation = s"as $inventor said: $"The three great essentials to achieve anything worth while are: Hard work, Stick-to-itiveness, and Common sense.$""
+println(interpolation)
+```
+
 ##### Multiline strings
 
 Многострочные строки создаются путем включения строки в три двойные кавычки:

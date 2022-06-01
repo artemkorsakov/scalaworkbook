@@ -120,4 +120,4 @@ final class happyBirthday {
 **References:**
 - [Scala3 book](https://docs.scala-lang.org/scala3/book/taste-methods.html)
 - [Scala3 book, main Methods](https://docs.scala-lang.org/scala3/book/methods-main-methods.html)
-
+- [Scala 3 Reference](https://docs.scala-lang.org/scala3/reference/changed-features/main-functions.html)
