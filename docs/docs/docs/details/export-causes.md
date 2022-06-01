@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Предложения export"
-prev: abstractions/ca-by-name-parameters
-next: abstractions/parameter-untupling
+prev: details
+next: details/parameter-untupling
 ---
 
 ## {{page.title}}

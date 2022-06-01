@@ -220,14 +220,21 @@ options:
       - title: Конт. пар. по имени
         url: docs/abstractions/ca-by-name-parameters
 
+  - title: Детали
+    url: docs/details
+
+    nested_options:
       - title: Предложения export
-        url: docs/abstractions/export-causes
+        url: docs/details/export-causes
 
       - title: Распаковка параметров
-        url: docs/abstractions/parameter-untupling
+        url: docs/details/parameter-untupling
 
       - title: Проверка типа
-        url: docs/abstractions/type-test
+        url: docs/details/type-test
+
+      - title: Сопоставление
+        url: docs/details/pattern-matching
 
   - title: Параллелизм
     url: docs/concurrency

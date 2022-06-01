@@ -1,7 +1,7 @@
 ---
 layout: docsplus
 title: "Параллелизм"
-prev: abstractions/type-test
+prev: details/pattern-matching
 next: tools
 ---
 

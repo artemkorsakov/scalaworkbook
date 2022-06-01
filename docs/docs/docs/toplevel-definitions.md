@@ -38,7 +38,7 @@ type Money = BigDecimal
 
 Как показано, нет необходимости помещать эти определения внутри пакета, класса или другой конструкции.
 
-Этот подход заменяет `package objects` из Scala 2. 
+Этот подход заменяет `package objects` из Scala 2, которые впоследствии будут объявлены устаревшими и удалены. 
 Но, будучи намного проще в использовании, они работают аналогично: 
 когда вы помещаете определение в пакет с именем `foo`, 
 вы можете получить доступ к этому определению во всех других пакетах в `foo`, например, в пакете `foo.bar` в этом примере:
@@ -65,3 +65,4 @@ package foo {
 
 **References:**
 - [Scala3 book](https://docs.scala-lang.org/scala3/book/taste-toplevel-definitions.html)
+- [Scala 3 Reference](https://docs.scala-lang.org/scala3/reference/dropped-features/package-objects.html)

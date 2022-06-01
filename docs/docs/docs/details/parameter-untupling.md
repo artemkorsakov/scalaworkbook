@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Распаковка параметров"
-prev: abstractions/export-causes
-next: abstractions/type-test
+prev: details/export-causes
+next: details/type-test
 ---
 
 ## {{page.title}}

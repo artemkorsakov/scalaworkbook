@@ -2,7 +2,7 @@
 layout: docsplus
 title: "Конт. пар. по имени"
 prev: abstractions/ca-implicit-conversions
-next: abstractions/export-causes
+next: details
 ---
 
 ## Контекстные параметры по имени

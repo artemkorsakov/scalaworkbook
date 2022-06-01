@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Проверка типа"
-prev: abstractions/parameter-untupling
-next: concurrency
+prev: details/parameter-untupling
+next: details/pattern-matching
 ---
 
 ## {{page.title}}
