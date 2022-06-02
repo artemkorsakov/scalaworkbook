@@ -1,0 +1,304 @@
+<!DOCTYPE html><html><head><title>Scala workbook: Объединение типов</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Артём Корсаков" /><meta name="description" content="Функциональная разработка на Scala." /><meta name="og:image" content="/scalaworkbook/img/poster.png" /><meta name="image" property="og:image" content="/scalaworkbook/img/poster.png" /><meta name="og:title" content="Scala workbook: Объединение типов" /><meta name="title" property="og:title" content="Scala workbook: Объединение типов" /><meta name="og:site_name" content="Scala workbook" /><meta name="og:url" content="" /><meta name="og:type" content="website" /><meta name="og:description" content="Функциональная разработка на Scala." /><link rel="icon" type="image/png" href="/scalaworkbook/img/favicon.png" /><meta name="twitter:title" content="Scala workbook: Объединение типов" /><meta name="twitter:image" content="https://artemkorsakov.github.io/scalaworkbook/img/poster.png" /><meta name="twitter:description" content="Функциональная разработка на Scala." /><meta name="twitter:card" content="summary_large_image" /><link rel="icon" type="image/png" sizes="16x16" href="/scalaworkbook/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/scalaworkbook/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/scalaworkbook/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/scalaworkbook/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/scalaworkbook/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/scalaworkbook/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/scalaworkbook/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/scalaworkbook/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/scalaworkbook/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/scalaworkbook/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/scalaworkbook/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/scalaworkbook/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/scalaworkbook/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/scalaworkbook/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/scalaworkbook/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/scalaworkbook/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/scalaworkbook/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/scalaworkbook/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/scalaworkbook/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/scalaworkbook/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/scalaworkbook/highlight/styles/vs.css" /><link rel="stylesheet" href="/scalaworkbook/css/pattern-style.css" /><link rel="stylesheet" href="/scalaworkbook/css/override.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/scalaworkbook/" class="brand"><div class="brand-wrapper"><span>Scala workbook</span></div></a></li> <li><a href="/scalaworkbook/docs/index" class="">Обзор Scala</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/start/getting-started" class="">С чего начать?</a></li></ul></li> <li><a href="/scalaworkbook/docs/hello_world" class="">Hello, world!</a></li> <li><a href="/scalaworkbook/docs/repl" class="">REPL</a></li> <li><a href="/scalaworkbook/docs/types" class="">Типы данных</a></li> <li><a href="/scalaworkbook/docs/structures" class="">Структуры управления</a></li> <li><a href="/scalaworkbook/docs/modeling" class="">Моделирование данных</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/modeling/classes" class="">Classes</a></li> <li><a href="/scalaworkbook/docs/modeling/objects" class="">Objects</a></li> <li><a href="/scalaworkbook/docs/modeling/companion-objects" class="">Companion objects</a></li> <li><a href="/scalaworkbook/docs/modeling/traits" class="">Traits</a></li> <li><a href="/scalaworkbook/docs/modeling/abstract-class" class="">Абстрактные классы</a></li> <li><a href="/scalaworkbook/docs/modeling/enums" class="">Enums</a></li> <li><a href="/scalaworkbook/docs/modeling/case-class" class="">Case classes</a></li> <li><a href="/scalaworkbook/docs/modeling/oop" class="">Моделирование ООП</a></li> <li><a href="/scalaworkbook/docs/modeling/fp" class="">Моделирование ФП</a></li></ul></li> <li><a href="/scalaworkbook/docs/methods" class="">Методы</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/methods/method-features" class="">Определение методов</a></li> <li><a href="/scalaworkbook/docs/methods/default-parameters" class="">Параметры по умолчанию</a></li> <li><a href="/scalaworkbook/docs/methods/named-parameters" class="">Именованные параметры</a></li> <li><a href="/scalaworkbook/docs/methods/by-name-parameter" class="">Параметры по имени</a></li> <li><a href="/scalaworkbook/docs/methods/partially-applied-functions" class="">Каррирование</a></li> <li><a href="/scalaworkbook/docs/methods/vararg-parameters" class="">Variable Arguments</a></li> <li><a href="/scalaworkbook/docs/methods/generic-parameter" class="">Generic параметры</a></li> <li><a href="/scalaworkbook/docs/methods/extension-methods" class="">Методы расширения</a></li> <li><a href="/scalaworkbook/docs/methods/main-methods" class="">main методы</a></li></ul></li> <li><a href="/scalaworkbook/docs/functions" class="">Функции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/functions/anonymous" class="">Анонимные функции</a></li> <li><a href="/scalaworkbook/docs/functions/variables" class="">Параметры функции</a></li> <li><a href="/scalaworkbook/docs/functions/eta" class="">Eta расширение</a></li> <li><a href="/scalaworkbook/docs/functions/hofs" class="">Функции высшего порядка</a></li> <li><a href="/scalaworkbook/docs/functions/write-map" class="">Собственный map</a></li> <li><a href="/scalaworkbook/docs/functions/returns-function" class="">Возврат функции в методе</a></li></ul></li> <li><a href="/scalaworkbook/docs/packaging" class="">Пакеты и импорт</a></li> <li><a href="/scalaworkbook/docs/toplevel-definitions" class="">Верхнеур. определения</a></li> <li><a href="/scalaworkbook/docs/collections" class="">Коллекции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/collections/classes" class="">Типы коллекций</a></li> <li><a href="/scalaworkbook/docs/collections/methods" class="">Методы в коллекциях</a></li></ul></li> <li><a href="/scalaworkbook/docs/fp" class="">Функц. программирование</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/fp/what-is-fp" class="">Что такое ФП?</a></li> <li><a href="/scalaworkbook/docs/fp/immutable-values" class="">Неизменяемые значения</a></li> <li><a href="/scalaworkbook/docs/fp/pure-functions" class="">Чистые функции</a></li> <li><a href="/scalaworkbook/docs/fp/functions-are-values" class="">Функции - это значения</a></li> <li><a href="/scalaworkbook/docs/fp/functional-error-handling" class="">Обработка ошибок</a></li></ul></li> <li><a href="/scalaworkbook/docs/type-system" class="">Система типов</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/type-system/types-inferred" class="">Определение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-generics" class="">Generics типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-intersection" class="">Пересечение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-union" class=" active ">Объединение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-adts" class="">Алгебр. типы данных</a></li> <li><a href="/scalaworkbook/docs/type-system/types-variance" class="">Ковариантность</a></li> <li><a href="/scalaworkbook/docs/type-system/types-opaque" class="">Непрозрачные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-structural" class="">Структурные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-dependent-function" class="">Зависимые типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/type-lambdas" class="">Type Lambdas</a></li> <li><a href="/scalaworkbook/docs/type-system/match-types" class="">Match Types</a></li> <li><a href="/scalaworkbook/docs/type-system/polymorphic-function-types" class="">Полимор. типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/types-others" class="">Другие типы</a></li></ul></li> <li><a href="/scalaworkbook/docs/abstractions" class="">Абстракции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/abstractions/ca-given" class="">Given</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-using" class="">Using</a></li> <li><a href="/scalaworkbook/docs/abstractions/type-classes" class="">Класс типов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-context-bounds" class="">Контекстные границы</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-given-imports" class="">Given imports</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-extension-methods" class="">Методы расш. - детали</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-classes" class="">Импл. type классов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-class-derivation" class="">Type Class Derivation</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-multiversal-equality" class="">Multiversal Equality</a></li> <li><a href="/scalaworkbook/docs/abstractions/context-functions" class="">Контекстные функции</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-implicit-conversions" class="">Неявные преобр.</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-by-name-parameters" class="">Конт. пар. по имени</a></li></ul></li> <li><a href="/scalaworkbook/docs/details" class="">Детали</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/details/export-causes" class="">Предложения export</a></li> <li><a href="/scalaworkbook/docs/details/parameter-untupling" class="">Распаковка параметров</a></li> <li><a href="/scalaworkbook/docs/details/type-test" class="">Проверка типа</a></li> <li><a href="/scalaworkbook/docs/details/pattern-matching" class="">Экстракторы</a></li></ul></li> <li><a href="/scalaworkbook/docs/concurrency" class="">Параллелизм</a></li> <li><a href="/scalaworkbook/docs/tools" class="">Утилиты</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/tools/tools-sbt" class="">Sbt</a></li> <li><a href="/scalaworkbook/docs/tools/tools-worksheets" class="">Worksheet</a></li></ul></li> <li><a href="/scalaworkbook/docs/with_java" class="">Взаимодействие с Java</a></li> <li><a href="/scalaworkbook/docs/metaprogramming" class="">Metaprogramming</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/metaprogramming/inline" class="">Inline</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/compile-time-ops" class="">Compile-time ops</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/macros" class="">Macros</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/quoted-code" class="">Quoted Code</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/runtime-staging" class="">Runtime Staging</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/reflection" class="">Reflection</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/tasty-inspection" class="">TASTy Inspection</a></li></ul></li> <li><a href="/scalaworkbook/docs/soft-keywords" class="">Soft Keywords</a></li> <li><a href="/scalaworkbook/docs/extra" class="">Доп. материалы</a></li></ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li class="search-nav hidden-xs hidden-sm"><div id="search-dropdown"><label><i class="fa fa-search"></i>Search</label><input id="search-bar" type="text" placeholder="Enter keywords here..." onclick="displayToggleSearch(event)" /><ul id="search-dropdown-content" class="dropdown dropdown-content"></ul></div></li></ul></div></div></div></div><div id="content" data-github-owner="artemkorsakov" data-github-repo="scalaworkbook"><div class="content-wrapper"><section><h2 id="объединение-типов">Объединение типов</h2>
+
+<p>Используемый для типов <code class="highlighter-rouge">|</code> оператор создает так называемый тип объединения (<em>union type</em>). 
+Тип <code class="highlighter-rouge">А | B</code> представляет значения, которые относятся <strong>либо</strong> к типу <code class="highlighter-rouge">A</code>, <strong>либо</strong> к типу <code class="highlighter-rouge">B</code>.</p>
+
+<p>В следующем примере метод <code class="highlighter-rouge">help</code> принимает параметр с именем <code class="highlighter-rouge">id</code> типа объединения <code class="highlighter-rouge">Username | Password</code>, 
+который может быть либо <code class="highlighter-rouge">Username</code>, либо <code class="highlighter-rouge">Password</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">case</span> <span class="k">class</span> <span class="nc">Username</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Password</span><span class="o">(</span><span class="n">hash</span><span class="k">:</span> <span class="kt">Hash</span><span class="o">)</span>
+
+<span class="k">def</span> <span class="nf">help</span><span class="o">(</span><span class="n">id</span><span class="k">:</span> <span class="kt">Username</span> <span class="kt">|</span> <span class="kt">Password</span><span class="o">)</span> <span class="k">=</span>
+  <span class="k">val</span> <span class="nv">user</span> <span class="k">=</span> <span class="n">id</span> <span class="k">match</span>
+    <span class="k">case</span> <span class="nc">Username</span><span class="o">(</span><span class="n">name</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nf">lookupName</span><span class="o">(</span><span class="n">name</span><span class="o">)</span>
+    <span class="k">case</span> <span class="nc">Password</span><span class="o">(</span><span class="n">hash</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nf">lookupPassword</span><span class="o">(</span><span class="n">hash</span><span class="o">)</span>
+  <span class="c1">// ...</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">help</code> реализуется используя pattern matching.</p>
+
+<p>Этот код является гибким и типобезопасным решением. 
+Если попытаться передать тип, отличный от <code class="highlighter-rouge">Username</code> или <code class="highlighter-rouge">Password</code>, компилятор пометит это как ошибку:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">help</span><span class="o">(</span><span class="s">"hi"</span><span class="o">)</span>   <span class="c1">// error: Found: ("hi" : String)</span>
+             <span class="c1">//        Required: Username | Password         </span>
+</code></pre></div></div>
+
+<p>Ошибка также будет получена, если попытаться добавить <code class="highlighter-rouge">case</code> в выражение <code class="highlighter-rouge">match</code>, 
+которое не соответствует типам <code class="highlighter-rouge">Username</code> или <code class="highlighter-rouge">Password</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">case</span> <span class="mf">1.0</span> <span class="k">=&gt;</span> <span class="o">???</span>   <span class="c1">// ERROR: this line won’t compile</span>
+</code></pre></div></div>
+
+<h4 id="альтернатива-объединенным-типам">Альтернатива объединенным типам</h4>
+
+<p>Как показано, объединенные типы могут использоваться для представления вариантов нескольких разных типов, 
+не требуя, чтобы эти типы были частью специально созданной иерархии классов.</p>
+
+<h5 id="предварительное-планирование-иерархии-классов">Предварительное планирование иерархии классов</h5>
+
+<p>Другие языки требуют предварительного планирования иерархии классов, как показано в следующем примере:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">UsernameOrPassword</span>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Username</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">UsernameOrPassword</span>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Password</span><span class="o">(</span><span class="n">hash</span><span class="k">:</span> <span class="kt">Hash</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">UsernameOrPassword</span>
+<span class="k">def</span> <span class="nf">help</span><span class="o">(</span><span class="n">id</span><span class="k">:</span> <span class="kt">UsernameOrPassword</span><span class="o">)</span> <span class="k">=</span> <span class="o">...</span>
+</code></pre></div></div>
+
+<p>Предварительное планирование не очень хорошо масштабируется, поскольку, 
+например, требования пользователей API могут быть непредсказуемыми. 
+Кроме того, загромождение иерархии типов маркерами типа <code class="highlighter-rouge">UsernameOrPassword</code> затрудняет чтение кода.</p>
+
+<h5 id="теговые-объединения">Теговые объединения</h5>
+
+<p>Другой альтернативой является задание отдельного типа перечисления, например:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">enum</span> <span class="nc">UsernameOrPassword</span><span class="k">:</span>
+  <span class="kt">case</span> <span class="kt">IsUsername</span><span class="o">(</span><span class="kt">u:</span> <span class="kt">Username</span><span class="o">)</span>
+  <span class="kt">case</span> <span class="kt">IsPassword</span><span class="o">(</span><span class="kt">p:</span> <span class="kt">Password</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Перечисление <code class="highlighter-rouge">UsernameOrPassword</code> представляет собой помеченное объединение <code class="highlighter-rouge">Username</code> и <code class="highlighter-rouge">Password</code>. 
+Однако этот способ моделирования объединения требует явной упаковки и распаковки, 
+и, например, <code class="highlighter-rouge">Username</code> не является подтипом <code class="highlighter-rouge">UsernameOrPassword</code>.</p>
+
+<h4 id="вывод-типов-объединения">Вывод типов объединения</h4>
+
+<p>Компилятор присваивает типу объединения выражение, только если такой тип явно задан. 
+Например, рассмотрим такие значения:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">name</span> <span class="k">=</span> <span class="nc">Username</span><span class="o">(</span><span class="s">"Eve"</span><span class="o">)</span>   
+<span class="c1">// name: Username = Username(name = "Eve")   </span>
+<span class="k">val</span> <span class="nv">password</span> <span class="k">=</span> <span class="nc">Password</span><span class="o">(</span><span class="mi">123</span><span class="o">)</span> 
+<span class="c1">// password: Password = Password(hash = 123)</span>
+</code></pre></div></div>
+
+<p>В этом примере показано, как можно использовать тип объединения при привязке переменной к результату выражения <code class="highlighter-rouge">if</code>/<code class="highlighter-rouge">else</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">a</span> <span class="k">=</span> <span class="nf">if</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="n">name</span> <span class="k">else</span> <span class="n">password</span>
+<span class="c1">// a: Object = Username(name = "Eve")</span>
+<span class="k">val</span> <span class="nv">b</span><span class="k">:</span> <span class="kt">Password</span> <span class="kt">|</span> <span class="kt">Username</span> <span class="o">=</span> <span class="nf">if</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="n">name</span> <span class="k">else</span> <span class="n">password</span>
+<span class="c1">// b: Password | Username = Username(name = "Eve")</span>
+</code></pre></div></div>
+
+<p>Типом <code class="highlighter-rouge">a</code> является <code class="highlighter-rouge">Object</code>, который является супертипом <code class="highlighter-rouge">Username</code> и <code class="highlighter-rouge">Password</code>, 
+но не наименьшим супертипом, <code class="highlighter-rouge">Password | Username</code>. 
+Если необходим наименьший супертип, его нужно указать явно, как это делается для <code class="highlighter-rouge">b</code>.</p>
+
+<blockquote>
+  <p>Типы объединения являются двойственными типам пересечения. 
+И как <code class="highlighter-rouge">&amp;</code> с типами пересечения, <code class="highlighter-rouge">|</code> также коммутативен: <code class="highlighter-rouge">A | B</code> того же типа, что и <code class="highlighter-rouge">B | А</code>.</p>
+</blockquote>
+
+<h3 id="детали">Детали</h3>
+
+<h4 id="взаимодействие-в-сопоставлении-с-образцом">Взаимодействие в сопоставлении с образцом</h4>
+
+<p><code class="highlighter-rouge">|</code> также используется при сопоставлении шаблонов с отдельными альтернативами шаблонов 
+и имеет более низкий приоритет, чем <code class="highlighter-rouge">:</code> используемый в типизированных шаблонах.
+Это означает, что:</p>
+
+<p><code class="highlighter-rouge">case _: A | B =&gt; ...</code></p>
+
+<p>эквивалентен:</p>
+
+<p><code class="highlighter-rouge">case (_: A) | B =&gt; ...</code></p>
+
+<p>, а не:</p>
+
+<p><code class="highlighter-rouge">case _: (A | B) =&gt; ...</code></p>
+
+<h4 id="правила-подтипа">Правила подтипа</h4>
+
+<p>Правила подтипа:</p>
+<ul>
+  <li><code class="highlighter-rouge">A</code> всегда является подтипом <code class="highlighter-rouge">A | B</code> для всех <code class="highlighter-rouge">A</code>, <code class="highlighter-rouge">B</code></li>
+  <li>если <code class="highlighter-rouge">A &lt;: C</code> и <code class="highlighter-rouge">B &lt;: C</code>, тогда <code class="highlighter-rouge">A | B &lt;: C</code></li>
+  <li><code class="highlighter-rouge">|</code> является коммутативным и ассоциативным подобно <code class="highlighter-rouge">&amp;</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A | B =:= B | A
+A | (B | C) =:= (A | B) | C
+</code></pre></div>    </div>
+  </li>
+  <li><code class="highlighter-rouge">&amp;</code> является дистрибутивным по <code class="highlighter-rouge">|</code>:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A &amp; (B | C) =:= A &amp; B | A &amp; C
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>Из этих правил следует, что наименьшая верхняя граница (<strong>LUB</strong> - <em>least upper bound</em>) 
+множества типов есть объединение этих типов.</p>
+
+<h4 id="мотивация">Мотивация</h4>
+
+<p>Основная причина введения типов объединения в Scala заключается в том, 
+что они позволяют гарантировать, что для каждого набора типов всегда можно сформировать конечный <strong>LUB</strong>.</p>
+
+<p>Кроме того, типы объединения являются полезной конструкцией при попытке дать типы 
+существующим API с динамической типизацией, 
+поэтому они являются <a href="https://www.typescriptlang.org/docs/handbook/advanced-types.html#union-types">неотъемлемой частью TypeScript</a> 
+и даже <a href="https://github.com/scala-js/scala-js/blob/main/library/src/main/scala/scala/scalajs/js/Union.scala">частично реализованы в Scala.js</a>.</p>
+
+<h4 id="соединение-типа-union">Соединение типа union</h4>
+
+<p>В некоторых ситуациях, описанных ниже, тип объединения может потребовать расшириться до типа, 
+не являющегося объединением, 
+для этой цели мы определяем соединение типа объединения <code class="highlighter-rouge">T1 | ... | Tn</code> 
+как наименьший тип пересечения экземпляров базовых классов <code class="highlighter-rouge">T1,..., Tn</code>. 
+Обратите внимание, что типы объединения могут по-прежнему отображаться как аргументы типа в результирующем типе, 
+это гарантирует, что объединение всегда конечно.</p>
+
+<p>Дано:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">C</span><span class="o">[</span><span class="kt">+T</span><span class="o">]</span>
+<span class="nc">trait</span> <span class="n">D</span>
+<span class="k">trait</span> <span class="nc">E</span>
+<span class="k">class</span> <span class="nc">A</span> <span class="k">extends</span> <span class="n">C</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="k">with</span> <span class="n">D</span>
+<span class="k">class</span> <span class="nc">B</span> <span class="k">extends</span> <span class="n">C</span><span class="o">[</span><span class="kt">B</span><span class="o">]</span> <span class="k">with</span> <span class="n">D</span> <span class="k">with</span> <span class="n">E</span>
+</code></pre></div></div>
+
+<p>Объединение <code class="highlighter-rouge">A | B</code> - это <code class="highlighter-rouge">C[A | B] &amp; D</code>.</p>
+
+<h4 id="вывод-типа">Вывод типа</h4>
+
+<p>При выводе типа результата определения (переменной или метода - <code class="highlighter-rouge">val</code>, <code class="highlighter-rouge">var</code>, <code class="highlighter-rouge">def</code>), 
+если тип, который собираемся вывести, является типом объединения, он заменяется объединением.</p>
+
+<p>Пример:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">scala.collection.mutable.ListBuffer</span>
+<span class="k">val</span> <span class="nv">x</span> <span class="k">=</span> <span class="nc">ListBuffer</span><span class="o">(</span><span class="nc">Right</span><span class="o">(</span><span class="s">"foo"</span><span class="o">),</span> <span class="nc">Left</span><span class="o">(</span><span class="mi">0</span><span class="o">))</span>
+<span class="k">val</span> <span class="nv">y</span><span class="k">:</span> <span class="kt">ListBuffer</span><span class="o">[</span><span class="kt">Either</span><span class="o">[</span><span class="kt">Int</span>, <span class="kt">String</span><span class="o">]]</span> <span class="k">=</span> <span class="n">x</span>
+</code></pre></div></div>
+
+<p>Этот код проходит проверку типов, потому что аргумент предполагаемого типа <code class="highlighter-rouge">ListBuffer</code> в правой части <code class="highlighter-rouge">x</code> - 
+<code class="highlighter-rouge">Left[Int, Nothing] | Right[Nothing, String]</code> - был расширен до <code class="highlighter-rouge">Either[Int, String]</code>. 
+Если бы компилятор не сделал этого расширения, последняя строка не проходила бы проверку типов, 
+потому что <code class="highlighter-rouge">ListBuffer</code> инвариантен в своем аргументе.</p>
+
+<h4 id="элементы">Элементы</h4>
+
+<p>Элементы типа union являются элементами его объединения.</p>
+
+<p>Пример</p>
+
+<p>Следующий код не проходит проверку типов, так как метод <code class="highlighter-rouge">hello</code> не является членом <code class="highlighter-rouge">AnyRef</code>, 
+который является объединением <code class="highlighter-rouge">A | B</code>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>trait A { def hello: String }
+trait B { def hello: String }
+
+def test(x: A | B) = x.hello // error: value `hello` is not a member of A | B
+</code></pre></div></div>
+
+<p>С другой стороны, допускается следующее:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">D</span>
+<span class="k">trait</span> <span class="nc">E</span>
+<span class="k">trait</span> <span class="nc">C</span> <span class="o">{</span> <span class="k">def</span> <span class="nf">hello</span><span class="k">:</span> <span class="kt">String</span> <span class="o">}</span>
+<span class="k">trait</span> <span class="nc">A</span> <span class="k">extends</span> <span class="n">C</span> <span class="k">with</span> <span class="n">D</span>
+<span class="k">trait</span> <span class="nc">B</span> <span class="k">extends</span> <span class="n">C</span> <span class="k">with</span> <span class="n">E</span>
+
+<span class="k">def</span> <span class="nf">test</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">A</span> <span class="kt">|</span> <span class="kt">B</span><span class="o">)</span> <span class="k">=</span> <span class="nv">x</span><span class="o">.</span><span class="py">hello</span> <span class="c1">// ok, т.к. `hello` - элемент объединения A | B, который является подтипом C</span>
+</code></pre></div></div>
+
+<p>При этом необходимо отметить, что в метод <code class="highlighter-rouge">test</code> нельзя передать экземпляр <code class="highlighter-rouge">С</code>, 
+потому что <code class="highlighter-rouge">A | B</code> - подтип <code class="highlighter-rouge">C</code>, но не наоборот:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">a</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=</span> <span class="k">new</span> <span class="n">A</span><span class="k">:</span>
+  <span class="kt">def</span> <span class="kt">hello</span> <span class="o">=</span> <span class="s">"Hello, A!"</span>
+<span class="k">val</span> <span class="nv">b</span><span class="k">:</span> <span class="kt">B</span> <span class="o">=</span> <span class="k">new</span> <span class="n">B</span><span class="k">:</span>
+  <span class="kt">def</span> <span class="kt">hello</span> <span class="o">=</span> <span class="s">"Hello, B!"</span>
+</code></pre></div></div>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">test</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+<span class="c1">// res1: String = "Hello, A!"</span>
+<span class="nf">test</span><span class="o">(</span><span class="n">b</span><span class="o">)</span>
+<span class="c1">// res2: String = "Hello, B!"</span>
+</code></pre></div></div>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">c</span><span class="k">:</span> <span class="kt">C</span> <span class="o">=</span> <span class="k">new</span> <span class="n">C</span><span class="k">:</span>
+  <span class="kt">def</span> <span class="kt">hello</span> <span class="o">=</span> <span class="s">"Hello, C!"</span>
+<span class="nf">test</span><span class="o">(</span><span class="n">c</span><span class="o">)</span>
+<span class="c1">// error:</span>
+<span class="c1">// Found:    (App0.this.c : App0.this.C)</span>
+<span class="c1">// Required: App0.this.A | App0.this.B</span>
+<span class="c1">// test(c)</span>
+<span class="c1">//      ^</span>
+</code></pre></div></div>
+
+<h4 id="проверка-полноты-в-сопоставлении-с-образцом">Проверка полноты в сопоставлении с образцом</h4>
+
+<p>Если селектор совпадения с образцом является типом объединения, 
+совпадение считается исчерпывающим, если охватываются все части объединения.</p>
+
+<p>Пример:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">A</span> <span class="o">{</span> <span class="k">def</span> <span class="nf">hello</span><span class="k">:</span> <span class="kt">String</span> <span class="o">}</span>
+<span class="k">trait</span> <span class="nc">B</span> <span class="o">{</span> <span class="k">def</span> <span class="nf">hello</span><span class="k">:</span> <span class="kt">String</span> <span class="o">}</span>
+
+<span class="k">def</span> <span class="nf">matching</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">A</span> <span class="kt">|</span> <span class="kt">B</span><span class="o">)</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span>
+  <span class="n">x</span> <span class="k">match</span>
+    <span class="k">case</span> <span class="n">a</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=&gt;</span> <span class="nv">a</span><span class="o">.</span><span class="py">hello</span>
+    <span class="k">case</span> <span class="n">b</span><span class="k">:</span> <span class="kt">B</span> <span class="o">=&gt;</span> <span class="nv">b</span><span class="o">.</span><span class="py">hello</span>
+    <span class="k">case</span> <span class="n">c</span><span class="k">:</span> <span class="kt">C</span> <span class="o">=&gt;</span> <span class="nv">c</span><span class="o">.</span><span class="py">hello</span> <span class="c1">// Лишнее</span>
+
+<span class="o">--</span> <span class="o">[</span><span class="kt">E030</span><span class="o">]</span> <span class="nc">Match</span> <span class="k">case</span> <span class="nc">Unreachable</span> <span class="nc">Warning</span><span class="k">:</span> <span class="kt">--------------------------------------</span>
+<span class="err">5</span> <span class="kt">|</span>    <span class="kt">case</span> <span class="kt">c:</span> <span class="kt">C</span> <span class="o">=&gt;</span> <span class="nv">c</span><span class="o">.</span><span class="py">hello</span>
+  <span class="o">|</span>         <span class="o">^^^^</span>   <span class="o">|</span>         <span class="nc">Unreachable</span> <span class="k">case</span>
+</code></pre></div></div>
+
+<h4 id="стирание-типов">Стирание типов</h4>
+
+<p>Стертый тип для <code class="highlighter-rouge">A | B</code> является наименьшей верхней границей (<em>erased least upper bound</em>) стираемых типов <code class="highlighter-rouge">A</code> и <code class="highlighter-rouge">B</code>. 
+Цитата из документации <code class="highlighter-rouge">TypeErasure#erasedLub</code>, стертый <strong>LUB</strong> вычисляется следующим образом:</p>
+<ul>
+  <li>если оба аргумента являются массивами объектов, <strong>LUB</strong> - массив стертых <strong>LUB</strong> типов элементов</li>
+  <li>если оба аргумента являются массивами одних и тех же примитивов, <strong>LUB</strong> - массив этого примитива</li>
+  <li>если один аргумент — массив примитивов, а другой — массив объектов, <strong>LUB</strong> - <code class="highlighter-rouge">Object</code></li>
+  <li>если один аргумент является массивом, <strong>LUB</strong> - <code class="highlighter-rouge">Object</code></li>
+  <li>в противном случае общий суперкласс или trait <code class="highlighter-rouge">S</code> классов аргументов со следующими двумя свойствами:
+    <ul>
+      <li><code class="highlighter-rouge">S</code> минимален: никакой другой общий суперкласс или признак не происходит от <code class="highlighter-rouge">S</code>.</li>
+      <li><code class="highlighter-rouge">S</code> является последним: в линеаризации первого типа аргумента <code class="highlighter-rouge">|A|</code> 
+нет минимальных общих суперклассов или трейтов, которые идут после <code class="highlighter-rouge">S</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<p><strong>References:</strong></p>
+<ul>
+  <li><a href="https://docs.scala-lang.org/scala3/book/types-union.html">Scala3 book</a></li>
+  <li><a href="https://docs.scala-lang.org/scala3/reference/new-types/union-types.html">Scala 3 Reference</a></li>
+  <li><a href="https://docs.scala-lang.org/scala3/reference/new-types/union-types-spec.html">Scala 3 Reference, Details</a></li>
+</ul>
+
+
+<hr>
+<div class="edit-button" style="display: flex; justify-content: space-between;">
+    
+    <a href="/scalaworkbook/docs/type-system/types-intersection" class="btn-sm btn-info btn-left"><-- Предыдущая</a>
+    
+    
+    <a href="/scalaworkbook/docs/type-system/types-adts" class="btn-sm btn-info btn-right">Следующая --></a>
+    
+</div></section><div class="edit-button"><a href="https://github.com/artemkorsakov/scalaworkbook/edit/main/docs/docs/docs/type-system/types-union.md" target="_blank" rel="noopener noreferrer" class="btn-sm btn-info">Редактировать страницу</a></div></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalaworkbook/highlight/highlight.pack.js"></script><script src="/scalaworkbook/lunr/lunr.js"></script><script>
+// For all code blocks, copy the language from the containing div
+// to the inner code tag (where hljs expects it to be)
+const langPrefix = 'language-';
+document.querySelectorAll(`div[class^='${langPrefix}']`).forEach(function(div) {
+  div.classList.forEach(function(cssClass) {
+    if (cssClass.startsWith(langPrefix)) {
+      const lang = cssClass.substring(langPrefix.length);
+      div.querySelectorAll('pre code').forEach(function(code) {
+        code.classList.add(lang);
+      });
+    }
+  });
+});
+
+hljs.configure({languages:['scala','java','bash']});
+hljs.initHighlightingOnLoad();
+      </script><script>console.info('\x57\x65\x62\x73\x69\x74\x65\x20\x62\x75\x69\x6c\x74\x20\x77\x69\x74\x68\x3a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x5f\x5f\x0a\x20\x20\x20\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x5f\x20\x20\x2f\x20\x2f\x5f\x20\x20\x20\x20\x20\x20\x5f\x5f\x5f\x5f\x20\x5f\x5f\x5f\x20\x20\x28\x5f\x29\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x28\x5f\x29\x20\x2f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x0a\x20\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x60\x5f\x5f\x20\x5c\x2f\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x20\x2f\x20\x5f\x5f\x2f\x20\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x0a\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x5f\x2f\x20\x2f\x20\x2f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x5f\x5f\x2f\x20\x2f\x20\x20\x2f\x20\x2f\x5f\x2f\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x20\x2f\x5f\x2f\x20\x20\x5f\x5f\x28\x5f\x5f\x20\x20\x29\x0a\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2e\x5f\x5f\x5f\x2f\x5c\x5f\x5f\x2f\x20\x20\x20\x20\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x2f\x20\x20\x20\x5c\x5f\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x0a\x0a\x68\x74\x74\x70\x73\x3a\x2f\x2f\x34\x37\x64\x65\x67\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x73\x62\x74\x2d\x6d\x69\x63\x72\x6f\x73\x69\x74\x65\x73')</script><script src="/scalaworkbook/js/search.js"></script><script src="/scalaworkbook/js/main.js"></script></body></html>
