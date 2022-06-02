@@ -233,7 +233,7 @@ options:
       - title: Проверка типа
         url: docs/details/type-test
 
-      - title: Сопоставление
+      - title: Экстракторы
         url: docs/details/pattern-matching
 
   - title: Параллелизм
