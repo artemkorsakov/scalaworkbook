@@ -2,7 +2,12 @@
 layout: home
 title:  Основная
 position: 0
+technologies:
+- first:  ["Scala", "Документация полностью написана на Scala"]
+- second: ["Documentation", "Обзор Scala и её основных фреймворков"]
+- third:  ["Scaladoc", "Пример генерации Scaladoc"]
 ---
+
 
 ### Описание
 

@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Ссылки"
-prev: soft-keywords
-next: extra
+prev: scaladoc/docstrings
+next: scaladoc/static-site
 ---
 
 ## Связующая документация

@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Статика"
-prev: soft-keywords
-next: extra
+prev: scaladoc/linking
+next: scaladoc/blog
 ---
 
 ## Статическая документация

@@ -1,7 +1,7 @@
 ---
 layout: docsplus
 title: "Настройки"
-prev: soft-keywords
+prev: scaladoc/snippet-compiler
 next: extra
 ---
 

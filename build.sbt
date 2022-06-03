@@ -46,7 +46,8 @@ lazy val docs = project
     micrositeGitterChannel := false,
     micrositeShareOnSocial := false,
     micrositeGithubLinks := false,
-    apiURL := None,
+    apiURL := Some(url(s"${micrositeUrl.value}${micrositeBaseUrl.value}/api/")),
+    autoAPIMappings := true,
     mdocExtraArguments := List("--no-link-hygiene"),
     micrositeTheme := "pattern",
     micrositePalette := Map(
@@ -62,11 +63,7 @@ lazy val docs = project
     mdocVariables := Map(
       "SCALA" -> Scala3,
       "SBT_VERSION" -> "1.6.2",
-      "DOC" -> "/scalaworkbook/docs/"
+      "DOC" -> "/scalaworkbook/docs/",
+      "API" -> "/scalaworkbook/api/",
     )
-  )
-
-lazy val scaladoc = (project in file("scaladoc"))
-  .settings(
-    name := "scaladoc"
   )

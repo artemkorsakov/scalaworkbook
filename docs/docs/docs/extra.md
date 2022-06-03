@@ -1,7 +1,7 @@
 ---
 layout: docsplus
 title: "Доп. материалы"
-prev: scaladoc
+prev: scaladoc/settings
 ---
 
 ## Дополнительные материалы

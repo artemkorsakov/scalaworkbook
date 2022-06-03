@@ -2,7 +2,7 @@
 layout: docsplus
 title: "Scaladoc"
 prev: soft-keywords
-next: extra
+next: scaladoc/docstrings
 ---
 
 ## {{page.title}}

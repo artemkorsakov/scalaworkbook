@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Проверка фрагмента"
-prev: soft-keywords
-next: extra
+prev: scaladoc/search-engine
+next: scaladoc/settings
 ---
 
 ## {{page.title}}

@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Поиск по типу"
-prev: soft-keywords
-next: extra
+prev: scaladoc/site-versioning
+next: scaladoc/snippet-compiler
 ---
 
 ## {{page.title}}

@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Версионность"
-prev: soft-keywords
-next: extra
+prev: scaladoc/blog
+next: scaladoc/search-engine
 ---
 
 ## Версионность сайта

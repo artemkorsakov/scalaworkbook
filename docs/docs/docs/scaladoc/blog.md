@@ -1,8 +1,8 @@
 ---
 layout: docsplus
 title: "Блог"
-prev: soft-keywords
-next: extra
+prev: scaladoc/static-site
+next: scaladoc/site-versioning
 ---
 
 ## Встроенный блог
