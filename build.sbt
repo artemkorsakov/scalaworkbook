@@ -65,3 +65,8 @@ lazy val docs = project
       "DOC" -> "/scalaworkbook/docs/"
     )
   )
+
+lazy val scaladoc = (project in file("scaladoc"))
+  .settings(
+    name := "scaladoc"
+  )

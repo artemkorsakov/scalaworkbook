@@ -280,5 +280,33 @@ options:
   - title: Soft Keywords
     url: docs/soft-keywords
 
+  - title: Scaladoc
+    url: docs/scaladoc
+
+    nested_options:
+      - title: Документы
+        url: docs/scaladoc/docstrings
+
+      - title: Ссылки
+        url: docs/scaladoc/linking
+
+      - title: Статика
+        url: docs/scaladoc/static-site
+
+      - title: Блог
+        url: docs/scaladoc/blog
+
+      - title: Версионность
+        url: docs/scaladoc/site-versioning
+
+      - title: Поиск по типу
+        url: docs/scaladoc/search-engine
+
+      - title: Проверка фрагмента
+        url: docs/scaladoc/snippet-compiler
+
+      - title: Настройки
+        url: docs/scaladoc/settings
+
   - title: Доп. материалы
     url: docs/extra

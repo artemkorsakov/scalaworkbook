@@ -2,7 +2,7 @@
 layout: docsplus
 title: "Soft Keywords"
 prev: metaprogramming/tasty-inspection
-next: extra
+next: scaladoc
 ---
 
 ## {{page.title}}
