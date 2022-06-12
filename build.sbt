@@ -4,8 +4,6 @@ import microsites._
 ThisBuild / organization := "io.github.artemkorsakov"
 ThisBuild / version := "0.1.0-SNAPSHOT"
 ThisBuild / scalaVersion := Scala3
-ThisBuild / doc / scalaVersion := Scala3
-ThisBuild / scalacOptions ++= List("-feature", "-deprecation", "-Ykind-projector:underscores", "-source:future")
 ThisBuild / autoAPIMappings := true
 
 ThisBuild / githubWorkflowBuildPreamble ++= Seq(
@@ -18,8 +16,14 @@ ThisBuild / githubWorkflowBuildPostamble := Seq(
 )
 ThisBuild / githubWorkflowPublishTargetBranches := Seq()
 
+lazy val scaladoc = (project in file("scaladoc"))
+  .settings(
+    name := "scaladoc-example"
+  )
+
 lazy val docs = project
-  .enablePlugins(MicrositesPlugin)
+  .dependsOn(scaladoc)
+  .enablePlugins(MicrositesPlugin, ScalaUnidocPlugin)
   .settings(
     micrositeName := "Scala workbook",
     micrositeDescription := "Функциональная разработка на Scala.",
@@ -38,7 +42,10 @@ lazy val docs = project
     micrositeGitterChannel := false,
     micrositeShareOnSocial := false,
     micrositeGithubLinks := false,
-    // apiURL := Some(url(s"${micrositeUrl.value}${micrositeBaseUrl.value}/api/")),
+    apiURL := Some(url(s"${micrositeUrl.value}${micrositeBaseUrl.value}/api/")),
+    ScalaUnidoc / unidoc / unidocProjectFilter := inProjects(scaladoc),
+    ScalaUnidoc / siteSubdirName := "latest/api",
+    addMappingsToSiteDir(ScalaUnidoc / packageDoc / mappings, ScalaUnidoc / siteSubdirName),
     mdocExtraArguments := List("--no-link-hygiene"),
     micrositeTheme := "pattern",
     micrositePalette := Map(
@@ -55,13 +62,8 @@ lazy val docs = project
       "SCALA" -> Scala3,
       "SBT_VERSION" -> "1.6.2",
       "DOC" -> "/scalaworkbook/docs/",
-      "API" -> "/scalaworkbook/api/",
+      "API" -> "/scalaworkbook/api/"
     )
-  )
-
-lazy val scaladoc = (project in file("scaladoc"))
-  .settings(
-    name := "scaladoc-example"
   )
 
 lazy val workbook = (project in file("workbook"))
@@ -71,9 +73,7 @@ lazy val workbook = (project in file("workbook"))
   )
 
 lazy val root = (project in file("."))
-  .enablePlugins(ScalaUnidocPlugin)
   .aggregate(scaladoc, workbook, docs)
   .settings(
-    name := "scalaworkbook",
-    ScalaUnidoc / unidoc / unidocProjectFilter := inAnyProject -- inProjects(docs)
+    name := "scalaworkbook"
   )
