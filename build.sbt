@@ -18,7 +18,21 @@ ThisBuild / githubWorkflowPublishTargetBranches := Seq()
 
 lazy val scaladoc = (project in file("scaladoc"))
   .settings(
-    name := "scaladoc-example"
+    name := "scaladoc-example",
+    Compile / doc / scalacOptions := Seq(
+      "-project",
+      "Сайт сгенеренный Scaladoc",
+      "-project-version",
+      version.value,
+      "-project-footer",
+      "Этот текст будет отображаться в footer",
+      "-siteroot",
+      "./site",
+      "-doc-root-content",
+      "./api.md",
+      "-author",
+      "-groups"
+    )
   )
 
 lazy val docs = project
@@ -42,7 +56,7 @@ lazy val docs = project
     micrositeGitterChannel := false,
     micrositeShareOnSocial := false,
     micrositeGithubLinks := false,
-    ScalaUnidoc / unidoc / unidocProjectFilter := inProjects(scaladoc),
+    ScalaUnidoc / unidoc / unidocProjectFilter := inProjects(scaladoc, staticSite),
     ScalaUnidoc / siteSubdirName := "api",
     apiURL := Some(url(s"${micrositeUrl.value}${micrositeBaseUrl.value}/${ScalaUnidoc / siteSubdirName}/")),
     addMappingsToSiteDir(ScalaUnidoc / packageDoc / mappings, ScalaUnidoc / siteSubdirName),
