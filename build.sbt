@@ -73,9 +73,9 @@ lazy val docs = project
       "-project-footer",
       "Этот текст будет отображаться в footer-е",
       "-siteroot",
-      "./site",
+      "./scaladoc/site",
       "-doc-root-content",
-      "./api.md"
+      "./scaladoc/api.md"
     )
   )
 
