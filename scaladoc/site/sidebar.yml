@@ -1,6 +1,6 @@
 index: index.html
 subsection:
-  - index: usage/usage.html
+  - index: usage/index.html
     directory: usage
     subsection:
       - page: usage/doc.html
