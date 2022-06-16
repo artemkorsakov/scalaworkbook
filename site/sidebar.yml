@@ -1,0 +1,7 @@
+index: index.html
+subsection:
+  - index: usage/usage.html
+    directory: usage
+    subsection:
+      - page: usage/doc.html
+      - page: usage/projects.html

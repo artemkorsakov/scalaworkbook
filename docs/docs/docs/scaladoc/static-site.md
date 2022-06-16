@@ -96,7 +96,7 @@ layout: main
         <title>Hello, world!</title>
     </head>
     <body>
-        \{{ content }}
+        {\{ content }}
     </body>
 </html>
 ```
@@ -257,6 +257,11 @@ subsection:
 Исходная страница `abc/index.html` будет генерировать страницу `custom-directory/index.html`, 
 исходная страница `abc2/page1.md` - `custom-directory/page1.html`, 
 а исходная страница `foo/page2.md` - `custom-directory/page2.html`.
+
+
+### Пример
+
+[Пример сгенеренной документации Scaladoc](@API@)
 
 
 ---
