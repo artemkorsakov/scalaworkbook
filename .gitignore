@@ -24,3 +24,4 @@ travis-deploy-key.pub
 all.gpg
 /.bsp/
 test.sc
+docs/docs/_config.yml
