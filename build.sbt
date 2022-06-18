@@ -76,8 +76,8 @@ lazy val docs = project
       "./scaladoc/site",
       "-doc-root-content",
       "./scaladoc/api.md",
-      "-versions-dictionary-url",
-      "https://github.com/artemkorsakov/scalaworkbook/blob/main/scaladoc/versions.json"
+      "-Ygenerate-inkuire",
+      "-snippet-compiler:compile"
     )
   )
 
