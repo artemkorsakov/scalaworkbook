@@ -30,11 +30,6 @@ Scaladoc загружает блог, если существует катало
 Пример имени `2022-06-17-dotty-compiler-bootstraps.md`.
 
 
-### Пример
-
-[Пример блога, сгенеренного с помощью Scaladoc](@API@_docs/blog/)
-
-
 ---
 
 **References:**

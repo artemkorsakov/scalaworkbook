@@ -52,11 +52,6 @@ doc / scalacOptions ++= Seq("-versions-dictionary-url", "https://dotty.epfl.ch/v
 ![](https://docs.scala-lang.org/resources/images/scala3/scaladoc/nightly.gif)
 
 
-### Пример
-
-[Пример сайта с версионностью, сгенеренного с помощью Scaladoc](@API@)
-
-
 ---
 
 **References:**
