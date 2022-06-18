@@ -77,7 +77,8 @@ lazy val docs = project
       "-doc-root-content",
       "./scaladoc/api.md",
       "-Ygenerate-inkuire",
-      "-snippet-compiler:compile"
+      "-snippet-compiler:compile",
+      "-source-links:scaladoc=github://artemkorsakov/scalaworkbook/main#scaladoc"
     )
   )
 
