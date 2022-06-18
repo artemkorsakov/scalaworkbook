@@ -78,7 +78,7 @@ https://github.com/$organization/$repository/[blob|edit]/$revision[/$subpath]/$f
 - `gitlab://<organization>/<repository>` будет соответствовать 
 https://gitlab.com/$organization/$repository/-/[blob|edit]/$revision[/$subpath]/$filePath[$lineNumber], 
 если редакция не указана, тогда требуется, 
-чтобы редакция была указана как аргумент в пользу Scaladoc
+чтобы редакция была указана как аргумент в Scaladoc
 - `<scaladoc-template>`
 
 `<scaladoc-template>` — это формат параметра `doc-source-url` из старого scaladoc. 
