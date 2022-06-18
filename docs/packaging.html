@@ -1,0 +1,406 @@
+<!DOCTYPE html><html><head><title>Scala workbook: Пакеты и импорт</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Артём Корсаков" /><meta name="description" content="Функциональная разработка на Scala." /><meta name="og:image" content="/scalaworkbook/img/poster.png" /><meta name="image" property="og:image" content="/scalaworkbook/img/poster.png" /><meta name="og:title" content="Scala workbook: Пакеты и импорт" /><meta name="title" property="og:title" content="Scala workbook: Пакеты и импорт" /><meta name="og:site_name" content="Scala workbook" /><meta name="og:url" content="" /><meta name="og:type" content="website" /><meta name="og:description" content="Функциональная разработка на Scala." /><link rel="icon" type="image/png" href="/scalaworkbook/img/favicon.png" /><meta name="twitter:title" content="Scala workbook: Пакеты и импорт" /><meta name="twitter:image" content="https://artemkorsakov.github.io/scalaworkbook/img/poster.png" /><meta name="twitter:description" content="Функциональная разработка на Scala." /><meta name="twitter:card" content="summary_large_image" /><link rel="icon" type="image/png" sizes="16x16" href="/scalaworkbook/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/scalaworkbook/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/scalaworkbook/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/scalaworkbook/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/scalaworkbook/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/scalaworkbook/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/scalaworkbook/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/scalaworkbook/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/scalaworkbook/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/scalaworkbook/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/scalaworkbook/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/scalaworkbook/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/scalaworkbook/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/scalaworkbook/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/scalaworkbook/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/scalaworkbook/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/scalaworkbook/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/scalaworkbook/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/scalaworkbook/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/scalaworkbook/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/scalaworkbook/highlight/styles/vs.css" /><link rel="stylesheet" href="/scalaworkbook/css/pattern-style.css" /><link rel="stylesheet" href="/scalaworkbook/css/override.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/scalaworkbook/" class="brand"><div class="brand-wrapper"><span>Scala workbook</span></div></a></li> <li><a href="/scalaworkbook/docs/index" class="">Обзор Scala</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/start/getting-started" class="">С чего начать?</a></li></ul></li> <li><a href="/scalaworkbook/docs/hello_world" class="">Hello, world!</a></li> <li><a href="/scalaworkbook/docs/repl" class="">REPL</a></li> <li><a href="/scalaworkbook/docs/types" class="">Типы данных</a></li> <li><a href="/scalaworkbook/docs/structures" class="">Структуры управления</a></li> <li><a href="/scalaworkbook/docs/modeling" class="">Моделирование данных</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/modeling/classes" class="">Classes</a></li> <li><a href="/scalaworkbook/docs/modeling/objects" class="">Objects</a></li> <li><a href="/scalaworkbook/docs/modeling/companion-objects" class="">Companion objects</a></li> <li><a href="/scalaworkbook/docs/modeling/traits" class="">Traits</a></li> <li><a href="/scalaworkbook/docs/modeling/abstract-class" class="">Абстрактные классы</a></li> <li><a href="/scalaworkbook/docs/modeling/enums" class="">Enums</a></li> <li><a href="/scalaworkbook/docs/modeling/case-class" class="">Case classes</a></li> <li><a href="/scalaworkbook/docs/modeling/oop" class="">Моделирование ООП</a></li> <li><a href="/scalaworkbook/docs/modeling/fp" class="">Моделирование ФП</a></li></ul></li> <li><a href="/scalaworkbook/docs/methods" class="">Методы</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/methods/method-features" class="">Определение методов</a></li> <li><a href="/scalaworkbook/docs/methods/default-parameters" class="">Параметры по умолчанию</a></li> <li><a href="/scalaworkbook/docs/methods/named-parameters" class="">Именованные параметры</a></li> <li><a href="/scalaworkbook/docs/methods/by-name-parameter" class="">Параметры по имени</a></li> <li><a href="/scalaworkbook/docs/methods/partially-applied-functions" class="">Каррирование</a></li> <li><a href="/scalaworkbook/docs/methods/vararg-parameters" class="">Variable Arguments</a></li> <li><a href="/scalaworkbook/docs/methods/generic-parameter" class="">Generic параметры</a></li> <li><a href="/scalaworkbook/docs/methods/extension-methods" class="">Методы расширения</a></li> <li><a href="/scalaworkbook/docs/methods/main-methods" class="">main методы</a></li></ul></li> <li><a href="/scalaworkbook/docs/functions" class="">Функции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/functions/anonymous" class="">Анонимные функции</a></li> <li><a href="/scalaworkbook/docs/functions/variables" class="">Параметры функции</a></li> <li><a href="/scalaworkbook/docs/functions/eta" class="">Eta расширение</a></li> <li><a href="/scalaworkbook/docs/functions/hofs" class="">Функции высшего порядка</a></li> <li><a href="/scalaworkbook/docs/functions/write-map" class="">Собственный map</a></li> <li><a href="/scalaworkbook/docs/functions/returns-function" class="">Возврат функции в методе</a></li></ul></li> <li><a href="/scalaworkbook/docs/packaging" class=" active ">Пакеты и импорт</a></li> <li><a href="/scalaworkbook/docs/toplevel-definitions" class="">Верхнеур. определения</a></li> <li><a href="/scalaworkbook/docs/collections" class="">Коллекции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/collections/classes" class="">Типы коллекций</a></li> <li><a href="/scalaworkbook/docs/collections/methods" class="">Методы в коллекциях</a></li></ul></li> <li><a href="/scalaworkbook/docs/fp" class="">Функц. программирование</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/fp/what-is-fp" class="">Что такое ФП?</a></li> <li><a href="/scalaworkbook/docs/fp/immutable-values" class="">Неизменяемые значения</a></li> <li><a href="/scalaworkbook/docs/fp/pure-functions" class="">Чистые функции</a></li> <li><a href="/scalaworkbook/docs/fp/functions-are-values" class="">Функции - это значения</a></li> <li><a href="/scalaworkbook/docs/fp/functional-error-handling" class="">Обработка ошибок</a></li></ul></li> <li><a href="/scalaworkbook/docs/type-system" class="">Система типов</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/type-system/types-inferred" class="">Определение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-generics" class="">Generics типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-intersection" class="">Пересечение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-union" class="">Объединение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-adts" class="">Алгебр. типы данных</a></li> <li><a href="/scalaworkbook/docs/type-system/types-variance" class="">Ковариантность</a></li> <li><a href="/scalaworkbook/docs/type-system/types-opaque" class="">Непрозрачные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-structural" class="">Структурные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-dependent-function" class="">Зависимые типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/type-lambdas" class="">Type Lambdas</a></li> <li><a href="/scalaworkbook/docs/type-system/match-types" class="">Match Types</a></li> <li><a href="/scalaworkbook/docs/type-system/polymorphic-function-types" class="">Полимор. типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/types-others" class="">Другие типы</a></li></ul></li> <li><a href="/scalaworkbook/docs/abstractions" class="">Абстракции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/abstractions/ca-given" class="">Given</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-using" class="">Using</a></li> <li><a href="/scalaworkbook/docs/abstractions/type-classes" class="">Класс типов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-context-bounds" class="">Контекстные границы</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-given-imports" class="">Given imports</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-extension-methods" class="">Методы расш. - детали</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-classes" class="">Импл. type классов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-class-derivation" class="">Type Class Derivation</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-multiversal-equality" class="">Multiversal Equality</a></li> <li><a href="/scalaworkbook/docs/abstractions/context-functions" class="">Контекстные функции</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-implicit-conversions" class="">Неявные преобр.</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-by-name-parameters" class="">Конт. пар. по имени</a></li></ul></li> <li><a href="/scalaworkbook/docs/details" class="">Детали</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/details/export-causes" class="">Предложения export</a></li> <li><a href="/scalaworkbook/docs/details/parameter-untupling" class="">Распаковка параметров</a></li> <li><a href="/scalaworkbook/docs/details/type-test" class="">Проверка типа</a></li> <li><a href="/scalaworkbook/docs/details/pattern-matching" class="">Экстракторы</a></li></ul></li> <li><a href="/scalaworkbook/docs/concurrency" class="">Параллелизм</a></li> <li><a href="/scalaworkbook/docs/tools" class="">Утилиты</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/tools/tools-sbt" class="">Sbt</a></li> <li><a href="/scalaworkbook/docs/tools/tools-worksheets" class="">Worksheet</a></li></ul></li> <li><a href="/scalaworkbook/docs/with_java" class="">Взаимодействие с Java</a></li> <li><a href="/scalaworkbook/docs/metaprogramming" class="">Metaprogramming</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/metaprogramming/inline" class="">Inline</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/compile-time-ops" class="">Compile-time ops</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/macros" class="">Macros</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/quoted-code" class="">Quoted Code</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/runtime-staging" class="">Runtime Staging</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/reflection" class="">Reflection</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/tasty-inspection" class="">TASTy Inspection</a></li></ul></li> <li><a href="/scalaworkbook/docs/soft-keywords" class="">Soft Keywords</a></li> <li><a href="/scalaworkbook/docs/scaladoc" class="">Scaladoc</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/scaladoc/docstrings" class="">Документы</a></li> <li><a href="/scalaworkbook/docs/scaladoc/linking" class="">Ссылки</a></li> <li><a href="/scalaworkbook/docs/scaladoc/static-site" class="">Статика</a></li> <li><a href="/scalaworkbook/docs/scaladoc/blog" class="">Блог</a></li> <li><a href="/scalaworkbook/docs/scaladoc/site-versioning" class="">Версионность</a></li> <li><a href="/scalaworkbook/docs/scaladoc/search-engine" class="">Поиск по типу</a></li> <li><a href="/scalaworkbook/docs/scaladoc/snippet-compiler" class="">Проверка фрагмента</a></li> <li><a href="/scalaworkbook/docs/scaladoc/settings" class="">Настройки</a></li></ul></li> <li><a href="/scalaworkbook/docs/extra" class="">Доп. материалы</a></li></ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li class="search-nav hidden-xs hidden-sm"><div id="search-dropdown"><label><i class="fa fa-search"></i>Search</label><input id="search-bar" type="text" placeholder="Enter keywords here..." onclick="displayToggleSearch(event)" /><ul id="search-dropdown-content" class="dropdown dropdown-content"></ul></div></li></ul></div></div></div></div><div id="content" data-github-owner="artemkorsakov" data-github-repo="scalaworkbook"><div class="content-wrapper"><section><h2 id="пакеты-и-импорт">Пакеты и импорт</h2>
+
+<p>Scala использует <code class="highlighter-rouge">packages</code> для создания пространств имен, которые позволяют модульно разбивать программы. 
+Scala поддерживает стиль именования пакетов, используемый в Java, 
+а также нотацию пространства имен “фигурные скобки”, используемую такими языками, как C++ и C#.</p>
+
+<p>Подход Scala к импорту похож на Java, но более гибкий. С помощью Scala можно:</p>
+<ul>
+  <li>импортировать пакеты, классы, объекты, <code class="highlighter-rouge">trait</code>-ы и методы</li>
+  <li>размещать операторы импорта в любом месте</li>
+  <li>скрывать и переименовывать участников при импорте</li>
+</ul>
+
+<p>Эти особенности демонстрируются в следующих примерах.</p>
+
+<h3 id="создание-пакета">Создание пакета</h3>
+
+<p>Пакеты создаются путем объявления одного или нескольких имен пакетов в начале файла Scala. 
+Например, если ваше доменное имя <code class="highlighter-rouge">acme.com</code> и вы работаете с пакетом <code class="highlighter-rouge">model</code> приложения с именем <code class="highlighter-rouge">myapp</code>, 
+объявление пакета выглядит следующим образом:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="nn">com.acme.myapp.model</span>
+
+<span class="k">class</span> <span class="nc">Person</span> <span class="o">...</span>
+</code></pre></div></div>
+
+<p>По соглашению все имена пакетов должны быть строчными, 
+а формальным соглашением об именах является <code class="highlighter-rouge">&lt;top-level-domain&gt;.&lt;domain-name&gt;.&lt;project-name&gt;.&lt;module-name&gt;</code>.</p>
+
+<p>Хотя это и не обязательно, имена пакетов обычно совпадают с именами иерархии каталогов.
+Поэтому, если следовать этому соглашению, класс <code class="highlighter-rouge">Person</code> в этом проекте будет найден 
+в файле <em>MyApp/src/main/scala/com/acme/myapp/model/Person.scala</em>.</p>
+
+<h4 id="использование-нескольких-пакетов-в-одном-файле">Использование нескольких пакетов в одном файле</h4>
+
+<p>Показанный выше синтаксис применяется ко всему исходному файлу: 
+все определения в файле <code class="highlighter-rouge">Person.scala</code> принадлежат пакету <code class="highlighter-rouge">com.acme.myapp.model</code> 
+в соответствии с <code class="highlighter-rouge">package</code> в начале файла.</p>
+
+<p>В качестве альтернативы можно написать <code class="highlighter-rouge">package</code>, которые применяются только к содержащимся в них определениям:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="nn">users</span><span class="k">:</span>
+
+  <span class="kt">package</span> <span class="kt">administrators:</span>  <span class="c1">// полное имя пакета - users.administrators</span>
+    <span class="k">class</span> <span class="nc">AdminUser</span>        <span class="c1">// полное имя файла  - users.administrators.AdminUser</span>
+
+  <span class="k">package</span> <span class="nn">normalusers</span><span class="k">:</span>     <span class="c1">// полное имя пакета - users.normalusers</span>
+    <span class="k">class</span> <span class="nc">NormalUser</span>       <span class="c1">// полное имя файла  - users.normalusers.NormalUser</span>
+</code></pre></div></div>
+
+<p>Обратите внимание, что за именами пакетов следует двоеточие, а определения внутри пакета имеют отступ.</p>
+
+<p>Преимущество этого подхода заключается в том, что он допускает вложение пакетов 
+и обеспечивает более очевидный контроль над областью действия и инкапсуляцией, особенно в пределах одного файла.</p>
+
+<h3 id="операторы-импорта">Операторы импорта</h3>
+
+<p>Операторы импорта используются для доступа к сущностям в других пакетах. 
+Операторы импорта делятся на две основные категории:</p>
+<ul>
+  <li>импорт классов, <code class="highlighter-rouge">trait</code>-ов, объектов, функций и методов</li>
+  <li>импорт <code class="highlighter-rouge">given</code> предложений</li>
+</ul>
+
+<p>Первая категория операторов импорта аналогична тому, что использует Java, 
+с немного другим синтаксисом, обеспечивающим большую гибкость. 
+Пример:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">users.</span><span class="o">*</span>                            <span class="c1">// импортируется все из пакета `users`</span>
+<span class="k">import</span> <span class="nn">users.User</span>                         <span class="c1">// импортируется только класс `User`</span>
+<span class="k">import</span> <span class="nn">users.</span><span class="o">{</span><span class="nc">User</span><span class="o">,</span> <span class="nc">UserPreferences</span><span class="o">}</span>      <span class="c1">// импортируются только два члена пакета</span>
+<span class="k">import</span> <span class="nn">users.</span><span class="o">{</span><span class="nc">UserPreferences</span> <span class="n">as</span> <span class="nc">UPrefs</span><span class="o">}</span>  <span class="c1">// переименование импортированного члена</span>
+</code></pre></div></div>
+
+<p>Эти примеры предназначены для того, чтобы дать представление о том, как работает первая категория операторов <code class="highlighter-rouge">import</code>. 
+Более подробно они объясняются в следующих подразделах.</p>
+
+<p>Операторы импорта также используются для импорта <code class="highlighter-rouge">given</code> экземпляров в область видимости. 
+Они обсуждаются в конце этой главы.</p>
+
+<blockquote>
+  <p><code class="highlighter-rouge">import</code> не требуется для доступа к членам одного и того же пакета.</p>
+</blockquote>
+
+<h4 id="импорт-одного-или-нескольких-членов">Импорт одного или нескольких членов</h4>
+
+<p>В Scala импортировать один элемент из пакета можно следующим образом:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">scala.concurrent.Future</span>
+</code></pre></div></div>
+
+<p>несколько:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">scala.concurrent.Future</span>
+<span class="k">import</span> <span class="nn">scala.concurrent.Promise</span>
+<span class="k">import</span> <span class="nn">scala.concurrent.blocking</span>
+</code></pre></div></div>
+
+<p>При импорте нескольких элементов можно импортировать их более лаконично:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">scala.concurrent.</span><span class="o">{</span><span class="nc">Future</span><span class="o">,</span> <span class="nc">Promise</span><span class="o">,</span> <span class="n">blocking</span><span class="o">}</span>
+</code></pre></div></div>
+
+<p>Если необходимо импортировать все из пакета <code class="highlighter-rouge">scala.concurrent</code>, используется такой синтаксис:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">scala.concurrent.</span><span class="o">*</span>
+</code></pre></div></div>
+
+<h4 id="переименование-элементов-при-импорте">Переименование элементов при импорте</h4>
+
+<p>Иногда необходимо переименовать объекты при их импорте, чтобы избежать конфликтов имен. 
+Например, если нужно использовать Scala класс <code class="highlighter-rouge">List</code> вместе с <code class="highlighter-rouge">java.util.List</code>, 
+то можно переименовать <code class="highlighter-rouge">java.util.List</code> при импорте:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">java.util.</span><span class="o">{</span><span class="nc">List</span> <span class="n">as</span> <span class="nc">JavaList</span><span class="o">}</span>
+</code></pre></div></div>
+
+<p>Теперь имя <code class="highlighter-rouge">JavaList</code> можно использовать для ссылки на класс <code class="highlighter-rouge">java.util.List</code> 
+и использовать <code class="highlighter-rouge">List</code> для ссылки на Scala класс <code class="highlighter-rouge">List</code>.</p>
+
+<p>Также можно переименовывать несколько элементов одновременно, используя следующий синтаксис:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">java.util.</span><span class="o">{</span><span class="nc">Date</span> <span class="n">as</span> <span class="nc">JDate</span><span class="o">,</span> <span class="nc">HashMap</span> <span class="n">as</span> <span class="nc">JHashMap</span><span class="o">,</span> <span class="o">*}</span>
+</code></pre></div></div>
+
+<p>В этой строке кода говорится следующее: 
+“Переименуйте классы <code class="highlighter-rouge">Date</code> и <code class="highlighter-rouge">HashMap</code>, как показано, 
+и импортируйте все остальное из пакета <code class="highlighter-rouge">java.util</code>, не переименовывая”.</p>
+
+<h4 id="скрытие-членов-при-импорте">Скрытие членов при импорте</h4>
+
+<p>При импорте часть объектов можно скрывать. 
+Следующий оператор импорта скрывает класс <code class="highlighter-rouge">java.util.Random</code>, 
+в то время как все остальное в пакете <code class="highlighter-rouge">java.util</code> импортируется:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">java.util.</span><span class="o">{</span><span class="nc">Random</span> <span class="n">as</span> <span class="k">_</span><span class="o">,</span> <span class="o">*}</span>
+</code></pre></div></div>
+
+<p>Если попытаться получить доступ к классу <code class="highlighter-rouge">Random</code>, то выдается ошибка, 
+но есть доступ ко всем остальным членам пакета <code class="highlighter-rouge">java.util</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">r</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Random</span>   <span class="c1">// не скомпилируется</span>
+<span class="k">new</span> <span class="nc">ArrayList</span>        <span class="c1">// доступ есть</span>
+</code></pre></div></div>
+
+<h5 id="скрытие-нескольких-элементов">Скрытие нескольких элементов</h5>
+
+<p>Чтобы скрыть в <code class="highlighter-rouge">import</code> несколько элементов, их можно перечислить перед использованием <code class="highlighter-rouge">*</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">java.util.</span><span class="o">{</span><span class="nc">List</span> <span class="n">as</span> <span class="k">_</span><span class="o">,</span> <span class="nc">Map</span> <span class="n">as</span> <span class="k">_</span><span class="o">,</span> <span class="nc">Set</span> <span class="n">as</span> <span class="k">_</span><span class="o">,</span> <span class="o">*}</span>
+</code></pre></div></div>
+
+<p>Перечисленные классы скрыты, но можно использовать все остальное в <code class="highlighter-rouge">java.util</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">arr</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span>
+<span class="c1">// arr: ArrayList[String] = []</span>
+</code></pre></div></div>
+
+<p>Поскольку эти Java классы скрыты, можно использовать классы Scala <code class="highlighter-rouge">List</code>, <code class="highlighter-rouge">Set</code> и <code class="highlighter-rouge">Map</code> без конфликта имен:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">a</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+<span class="c1">// a: List[Int] = List(1, 2, 3)</span>
+<span class="k">val</span> <span class="nv">b</span> <span class="k">=</span> <span class="nc">Set</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span>
+<span class="c1">// b: Set[Int] = Set(1, 2, 3)</span>
+<span class="k">val</span> <span class="nv">c</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span><span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="o">)</span>
+<span class="c1">// c: Map[Int, Int] = Map(1 -&gt; 1, 2 -&gt; 2)</span>
+</code></pre></div></div>
+
+<h4 id="импорт-можно-использовать-в-любом-месте">Импорт можно использовать в любом месте</h4>
+
+<p>В Scala операторы импорта могут быть объявлены где угодно. 
+Их можно использовать в верхней части файла исходного кода:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="nn">foo</span>
+
+<span class="k">import</span> <span class="nn">scala.util.Random</span>
+
+<span class="k">class</span> <span class="nc">ClassA</span><span class="k">:</span>
+  <span class="kt">def</span> <span class="kt">printRandom:</span>
+    <span class="kt">val</span> <span class="kt">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Random</span>   <span class="c1">// класс Random здесь доступен</span>
+    <span class="c1">// ещё код...</span>
+</code></pre></div></div>
+
+<p>Также операторы импорта можно использовать ближе к тому месту, где они необходимы:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="nn">foo</span>
+
+<span class="k">class</span> <span class="nc">ClassA</span><span class="k">:</span>
+  <span class="kt">import</span> <span class="kt">scala.util.Random</span>   <span class="c1">// внутри ClassA</span>
+  <span class="k">def</span> <span class="nf">printRandom</span> <span class="o">{</span>
+    <span class="k">val</span> <span class="nv">r</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Random</span>
+    <span class="c1">// ещё код...</span>
+
+<span class="k">class</span> <span class="nc">ClassB</span><span class="k">:</span>
+  <span class="c1">// класс Random здесь невидим</span>
+  <span class="k">val</span> <span class="nv">r</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Random</span>   <span class="c1">// этот код не скомпилится</span>
+</code></pre></div></div>
+
+<h4 id="статический-импорт">“Статический” импорт</h4>
+
+<p>Если необходимо импортировать элементы способом, аналогичным подходу «статического импорта» в Java, 
+то есть для того, чтобы напрямую обращаться к членам класса, не добавляя к ним префикс с именем класса, 
+используется следующий подход.</p>
+
+<p>Синтаксис для импорта всех статических членов Java класса <code class="highlighter-rouge">Math</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">java.lang.Math.</span><span class="o">*</span>
+</code></pre></div></div>
+
+<p>Теперь можно получить доступ к статическим методам класса <code class="highlighter-rouge">Math</code>, таким как <code class="highlighter-rouge">sin</code> и <code class="highlighter-rouge">cos</code>, 
+без необходимости предварять их именем класса:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">java.lang.Math.</span><span class="o">*</span>
+<span class="k">val</span> <span class="nv">a</span> <span class="k">=</span> <span class="nf">sin</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> 
+<span class="c1">// a: Double = 0.0 </span>
+<span class="k">val</span> <span class="nv">b</span> <span class="k">=</span> <span class="nf">cos</span><span class="o">(</span><span class="nc">PI</span><span class="o">)</span>
+<span class="c1">// b: Double = -1.0</span>
+</code></pre></div></div>
+
+<h4 id="пакеты-импортированные-по-умолчанию">Пакеты, импортированные по умолчанию</h4>
+
+<p>Два пакета неявно импортируются во все файлы исходного кода:</p>
+<ul>
+  <li><code class="highlighter-rouge">java.lang.*</code></li>
+  <li><code class="highlighter-rouge">scala.*</code></li>
+</ul>
+
+<p>Члены <code class="highlighter-rouge">object Predef</code> также импортируются по умолчанию.</p>
+
+<blockquote>
+  <p>Например, такие классы, как <code class="highlighter-rouge">List</code>, <code class="highlighter-rouge">Vector</code>, <code class="highlighter-rouge">Map</code> и т. д. можно использовать явно, не импортируя их - 
+они доступны, потому что определены в object Predef</p>
+</blockquote>
+
+<h4 id="обработка-конфликтов-имен">Обработка конфликтов имен</h4>
+
+<p>Если необходимо импортировать что-то из корня проекта и возникает конфликт имен, 
+достаточно просто добавить к имени пакета префикс <code class="highlighter-rouge">_root_</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="nn">accounts</span>
+
+<span class="k">import</span> <span class="nn">_root_.accounts.</span><span class="o">*</span>
+</code></pre></div></div>
+
+<h3 id="импорт-given">Импорт <code class="highlighter-rouge">given</code></h3>
+
+<p>Как будет показано в главе <a href="abstractions">“Контекстные абстракции”</a>,
+для импорта экземпляров <code class="highlighter-rouge">given</code> используется специальная форма оператора <code class="highlighter-rouge">import</code>. 
+Базовая форма показана в этом примере:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">A</span><span class="k">:</span>
+  <span class="kt">class</span> <span class="kt">TC</span>
+  <span class="n">given</span> <span class="n">tc</span> <span class="n">as</span> <span class="nc">TC</span>
+  <span class="k">def</span> <span class="nf">f</span><span class="o">(</span><span class="n">using</span> <span class="nc">TC</span><span class="o">)</span> <span class="k">=</span> <span class="o">???</span>
+
+<span class="k">object</span> <span class="nc">B</span><span class="k">:</span>
+  <span class="kt">import</span> <span class="kt">A.*</span>       <span class="c1">// import all non-given members</span>
+  <span class="k">import</span> <span class="nn">A.given</span>   <span class="c1">// import the given instance</span>
+</code></pre></div></div>
+
+<p>В этом коде предложение <code class="highlighter-rouge">import A.*</code> объекта <code class="highlighter-rouge">B</code> импортирует все элементы <code class="highlighter-rouge">A</code>, кроме <code class="highlighter-rouge">given</code> экземпляра <code class="highlighter-rouge">tc</code>. 
+И наоборот, второй импорт, <code class="highlighter-rouge">import A.given</code>, импортирует только <code class="highlighter-rouge">given</code> экземпляр. 
+Два предложения импорта также могут быть объединены в одно:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">B</span><span class="k">:</span>
+  <span class="kt">import</span> <span class="kt">A.</span><span class="o">{</span><span class="kt">given</span><span class="o">,</span> <span class="kt">*</span><span class="o">}</span>
+</code></pre></div></div>
+
+<p>Селектор с подстановочным знаком <code class="highlighter-rouge">*</code> помещает в область видимости все определения, кроме <code class="highlighter-rouge">given</code>, 
+тогда как селектор выше помещает в область действия все данные, включая те, которые являются результатом расширений.</p>
+
+<p>Эти правила имеют два основных преимущества:</p>
+<ul>
+  <li>более понятно, откуда берутся данные <code class="highlighter-rouge">given</code>. 
+В частности, невозможно скрыть импортированные <code class="highlighter-rouge">given</code> в длинном списке других импортируемых подстановочных знаков.</li>
+  <li>есть возможность импортировать все <code class="highlighter-rouge">given</code>, не импортируя ничего другого. 
+Это особенно важно, поскольку <code class="highlighter-rouge">given</code> могут быть анонимными, 
+поэтому обычное использование именованного импорта нецелесообразно.</li>
+</ul>
+
+<h4 id="импорт-по-типу">Импорт по типу</h4>
+
+<p>Поскольку <code class="highlighter-rouge">given</code>-ы могут быть анонимными, не всегда практично импортировать их по имени, 
+и вместо этого обычно используется импорт подстановочных знаков. 
+Импорт по типу предоставляет собой более конкретную альтернативу импорту с подстановочными знаками, 
+делая понятным то, что импортируется.
+Этот код импортирует из <code class="highlighter-rouge">A</code> любой <code class="highlighter-rouge">given</code> тип, соответствующий <code class="highlighter-rouge">TC</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">A.</span><span class="o">{</span><span class="n">given</span> <span class="nc">TC</span><span class="o">}</span>
+</code></pre></div></div>
+
+<p>Если импортируется только один <code class="highlighter-rouge">given</code>, то фигурные скобки можно опустить:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">A.given</span> <span class="nc">TC</span>
+</code></pre></div></div>
+
+<p>Импорт данных нескольких типов <code class="highlighter-rouge">T1,...,Tn</code> выражается несколькими <code class="highlighter-rouge">given</code> селекторами:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">A.</span><span class="o">{</span><span class="n">given</span> <span class="n">T1</span><span class="o">,</span> <span class="o">...,</span> <span class="n">given</span> <span class="nc">Tn</span><span class="o">}</span>
+</code></pre></div></div>
+
+<p>Импорт всех <code class="highlighter-rouge">given</code> экземпляров параметризованного типа достигается аргументами с подстановочными знаками. 
+Например, есть такой объект:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">Instances</span><span class="k">:</span>
+  <span class="kt">given</span> <span class="kt">intOrd</span> <span class="kt">as</span> <span class="kt">Ordering</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span>
+  <span class="n">given</span> <span class="n">listOrd</span><span class="o">[</span><span class="kt">T:</span> <span class="kt">Ordering</span><span class="o">]</span> <span class="n">as</span> <span class="nc">Ordering</span><span class="o">[</span><span class="kt">List</span><span class="o">[</span><span class="kt">T</span><span class="o">]]</span>
+  <span class="n">given</span> <span class="n">ec</span> <span class="n">as</span> <span class="nc">ExecutionContext</span> <span class="k">=</span> <span class="o">...</span>
+  <span class="n">given</span> <span class="n">im</span> <span class="n">as</span> <span class="nc">Monoid</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span>
+</code></pre></div></div>
+
+<p>Оператор <code class="highlighter-rouge">import</code> ниже импортирует экземпляры <code class="highlighter-rouge">intOrd</code>, <code class="highlighter-rouge">listOrd</code> и <code class="highlighter-rouge">ec</code>, но пропускает экземпляр <code class="highlighter-rouge">im</code>, 
+поскольку он не соответствует ни одному из указанных шаблонов:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">Instances.</span><span class="o">{</span><span class="n">given</span> <span class="nc">Ordering</span><span class="o">[</span><span class="kt">?</span><span class="o">],</span> <span class="n">given</span> <span class="nc">ExecutionContext</span><span class="o">}</span>
+</code></pre></div></div>
+
+<p>Импорт по типу можно смешивать с импортом по имени. 
+Если оба присутствуют в предложении <code class="highlighter-rouge">import</code>, импорт по типу идет последним. 
+Например, это предложение импорта импортирует <code class="highlighter-rouge">im</code>, <code class="highlighter-rouge">intOrd</code> и <code class="highlighter-rouge">listOrd</code>, но не включает <code class="highlighter-rouge">ec</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">Instances.</span><span class="o">{</span><span class="n">im</span><span class="o">,</span> <span class="n">given</span> <span class="nc">Ordering</span><span class="o">[</span><span class="kt">?</span><span class="o">]}</span>
+</code></pre></div></div>
+
+<h4 id="пример">Пример</h4>
+
+<p>В качестве конкретного примера представим, что у нас есть объект <code class="highlighter-rouge">MonthConversions</code>, 
+который содержит два определения <code class="highlighter-rouge">given</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">MonthConversions</span><span class="k">:</span>
+  <span class="kt">trait</span> <span class="kt">MonthConverter</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span><span class="k">:</span>
+    <span class="kt">def</span> <span class="kt">convert</span><span class="o">(</span><span class="kt">a:</span> <span class="kt">A</span><span class="o">)</span><span class="kt">:</span> <span class="kt">String</span>
+
+  <span class="n">given</span> <span class="n">intMonthConverter</span><span class="k">:</span> <span class="kt">MonthConverter</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">with</span>
+    <span class="k">def</span> <span class="nf">convert</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> 
+      <span class="n">i</span> <span class="k">match</span>
+        <span class="k">case</span> <span class="mi">1</span> <span class="k">=&gt;</span>  <span class="s">"January"</span>
+        <span class="k">case</span> <span class="mi">2</span> <span class="k">=&gt;</span>  <span class="s">"February"</span>
+        <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span>  <span class="s">"Other"</span>
+
+  <span class="n">given</span> <span class="n">stringMonthConverter</span><span class="k">:</span> <span class="kt">MonthConverter</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">with</span>
+    <span class="k">def</span> <span class="nf">convert</span><span class="o">(</span><span class="n">s</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> 
+      <span class="n">s</span> <span class="k">match</span>
+        <span class="k">case</span> <span class="s">"jan"</span> <span class="k">=&gt;</span> <span class="s">"January"</span>
+        <span class="k">case</span> <span class="s">"feb"</span> <span class="k">=&gt;</span> <span class="s">"February"</span>
+        <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span>  <span class="s">"Other"</span>
+</code></pre></div></div>
+
+<p>Чтобы импортировать эти <code class="highlighter-rouge">given</code>-ы в текущую область, используем два оператора <code class="highlighter-rouge">import</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">MonthConversions.</span><span class="o">*</span>
+<span class="k">import</span> <span class="nn">MonthConversions.given</span> <span class="nc">MonthConverter</span><span class="o">[</span><span class="kt">?</span><span class="o">]</span>
+</code></pre></div></div>
+
+<p>Теперь создаем метод, использующий эти экземпляры:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">genericMonthConverter</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">a</span><span class="k">:</span> <span class="kt">A</span><span class="o">)(</span><span class="n">using</span> <span class="n">monthConverter</span><span class="k">:</span> <span class="kt">MonthConverter</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span>
+  <span class="nv">monthConverter</span><span class="o">.</span><span class="py">convert</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Вызов метода:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">genericMonthConverter</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+<span class="c1">// res1: String = "January"</span>
+<span class="nf">genericMonthConverter</span><span class="o">(</span><span class="s">"jan"</span><span class="o">)</span>
+<span class="c1">// res2: String = "January"</span>
+</code></pre></div></div>
+
+<p>Как уже упоминалось ранее, одно из ключевых преимуществ синтаксиса “import given” состоит в том, 
+чтобы прояснить, откуда берутся данные в области действия, 
+и в <code class="highlighter-rouge">import</code> операторах выше ясно, что данные поступают из объекта <code class="highlighter-rouge">MonthConversions</code>.</p>
+
+<hr />
+
+<p><strong>References:</strong></p>
+<ul>
+  <li><a href="https://docs.scala-lang.org/scala3/book/packaging-imports.html">Scala3 book</a></li>
+</ul>
+
+
+<hr>
+<div class="edit-button" style="display: flex; justify-content: space-between;">
+    
+    <a href="/scalaworkbook/docs/functions/returns-function" class="btn-sm btn-info btn-left"><-- Предыдущая</a>
+    
+    
+    <a href="/scalaworkbook/docs/toplevel-definitions" class="btn-sm btn-info btn-right">Следующая --></a>
+    
+</div></section><div class="edit-button"><a href="https://github.com/artemkorsakov/scalaworkbook/edit/main/docs/docs/docs/packaging.md" target="_blank" rel="noopener noreferrer" class="btn-sm btn-info">Редактировать страницу</a></div></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalaworkbook/highlight/highlight.pack.js"></script><script src="/scalaworkbook/lunr/lunr.js"></script><script>
+// For all code blocks, copy the language from the containing div
+// to the inner code tag (where hljs expects it to be)
+const langPrefix = 'language-';
+document.querySelectorAll(`div[class^='${langPrefix}']`).forEach(function(div) {
+  div.classList.forEach(function(cssClass) {
+    if (cssClass.startsWith(langPrefix)) {
+      const lang = cssClass.substring(langPrefix.length);
+      div.querySelectorAll('pre code').forEach(function(code) {
+        code.classList.add(lang);
+      });
+    }
+  });
+});
+
+hljs.configure({languages:['scala','java','bash']});
+hljs.initHighlightingOnLoad();
+      </script><script>console.info('\x57\x65\x62\x73\x69\x74\x65\x20\x62\x75\x69\x6c\x74\x20\x77\x69\x74\x68\x3a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x5f\x5f\x0a\x20\x20\x20\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x5f\x20\x20\x2f\x20\x2f\x5f\x20\x20\x20\x20\x20\x20\x5f\x5f\x5f\x5f\x20\x5f\x5f\x5f\x20\x20\x28\x5f\x29\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x28\x5f\x29\x20\x2f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x0a\x20\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x60\x5f\x5f\x20\x5c\x2f\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x20\x2f\x20\x5f\x5f\x2f\x20\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x0a\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x5f\x2f\x20\x2f\x20\x2f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x5f\x5f\x2f\x20\x2f\x20\x20\x2f\x20\x2f\x5f\x2f\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x20\x2f\x5f\x2f\x20\x20\x5f\x5f\x28\x5f\x5f\x20\x20\x29\x0a\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2e\x5f\x5f\x5f\x2f\x5c\x5f\x5f\x2f\x20\x20\x20\x20\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x2f\x20\x20\x20\x5c\x5f\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x0a\x0a\x68\x74\x74\x70\x73\x3a\x2f\x2f\x34\x37\x64\x65\x67\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x73\x62\x74\x2d\x6d\x69\x63\x72\x6f\x73\x69\x74\x65\x73')</script><script src="/scalaworkbook/js/search.js"></script><script src="/scalaworkbook/js/main.js"></script></body></html>
