@@ -1,0 +1,6 @@
+{
+  "versions": {
+    "0.1.0": "https://artemkorsakov.github.io/scalaworkbook/api/0.1.0/_docs/index.html",
+    "Nightly": "https://artemkorsakov.github.io/scalaworkbook/api/_docs/index.html"
+  }
+}

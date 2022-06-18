@@ -75,7 +75,9 @@ lazy val docs = project
       "-siteroot",
       "./scaladoc/site",
       "-doc-root-content",
-      "./scaladoc/api.md"
+      "./scaladoc/api.md",
+      "-versions-dictionary-url",
+      "https://artemkorsakov.github.io/scalaworkbook/scaladoc/versions.json"
     )
   )
 
