@@ -1,7 +1,7 @@
 ---
 layout: docsplus
 title: "Методы в коллекциях"
-prev: collections/classes
+prev: collections/tuple
 next: fp
 ---
 

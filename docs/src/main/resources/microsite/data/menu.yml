@@ -115,6 +115,30 @@ options:
       - title: Типы коллекций
         url: docs/collections/classes
 
+      - title: List
+        url: docs/collections/list
+
+      - title: LazyList
+        url: docs/collections/lazylist
+
+      - title: Vector
+        url: docs/collections/vector
+
+      - title: ArrayBuffer
+        url: docs/collections/array-buffer
+
+      - title: Maps
+        url: docs/collections/maps
+
+      - title: Set
+        url: docs/collections/set
+
+      - title: Range
+        url: docs/collections/range
+
+      - title: Tuple
+        url: docs/collections/tuple
+
       - title: Методы в коллекциях
         url: docs/collections/methods
 

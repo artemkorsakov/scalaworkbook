@@ -317,7 +317,9 @@ l1.mul(x, z) // error: found l2.Logarithm, required l1.Logarithm
 Как показано выше, непрозрачные типы удобны в использовании и очень хорошо интегрируются с 
 [функцией методов расширения](@DOC@methods/extension-methods).
 
-[Подробнее об opaque type](https://docs.scala-lang.org/scala3/reference/other-new-features/opaques-details.html)
+Подробнее об opaque type:
+- [Мотивация](https://docs.scala-lang.org/sips/opaque-types.html)
+- [Детали](https://docs.scala-lang.org/scala3/reference/other-new-features/opaques-details.html)
 
 
 ---
