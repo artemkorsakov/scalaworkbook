@@ -55,7 +55,7 @@ println(stack.pop())
 Верхнее ограничение типа `T <: A` указывает на то что тип `T` относится к подтипу типа `A`. 
 Приведем пример, демонстрирующий верхнее ограничение для типа класса `PetContainer`:
 
-```scala mdoc:silent
+```scala mdoc:silent:reset
 abstract class Animal:
   def name: String
 
@@ -123,15 +123,13 @@ case class Nil[+B]() extends Node[B]:
 Чтобы исправить это, необходимо перевернуть вариантность типа параметра `elem` в `prepend`. 
 Для этого вводится новый тип для параметра `U`, у которого тип `B` указан в качестве нижней границы типа.
 
-```scala mdoc
+```scala mdoc:reset
 trait Node[+B]:
   def prepend[U >: B](elem: U): Node[U]
-
 case class ListNode[+B](h: B, t: Node[B]) extends Node[B]:
   def prepend[U >: B](elem: U): ListNode[U] = ListNode(elem, this)
   def head: B = h
   def tail: Node[B] = t
-
 case class Nil[+B]() extends Node[B]:
   def prepend[U >: B](elem: U): ListNode[U] = ListNode(elem, this)
 ```
@@ -142,7 +140,6 @@ case class Nil[+B]() extends Node[B]:
 trait Bird
 case class AfricanSwallow() extends Bird
 case class EuropeanSwallow() extends Bird
-
 val africanSwallowList = ListNode[AfricanSwallow](AfricanSwallow(), Nil())
 val birdList: Node[Bird] = africanSwallowList
 birdList.prepend(EuropeanSwallow())
