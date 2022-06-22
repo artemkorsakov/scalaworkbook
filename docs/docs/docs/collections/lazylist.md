@@ -2,7 +2,7 @@
 layout: docsplus
 title: "LazyList"
 prev: collections/list
-next: collections/vector
+next: collections/array-seq
 ---
 
 ## {{page.title}}

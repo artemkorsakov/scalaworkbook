@@ -121,6 +121,9 @@ options:
       - title: LazyList
         url: docs/collections/lazylist
 
+      - title: ArraySeq
+        url: docs/collections/array-seq
+
       - title: Vector
         url: docs/collections/vector
 
