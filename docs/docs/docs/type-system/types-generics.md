@@ -47,7 +47,113 @@ println(stack.pop())
 > Подробности о том, как выразить ковариантность с помощью универсальных типов, см. в разделе ["Ковариантность"](types-variance).
 
 
+### Верхнее ограничение типа
+
+Параметры типа и члены абстрактного типа могут быть ограничены определенными диапазонами. 
+Такие диапазоны ограничивают конкретные значение типа 
+и, возможно, предоставляют больше информации о членах таких типов. 
+Верхнее ограничение типа `T <: A` указывает на то что тип `T` относится к подтипу типа `A`. 
+Приведем пример, демонстрирующий верхнее ограничение для типа класса `PetContainer`:
+
+```scala mdoc:silent
+abstract class Animal:
+  def name: String
+
+abstract class Pet extends Animal
+
+class Cat extends Pet:
+  override val name: String = "Cat"
+
+class Dog extends Pet:
+  override val name: String = "Dog"
+
+class Lion extends Animal:
+  override val name: String = "Lion"
+
+class PetContainer[P <: Pet](p: P):
+  def pet: P = p
+
+val dogContainer = PetContainer[Dog](Dog())
+val catContainer = PetContainer[Cat](Cat())
+```
+
+Класс `PetContainer` принимает тип `P`, который должен быть подтипом `Pet`. 
+`Dog` и `Cat` - это подтипы `Pet`, поэтому можно создать новые `PetContainer[Dog]` и `PetContainer[Cat]`. 
+Однако, если попытаться создать `PetContainer[Lion]`, то получим следующую ошибку:
+
+```scala mdoc:fail
+val lionContainer = PetContainer[Lion](Lion())
+```
+
+Это потому, что `Lion` не является подтипом `Pet`.
+
+
+### Нижнее ограничение типа
+
+В то время как верхнее ограничение типа ограничивает тип до подтипа стороннего типа, 
+нижнее ограничение типа объявляют тип супертипом стороннего типа. 
+Термин `B >: A` выражает то, что параметр типа `B` или абстрактный тип `B` относится к супертипу типа `A`. 
+В большинстве случаев `A` будет задавать тип класса, а `B` - тип метода.
+
+Вот пример, где это полезно:
+
+```scala
+trait Node[+B]:
+  def prepend(elem: B): Node[B]
+
+case class ListNode[+B](h: B, t: Node[B]) extends Node[B]:
+  def prepend(elem: B): ListNode[B] = ListNode(elem, this)
+  def head: B = h
+  def tail: Node[B] = t
+
+case class Nil[+B]() extends Node[B]:
+  def prepend(elem: B): ListNode[B] = ListNode(elem, this)
+```
+
+В данной программе реализован связанный список. 
+`Nil` представляет пустой список. Класс `ListNode` - это узел, 
+который содержит элемент типа `B` (`head`) и ссылку на остальную часть списка (`tail`). 
+Класс `Node` и его подтипы ковариантны, потому что указанно `+B`.
+
+Однако эта программа не скомпилируется, 
+потому что параметр `elem` в `prepend` имеет тип `B`, который объявлен ковариантным. 
+Так это не работает, потому что функции контрвариантны в типах своих параметров 
+и ковариантны в типах своих результатов.
+
+Чтобы исправить это, необходимо перевернуть вариантность типа параметра `elem` в `prepend`. 
+Для этого вводится новый тип для параметра `U`, у которого тип `B` указан в качестве нижней границы типа.
+
+```scala mdoc
+trait Node[+B]:
+  def prepend[U >: B](elem: U): Node[U]
+
+case class ListNode[+B](h: B, t: Node[B]) extends Node[B]:
+  def prepend[U >: B](elem: U): ListNode[U] = ListNode(elem, this)
+  def head: B = h
+  def tail: Node[B] = t
+
+case class Nil[+B]() extends Node[B]:
+  def prepend[U >: B](elem: U): ListNode[U] = ListNode(elem, this)
+```
+
+Теперь можно сделать следующее:
+
+```scala mdoc
+trait Bird
+case class AfricanSwallow() extends Bird
+case class EuropeanSwallow() extends Bird
+
+val africanSwallowList = ListNode[AfricanSwallow](AfricanSwallow(), Nil())
+val birdList: Node[Bird] = africanSwallowList
+birdList.prepend(EuropeanSwallow())
+```
+
+Переменной с типом `Node[Bird]` можно присвоить значение `africanSwallowList`, а затем добавить и `EuropeanSwallow`.
+
+
 ---
 
 **References:**
 - [Scala3 book](https://docs.scala-lang.org/scala3/book/types-generics.html)
+- [Scala tour, Upper type bounds](https://docs.scala-lang.org/ru/tour/upper-type-bounds.html)
+- [Scala tour, Lower type bounds](https://docs.scala-lang.org/ru/tour/lower-type-bounds.html)
