@@ -2,7 +2,7 @@
 layout: docsplus
 title: "Tuple"
 prev: collections/range
-next: collections/methods
+next: collections/queue
 ---
 
 ## Tuple (кортежи)

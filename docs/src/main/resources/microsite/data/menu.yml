@@ -142,6 +142,9 @@ options:
       - title: Tuple
         url: docs/collections/tuple
 
+      - title: Queue
+        url: docs/collections/queue
+
       - title: Методы в коллекциях
         url: docs/collections/methods
 

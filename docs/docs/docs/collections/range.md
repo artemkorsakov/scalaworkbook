@@ -7,7 +7,8 @@ next: collections/tuple
 
 ## Диапазон (Range)
 
-`Range` часто используется для заполнения структур данных и для циклов `for`.
+[`Range`](https://scala-lang.org/api/3.x/scala/collection/immutable/Range.html) 
+часто используется для заполнения структур данных и для циклов `for`.
 Эти примеры демонстрируют, как создавать диапазоны:
 
 ```scala mdoc
