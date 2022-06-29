@@ -27,10 +27,10 @@ prev: scaladoc/settings
 ---
 
 ### Упражнения на Scala
-- [exercism.org](https://exercism.org/tracks/scala)
-- [Tour of Scala](https://tourofscala.com/)
-- [A Tour of Scala](http://scalatutorials.com/tour/)
-- [scala-exercises](https://www.scala-exercises.org/)
+- [exercism.org](https://exercism.org/tracks/scala) (для Scala 2)
+- [Tour of Scala](https://tourofscala.com/) (для Scala 2)
+- [A Tour of Scala](http://scalatutorials.com/tour/) (для Scala 2)
+- [scala-exercises](https://www.scala-exercises.org/) (для Scala 2)
 
 --- 
 
