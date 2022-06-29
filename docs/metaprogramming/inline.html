@@ -1,0 +1,758 @@
+<!DOCTYPE html><html><head><title>Scala workbook: Inline</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Артём Корсаков" /><meta name="description" content="Функциональная разработка на Scala." /><meta name="og:image" content="/scalaworkbook/img/poster.png" /><meta name="image" property="og:image" content="/scalaworkbook/img/poster.png" /><meta name="og:title" content="Scala workbook: Inline" /><meta name="title" property="og:title" content="Scala workbook: Inline" /><meta name="og:site_name" content="Scala workbook" /><meta name="og:url" content="" /><meta name="og:type" content="website" /><meta name="og:description" content="Функциональная разработка на Scala." /><link rel="icon" type="image/png" href="/scalaworkbook/img/favicon.png" /><meta name="twitter:title" content="Scala workbook: Inline" /><meta name="twitter:image" content="https://artemkorsakov.github.io/scalaworkbook/img/poster.png" /><meta name="twitter:description" content="Функциональная разработка на Scala." /><meta name="twitter:card" content="summary_large_image" /><link rel="icon" type="image/png" sizes="16x16" href="/scalaworkbook/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/scalaworkbook/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/scalaworkbook/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/scalaworkbook/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/scalaworkbook/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/scalaworkbook/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/scalaworkbook/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/scalaworkbook/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/scalaworkbook/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/scalaworkbook/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/scalaworkbook/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/scalaworkbook/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/scalaworkbook/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/scalaworkbook/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/scalaworkbook/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/scalaworkbook/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/scalaworkbook/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/scalaworkbook/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/scalaworkbook/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/scalaworkbook/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/scalaworkbook/highlight/styles/vs.css" /><link rel="stylesheet" href="/scalaworkbook/css/pattern-style.css" /><link rel="stylesheet" href="/scalaworkbook/css/override.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/scalaworkbook/" class="brand"><div class="brand-wrapper"><span>Scala workbook</span></div></a></li> <li><a href="/scalaworkbook/docs/index" class="">Обзор Scala</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/start/getting-started" class="">С чего начать?</a></li></ul></li> <li><a href="/scalaworkbook/docs/hello_world" class="">Hello, world!</a></li> <li><a href="/scalaworkbook/docs/repl" class="">REPL</a></li> <li><a href="/scalaworkbook/docs/types" class="">Типы данных</a></li> <li><a href="/scalaworkbook/docs/structures" class="">Структуры управления</a></li> <li><a href="/scalaworkbook/docs/modeling" class="">Моделирование данных</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/modeling/classes" class="">Classes</a></li> <li><a href="/scalaworkbook/docs/modeling/objects" class="">Objects</a></li> <li><a href="/scalaworkbook/docs/modeling/companion-objects" class="">Companion objects</a></li> <li><a href="/scalaworkbook/docs/modeling/traits" class="">Traits</a></li> <li><a href="/scalaworkbook/docs/modeling/abstract-class" class="">Абстрактные классы</a></li> <li><a href="/scalaworkbook/docs/modeling/enums" class="">Enums</a></li> <li><a href="/scalaworkbook/docs/modeling/case-class" class="">Case classes</a></li> <li><a href="/scalaworkbook/docs/modeling/oop" class="">Моделирование ООП</a></li> <li><a href="/scalaworkbook/docs/modeling/fp" class="">Моделирование ФП</a></li></ul></li> <li><a href="/scalaworkbook/docs/methods" class="">Методы</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/methods/method-features" class="">Определение методов</a></li> <li><a href="/scalaworkbook/docs/methods/default-parameters" class="">Параметры по умолчанию</a></li> <li><a href="/scalaworkbook/docs/methods/named-parameters" class="">Именованные параметры</a></li> <li><a href="/scalaworkbook/docs/methods/by-name-parameter" class="">Параметры по имени</a></li> <li><a href="/scalaworkbook/docs/methods/partially-applied-functions" class="">Каррирование</a></li> <li><a href="/scalaworkbook/docs/methods/vararg-parameters" class="">Variable Arguments</a></li> <li><a href="/scalaworkbook/docs/methods/generic-parameter" class="">Generic параметры</a></li> <li><a href="/scalaworkbook/docs/methods/extension-methods" class="">Методы расширения</a></li> <li><a href="/scalaworkbook/docs/methods/main-methods" class="">main методы</a></li></ul></li> <li><a href="/scalaworkbook/docs/functions" class="">Функции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/functions/anonymous" class="">Анонимные функции</a></li> <li><a href="/scalaworkbook/docs/functions/variables" class="">Параметры функции</a></li> <li><a href="/scalaworkbook/docs/functions/eta" class="">Eta расширение</a></li> <li><a href="/scalaworkbook/docs/functions/hofs" class="">Функции высшего порядка</a></li> <li><a href="/scalaworkbook/docs/functions/write-map" class="">Собственный map</a></li> <li><a href="/scalaworkbook/docs/functions/returns-function" class="">Возврат функции в методе</a></li></ul></li> <li><a href="/scalaworkbook/docs/packaging" class="">Пакеты и импорт</a></li> <li><a href="/scalaworkbook/docs/toplevel-definitions" class="">Верхнеур. определения</a></li> <li><a href="/scalaworkbook/docs/collections" class="">Коллекции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/collections/classes" class="">Типы коллекций</a></li> <li><a href="/scalaworkbook/docs/collections/list" class="">List</a></li> <li><a href="/scalaworkbook/docs/collections/lazylist" class="">LazyList</a></li> <li><a href="/scalaworkbook/docs/collections/array-seq" class="">ArraySeq</a></li> <li><a href="/scalaworkbook/docs/collections/vector" class="">Vector</a></li> <li><a href="/scalaworkbook/docs/collections/array-buffer" class="">ArrayBuffer</a></li> <li><a href="/scalaworkbook/docs/collections/maps" class="">Maps</a></li> <li><a href="/scalaworkbook/docs/collections/set" class="">Set</a></li> <li><a href="/scalaworkbook/docs/collections/range" class="">Range</a></li> <li><a href="/scalaworkbook/docs/collections/tuple" class="">Tuple</a></li> <li><a href="/scalaworkbook/docs/collections/queue" class="">Queue</a></li> <li><a href="/scalaworkbook/docs/collections/methods" class="">Методы в коллекциях</a></li></ul></li> <li><a href="/scalaworkbook/docs/fp" class="">Функц. программирование</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/fp/what-is-fp" class="">Что такое ФП?</a></li> <li><a href="/scalaworkbook/docs/fp/immutable-values" class="">Неизменяемые значения</a></li> <li><a href="/scalaworkbook/docs/fp/pure-functions" class="">Чистые функции</a></li> <li><a href="/scalaworkbook/docs/fp/functions-are-values" class="">Функции - это значения</a></li> <li><a href="/scalaworkbook/docs/fp/functional-error-handling" class="">Обработка ошибок</a></li></ul></li> <li><a href="/scalaworkbook/docs/type-system" class="">Система типов</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/type-system/types-inferred" class="">Определение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-generics" class="">Generics типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-intersection" class="">Пересечение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-union" class="">Объединение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-adts" class="">Алгебр. типы данных</a></li> <li><a href="/scalaworkbook/docs/type-system/types-variance" class="">Ковариантность</a></li> <li><a href="/scalaworkbook/docs/type-system/types-opaque" class="">Непрозрачные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-structural" class="">Структурные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-dependent-function" class="">Зависимые типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/type-lambdas" class="">Type Lambdas</a></li> <li><a href="/scalaworkbook/docs/type-system/match-types" class="">Match Types</a></li> <li><a href="/scalaworkbook/docs/type-system/polymorphic-function-types" class="">Полимор. типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/types-others" class="">Другие типы</a></li></ul></li> <li><a href="/scalaworkbook/docs/abstractions" class="">Абстракции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/abstractions/ca-given" class="">Given</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-using" class="">Using</a></li> <li><a href="/scalaworkbook/docs/abstractions/type-classes" class="">Класс типов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-context-bounds" class="">Контекстные границы</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-given-imports" class="">Given imports</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-extension-methods" class="">Методы расш. - детали</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-classes" class="">Импл. type классов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-class-derivation" class="">Type Class Derivation</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-multiversal-equality" class="">Multiversal Equality</a></li> <li><a href="/scalaworkbook/docs/abstractions/context-functions" class="">Контекстные функции</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-implicit-conversions" class="">Неявные преобр.</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-by-name-parameters" class="">Конт. пар. по имени</a></li></ul></li> <li><a href="/scalaworkbook/docs/details" class="">Детали</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/details/export-causes" class="">Предложения export</a></li> <li><a href="/scalaworkbook/docs/details/parameter-untupling" class="">Распаковка параметров</a></li> <li><a href="/scalaworkbook/docs/details/type-test" class="">Проверка типа</a></li> <li><a href="/scalaworkbook/docs/details/pattern-matching" class="">Экстракторы</a></li></ul></li> <li><a href="/scalaworkbook/docs/concurrency" class="">Параллелизм</a></li> <li><a href="/scalaworkbook/docs/tools" class="">Утилиты</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/tools/tools-sbt" class="">Sbt</a></li> <li><a href="/scalaworkbook/docs/tools/tools-worksheets" class="">Worksheet</a></li></ul></li> <li><a href="/scalaworkbook/docs/with_java" class="">Взаимодействие с Java</a></li> <li><a href="/scalaworkbook/docs/metaprogramming" class="">Metaprogramming</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/metaprogramming/inline" class=" active ">Inline</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/compile-time-ops" class="">Compile-time ops</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/macros" class="">Macros</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/quoted-code" class="">Quoted Code</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/runtime-staging" class="">Runtime Staging</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/reflection" class="">Reflection</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/tasty-inspection" class="">TASTy Inspection</a></li></ul></li> <li><a href="/scalaworkbook/docs/soft-keywords" class="">Soft Keywords</a></li> <li><a href="/scalaworkbook/docs/scaladoc" class="">Scaladoc</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/scaladoc/docstrings" class="">Документы</a></li> <li><a href="/scalaworkbook/docs/scaladoc/linking" class="">Ссылки</a></li> <li><a href="/scalaworkbook/docs/scaladoc/static-site" class="">Статика</a></li> <li><a href="/scalaworkbook/docs/scaladoc/blog" class="">Блог</a></li> <li><a href="/scalaworkbook/docs/scaladoc/site-versioning" class="">Версионность</a></li> <li><a href="/scalaworkbook/docs/scaladoc/search-engine" class="">Поиск по типу</a></li> <li><a href="/scalaworkbook/docs/scaladoc/snippet-compiler" class="">Проверка фрагмента</a></li> <li><a href="/scalaworkbook/docs/scaladoc/settings" class="">Настройки</a></li></ul></li> <li><a href="/scalaworkbook/docs/extra" class="">Доп. материалы</a></li></ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li class="search-nav hidden-xs hidden-sm"><div id="search-dropdown"><label><i class="fa fa-search"></i>Search</label><input id="search-bar" type="text" placeholder="Enter keywords here..." onclick="displayToggleSearch(event)" /><ul id="search-dropdown-content" class="dropdown dropdown-content"></ul></div></li></ul></div></div></div></div><div id="content" data-github-owner="artemkorsakov" data-github-repo="scalaworkbook"><div class="content-wrapper"><section><h2 id="inline">Inline</h2>
+
+<p>Встраивание (<code class="highlighter-rouge">inline</code>) — это распространенный метод метапрограммирования во время компиляции, 
+обычно используемый для оптимизации производительности. 
+Концепция встраивания предоставляет собой точку входа в программирование с помощью макросов.</p>
+
+<ol>
+  <li>Вводится <code class="highlighter-rouge">inline</code> как <a href="/scalaworkbook/docs/soft-keywords">мягкий модификатор</a>.</li>
+  <li>Гарантируется, что встраивание происходит на самом деле, а не с “максимальной эффективностью”.</li>
+  <li>Вводятся операции, которые гарантированно оцениваются во время компиляции.</li>
+</ol>
+
+<h3 id="inline-constants">Inline Constants</h3>
+
+<p>Простейшей формой встраивания является встраивание констант в программы:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inline</span> <span class="k">val</span> <span class="nv">pi</span> <span class="k">=</span> <span class="mf">3.141592653589793</span>
+<span class="n">inline</span> <span class="k">val</span> <span class="nv">pie</span> <span class="k">=</span> <span class="s">"🥧"</span>
+</code></pre></div></div>
+
+<p>Использование ключевого слова <code class="highlighter-rouge">inline</code> в определениях значений гарантирует, 
+что все ссылки на <code class="highlighter-rouge">pi</code> и <code class="highlighter-rouge">pie</code> являются встроенными:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">pi2</span> <span class="k">=</span> <span class="n">pi</span> <span class="o">+</span> <span class="n">pi</span>
+<span class="c1">// pi2: Double = 6.283185307179586</span>
+<span class="k">val</span> <span class="nv">pie2</span> <span class="k">=</span> <span class="n">pie</span> <span class="o">+</span> <span class="n">pie</span>
+<span class="c1">// pie2: String = "🥧🥧"</span>
+</code></pre></div></div>
+
+<p>В приведенном выше коде ссылки <code class="highlighter-rouge">pi</code> и <code class="highlighter-rouge">pie</code> встроены. 
+Затем компилятор применяет оптимизацию под названием “свертывание констант”, 
+которая вычисляет результирующее значение <code class="highlighter-rouge">pi2</code> и <code class="highlighter-rouge">pie2</code> во время компиляции.</p>
+
+<blockquote>
+  <p>Inline (Scala 3) vs. final (Scala 2)</p>
+
+  <p>В Scala 2 использовался бы модификатор <code class="highlighter-rouge">final</code> в определении без возвращаемого типа:</p>
+
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">final</span> <span class="k">val</span> <span class="nv">pi</span> <span class="k">=</span> <span class="mf">3.141592653589793</span>
+<span class="k">final</span> <span class="k">val</span> <span class="nv">pie</span> <span class="k">=</span> <span class="s">"🥧"</span>
+</code></pre></div>  </div>
+
+  <p>Модификатор <code class="highlighter-rouge">final</code> обеспечит, что <code class="highlighter-rouge">pi</code> и <code class="highlighter-rouge">pie</code> примет литеральный тип. 
+Затем оптимизация распространения констант в компиляторе может выполнить встраивание для таких определений. 
+Однако эта форма постоянного распространения не гарантируется. 
+Scala 3.0 также поддерживает <code class="highlighter-rouge">final val</code> - inlining как встраивание с максимальной эффективностью для целей миграции.</p>
+</blockquote>
+
+<p>В настоящее время только константные выражения могут появляться в правой части определения встроенного значения. 
+Таким образом, следующий код недействителен, хотя компилятор знает, 
+что правая часть является постоянным значением времени компиляции:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">pi</span> <span class="k">=</span> <span class="mf">3.141592653589793</span>
+<span class="n">inline</span> <span class="k">val</span> <span class="nv">pi2</span> <span class="k">=</span> <span class="n">pi</span> <span class="o">+</span> <span class="n">pi</span> <span class="c1">// error</span>
+</code></pre></div></div>
+
+<p>Обратите внимание, что при определении <code class="highlighter-rouge">inline val pi</code> добавление может быть вычислено во время компиляции. 
+Это устраняет указанную выше ошибку и <code class="highlighter-rouge">pi2</code> получает литеральный тип <code class="highlighter-rouge">6.283185307179586d</code>.</p>
+
+<h3 id="inline-methods">Inline Methods</h3>
+
+<p>Также можно использовать модификатор <code class="highlighter-rouge">inline</code> для определения метода, который должен быть встроен в точку вызова:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inline</span> <span class="k">def</span> <span class="nf">logged</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">level</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">message</span><span class="k">:</span> <span class="o">=&gt;</span> <span class="nc">String</span><span class="o">)(</span><span class="n">inline</span> <span class="n">op</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span><span class="k">:</span> <span class="kt">T</span> <span class="o">=</span>
+  <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"[$level]Computing $message"</span><span class="o">)</span>
+  <span class="k">val</span> <span class="nv">res</span> <span class="k">=</span> <span class="n">op</span>
+  <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"[$level]Result of $message: $res"</span><span class="o">)</span>
+  <span class="n">res</span>
+</code></pre></div></div>
+
+<p>Когда вызывается такой встроенный метод <code class="highlighter-rouge">logged</code>, его тело будет развернуто на месте вызова во время компиляции! 
+То есть вызов <code class="highlighter-rouge">logged</code> будет заменен телом метода. 
+Предоставленные аргументы статически заменяются параметрами <code class="highlighter-rouge">logged</code>, соответственно. 
+Поэтому компилятор встраивает следующий вызов</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">logged</span><span class="o">(</span><span class="n">logLevel</span><span class="o">,</span> <span class="nf">getMessage</span><span class="o">())</span> <span class="o">{</span>
+  <span class="nf">computeSomething</span><span class="o">()</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>и переписывает его на:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">level</span>   <span class="k">=</span> <span class="n">logLevel</span>
+<span class="k">def</span> <span class="nf">message</span> <span class="k">=</span> <span class="nf">getMessage</span><span class="o">()</span>
+
+<span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"[$level]Computing $message"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">res</span> <span class="k">=</span> <span class="nf">computeSomething</span><span class="o">()</span>
+<span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"[$level]Result of $message: $res"</span><span class="o">)</span>
+<span class="n">res</span>
+</code></pre></div></div>
+
+<p>Встроенные методы всегда должны применяться полностью. Например, вызов</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>logged[String](1, "some message")
+</code></pre></div></div>
+
+<p>будет неправильно сформирован, и компилятор будет жаловаться на отсутствие аргументов.
+Однако можно передавать аргументы с подстановочными знаками.
+Например,</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>logged[String](1, "some message")(_)
+</code></pre></div></div>
+
+<h5 id="семантика-встроенных-методов">Семантика встроенных методов</h5>
+
+<p>Пример метода <code class="highlighter-rouge">logged</code> использует три разных типа параметров, иллюстрируя, как встраивание обрабатывает эти параметры:</p>
+
+<ol>
+  <li><strong>Параметры по значению</strong>. Компилятор создает <code class="highlighter-rouge">val</code> привязку для параметров по значению. 
+Таким образом, выражение аргумента оценивается только один раз перед сокращением тела метода.
+Это видно по параметру <code class="highlighter-rouge">level</code> из примера. 
+В некоторых случаях, когда аргументы являются чистыми постоянными значениями, 
+привязка опускается и значение встраивается напрямую.</li>
+  <li><strong>Параметры по имени</strong>. Компилятор создает <code class="highlighter-rouge">def</code> привязку для параметров по имени. 
+Таким образом, выражение аргумента оценивается каждый раз, когда оно используется, но код является общим.
+Это видно по методу <code class="highlighter-rouge">message</code> из примера.</li>
+  <li><strong>Встроенные параметры</strong>. Встроенные параметры не создают привязок и просто встраиваются. 
+Таким образом, их код дублируется везде, где они используются.
+Это видно по параметру <code class="highlighter-rouge">op</code> из примера.</li>
+</ol>
+
+<p>Способ преобразования различных параметров гарантирует, что встраивание вызова не изменит его семантику. 
+Это означает, что первоначальная обработка (разрешение перегрузки, неявный поиск и т. д.), 
+выполняемая при вводе тела встроенного метода, не изменится при встроенном методе.</p>
+
+<p>Например, рассмотрим следующий код:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Logger</span><span class="k">:</span>
+  <span class="kt">def</span> <span class="kt">log</span><span class="o">(</span><span class="kt">x:</span> <span class="kt">Any</span><span class="o">)</span><span class="kt">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="nf">println</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+
+<span class="k">class</span> <span class="nc">RefinedLogger</span> <span class="k">extends</span> <span class="nc">Logger</span><span class="k">:</span>
+  <span class="kt">override</span> <span class="kt">def</span> <span class="kt">log</span><span class="o">(</span><span class="kt">x:</span> <span class="kt">Any</span><span class="o">)</span><span class="kt">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="nf">println</span><span class="o">(</span><span class="s">"Any: "</span> <span class="o">+</span> <span class="n">x</span><span class="o">)</span>
+  <span class="k">def</span> <span class="nf">log</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="nf">println</span><span class="o">(</span><span class="s">"String: "</span> <span class="o">+</span> <span class="n">x</span><span class="o">)</span>
+
+<span class="n">inline</span> <span class="k">def</span> <span class="nf">logged</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">logger</span><span class="k">:</span> <span class="kt">Logger</span><span class="o">,</span> <span class="n">x</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span>
+  <span class="nv">logger</span><span class="o">.</span><span class="py">log</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Отдельная проверка типа <code class="highlighter-rouge">logger.log(x)</code> разрешает вызов метода <code class="highlighter-rouge">Logger.log</code>, который принимает аргумент типа <code class="highlighter-rouge">Any</code>.</p>
+
+<p>Теперь, учитывая следующий код:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">logged</span><span class="o">(</span><span class="k">new</span> <span class="nc">RefinedLogger</span><span class="o">,</span> <span class="s">"✔"</span><span class="o">)</span>
+<span class="c1">// Any: ✔</span>
+</code></pre></div></div>
+
+<p>Он расширяется до:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">logger</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">RefinedLogger</span>
+<span class="c1">// logger: RefinedLogger = repl.MdocSession$App$RefinedLogger@483978d5</span>
+<span class="k">val</span> <span class="nv">x</span> <span class="k">=</span> <span class="s">"✔"</span>
+<span class="c1">// x: String = "✔"</span>
+<span class="nv">logger</span><span class="o">.</span><span class="py">log</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+<span class="c1">// String: ✔</span>
+</code></pre></div></div>
+
+<p>Несмотря на то, что теперь известно, что <code class="highlighter-rouge">x</code> - это <code class="highlighter-rouge">String</code>, 
+вызов <code class="highlighter-rouge">logger.log(x)</code> по-прежнему разрешается в метод <code class="highlighter-rouge">Logger.log</code>, который принимает аргумент типа <code class="highlighter-rouge">Any</code>. 
+Обратите внимание, что из-за позднего связывания фактический метод, вызываемый во время выполнения, 
+будет переопределенным методом <code class="highlighter-rouge">RefinedLogger.log</code>.</p>
+
+<blockquote>
+  <p>Встраивание сохраняет семантику.
+Независимо от того, определен ли <code class="highlighter-rouge">logged</code> как <code class="highlighter-rouge">def</code> или <code class="highlighter-rouge">inline def</code>, 
+он выполняет одни и те же операции с некоторыми отличиями в производительности.</p>
+</blockquote>
+
+<h4 id="встроенные-параметры">Встроенные параметры</h4>
+
+<p>Одним из важных применений встраивания является обеспечение постоянной оптимизации свертывания за пределами методов. 
+Встроенные параметры не создают привязок, и их код дублируется везде, где они используются.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inline</span> <span class="k">def</span> <span class="nf">perimeter</span><span class="o">(</span><span class="n">inline</span> <span class="n">radius</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span>
+  <span class="mf">2.0</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span>
+</code></pre></div></div>
+
+<p>В приведенном выше примере ожидается, что если <code class="highlighter-rouge">radius</code> известен статически, 
+то все вычисления могут быть выполнены во время компиляции. 
+Следующий вызов:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">perimeter</span><span class="o">(</span><span class="mf">5.0</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>переписывается на:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2.0</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="mf">5.0</span>
+</code></pre></div></div>
+
+<p>Затем встраивается <code class="highlighter-rouge">pi</code> (вначале принимаются <code class="highlighter-rouge">inline val</code> определения - <code class="highlighter-rouge">radius</code>):</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">2.0</span> <span class="o">*</span> <span class="mf">3.141592653589793</span> <span class="o">*</span> <span class="mf">5.0</span>
+</code></pre></div></div>
+
+<p>Наконец, постоянно свернут до</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">31.4159265359</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Встроенные параметры следует использовать только один раз.</strong>
+Нужно быть осторожным при использовании встроенного параметра <strong>более одного раза</strong>. Рассмотрим следующий код:</p>
+
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inline</span> <span class="k">def</span> <span class="nf">printPerimeter</span><span class="o">(</span><span class="n">inline</span> <span class="n">radius</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span>
+  <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"Perimeter (r = $radius) = ${perimeter(radius)}"</span><span class="o">)</span>
+</code></pre></div>  </div>
+
+  <p>Он отлично работает, когда передается константа или ссылка на <code class="highlighter-rouge">val</code>.</p>
+
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">printPerimeter</span><span class="o">(</span><span class="mf">5.0</span><span class="o">)</span>
+<span class="c1">// встраивается как</span>
+<span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"Perimeter (r = ${5.0}) = ${31.4159265359}"</span><span class="o">)</span>
+</code></pre></div>  </div>
+
+  <p>Но если передается большее выражение (возможно, с побочными эффектами), можно случайно дублировать работу.</p>
+
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">printPerimeter</span><span class="o">(</span><span class="nf">longComputation</span><span class="o">())</span>
+<span class="c1">// встраивается как</span>
+<span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"Perimeter (r = ${longComputation()}) = ${6.283185307179586 * longComputation()}"</span><span class="o">)</span>
+</code></pre></div>  </div>
+</blockquote>
+
+<p>Полезным применением встроенных параметров является предотвращение создания замыканий, 
+вызванных использованием параметров по имени.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inline</span> <span class="k">def</span> <span class="nf">assert1</span><span class="o">(</span><span class="n">cond</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">,</span> <span class="n">msg</span><span class="k">:</span> <span class="o">=&gt;</span> <span class="nc">String</span><span class="o">)</span> <span class="k">=</span>
+  <span class="k">if</span> <span class="o">!</span><span class="n">cond</span> <span class="n">then</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nc">Exception</span><span class="o">(</span><span class="n">msg</span><span class="o">)</span>
+
+<span class="nf">assert1</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="s">"error1"</span><span class="o">)</span>
+<span class="c1">// is inlined as</span>
+<span class="k">val</span> <span class="nv">cond</span> <span class="k">=</span> <span class="n">x</span>
+<span class="k">def</span> <span class="nf">msg</span> <span class="k">=</span> <span class="s">"error1"</span>
+<span class="k">if</span> <span class="o">!</span><span class="n">cond</span> <span class="n">then</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nc">Exception</span><span class="o">(</span><span class="n">msg</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>В приведенном выше примере видно, что использование параметра по имени приводит к локальному определению <code class="highlighter-rouge">msg</code>, 
+которое выделяет замыкание перед проверкой условия.</p>
+
+<p>Если вместо этого использовать встроенный параметр, можно гарантировать, 
+что условие будет проверено до того, как будет достигнут любой код, обрабатывающий исключение. 
+В случае утверждения этот код никогда не должен быть достигнут.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inline</span> <span class="k">def</span> <span class="nf">assert2</span><span class="o">(</span><span class="n">cond</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">,</span> <span class="n">inline</span> <span class="n">msg</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span> <span class="k">=</span>
+  <span class="k">if</span> <span class="o">!</span><span class="n">cond</span> <span class="n">then</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nc">Exception</span><span class="o">(</span><span class="n">msg</span><span class="o">)</span>
+
+<span class="nf">assert2</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="s">"error2"</span><span class="o">)</span>
+<span class="c1">// is inlined as</span>
+<span class="k">val</span> <span class="nv">cond</span> <span class="k">=</span> <span class="n">x</span>
+<span class="k">if</span> <span class="o">!</span><span class="n">cond</span> <span class="n">then</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nc">Exception</span><span class="o">(</span><span class="s">"error2"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>В следующем примере показана разница в переводе между by-value, by-name и <code class="highlighter-rouge">inline</code> параметрами:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inline</span> <span class="k">def</span> <span class="nf">funkyAssertEquals</span><span class="o">(</span><span class="n">actual</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span> <span class="n">expected</span><span class="k">:</span> <span class="o">=&gt;</span> <span class="nc">Double</span><span class="o">,</span> <span class="n">inline</span> <span class="n">delta</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span><span class="k">:</span> <span class="kt">Unit</span> <span class="o">=</span>
+  <span class="nf">if</span> <span class="o">(</span><span class="n">actual</span> <span class="o">-</span> <span class="n">expected</span><span class="o">).</span><span class="py">abs</span> <span class="o">&gt;</span> <span class="n">delta</span> <span class="n">then</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nc">AssertionError</span><span class="o">(</span><span class="n">s</span><span class="s">"difference between ${expected} and ${actual} was larger than ${delta}"</span><span class="o">)</span>
+
+<span class="nf">funkyAssertEquals</span><span class="o">(</span><span class="nf">computeActual</span><span class="o">(),</span> <span class="nf">computeExpected</span><span class="o">(),</span> <span class="nf">computeDelta</span><span class="o">())</span>
+<span class="c1">// translates to</span>
+<span class="c1">//</span>
+<span class="c1">//   val actual = computeActual()</span>
+<span class="c1">//   def expected = computeExpected()</span>
+<span class="c1">//   if (actual - expected).abs &gt; computeDelta() then</span>
+<span class="c1">//     throw new AssertionError(s"difference between ${expected} and ${actual} was larger than ${computeDelta()}")</span>
+</code></pre></div></div>
+
+<p>Обычно встроенные параметры используются, когда необходимо распространить постоянные значения,
+чтобы обеспечить дальнейшую оптимизацию/сокращение.</p>
+
+<h3 id="рекурсивные-встроенные-методы">Рекурсивные встроенные методы</h3>
+
+<p>Встроенные методы могут быть рекурсивными. 
+Например, при вызове с постоянным <code class="highlighter-rouge">n</code> следующий метод <code class="highlighter-rouge">power</code> 
+будет реализован прямым встроенным кодом без какого-либо цикла или рекурсии.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inline</span> <span class="k">def</span> <span class="nf">power</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span> <span class="n">n</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span>
+  <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span> <span class="n">then</span> <span class="mf">1.0</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="n">then</span> <span class="n">x</span>
+  <span class="k">else</span>
+    <span class="k">val</span> <span class="nv">y</span> <span class="k">=</span> <span class="nf">power</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="o">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="n">then</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span> <span class="k">else</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="nf">power</span><span class="o">(</span><span class="n">expr</span><span class="o">,</span> <span class="mi">10</span><span class="o">)</span>
+<span class="c1">// translates to</span>
+<span class="c1">//</span>
+<span class="c1">//   val x = expr</span>
+<span class="c1">//   val y1 = x * x   // ^2</span>
+<span class="c1">//   val y2 = y1 * y1 // ^4</span>
+<span class="c1">//   val y3 = y2 * x  // ^5</span>
+<span class="c1">//   y3 * y3          // ^10</span>
+</code></pre></div></div>
+
+<h3 id="встроенные-условия">Встроенные условия</h3>
+
+<p>Если условием <code class="highlighter-rouge">if</code> является известная константа (<code class="highlighter-rouge">true</code> или <code class="highlighter-rouge">false</code>), то возможно, 
+что после встраивания и сворачивания констант, условное выражение частично вычислится и сохранится только одна ветвь.</p>
+
+<p>Например, следующий метод <code class="highlighter-rouge">power</code> содержит некоторые условия <code class="highlighter-rouge">if</code>, 
+которые потенциально могут развернуть рекурсию и удалить все вызовы методов.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inline</span> <span class="k">def</span> <span class="nf">power</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span> <span class="n">inline</span> <span class="n">n</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span>
+  <span class="nf">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="mf">1.0</span>
+  <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">power</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span>
+  <span class="k">else</span> <span class="nf">power</span><span class="o">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="o">,</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Вызов <code class="highlighter-rouge">power</code> со статически известными константами приводит к следующему коду:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">power</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span>
+<span class="c1">// первое встраивание</span>
+<span class="k">val</span> <span class="nv">x</span> <span class="k">=</span> <span class="mi">2</span>
+<span class="nf">if</span> <span class="o">(</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="mf">1.0</span> <span class="c1">// мертвая ветка</span>
+<span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="mi">2</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">power</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="c1">// мертвая ветка</span>
+<span class="k">else</span> <span class="nf">power</span><span class="o">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="o">,</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="o">)</span>
+<span class="c1">// частично свернулось до</span>
+<span class="k">val</span> <span class="nv">x</span> <span class="k">=</span> <span class="mi">2</span>
+<span class="nf">power</span><span class="o">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Дальнейшие шаги встраивания:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// дальнейшее встраивание</span>
+<span class="k">val</span> <span class="nv">x</span> <span class="k">=</span> <span class="mi">2</span>
+<span class="k">val</span> <span class="nv">x2</span> <span class="k">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+<span class="nf">if</span> <span class="o">(</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="mf">1.0</span> <span class="c1">// мертвая ветка</span>
+<span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="mi">1</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="n">x2</span> <span class="o">*</span> <span class="nf">power</span><span class="o">(</span><span class="n">x2</span><span class="o">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span>
+<span class="k">else</span> <span class="nf">power</span><span class="o">(</span><span class="n">x2</span> <span class="o">*</span> <span class="n">x2</span><span class="o">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span><span class="o">)</span> <span class="c1">// мертвая ветка</span>
+<span class="c1">// частично свернулось до</span>
+<span class="k">val</span> <span class="nv">x</span> <span class="k">=</span> <span class="mi">2</span>
+<span class="k">val</span> <span class="nv">x2</span> <span class="k">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+<span class="n">x2</span> <span class="o">*</span> <span class="nf">power</span><span class="o">(</span><span class="n">x2</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>
+<span class="c1">// дальнейшее встраивание</span>
+<span class="k">val</span> <span class="nv">x</span> <span class="k">=</span> <span class="mi">2</span>
+<span class="k">val</span> <span class="nv">x2</span> <span class="k">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+<span class="n">x2</span> <span class="o">*</span> <span class="o">{</span>
+  <span class="nf">if</span> <span class="o">(</span><span class="mi">0</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="mf">1.0</span>
+  <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="mi">0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">power</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="mi">0</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="c1">// мертвая ветка</span>
+  <span class="k">else</span> <span class="nf">power</span><span class="o">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="o">,</span> <span class="mi">0</span> <span class="o">/</span> <span class="mi">2</span><span class="o">)</span> <span class="c1">// мертвая ветка</span>
+<span class="o">}</span>
+<span class="c1">// частично свернулось до</span>
+<span class="k">val</span> <span class="nv">x</span> <span class="k">=</span> <span class="mi">2</span>
+<span class="k">val</span> <span class="nv">x2</span> <span class="k">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+<span class="n">x2</span> <span class="o">*</span> <span class="mf">1.0</span>
+</code></pre></div></div>
+
+<p>Напротив, представим, что значение <code class="highlighter-rouge">n</code> неизвестно:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">power</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">unknownNumber</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Руководствуясь встроенной аннотацией параметра, компилятор попытается развернуть рекурсию. 
+Но безуспешно, так как параметр не известен статически.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// первое встраивание</span>
+<span class="k">val</span> <span class="nv">x</span> <span class="k">=</span> <span class="mi">2</span>
+<span class="nf">if</span> <span class="o">(</span><span class="n">unknownNumber</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="mf">1.0</span>
+<span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">unknownNumber</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">power</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">unknownNumber</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span>
+<span class="k">else</span> <span class="nf">power</span><span class="o">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="o">,</span> <span class="n">unknownNumber</span> <span class="o">/</span> <span class="mi">2</span><span class="o">)</span>
+<span class="c1">// дальнейшее встраивание</span>
+<span class="k">val</span> <span class="nv">x</span> <span class="k">=</span> <span class="mi">2</span>
+<span class="nf">if</span> <span class="o">(</span><span class="n">unknownNumber</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="mf">1.0</span>
+<span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">unknownNumber</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="n">x</span> <span class="o">*</span> <span class="o">{</span>
+  <span class="nf">if</span> <span class="o">(</span><span class="n">unknownNumber</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="mf">1.0</span>
+  <span class="k">else</span> <span class="nf">if</span> <span class="o">((</span><span class="n">unknownNumber</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="n">x2</span> <span class="o">*</span> <span class="nf">power</span><span class="o">(</span><span class="n">x2</span><span class="o">,</span> <span class="n">unknownNumber</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span>
+  <span class="k">else</span> <span class="nf">power</span><span class="o">(</span><span class="n">x2</span> <span class="o">*</span> <span class="n">x2</span><span class="o">,</span> <span class="o">(</span><span class="n">unknownNumber</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="k">else</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="nv">x2</span> <span class="k">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+  <span class="nf">if</span> <span class="o">(</span><span class="n">unknownNumber</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="mf">1.0</span>
+  <span class="k">else</span> <span class="nf">if</span> <span class="o">((</span><span class="n">unknownNumber</span> <span class="o">/</span> <span class="mi">2</span><span class="o">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="n">x2</span> <span class="o">*</span> <span class="nf">power</span><span class="o">(</span><span class="n">x2</span><span class="o">,</span> <span class="n">unknownNumber</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span>
+  <span class="k">else</span> <span class="nf">power</span><span class="o">(</span><span class="n">x2</span> <span class="o">*</span> <span class="n">x2</span><span class="o">,</span> <span class="n">unknownNumber</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="c1">// компиляция никогда не закончится</span>
+<span class="o">...</span>
+</code></pre></div></div>
+
+<p>Чтобы гарантировать, что ветвление действительно может быть выполнено во время компиляции, 
+можно использовать <code class="highlighter-rouge">inline if</code> вариант <code class="highlighter-rouge">if</code>. 
+Аннотирование условного выражения с помощью <code class="highlighter-rouge">inline</code> гарантирует, 
+что условное выражение может быть уменьшено во время компиляции, 
+и выдает ошибку, если условие не является статически известной константой.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inline</span> <span class="k">def</span> <span class="nf">power</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span> <span class="n">inline</span> <span class="n">n</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span>
+  <span class="n">inline</span> <span class="nf">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="mf">1.0</span>
+  <span class="k">else</span> <span class="n">inline</span> <span class="nf">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">power</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span>
+  <span class="k">else</span> <span class="nf">power</span><span class="o">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="o">,</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">power</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span> <span class="c1">// Ok</span>
+<span class="k">val</span> <span class="nv">unknownNumber</span> <span class="k">=</span> <span class="mi">2</span>
+<span class="nf">power</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">unknownNumber</span><span class="o">)</span> <span class="c1">// error  </span>
+<span class="o">--</span> <span class="nc">Error</span><span class="k">:</span> <span class="kt">----------------------------------------------------------------------</span>
+<span class="kt">|power</span><span class="o">(</span><span class="err">2</span><span class="o">,</span> <span class="kt">unknownNumber</span><span class="o">)</span>
+<span class="o">|^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class="o">|</span><span class="nc">Cannot</span> <span class="n">reduce</span> <span class="n">`inline if`</span> <span class="n">because</span> <span class="n">its</span> <span class="n">condition</span> <span class="n">is</span> <span class="n">not</span> <span class="n">a</span> <span class="n">constant</span> <span class="n">value</span><span class="k">:</span> <span class="kt">unknownNumber.</span><span class="o">==(</span><span class="mi">0</span><span class="o">)</span>
+<span class="o">|</span> <span class="nc">This</span> <span class="n">location</span> <span class="n">contains</span> <span class="n">code</span> <span class="n">that</span> <span class="n">was</span> <span class="n">inlined</span> <span class="n">from</span> <span class="n">rs$line$1</span><span class="k">:</span><span class="err">2</span>
+</code></pre></div></div>
+
+<p>В прозрачном встроенном объекте <code class="highlighter-rouge">inline if</code> принудительно встраивает
+любое встроенное определение в его условие во время проверки типа.</p>
+
+<h3 id="переопределение-встроенного-метода">Переопределение встроенного метода</h3>
+
+<p>Чтобы обеспечить правильное поведение при объединении статической функции <code class="highlighter-rouge">inline def</code> 
+с динамической функцией интерфейсов и переопределении, необходимо наложить некоторые ограничения.</p>
+
+<h5 id="эффективно-final">Эффективно final</h5>
+
+<p>Во-первых, все встроенные методы <em>фактически являются final</em>. 
+Это гарантирует, что разрешение перегрузки во время компиляции будет вести себя так же, как во время выполнения.</p>
+
+<h5 id="сохранение-подписи">Сохранение подписи</h5>
+
+<p>Во-вторых, переопределения должны иметь <em>точно такую же сигнатуру</em>, 
+как и переопределенный метод, включая встроенные параметры. 
+Это гарантирует, что семантика вызова одинакова для обоих методов.</p>
+
+<h5 id="сохраненные-встроенные-методы">Сохраненные встроенные методы</h5>
+
+<p>Можно реализовать или переопределить обычный метод с помощью встроенного метода.</p>
+
+<p>Рассмотрим следующий пример:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">Logger</span><span class="k">:</span>
+  <span class="kt">def</span> <span class="kt">log</span><span class="o">(</span><span class="kt">x:</span> <span class="kt">Any</span><span class="o">)</span><span class="kt">:</span> <span class="kt">Unit</span>
+
+<span class="k">class</span> <span class="nc">PrintLogger</span> <span class="k">extends</span> <span class="nc">Logger</span><span class="k">:</span>
+  <span class="kt">inline</span> <span class="kt">def</span> <span class="kt">log</span><span class="o">(</span><span class="kt">x:</span> <span class="kt">Any</span><span class="o">)</span><span class="kt">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="nf">println</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Однако вызов метода <code class="highlighter-rouge">log</code> напрямую у <code class="highlighter-rouge">PrintLogger</code> приведет к встроенному коду, а его вызов на <code class="highlighter-rouge">Logger</code> — нет. 
+Чтобы также допустить последнее, код <code class="highlighter-rouge">log</code> должен существовать во время выполнения. 
+Это называется сохраненным встроенным методом.</p>
+
+<p>Например:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">pl</span><span class="k">:</span> <span class="kt">PrintLogger</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PrintLogger</span>
+<span class="k">val</span> <span class="nv">l</span><span class="k">:</span> <span class="kt">Logger</span> <span class="o">=</span> <span class="n">pl</span>
+</code></pre></div></div>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">pl</span><span class="o">.</span><span class="py">log</span><span class="o">(</span><span class="s">"msg"</span><span class="o">)</span>
+<span class="c1">// msg</span>
+<span class="nv">l</span><span class="o">.</span><span class="py">log</span><span class="o">(</span><span class="s">"msg"</span><span class="o">)</span>
+<span class="c1">// msg</span>
+</code></pre></div></div>
+
+<p>Встроенные вызовы и динамически отправленные вызовы дают одинаковые результаты.</p>
+
+<p>Любой несохраненный <code class="highlighter-rouge">inline</code> <code class="highlighter-rouge">def</code> или <code class="highlighter-rouge">val</code> код всегда можно полностью инлайнить во всех местах вызовов. 
+Следовательно, эти методы не понадобятся во время выполнения и могут быть удалены из байт-кода. 
+Однако сохраненные встроенные методы должны быть совместимы со случаем, когда они не являются встроенными. 
+В частности, сохраненные встроенные методы не могут принимать никаких встроенных параметров. 
+Кроме того, <code class="highlighter-rouge">inline if</code>(как в примере <code class="highlighter-rouge">power</code>) не будет работать, 
+так как <code class="highlighter-rouge">if</code> не может быть свёрнут в константу в сохраненном случае. 
+Другие примеры включают конструкции метапрограммирования, которые имеют смысл только при встраивании.</p>
+
+<h5 id="абстрактные-встроенные-методы">Абстрактные встроенные методы</h5>
+
+<p>Также можно создавать абстрактные встроенные определения.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">InlineLogger</span><span class="k">:</span>
+  <span class="kt">inline</span> <span class="kt">def</span> <span class="kt">log</span><span class="o">(</span><span class="kt">inline</span> <span class="kt">x:</span> <span class="kt">Any</span><span class="o">)</span><span class="kt">:</span> <span class="kt">Unit</span>
+
+<span class="k">class</span> <span class="nc">PrintLogger</span> <span class="k">extends</span> <span class="nc">InlineLogger</span><span class="k">:</span>
+  <span class="kt">inline</span> <span class="kt">def</span> <span class="kt">log</span><span class="o">(</span><span class="kt">inline</span> <span class="kt">x:</span> <span class="kt">Any</span><span class="o">)</span><span class="kt">:</span> <span class="kt">Unit</span> <span class="o">=</span> <span class="nf">println</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Это заставляет реализацию <code class="highlighter-rouge">log</code> быть встроенным методом, а также позволяет использовать <code class="highlighter-rouge">inline</code> параметры.</p>
+
+<p>Парадоксально, но <code class="highlighter-rouge">log</code> на интерфейсе <code class="highlighter-rouge">InlineLogger</code> нельзя вызвать напрямую. 
+Реализация метода неизвестна статически, и поэтому мы не знаем, что встраивать. 
+Таким образом, вызов абстрактного встроенного метода приводит к ошибке.</p>
+
+<p>Пример:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">pl</span><span class="k">:</span> <span class="kt">PrintLogger</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PrintLogger</span>
+<span class="nv">pl</span><span class="o">.</span><span class="py">log</span><span class="o">(</span><span class="s">"msg"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">il</span><span class="k">:</span> <span class="kt">InlineLogger</span> <span class="o">=</span> <span class="n">pl</span>
+<span class="nv">il</span><span class="o">.</span><span class="py">log</span><span class="o">(</span><span class="s">"msg"</span><span class="o">)</span>
+<span class="o">|^^^^^^^^^^^^^</span>
+<span class="o">|</span><span class="nc">Deferred</span> <span class="n">inline</span> <span class="n">method</span> <span class="n">log</span> <span class="n">in</span> <span class="k">trait</span> <span class="nc">InlineLogger</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">invoked</span>
+</code></pre></div></div>
+
+<p>Полезность абстрактных встроенных методов становится очевидной при использовании в другом встроенном методе:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inline</span> <span class="k">def</span> <span class="nf">logged</span><span class="o">(</span><span class="n">logger</span><span class="k">:</span> <span class="kt">InlineLogger</span><span class="o">,</span> <span class="n">x</span><span class="k">:</span> <span class="kt">Any</span><span class="o">)</span> <span class="k">=</span>
+  <span class="nv">logger</span><span class="o">.</span><span class="py">log</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Предположим, вызов для <code class="highlighter-rouge">logged</code> конкретного экземпляра <code class="highlighter-rouge">PrintLogger</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">logged</span><span class="o">(</span><span class="k">new</span> <span class="nc">PrintLogger</span><span class="o">,</span> <span class="s">"🥧"</span><span class="o">)</span>
+<span class="c1">// inlined as</span>
+<span class="k">val</span> <span class="nv">logger</span><span class="k">:</span> <span class="kt">PrintLogger</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PrintLogger</span>
+<span class="nv">logger</span><span class="o">.</span><span class="py">log</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>После встраивания вызов <code class="highlighter-rouge">log</code> девиртуализируется и становится известно, что он находится на <code class="highlighter-rouge">PrintLogger</code>. 
+Поэтому и код <code class="highlighter-rouge">log</code> может быть встроен.</p>
+
+<h4 id="резюме-встроенных-методов">Резюме встроенных методов</h4>
+
+<ul>
+  <li>Все <code class="highlighter-rouge">inline</code> методы являются <code class="highlighter-rouge">final</code>.</li>
+  <li>Абстрактные <code class="highlighter-rouge">inline</code> методы могут быть реализованы только <code class="highlighter-rouge">inline</code> методами.</li>
+  <li>Если <code class="highlighter-rouge">inline</code> метод переопределяет/реализует обычный метод, он должен быть сохранен, 
+а сохраненные методы не могут иметь встроенных параметров.</li>
+  <li>Абстрактные <code class="highlighter-rouge">inline</code> методы нельзя вызывать напрямую (за исключением встроенного кода).</li>
+</ul>
+
+<h3 id="отношение-к-inline">Отношение к <code class="highlighter-rouge">@inline</code></h3>
+
+<p>Scala 2 также определяет <code class="highlighter-rouge">@inline</code> аннотацию, 
+которая используется в качестве подсказки для встроенного кода. 
+Модификатор <code class="highlighter-rouge">inline</code> является более мощным вариантом, чем аннотация:</p>
+<ul>
+  <li>расширение гарантирует лучшую эффективность,</li>
+  <li>расширение происходит во внешнем интерфейсе, а не в бэкэнде, и</li>
+  <li>расширение также применяется к рекурсивным методам.</li>
+</ul>
+
+<h4 id="определение-константного-выражения">Определение константного выражения</h4>
+
+<p>Правые части встроенных значений и аргументов для встроенных параметров должны быть константными выражениями в смысле, 
+определенном <a href="https://www.scala-lang.org/files/archive/spec/2.13/06-expressions.html#constant-expressions">SLS §6.24</a>, 
+включая специфичные для платформы расширения, такие как свертывание констант чисто числовых вычислений.</p>
+
+<p>Встроенное значение должно иметь литеральный тип, например <code class="highlighter-rouge">1</code> или <code class="highlighter-rouge">true</code>.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inline</span> <span class="k">val</span> <span class="nv">four</span> <span class="k">=</span> <span class="mi">4</span>
+<span class="c1">// equivalent to</span>
+<span class="n">inline</span> <span class="k">val</span> <span class="nv">four</span><span class="k">:</span> <span class="err">4</span> <span class="o">=</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<p>Также возможно иметь встроенные значения типов, которые не имеют синтаксиса, например <code class="highlighter-rouge">Short(4)</code>.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">InlineConstants</span><span class="k">:</span>
+  <span class="kt">inline</span> <span class="kt">val</span> <span class="kt">myShort:</span> <span class="kt">Short</span>
+
+<span class="k">object</span> <span class="nc">Constants</span> <span class="k">extends</span> <span class="nc">InlineConstants</span><span class="k">:</span>
+  <span class="kt">inline</span> <span class="kt">val</span> <span class="kt">myShort/*:</span> <span class="kt">Short</span><span class="o">(</span><span class="err">4</span><span class="o">)</span><span class="kt">*/</span> <span class="o">=</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<h3 id="прозрачные-встроенные-методы">Прозрачные встроенные методы</h3>
+
+<p>Прозрачные встроенные строки (<code class="highlighter-rouge">transparent inline</code>) — это простое, но мощное расширение <code class="highlighter-rouge">inline</code> методов, 
+открывающее множество вариантов использования метапрограммирования. 
+Вызовы прозрачности позволяют встроенному фрагменту кода уточнять тип возвращаемого значения 
+на основе точного типа встроенного выражения. 
+Говоря языком Scala 2, прозрачность отражает суть “макросов белого ящика”.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">transparent</span> <span class="n">inline</span> <span class="k">def</span> <span class="nf">default</span><span class="o">(</span><span class="n">inline</span> <span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">Any</span> <span class="o">=</span>
+  <span class="n">inline</span> <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s">"Int"</span> <span class="n">then</span> <span class="mi">0</span>
+  <span class="k">else</span> <span class="n">inline</span> <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s">"String"</span> <span class="n">then</span> <span class="s">""</span>
+  <span class="k">else</span> <span class="o">???</span>
+</code></pre></div></div>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">n0</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="nf">default</span><span class="o">(</span><span class="s">"Int"</span><span class="o">)</span>
+<span class="c1">// n0: Int = 0</span>
+<span class="k">val</span> <span class="nv">s0</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="nf">default</span><span class="o">(</span><span class="s">"String"</span><span class="o">)</span>
+<span class="c1">// s0: String = ""</span>
+</code></pre></div></div>
+
+<p>Обратите внимание, что даже если возвращаемый тип метода <code class="highlighter-rouge">default</code> — <code class="highlighter-rouge">Any</code>, 
+первый вызов печатается как <code class="highlighter-rouge">Int</code>, а второй — как <code class="highlighter-rouge">String</code>. 
+Тип возвращаемого значения представляет собой верхнюю границу типа внутри встроенного термина. 
+Также можно было бы быть более точным и написать:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">transparent</span> <span class="n">inline</span> <span class="k">def</span> <span class="nf">default</span><span class="o">(</span><span class="n">inline</span> <span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="err">0</span> <span class="kt">|</span> <span class="err">""</span> <span class="o">=</span> <span class="o">...</span>
+</code></pre></div></div>
+
+<p>Хотя в этом примере кажется, что возвращаемый тип не нужен, он важен, когда встроенный метод является рекурсивным. 
+Тип должен быть достаточно точным для рекурсии.</p>
+
+<p>Ещё пример:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">A</span>
+<span class="k">class</span> <span class="nc">B</span> <span class="k">extends</span> <span class="n">A</span><span class="k">:</span>
+  <span class="kt">def</span> <span class="kt">m</span> <span class="o">=</span> <span class="kc">true</span>
+
+<span class="n">transparent</span> <span class="n">inline</span> <span class="k">def</span> <span class="nf">choose</span><span class="o">(</span><span class="n">b</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">)</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=</span>
+  <span class="k">if</span> <span class="n">b</span> <span class="n">then</span> <span class="k">new</span> <span class="n">A</span> <span class="k">else</span> <span class="k">new</span> <span class="n">B</span>
+
+<span class="k">val</span> <span class="nv">obj1</span> <span class="k">=</span> <span class="nf">choose</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>  <span class="c1">// static type is A</span>
+<span class="k">val</span> <span class="nv">obj2</span> <span class="k">=</span> <span class="nf">choose</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span> <span class="c1">// static type is B</span>
+
+<span class="c1">// obj1.m // compile-time error: `m` is not defined on `A`</span>
+<span class="nv">obj2</span><span class="o">.</span><span class="py">m</span>    <span class="c1">// OK</span>
+</code></pre></div></div>
+
+<p>Здесь встроенный метод <code class="highlighter-rouge">choose</code> возвращает экземпляр любого из двух типов <code class="highlighter-rouge">A</code> или <code class="highlighter-rouge">B</code>.
+Если бы <code class="highlighter-rouge">choose</code> не был объявлен как <code class="highlighter-rouge">transparent</code>, результат его раскрытия всегда был бы типа <code class="highlighter-rouge">A</code>,
+даже если вычисляемое значение могло бы иметь подтип <code class="highlighter-rouge">B</code>.
+Встроенный метод является “черным ящиком” в том смысле, что детали его реализации не просачиваются.
+Но если указан модификатор <code class="highlighter-rouge">transparent</code>, расширение является типом расширенного тела.
+Если аргумент <code class="highlighter-rouge">b</code> равен <code class="highlighter-rouge">true</code>, то этот тип равен <code class="highlighter-rouge">A</code>, иначе — <code class="highlighter-rouge">B</code>.
+Следовательно, вызов <code class="highlighter-rouge">m</code> на <code class="highlighter-rouge">obj2</code> пройдет проверку типов,
+поскольку <code class="highlighter-rouge">obj2</code> имеет тот же тип, что и расширение <code class="highlighter-rouge">choose(false)</code>, т.е. <code class="highlighter-rouge">B</code>.
+Прозрачные встроенные методы являются “белыми ящиками” в том смысле,
+что тип приложения такого метода может быть более специализированным,
+чем его объявленный возвращаемый тип, в зависимости от того, как расширяется метод.</p>
+
+<p>В следующем примере мы видим, как тип возвращаемого значения <code class="highlighter-rouge">zero</code> специализирован для одноэлементного типа <code class="highlighter-rouge">0</code>,
+что позволяет приписать дополнению правильный тип <code class="highlighter-rouge">1</code>.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">transparent</span> <span class="n">inline</span> <span class="k">def</span> <span class="nf">zero</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">val</span> <span class="nv">one</span><span class="k">:</span> <span class="err">1</span> <span class="o">=</span> <span class="n">zero</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Прозрачные элементы влияют на двоичную совместимость</strong>
+Важно отметить, что изменение тела метода <code class="highlighter-rouge">transparent inline def</code> изменит способ его вызова. 
+Это означает, что тело играет важную роль в совместимости двоичного кода и исходного кода этого интерфейса.</p>
+</blockquote>
+
+<h3 id="прозрачный-и-непрозрачный-inline">Прозрачный и непрозрачный inline</h3>
+
+<p>Как уже обсуждалось, прозрачные встроенные методы могут влиять на проверку типов в месте вызова. 
+Технически это означает, что прозрачные встроенные методы должны быть расширены во время проверки типов программы. 
+Другие встроенные методы встраиваются позже, когда программа полностью типизирована.</p>
+
+<p>Например, следующие две функции будут типизированы одинаково, но будут встроены в разное время.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inline</span> <span class="k">def</span> <span class="nf">f1</span><span class="k">:</span> <span class="kt">T</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">transparent</span> <span class="n">inline</span> <span class="k">def</span> <span class="nf">f2</span><span class="k">:</span> <span class="kt">T</span> <span class="o">=</span> <span class="o">(...)</span><span class="k">:</span> <span class="kt">T</span>
+</code></pre></div></div>
+
+<p>Примечательным отличием является поведение <code class="highlighter-rouge">transparent inline given</code>. 
+Если при встраивании такого определения сообщается об ошибке, 
+это будет рассматриваться как неявное несоответствие поиска, и поиск будет продолжен. 
+A <code class="highlighter-rouge">transparent inline given</code> может добавить описание типа в свой RHS (как в <code class="highlighter-rouge">f2</code> предыдущем примере), 
+чтобы избежать точного типа, но сохранить поведение поиска. 
+С другой стороны, <code class="highlighter-rouge">inline given</code> принимается как неявное значение, а затем встраивается после ввода. 
+Любая ошибка будет выдаваться как обычно.</p>
+
+<h3 id="встроенные-match">Встроенные match</h3>
+
+<p><code class="highlighter-rouge">match</code> выражение в теле определения метода <code class="highlighter-rouge">inline</code> может иметь префикс модификатора <code class="highlighter-rouge">inline</code>.
+Как и встроенные <code class="highlighter-rouge">if</code>, встроенные <code class="highlighter-rouge">match</code> гарантируют, 
+что сопоставление с образцом может быть статически сокращено во время компиляции и сохраняется только одна ветвь.
+Если статической информации достаточно для однозначного выбора ветви,
+выражение сокращается до этой ветви и берется тип результата.
+Если нет, возникает ошибка времени компиляции, которая сообщает, что совпадение не может быть уменьшено.</p>
+
+<p>В приведенном ниже примере определяется встроенный метод с одним встроенным выражением соответствия,
+которое выбирает case на основе его статического типа:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">transparent</span> <span class="n">inline</span> <span class="k">def</span> <span class="nf">g</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Any</span><span class="o">)</span><span class="k">:</span> <span class="kt">Any</span> <span class="o">=</span>
+  <span class="n">inline</span> <span class="n">x</span> <span class="k">match</span>
+    <span class="k">case</span> <span class="n">x</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=&gt;</span> <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">x</span><span class="o">)</span> <span class="c1">// Tuple2[String, String](x, x)</span>
+    <span class="k">case</span> <span class="n">x</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=&gt;</span> <span class="n">x</span>
+
+<span class="nf">g</span><span class="o">(</span><span class="mf">1.0d</span><span class="o">)</span>   <span class="c1">// Has type 1.0d which is a subtype of Double</span>
+<span class="c1">// res5: Double = 1.0   // Has type 1.0d which is a subtype of Double</span>
+<span class="nf">g</span><span class="o">(</span><span class="s">"test"</span><span class="o">)</span> <span class="c1">// Has type (String, String)</span>
+<span class="c1">// res6: Tuple2[String, String] = ("test", "test")</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">x</code> проверяется статически, и встроенное совпадение сокращается,
+возвращая соответствующее значение (со специализированным типом, потому что <code class="highlighter-rouge">g</code> объявлен <code class="highlighter-rouge">transparent</code>).</p>
+
+<p>Встроенные <code class="highlighter-rouge">match</code> предоставляют способ сопоставления статического типа некоторого выражения. 
+Поскольку сопоставляется статический тип выражения, следующий код не будет компилироваться.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">x</span><span class="k">:</span> <span class="kt">Any</span> <span class="o">=</span> <span class="s">"test"</span>
+<span class="nf">g</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+<span class="c1">// error:</span>
+<span class="c1">// cannot reduce inline match with</span>
+<span class="c1">//  scrutinee:  this.x : (App0.this.x : Any)</span>
+<span class="c1">//  patterns :  case x @ _:String</span>
+<span class="c1">//              case x @ _:Double</span>
+<span class="c1">//   inline x match</span>
+<span class="c1">//          ^</span>
+</code></pre></div></div>
+
+<p>Значение <code class="highlighter-rouge">x</code> не помечено как <code class="highlighter-rouge">inline</code> и, как следствие, 
+во время компиляции недостаточно информации о проверке, чтобы решить, какую ветвь выбрать.</p>
+
+<p>В примерах выше выполняется простой тест типа над объектом проверки.
+Тип может иметь более богатую структуру, как простой ADT ниже.
+<code class="highlighter-rouge">toInt</code> соответствует структуре числа в <a href="https://en.wikipedia.org/wiki/Church_encoding">Чёрч-кодировке</a>
+и вычисляет соответствующее целое число.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">Nat</span>
+<span class="k">case</span> <span class="k">object</span> <span class="nc">Zero</span> <span class="k">extends</span> <span class="nc">Nat</span>
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Succ</span><span class="o">[</span><span class="kt">N</span> <span class="k">&lt;:</span> <span class="kt">Nat</span><span class="o">](</span><span class="n">n</span><span class="k">:</span> <span class="kt">N</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">Nat</span>
+
+<span class="n">transparent</span> <span class="n">inline</span> <span class="k">def</span> <span class="nf">toInt</span><span class="o">(</span><span class="n">n</span><span class="k">:</span> <span class="kt">Nat</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span>
+  <span class="n">inline</span> <span class="n">n</span> <span class="k">match</span>
+    <span class="k">case</span> <span class="nc">Zero</span>     <span class="k">=&gt;</span> <span class="mi">0</span>
+    <span class="k">case</span> <span class="nc">Succ</span><span class="o">(</span><span class="n">n1</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nf">toInt</span><span class="o">(</span><span class="n">n1</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">inline</span> <span class="k">val</span> <span class="nv">natTwo</span> <span class="k">=</span> <span class="nf">toInt</span><span class="o">(</span><span class="nc">Succ</span><span class="o">(</span><span class="nc">Succ</span><span class="o">(</span><span class="nc">Zero</span><span class="o">)))</span>
+<span class="k">val</span> <span class="nv">intTwo</span><span class="k">:</span> <span class="err">2</span> <span class="o">=</span> <span class="n">natTwo</span>
+</code></pre></div></div>
+
+<p>Предполагается, что <code class="highlighter-rouge">natTwo</code> имеет одноэлементный тип <code class="highlighter-rouge">2</code>.</p>
+
+<h3 id="scalacompiletime">scala.compiletime</h3>
+
+<p><a href="/scalaworkbook/docs/metaprogramming/compile-time-ops">Пакет scala.compiletime</a> 
+предоставляет полезные абстракции метапрограммирования, 
+которые можно использовать в <code class="highlighter-rouge">inline</code> методах для обеспечения пользовательской семантики.</p>
+
+<h3 id="макросы">Макросы</h3>
+
+<p>Встраивание также является основным механизмом, используемым для написания макросов. 
+<a href="/scalaworkbook/docs/metaprogramming/macros">Макросы</a> позволяют управлять генерацией и анализом кода после встроенного вызова.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inline</span> <span class="k">def</span> <span class="nf">power</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span> <span class="n">inline</span> <span class="n">n</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span>
+  <span class="n">$</span><span class="o">{</span> <span class="nf">powerCode</span><span class="o">(</span><span class="ss">'x</span><span class="o">,</span> <span class="ss">'n</span><span class="o">)</span>  <span class="o">}</span>
+
+<span class="k">def</span> <span class="nf">powerCode</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Expr</span><span class="o">[</span><span class="kt">Double</span><span class="o">],</span> <span class="n">n</span><span class="k">:</span> <span class="kt">Expr</span><span class="o">[</span><span class="kt">Int</span><span class="o">])(</span><span class="n">using</span> <span class="nc">Quotes</span><span class="o">)</span><span class="k">:</span> <span class="kt">Expr</span><span class="o">[</span><span class="kt">Double</span><span class="o">]</span> <span class="k">=</span> <span class="o">...</span>
+</code></pre></div></div>
+
+<h3 id="детали">Детали</h3>
+
+<p>Дополнительные сведения о семантике <code class="highlighter-rouge">inline</code> <a href="https://dl.acm.org/doi/10.1145/3426426.3428486">см. в документе</a></p>
+
+<hr />
+
+<p><strong>References:</strong></p>
+<ul>
+  <li><a href="https://docs.scala-lang.org/scala3/guides/macros/inline.html">Scala 3 Macros</a></li>
+  <li><a href="https://docs.scala-lang.org/scala3/reference/metaprogramming/inline.html">Scala 3 Reference</a></li>
+</ul>
+
+
+<hr>
+<div class="edit-button" style="display: flex; justify-content: space-between;">
+    
+    <a href="/scalaworkbook/docs/metaprogramming" class="btn-sm btn-info btn-left"><-- Предыдущая</a>
+    
+    
+    <a href="/scalaworkbook/docs/metaprogramming/compile-time-ops" class="btn-sm btn-info btn-right">Следующая --></a>
+    
+</div></section><div class="edit-button"><a href="https://github.com/artemkorsakov/scalaworkbook/edit/main/docs/docs/docs/metaprogramming/inline.md" target="_blank" rel="noopener noreferrer" class="btn-sm btn-info">Редактировать страницу</a></div></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalaworkbook/highlight/highlight.pack.js"></script><script src="/scalaworkbook/lunr/lunr.js"></script><script>
+// For all code blocks, copy the language from the containing div
+// to the inner code tag (where hljs expects it to be)
+const langPrefix = 'language-';
+document.querySelectorAll(`div[class^='${langPrefix}']`).forEach(function(div) {
+  div.classList.forEach(function(cssClass) {
+    if (cssClass.startsWith(langPrefix)) {
+      const lang = cssClass.substring(langPrefix.length);
+      div.querySelectorAll('pre code').forEach(function(code) {
+        code.classList.add(lang);
+      });
+    }
+  });
+});
+
+hljs.configure({languages:['scala','java','bash']});
+hljs.initHighlightingOnLoad();
+      </script><script>console.info('\x57\x65\x62\x73\x69\x74\x65\x20\x62\x75\x69\x6c\x74\x20\x77\x69\x74\x68\x3a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x5f\x5f\x0a\x20\x20\x20\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x5f\x20\x20\x2f\x20\x2f\x5f\x20\x20\x20\x20\x20\x20\x5f\x5f\x5f\x5f\x20\x5f\x5f\x5f\x20\x20\x28\x5f\x29\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x28\x5f\x29\x20\x2f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x0a\x20\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x60\x5f\x5f\x20\x5c\x2f\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x20\x2f\x20\x5f\x5f\x2f\x20\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x0a\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x5f\x2f\x20\x2f\x20\x2f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x5f\x5f\x2f\x20\x2f\x20\x20\x2f\x20\x2f\x5f\x2f\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x20\x2f\x5f\x2f\x20\x20\x5f\x5f\x28\x5f\x5f\x20\x20\x29\x0a\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2e\x5f\x5f\x5f\x2f\x5c\x5f\x5f\x2f\x20\x20\x20\x20\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x2f\x20\x20\x20\x5c\x5f\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x0a\x0a\x68\x74\x74\x70\x73\x3a\x2f\x2f\x34\x37\x64\x65\x67\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x73\x62\x74\x2d\x6d\x69\x63\x72\x6f\x73\x69\x74\x65\x73')</script><script src="/scalaworkbook/js/search.js"></script><script src="/scalaworkbook/js/main.js"></script></body></html>
