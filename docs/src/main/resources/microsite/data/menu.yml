@@ -340,3 +340,11 @@ options:
 
   - title: Доп. материалы
     url: docs/extra
+
+
+#####     Type classes     #####
+
+  - title: Type class
+    url: typeclass/index
+    menu_type: typeclass
+
