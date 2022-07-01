@@ -16,5 +16,6 @@ technologies:
 
 Код написан на версии Scala - @SCALA@.
 
-### Документация
+### Разделы
 - [Обзор Scala](./docs/)
+- [Обзор основных Type Class-ов](./typeclass/)
