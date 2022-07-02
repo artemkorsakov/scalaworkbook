@@ -1,0 +1,184 @@
+<!DOCTYPE html><html><head><title>Scala workbook: Enums</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Артём Корсаков" /><meta name="description" content="Функциональная разработка на Scala." /><meta name="og:image" content="/scalaworkbook/img/poster.png" /><meta name="image" property="og:image" content="/scalaworkbook/img/poster.png" /><meta name="og:title" content="Scala workbook: Enums" /><meta name="title" property="og:title" content="Scala workbook: Enums" /><meta name="og:site_name" content="Scala workbook" /><meta name="og:url" content="" /><meta name="og:type" content="website" /><meta name="og:description" content="Функциональная разработка на Scala." /><link rel="icon" type="image/png" href="/scalaworkbook/img/favicon.png" /><meta name="twitter:title" content="Scala workbook: Enums" /><meta name="twitter:image" content="https://artemkorsakov.github.io/scalaworkbook/img/poster.png" /><meta name="twitter:description" content="Функциональная разработка на Scala." /><meta name="twitter:card" content="summary_large_image" /><link rel="icon" type="image/png" sizes="16x16" href="/scalaworkbook/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/scalaworkbook/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/scalaworkbook/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/scalaworkbook/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/scalaworkbook/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/scalaworkbook/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/scalaworkbook/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/scalaworkbook/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/scalaworkbook/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/scalaworkbook/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/scalaworkbook/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/scalaworkbook/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/scalaworkbook/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/scalaworkbook/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/scalaworkbook/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/scalaworkbook/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/scalaworkbook/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/scalaworkbook/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/scalaworkbook/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/scalaworkbook/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/scalaworkbook/highlight/styles/vs.css" /><link rel="stylesheet" href="/scalaworkbook/css/pattern-style.css" /><link rel="stylesheet" href="/scalaworkbook/css/override.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/scalaworkbook/" class="brand"><div class="brand-wrapper"><span>Scala workbook</span></div></a></li> <li><a href="/scalaworkbook/docs/index" class="">Обзор Scala</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/start/getting-started" class="">С чего начать?</a></li></ul></li> <li><a href="/scalaworkbook/docs/hello_world" class="">Hello, world!</a></li> <li><a href="/scalaworkbook/docs/repl" class="">REPL</a></li> <li><a href="/scalaworkbook/docs/types" class="">Типы данных</a></li> <li><a href="/scalaworkbook/docs/structures" class="">Структуры управления</a></li> <li><a href="/scalaworkbook/docs/modeling" class="">Моделирование данных</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/modeling/classes" class="">Classes</a></li> <li><a href="/scalaworkbook/docs/modeling/objects" class="">Objects</a></li> <li><a href="/scalaworkbook/docs/modeling/companion-objects" class="">Companion objects</a></li> <li><a href="/scalaworkbook/docs/modeling/traits" class="">Traits</a></li> <li><a href="/scalaworkbook/docs/modeling/abstract-class" class="">Абстрактные классы</a></li> <li><a href="/scalaworkbook/docs/modeling/enums" class=" active ">Enums</a></li> <li><a href="/scalaworkbook/docs/modeling/case-class" class="">Case classes</a></li> <li><a href="/scalaworkbook/docs/modeling/oop" class="">Моделирование ООП</a></li> <li><a href="/scalaworkbook/docs/modeling/fp" class="">Моделирование ФП</a></li></ul></li> <li><a href="/scalaworkbook/docs/methods" class="">Методы</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/methods/method-features" class="">Определение методов</a></li> <li><a href="/scalaworkbook/docs/methods/default-parameters" class="">Параметры по умолчанию</a></li> <li><a href="/scalaworkbook/docs/methods/named-parameters" class="">Именованные параметры</a></li> <li><a href="/scalaworkbook/docs/methods/by-name-parameter" class="">Параметры по имени</a></li> <li><a href="/scalaworkbook/docs/methods/partially-applied-functions" class="">Каррирование</a></li> <li><a href="/scalaworkbook/docs/methods/vararg-parameters" class="">Variable Arguments</a></li> <li><a href="/scalaworkbook/docs/methods/generic-parameter" class="">Generic параметры</a></li> <li><a href="/scalaworkbook/docs/methods/extension-methods" class="">Методы расширения</a></li> <li><a href="/scalaworkbook/docs/methods/main-methods" class="">main методы</a></li></ul></li> <li><a href="/scalaworkbook/docs/functions" class="">Функции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/functions/anonymous" class="">Анонимные функции</a></li> <li><a href="/scalaworkbook/docs/functions/variables" class="">Параметры функции</a></li> <li><a href="/scalaworkbook/docs/functions/eta" class="">Eta расширение</a></li> <li><a href="/scalaworkbook/docs/functions/hofs" class="">Функции высшего порядка</a></li> <li><a href="/scalaworkbook/docs/functions/write-map" class="">Собственный map</a></li> <li><a href="/scalaworkbook/docs/functions/returns-function" class="">Возврат функции в методе</a></li></ul></li> <li><a href="/scalaworkbook/docs/packaging" class="">Пакеты и импорт</a></li> <li><a href="/scalaworkbook/docs/toplevel-definitions" class="">Верхнеур. определения</a></li> <li><a href="/scalaworkbook/docs/collections" class="">Коллекции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/collections/classes" class="">Типы коллекций</a></li> <li><a href="/scalaworkbook/docs/collections/list" class="">List</a></li> <li><a href="/scalaworkbook/docs/collections/lazylist" class="">LazyList</a></li> <li><a href="/scalaworkbook/docs/collections/array-seq" class="">ArraySeq</a></li> <li><a href="/scalaworkbook/docs/collections/vector" class="">Vector</a></li> <li><a href="/scalaworkbook/docs/collections/array-buffer" class="">ArrayBuffer</a></li> <li><a href="/scalaworkbook/docs/collections/maps" class="">Maps</a></li> <li><a href="/scalaworkbook/docs/collections/set" class="">Set</a></li> <li><a href="/scalaworkbook/docs/collections/range" class="">Range</a></li> <li><a href="/scalaworkbook/docs/collections/tuple" class="">Tuple</a></li> <li><a href="/scalaworkbook/docs/collections/queue" class="">Queue</a></li> <li><a href="/scalaworkbook/docs/collections/methods" class="">Методы в коллекциях</a></li></ul></li> <li><a href="/scalaworkbook/docs/fp" class="">Функц. программирование</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/fp/what-is-fp" class="">Что такое ФП?</a></li> <li><a href="/scalaworkbook/docs/fp/immutable-values" class="">Неизменяемые значения</a></li> <li><a href="/scalaworkbook/docs/fp/pure-functions" class="">Чистые функции</a></li> <li><a href="/scalaworkbook/docs/fp/functions-are-values" class="">Функции - это значения</a></li> <li><a href="/scalaworkbook/docs/fp/functional-error-handling" class="">Обработка ошибок</a></li></ul></li> <li><a href="/scalaworkbook/docs/type-system" class="">Система типов</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/type-system/types-inferred" class="">Определение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-generics" class="">Generics типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-intersection" class="">Пересечение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-union" class="">Объединение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-adts" class="">Алгебр. типы данных</a></li> <li><a href="/scalaworkbook/docs/type-system/types-variance" class="">Ковариантность</a></li> <li><a href="/scalaworkbook/docs/type-system/types-opaque" class="">Непрозрачные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-structural" class="">Структурные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-dependent-function" class="">Зависимые типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/type-lambdas" class="">Type Lambdas</a></li> <li><a href="/scalaworkbook/docs/type-system/match-types" class="">Match Types</a></li> <li><a href="/scalaworkbook/docs/type-system/polymorphic-function-types" class="">Полимор. типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/types-others" class="">Другие типы</a></li></ul></li> <li><a href="/scalaworkbook/docs/abstractions" class="">Абстракции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/abstractions/ca-given" class="">Given</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-using" class="">Using</a></li> <li><a href="/scalaworkbook/docs/abstractions/type-classes" class="">Класс типов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-context-bounds" class="">Контекстные границы</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-given-imports" class="">Given imports</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-extension-methods" class="">Методы расш. - детали</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-classes" class="">Импл. type классов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-class-derivation" class="">Type Class Derivation</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-multiversal-equality" class="">Multiversal Equality</a></li> <li><a href="/scalaworkbook/docs/abstractions/context-functions" class="">Контекстные функции</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-implicit-conversions" class="">Неявные преобр.</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-by-name-parameters" class="">Конт. пар. по имени</a></li></ul></li> <li><a href="/scalaworkbook/docs/details" class="">Детали</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/details/export-causes" class="">Предложения export</a></li> <li><a href="/scalaworkbook/docs/details/parameter-untupling" class="">Распаковка параметров</a></li> <li><a href="/scalaworkbook/docs/details/type-test" class="">Проверка типа</a></li> <li><a href="/scalaworkbook/docs/details/pattern-matching" class="">Экстракторы</a></li></ul></li> <li><a href="/scalaworkbook/docs/concurrency" class="">Параллелизм</a></li> <li><a href="/scalaworkbook/docs/tools" class="">Утилиты</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/tools/tools-sbt" class="">Sbt</a></li> <li><a href="/scalaworkbook/docs/tools/tools-worksheets" class="">Worksheet</a></li></ul></li> <li><a href="/scalaworkbook/docs/with_java" class="">Взаимодействие с Java</a></li> <li><a href="/scalaworkbook/docs/metaprogramming" class="">Metaprogramming</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/metaprogramming/inline" class="">Inline</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/compile-time-ops" class="">Compile-time ops</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/macros" class="">Macros</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/quoted-code" class="">Quoted Code</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/runtime-staging" class="">Runtime Staging</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/reflection" class="">Reflection</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/tasty-inspection" class="">TASTy Inspection</a></li></ul></li> <li><a href="/scalaworkbook/docs/soft-keywords" class="">Soft Keywords</a></li> <li><a href="/scalaworkbook/docs/scaladoc" class="">Scaladoc</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/scaladoc/docstrings" class="">Документы</a></li> <li><a href="/scalaworkbook/docs/scaladoc/linking" class="">Ссылки</a></li> <li><a href="/scalaworkbook/docs/scaladoc/static-site" class="">Статика</a></li> <li><a href="/scalaworkbook/docs/scaladoc/blog" class="">Блог</a></li> <li><a href="/scalaworkbook/docs/scaladoc/site-versioning" class="">Версионность</a></li> <li><a href="/scalaworkbook/docs/scaladoc/search-engine" class="">Поиск по типу</a></li> <li><a href="/scalaworkbook/docs/scaladoc/snippet-compiler" class="">Проверка фрагмента</a></li> <li><a href="/scalaworkbook/docs/scaladoc/settings" class="">Настройки</a></li></ul></li> <li><a href="/scalaworkbook/docs/extra" class="">Доп. материалы</a></li>   </ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li class="search-nav hidden-xs hidden-sm"><div id="search-dropdown"><label><i class="fa fa-search"></i>Search</label><input id="search-bar" type="text" placeholder="Enter keywords here..." onclick="displayToggleSearch(event)" /><ul id="search-dropdown-content" class="dropdown dropdown-content"></ul></div></li></ul></div></div></div></div><div id="content" data-github-owner="artemkorsakov" data-github-repo="scalaworkbook"><div class="content-wrapper"><section><h2 id="enums">Enums</h2>
+
+<p>Перечисление (an enumeration) может быть использовано для определения типа, 
+состоящего из конечного набора именованных значений 
+(в разделе, <a href="fp">посвященном моделированию ФП</a>, будут показаны дополнительные возможности <code class="highlighter-rouge">enums</code>). 
+Базовые перечисления используются для определения наборов констант, таких как месяцы в году, дни в неделе, 
+направления, такие как север/юг/восток/запад, и многое другое.</p>
+
+<p>В качестве примера, рассмотрим перечисления, определяющие наборы атрибутов, связанных с пиццами:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">enum</span> <span class="nc">CrustSize</span><span class="k">:</span>
+  <span class="kt">case</span> <span class="kt">Small</span><span class="o">,</span> <span class="nc">Medium</span><span class="o">,</span> <span class="nc">Large</span>
+
+<span class="n">enum</span> <span class="nc">CrustType</span><span class="k">:</span>
+  <span class="kt">case</span> <span class="kt">Thin</span><span class="o">,</span> <span class="nc">Thick</span><span class="o">,</span> <span class="nc">Regular</span>
+
+<span class="n">enum</span> <span class="nc">Topping</span><span class="k">:</span>
+  <span class="kt">case</span> <span class="kt">Cheese</span><span class="o">,</span> <span class="nc">Pepperoni</span><span class="o">,</span> <span class="nc">BlackOlives</span><span class="o">,</span> <span class="nc">GreenOlives</span><span class="o">,</span> <span class="nc">Onions</span>
+</code></pre></div></div>
+
+<p>Для использования в коде <code class="highlighter-rouge">enum</code> необходимо импортировать:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">CrustSize.</span><span class="o">*</span>
+<span class="k">val</span> <span class="nv">currentCrustSize</span> <span class="k">=</span> <span class="nc">Small</span>
+</code></pre></div></div>
+
+<p>Значения <code class="highlighter-rouge">enum</code>-ов можно сравнивать и использовать в матчинге:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">if</span> <span class="o">(</span><span class="n">currentCrustSize</span> <span class="o">==</span> <span class="nc">Small</span><span class="o">)</span>
+  <span class="nf">println</span><span class="o">(</span><span class="s">"If you buy a large pizza, you'll get a prize!"</span><span class="o">)</span>
+<span class="c1">// If you buy a large pizza, you'll get a prize!</span>
+<span class="n">currentCrustSize</span> <span class="k">match</span>
+  <span class="k">case</span> <span class="nc">Small</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"small"</span><span class="o">)</span>
+  <span class="k">case</span> <span class="nc">Medium</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"medium"</span><span class="o">)</span>
+  <span class="k">case</span> <span class="nc">Large</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"large"</span><span class="o">)</span>
+<span class="c1">// small</span>
+</code></pre></div></div>
+
+<h4 id="параметризованные-перечисления">Параметризованные перечисления</h4>
+
+<p>Перечисления могут иметь параметры конструктора:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">enum</span> <span class="nc">Color</span><span class="o">(</span><span class="k">val</span> <span class="nv">rgb</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span>
+  <span class="kt">case</span> <span class="kt">Red</span>   <span class="kt">extends</span> <span class="kt">Color</span><span class="o">(</span><span class="err">0</span><span class="kt">xFF0000</span><span class="o">)</span>
+  <span class="kt">case</span> <span class="kt">Green</span> <span class="kt">extends</span> <span class="kt">Color</span><span class="o">(</span><span class="err">0</span><span class="kt">x00FF00</span><span class="o">)</span>
+  <span class="kt">case</span> <span class="kt">Blue</span>  <span class="kt">extends</span> <span class="kt">Color</span><span class="o">(</span><span class="err">0</span><span class="kt">x0000FF</span><span class="o">)</span>
+</code></pre></div></div>
+
+<h4 id="методы-определенные-для-enum">Методы, определенные для enum</h4>
+
+<p>Значения enum соответствуют уникальным целым числам. 
+Целое число, связанное со значением перечисления, возвращается методом <code class="highlighter-rouge">ordinal</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">red</span> <span class="k">=</span> <span class="nv">Color</span><span class="o">.</span><span class="py">Red</span>
+<span class="c1">// red: Color = Red</span>
+<span class="nv">red</span><span class="o">.</span><span class="py">ordinal</span>
+<span class="c1">// res2: Int = 0</span>
+</code></pre></div></div>
+
+<p>Сопутствующий объект перечисления определяет также три служебных метода. 
+Метод <code class="highlighter-rouge">valueOf</code> получает значение enum по его имени.
+Метод <code class="highlighter-rouge">values</code> возвращает все значения enum, определенные в перечислении, в виде <code class="highlighter-rouge">Array</code>. 
+Метод <code class="highlighter-rouge">fromOrdinal</code> получает значение перечисления по его порядковому (<code class="highlighter-rouge">Int</code>) значению.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">Color</span><span class="o">.</span><span class="py">valueOf</span><span class="o">(</span><span class="s">"Blue"</span><span class="o">)</span>
+<span class="nv">Color</span><span class="o">.</span><span class="py">values</span>
+<span class="nv">Color</span><span class="o">.</span><span class="py">fromOrdinal</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+</code></pre></div></div>
+
+<h4 id="перечисления-могут-содержать-параметры-и-методы">Перечисления могут содержать параметры и методы:</h4>
+
+<p>В перечисление можно добавить свои собственные определения. Пример:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">enum</span> <span class="nc">Planet</span><span class="o">(</span><span class="n">mass</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span> <span class="n">radius</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span><span class="k">:</span>
+  <span class="kt">private</span> <span class="kt">final</span> <span class="kt">val</span> <span class="kt">G</span> <span class="o">=</span> <span class="mf">6.67300E-11</span>
+  <span class="k">def</span> <span class="nf">surfaceGravity</span> <span class="k">=</span> <span class="n">G</span> <span class="o">*</span> <span class="n">mass</span> <span class="o">/</span> <span class="o">(</span><span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="o">)</span>
+  <span class="k">def</span> <span class="nf">surfaceWeight</span><span class="o">(</span><span class="n">otherMass</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span> <span class="k">=</span> <span class="n">otherMass</span> <span class="o">*</span> <span class="n">surfaceGravity</span>
+  
+  <span class="k">case</span> <span class="nc">Mercury</span> <span class="k">extends</span> <span class="nc">Planet</span><span class="o">(</span><span class="mf">3.303e+23</span><span class="o">,</span> <span class="mf">2.4397e6</span><span class="o">)</span>
+  <span class="k">case</span> <span class="nc">Venus</span>   <span class="k">extends</span> <span class="nc">Planet</span><span class="o">(</span><span class="mf">4.869e+24</span><span class="o">,</span> <span class="mf">6.0518e6</span><span class="o">)</span>
+  <span class="k">case</span> <span class="nc">Earth</span>   <span class="k">extends</span> <span class="nc">Planet</span><span class="o">(</span><span class="mf">5.976e+24</span><span class="o">,</span> <span class="mf">6.37814e6</span><span class="o">)</span>
+  <span class="k">case</span> <span class="nc">Mars</span>    <span class="k">extends</span> <span class="nc">Planet</span><span class="o">(</span><span class="mf">6.421e+23</span><span class="o">,</span> <span class="mf">3.3972e6</span><span class="o">)</span>
+  <span class="k">case</span> <span class="nc">Jupiter</span> <span class="k">extends</span> <span class="nc">Planet</span><span class="o">(</span><span class="mf">1.9e+27</span><span class="o">,</span>   <span class="mf">7.1492e7</span><span class="o">)</span>
+  <span class="k">case</span> <span class="nc">Saturn</span>  <span class="k">extends</span> <span class="nc">Planet</span><span class="o">(</span><span class="mf">5.688e+26</span><span class="o">,</span> <span class="mf">6.0268e7</span><span class="o">)</span>
+  <span class="k">case</span> <span class="nc">Uranus</span>  <span class="k">extends</span> <span class="nc">Planet</span><span class="o">(</span><span class="mf">8.686e+25</span><span class="o">,</span> <span class="mf">2.5559e7</span><span class="o">)</span>
+  <span class="k">case</span> <span class="nc">Neptune</span> <span class="k">extends</span> <span class="nc">Planet</span><span class="o">(</span><span class="mf">1.024e+26</span><span class="o">,</span> <span class="mf">2.4746e7</span><span class="o">)</span>
+<span class="n">end</span> <span class="nc">Planet</span>
+</code></pre></div></div>
+
+<h4 id="сопутствующий-объект">Сопутствующий объект</h4>
+
+<p>Также возможно определить явный сопутствующий объект для перечисления:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">Planet</span><span class="k">:</span>
+  <span class="kt">def</span> <span class="kt">main</span><span class="o">(</span><span class="kt">args:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="k">=</span>
+    <span class="k">val</span> <span class="nv">earthWeight</span> <span class="k">=</span> <span class="nf">args</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="py">toDouble</span>
+    <span class="k">val</span> <span class="nv">mass</span> <span class="k">=</span> <span class="n">earthWeight</span> <span class="o">/</span> <span class="nv">Earth</span><span class="o">.</span><span class="py">surfaceGravity</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="k">&lt;-</span> <span class="n">values</span> <span class="k">do</span>
+      <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"Your weight on $p is ${p.surfaceWeight(mass)}"</span><span class="o">)</span>
+<span class="n">end</span> <span class="nc">Planet</span>
+</code></pre></div></div>
+
+<h4 id="ограничения-для-enum-case">Ограничения для enum case</h4>
+
+<p>Объявления case-enum аналогичны вторичным конструкторам: 
+их область действия находится за пределами шаблона enum, несмотря на то, что они объявлены внутри него. 
+Это означает, что объявления case enum не могут получить доступ к внутренним членам класса enum.</p>
+
+<p>Точно так же объявления case enum не могут напрямую ссылаться на члены сопутствующего объекта перечисления, 
+даже если они импортированы (напрямую или путем переименования). 
+Например:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">Planet.</span><span class="o">*</span>
+<span class="n">enum</span> <span class="nc">Planet</span><span class="o">(</span><span class="n">mass</span><span class="k">:</span> <span class="kt">Double</span><span class="o">,</span> <span class="n">radius</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span><span class="k">:</span>
+  <span class="kt">private</span> <span class="kt">final</span> <span class="kt">val</span> <span class="o">(</span><span class="kt">mercuryMass</span><span class="o">,</span> <span class="kt">mercuryRadius</span><span class="o">)</span> <span class="k">=</span> <span class="o">(</span><span class="mf">3.303e+23</span><span class="o">,</span> <span class="mf">2.4397e6</span><span class="o">)</span>
+
+  <span class="k">case</span> <span class="nc">Mercury</span> <span class="k">extends</span> <span class="nc">Planet</span><span class="o">(</span><span class="n">mercuryMass</span><span class="o">,</span> <span class="n">mercuryRadius</span><span class="o">)</span>             <span class="c1">// нет доступа</span>
+  <span class="k">case</span> <span class="nc">Venus</span>   <span class="k">extends</span> <span class="nc">Planet</span><span class="o">(</span><span class="n">venusMass</span><span class="o">,</span> <span class="n">venusRadius</span><span class="o">)</span>                 <span class="c1">// невалидная ссылка</span>
+  <span class="k">case</span> <span class="nc">Earth</span>   <span class="k">extends</span> <span class="nc">Planet</span><span class="o">(</span><span class="nv">Planet</span><span class="o">.</span><span class="py">earthMass</span><span class="o">,</span> <span class="nv">Planet</span><span class="o">.</span><span class="py">earthRadius</span><span class="o">)</span>   <span class="c1">// ok</span>
+<span class="k">object</span> <span class="nc">Planet</span><span class="k">:</span>
+  <span class="kt">private</span> <span class="kt">final</span> <span class="kt">val</span> <span class="o">(</span><span class="kt">venusMass</span><span class="o">,</span> <span class="kt">venusRadius</span><span class="o">)</span> <span class="k">=</span> <span class="o">(</span><span class="mf">4.869e+24</span><span class="o">,</span> <span class="mf">6.0518e6</span><span class="o">)</span>
+  <span class="k">private</span> <span class="k">final</span> <span class="nf">val</span> <span class="o">(</span><span class="n">earthMass</span><span class="o">,</span> <span class="n">earthRadius</span><span class="o">)</span> <span class="k">=</span> <span class="o">(</span><span class="mf">5.976e+24</span><span class="o">,</span> <span class="mf">6.37814e6</span><span class="o">)</span>
+<span class="n">end</span> <span class="nc">Planet</span>
+</code></pre></div></div>
+
+<p>Поля, на которые ссылается <code class="highlighter-rouge">Mercury</code>, невидимы.
+А на поля, на которые ссылается <code class="highlighter-rouge">Venus</code>, нельзя ссылаться напрямую (используя <code class="highlighter-rouge">import Planet.*</code>). 
+Необходимо использовать косвенную ссылку, например, продемонстрированную с помощью <code class="highlighter-rouge">Earth</code>.</p>
+
+<h4 id="совместимость-с-java-enums">Совместимость с Java enums</h4>
+
+<p>Если необходимо использовать определенные в Scala перечисления в качестве перечислений Java, 
+можно сделать это, расширив класс <code class="highlighter-rouge">java.lang.Enum</code> (который импортируется по умолчанию) следующим образом:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">enum</span> <span class="nc">Color</span> <span class="k">extends</span> <span class="nc">Enum</span><span class="o">[</span><span class="kt">Color</span><span class="o">]</span> <span class="o">{</span> <span class="k">case</span> <span class="nc">Red</span><span class="o">,</span> <span class="nc">Green</span><span class="o">,</span> <span class="nc">Blue</span> <span class="o">}</span>
+</code></pre></div></div>
+
+<p>Параметр типа берется из определения Java <code class="highlighter-rouge">enum</code> и должен совпадать с типом перечисления. 
+Нет необходимости предоставлять аргументы конструктора (как определено в документах Java API) для <code class="highlighter-rouge">java.lang.Enum</code> 
+при его расширении — компилятор генерирует их автоматически.</p>
+
+<p>После определения <code class="highlighter-rouge">Color</code> его можно использовать так же, как если бы использовался Java <code class="highlighter-rouge">enum</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">Color</span><span class="o">.</span><span class="py">Red</span><span class="o">.</span><span class="py">compareTo</span><span class="o">(</span><span class="nv">Color</span><span class="o">.</span><span class="py">Green</span><span class="o">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>References:</strong></p>
+<ul>
+  <li><a href="https://docs.scala-lang.org/scala3/book/domain-modeling-tools.html">Scala3 book, domain modeling tools</a></li>
+  <li><a href="https://docs.scala-lang.org/scala3/book/taste-modeling.html">Scala3 book, taste modeling</a></li>
+  <li><a href="https://docs.scala-lang.org/scala3/book/taste-objects.html">Scala3 book, taste objects</a></li>
+  <li><a href="https://docs.scala-lang.org/scala3/reference/enums/enums.html">Scala 3 Reference</a></li>
+</ul>
+
+
+<hr>
+<div class="edit-button" style="display: flex; justify-content: space-between;">
+    
+    <a href="/scalaworkbook/docs/modeling/abstract-class" class="btn-sm btn-info btn-left"><-- Предыдущая</a>
+    
+    
+    <a href="/scalaworkbook/docs/modeling/case-class" class="btn-sm btn-info btn-right">Следующая --></a>
+    
+</div>
+</section><div class="edit-button"><a href="https://github.com/artemkorsakov/scalaworkbook/edit/main/docs/docs/docs/modeling/enums.md" target="_blank" rel="noopener noreferrer" class="btn-sm btn-info">Редактировать страницу</a></div></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalaworkbook/highlight/highlight.pack.js"></script><script src="/scalaworkbook/lunr/lunr.js"></script><script>
+// For all code blocks, copy the language from the containing div
+// to the inner code tag (where hljs expects it to be)
+const langPrefix = 'language-';
+document.querySelectorAll(`div[class^='${langPrefix}']`).forEach(function(div) {
+  div.classList.forEach(function(cssClass) {
+    if (cssClass.startsWith(langPrefix)) {
+      const lang = cssClass.substring(langPrefix.length);
+      div.querySelectorAll('pre code').forEach(function(code) {
+        code.classList.add(lang);
+      });
+    }
+  });
+});
+
+hljs.configure({languages:['scala','java','bash']});
+hljs.initHighlightingOnLoad();
+      </script><script>console.info('\x57\x65\x62\x73\x69\x74\x65\x20\x62\x75\x69\x6c\x74\x20\x77\x69\x74\x68\x3a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x5f\x5f\x0a\x20\x20\x20\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x5f\x20\x20\x2f\x20\x2f\x5f\x20\x20\x20\x20\x20\x20\x5f\x5f\x5f\x5f\x20\x5f\x5f\x5f\x20\x20\x28\x5f\x29\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x28\x5f\x29\x20\x2f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x0a\x20\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x60\x5f\x5f\x20\x5c\x2f\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x20\x2f\x20\x5f\x5f\x2f\x20\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x0a\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x5f\x2f\x20\x2f\x20\x2f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x5f\x5f\x2f\x20\x2f\x20\x20\x2f\x20\x2f\x5f\x2f\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x20\x2f\x5f\x2f\x20\x20\x5f\x5f\x28\x5f\x5f\x20\x20\x29\x0a\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2e\x5f\x5f\x5f\x2f\x5c\x5f\x5f\x2f\x20\x20\x20\x20\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x2f\x20\x20\x20\x5c\x5f\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x0a\x0a\x68\x74\x74\x70\x73\x3a\x2f\x2f\x34\x37\x64\x65\x67\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x73\x62\x74\x2d\x6d\x69\x63\x72\x6f\x73\x69\x74\x65\x73')</script><script src="/scalaworkbook/js/search.js"></script><script src="/scalaworkbook/js/main.js"></script></body></html>
