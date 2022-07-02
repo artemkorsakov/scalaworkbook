@@ -7,12 +7,15 @@ prev: monad/applicative
 
 ## {{page.title}}
 
-Для множества `S` и операции `+` говориться, что `(S, +)` является полугруппой (_semigroup_),
-если она удовлетворяет следующим свойствам для любых `x, y, z ∈ S`:
-- Closure (закрытость): `x + y ∈ S`
-- Associativity (ассоциативность): `(x + y) + z = x + (y + z)`
+Монада (_monad_) - это `Functor` и `Applicative` с дополнительной функцией: `flatten` (сведение: `F[F[A]] -> F[A]`). 
+Что позволяет определить `flatMap` — `map`, за которой следует `flatten`.
 
-Также говориться, что `S` образует полугруппу относительно `+`.
+Для `Monad` должны соблюдаться следующие законы:
+- identities:
+  - `flatMap(apply(x))(fn) == fn(x)`
+  - `flatMap(m)(apply _) == m`
+- associativity на flatMap:
+  - `flatMap(flatMap(m)(f))(g) == flatMap(m) { x => flatMap(f(x))(g) }`
 
 
 ### Примеры монад
