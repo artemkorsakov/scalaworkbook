@@ -8,24 +8,23 @@ next: monad/monad
 
 ## {{page.title}}
 
-Для множества `S` и операции `+` говориться, что `(S, +)` является полугруппой (_semigroup_),
-если она удовлетворяет следующим свойствам для любых `x, y, z ∈ S`:
-- Closure (закрытость): `x + y ∈ S`
-- Associativity (ассоциативность): `(x + y) + z = x + (y + z)`
+`Applicative` расширяет `Functor` и позволяет работать с несколькими «ящиками».
+Он реализует операцию `applicate` 
+(также встречаются названия `join`, `sequence`, `joinWith`, `ap` - названия эквивалентны), 
+которая объединяет `F[A => B]` и `F[A]` в `F[B]`.
 
-Также говориться, что `S` образует полугруппу относительно `+`.
+Для `Applicative` должны соблюдаться следующие законы:
+- `map(apply(x))(f) == apply(f(x))`
+- `join(apply(x), apply(y)) == apply((x, y))`
+
+### Примеры Applicative
 
 
-### Примеры полугрупп
-
-- Строки образуют полугруппу при конкатенации
-
-
-### Реализации полугрупп в различных библиотеках
-
+### Реализации Applicative в различных библиотеках
 
 
 ---
 
 **References:**
-- [Algebird](https://twitter.github.io/algebird/typeclasses/semigroup.html)
+- [Tour of Scala](https://tourofscala.com/scala/applicative)
+- [Algebird](https://twitter.github.io/algebird/typeclasses/applicative.html)

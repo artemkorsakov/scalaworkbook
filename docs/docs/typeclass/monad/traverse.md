@@ -16,16 +16,13 @@ next: monad/applicative
 Также говориться, что `S` образует полугруппу относительно `+`.
 
 
-### Примеры полугрупп
-
-- Строки образуют полугруппу при конкатенации
+### Примеры traversable
 
 
-### Реализации полугрупп в различных библиотеках
-
+### Реализации traversable в различных библиотеках
 
 
 ---
 
 **References:**
-- [Algebird](https://twitter.github.io/algebird/typeclasses/semigroup.html)
+- [Tour of Scala](https://tourofscala.com/scala/traversable)

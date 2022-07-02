@@ -16,3 +16,6 @@ position: 1
 
 - #### Курсы
   - ...
+
+- #### Упражнения
+  - [Tour of Scala](https://tourofscala.com/)

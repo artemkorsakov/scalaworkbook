@@ -15,16 +15,14 @@ prev: monad/applicative
 Также говориться, что `S` образует полугруппу относительно `+`.
 
 
-### Примеры полугрупп
-
-- Строки образуют полугруппу при конкатенации
+### Примеры монад
 
 
-### Реализации полугрупп в различных библиотеках
-
+### Реализации монад в различных библиотеках
 
 
 ---
 
 **References:**
-- [Algebird](https://twitter.github.io/algebird/typeclasses/semigroup.html)
+- [Tour of Scala](https://tourofscala.com/scala/monad)
+- [Algebird](https://twitter.github.io/algebird/typeclasses/monad.html)
