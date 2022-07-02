@@ -2,7 +2,7 @@
 layout: typeclass
 title: "Type class"
 section: typeclass
-next: associativity
+next: semigroup
 ---
 
 ## {{page.title}}

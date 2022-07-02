@@ -354,42 +354,42 @@ options:
     url: typeclass/index
     menu_type: typeclass
 
-  - title: Associativity group
-    url: typeclass/associativity
-    menu_section: associativity
+  - title: Semigroup's section
+    url: typeclass/semigroup
+    menu_section: semigroup
     menu_type: typeclass
 
     nested_options:
       - title: Semigroup
-        url: typeclass/associativity/semigroup
+        url: typeclass/semigroup/semigroup
         menu_type: typeclass
 
       - title: Monoid
-        url: typeclass/associativity/monoid
+        url: typeclass/semigroup/monoid
         menu_type: typeclass
 
-  - title: Monadic group
-    url: typeclass/monadic
-    menu_section: monadic
+  - title: Monad's section
+    url: typeclass/monad
+    menu_section: monad
     menu_type: typeclass
 
     nested_options:
       - title: Functor
-        url: typeclass/monadic/functor
+        url: typeclass/monad/functor
         menu_type: typeclass
 
-      - title: Fordable
-        url: typeclass/monadic/fordable
+      - title: Foldable
+        url: typeclass/monad/foldable
         menu_type: typeclass
 
       - title: Traverse
-        url: typeclass/monadic/traverse
+        url: typeclass/monad/traverse
         menu_type: typeclass
 
       - title: Applicative
-        url: typeclass/monadic/applicative
+        url: typeclass/monad/applicative
         menu_type: typeclass
 
       - title: Monad
-        url: typeclass/monadic/monad
+        url: typeclass/monad/monad
         menu_type: typeclass

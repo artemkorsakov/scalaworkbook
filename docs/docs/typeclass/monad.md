@@ -1,9 +1,9 @@
 ---
 layout: typeclass
-title: "Associativity group"
+title: "Monad's section"
 section: typeclass
-prev: index
-next: associativity/semigroup
+prev: semigroup/monoid
+next: monad/functor
 ---
 
 ## {{page.title}}
