@@ -1,9 +1,9 @@
 ---
 layout: typeclass
-title: "Semigroup's section"
+title: "Monoid's group"
 section: typeclass
 prev: index
-next: semigroup/semigroup
+next: monoid/semigroup
 ---
 
 ## {{page.title}}

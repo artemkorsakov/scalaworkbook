@@ -2,7 +2,7 @@
 layout: typeclass
 title: "Type class"
 section: typeclass
-next: semigroup
+next: monoid
 ---
 
 ## {{page.title}}

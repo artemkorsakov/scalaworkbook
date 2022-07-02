@@ -1,19 +1,19 @@
 ---
 layout: typeclass
-title: "Fordable"
+title: "Semigroup"
 section: typeclass
-prev: monad/functor
-next: monad/traverse
+prev: monoid
+next: monoid/monoid
 ---
 
 ## {{page.title}}
 
-Для множества `S` и операции `+` говориться, что `(S, +)` является полугруппой (_semigroup_),
+Для множества `S` и операции `+` говориться, что `(S, +)` является полугруппой (_semigroup_), 
 если она удовлетворяет следующим свойствам для любых `x, y, z ∈ S`:
-- Closure (закрытость): `x + y ∈ S`
+- Closure (замыкание): `x + y ∈ S`
 - Associativity (ассоциативность): `(x + y) + z = x + (y + z)`
 
-Также говориться, что `S` образует полугруппу относительно `+`.
+Также говориться, что _S образует полугруппу относительно +_.
 
 
 ### Примеры полугрупп

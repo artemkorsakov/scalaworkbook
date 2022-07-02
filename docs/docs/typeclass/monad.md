@@ -1,8 +1,8 @@
 ---
 layout: typeclass
-title: "Monad's section"
+title: "Monad's group"
 section: typeclass
-prev: semigroup/monoid
+prev: monoid/monoid
 next: monad/functor
 ---
 

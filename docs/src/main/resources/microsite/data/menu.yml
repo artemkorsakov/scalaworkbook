@@ -354,21 +354,21 @@ options:
     url: typeclass/index
     menu_type: typeclass
 
-  - title: Semigroup's section
-    url: typeclass/semigroup
-    menu_section: semigroup
+  - title: Monoid's group
+    url: typeclass/monoid
+    menu_section: monoid
     menu_type: typeclass
 
     nested_options:
       - title: Semigroup
-        url: typeclass/semigroup/semigroup
+        url: typeclass/monoid/semigroup
         menu_type: typeclass
 
       - title: Monoid
-        url: typeclass/semigroup/monoid
+        url: typeclass/monoid/monoid
         menu_type: typeclass
 
-  - title: Monad's section
+  - title: Monad's group
     url: typeclass/monad
     menu_section: monad
     menu_type: typeclass
