@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Функц. программирование"
+section: scala
 prev: collections/methods
 next: fp/what-is-fp
 ---

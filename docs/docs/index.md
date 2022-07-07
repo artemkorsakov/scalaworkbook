@@ -3,8 +3,8 @@ layout: home
 title:  Основная
 position: 0
 technologies:
-- first:  ["Scala", "Документация полностью написана на Scala"]
-- second: ["Documentation", "Обзор Scala и её основных фреймворков"]
+- first:  ["Scala", "Обзор Scala и её основных фреймворков"]
+- second: ["Documentation", "Документация полностью написана на Scala"]
 - third:  ["Scaladoc", "Пример генерации Scaladoc"]
 ---
 
@@ -16,6 +16,8 @@ technologies:
 
 Код написан на версии Scala - @SCALA@.
 
-### Разделы
-- [Обзор Scala](./docs/)
-- [Обзор основных Type Class-ов](./typeclass/)
+---
+
+#### [Обзор Scala](./docs/)
+
+#### [Основные Type Class-ы](./typeclass/)

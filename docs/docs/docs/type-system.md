@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Система типов"
+section: scala
 prev: fp/functional-error-handling
 next: type-system/types-inferred
 ---

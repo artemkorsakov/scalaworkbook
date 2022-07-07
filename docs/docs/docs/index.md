@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Обзор Scala"
+section: scala
 next: start/getting-started
 ---
 

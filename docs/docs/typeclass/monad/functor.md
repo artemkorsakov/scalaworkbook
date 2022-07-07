@@ -1,7 +1,6 @@
 ---
 layout: typeclass
 title: "Functor"
-section: typeclass
 prev: monad
 next: monad/foldable
 ---

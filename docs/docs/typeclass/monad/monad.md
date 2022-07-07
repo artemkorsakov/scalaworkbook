@@ -1,7 +1,6 @@
 ---
 layout: typeclass
 title: "Monad"
-section: typeclass
 prev: monad/applicative
 ---
 

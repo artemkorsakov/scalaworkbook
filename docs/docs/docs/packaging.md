@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Пакеты и импорт"
+section: scala
 prev: functions/returns-function
 next: toplevel-definitions
 ---

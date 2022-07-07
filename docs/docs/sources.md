@@ -1,7 +1,7 @@
 ---
-layout: home
+layout: page
 title:  Источники
-position: 1
+position: 10
 ---
 
 ### Список источников

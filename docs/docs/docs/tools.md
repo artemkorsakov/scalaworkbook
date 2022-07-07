@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Утилиты"
+section: scala
 prev: concurrency
 next: tools/tools-sbt
 ---

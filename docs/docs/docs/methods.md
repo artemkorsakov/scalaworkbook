@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Методы"
+section: scala
 prev: modeling/fp
 next: methods/method-features
 ---

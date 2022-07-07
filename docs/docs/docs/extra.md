@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Доп. материалы"
+section: scala
 prev: scaladoc/settings
 ---
 

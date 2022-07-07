@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Scaladoc"
+section: scala
 prev: soft-keywords
 next: scaladoc/docstrings
 ---

@@ -6,6 +6,7 @@ options:
 
   - title: Обзор Scala
     url: docs/index
+    menu_type: scala
 
     nested_options:
       - title: С чего начать?
@@ -13,18 +14,23 @@ options:
 
   - title: Hello, world!
     url: docs/hello_world
+    menu_type: scala
 
   - title: REPL
     url: docs/repl
+    menu_type: scala
 
   - title: Типы данных
     url: docs/types
+    menu_type: scala
 
   - title: Структуры управления
     url: docs/structures
+    menu_type: scala
 
   - title: Моделирование данных
     url: docs/modeling
+    menu_type: scala
 
     nested_options:
       - title: Classes
@@ -56,6 +62,7 @@ options:
 
   - title: Методы
     url: docs/methods
+    menu_type: scala
 
     nested_options:
       - title: Определение методов
@@ -87,6 +94,7 @@ options:
 
   - title: Функции
     url: docs/functions
+    menu_type: scala
 
     nested_options:
       - title: Анонимные функции
@@ -109,12 +117,15 @@ options:
 
   - title: Пакеты и импорт
     url: docs/packaging
+    menu_type: scala
 
   - title: Верхнеур. определения
     url: docs/toplevel-definitions
+    menu_type: scala
 
   - title: Коллекции
     url: docs/collections
+    menu_type: scala
 
     nested_options:
       - title: Типы коллекций
@@ -155,6 +166,7 @@ options:
 
   - title: Функц. программирование
     url: docs/fp
+    menu_type: scala
 
     nested_options:
       - title: Что такое ФП?
@@ -174,6 +186,7 @@ options:
 
   - title: Система типов
     url: docs/type-system
+    menu_type: scala
 
     nested_options:
       - title: Определение типов
@@ -217,6 +230,7 @@ options:
 
   - title: Абстракции
     url: docs/abstractions
+    menu_type: scala
 
     nested_options:
       - title: Given
@@ -257,6 +271,7 @@ options:
 
   - title: Детали
     url: docs/details
+    menu_type: scala
 
     nested_options:
       - title: Предложения export
@@ -273,9 +288,11 @@ options:
 
   - title: Параллелизм
     url: docs/concurrency
+    menu_type: scala
 
   - title: Утилиты
     url: docs/tools
+    menu_type: scala
 
     nested_options:
       - title: Sbt
@@ -286,9 +303,11 @@ options:
 
   - title: Взаимодействие с Java
     url: docs/with_java
+    menu_type: scala
 
   - title: Metaprogramming
     url: docs/metaprogramming
+    menu_type: scala
 
     nested_options:
       - title: Inline
@@ -314,9 +333,11 @@ options:
 
   - title: Soft Keywords
     url: docs/soft-keywords
+    menu_type: scala
 
   - title: Scaladoc
     url: docs/scaladoc
+    menu_type: scala
 
     nested_options:
       - title: Документы
@@ -345,6 +366,7 @@ options:
 
   - title: Доп. материалы
     url: docs/extra
+    menu_type: scala
 
   ###########################
   # Type classes options    #
@@ -356,40 +378,31 @@ options:
 
   - title: Monoid's group
     url: typeclass/monoid
-    menu_section: monoid
     menu_type: typeclass
 
     nested_options:
       - title: Semigroup
         url: typeclass/monoid/semigroup
-        menu_type: typeclass
 
       - title: Monoid
         url: typeclass/monoid/monoid
-        menu_type: typeclass
 
   - title: Monad's group
     url: typeclass/monad
-    menu_section: monad
     menu_type: typeclass
 
     nested_options:
       - title: Functor
         url: typeclass/monad/functor
-        menu_type: typeclass
 
       - title: Foldable
         url: typeclass/monad/foldable
-        menu_type: typeclass
 
       - title: Traverse
         url: typeclass/monad/traverse
-        menu_type: typeclass
 
       - title: Applicative
         url: typeclass/monad/applicative
-        menu_type: typeclass
 
       - title: Monad
         url: typeclass/monad/monad
-        menu_type: typeclass

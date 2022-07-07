@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Структуры управления"
+section: scala
 prev: types
 next: modeling
 ---

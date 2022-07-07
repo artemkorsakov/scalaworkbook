@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Параллелизм"
+section: scala
 prev: details/pattern-matching
 next: tools
 ---

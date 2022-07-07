@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Типы данных"
+section: scala
 prev: repl
 next: structures
 ---

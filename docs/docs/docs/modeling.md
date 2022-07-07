@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Моделирование данных"
+section: scala
 prev: structures
 next: modeling/classes
 ---

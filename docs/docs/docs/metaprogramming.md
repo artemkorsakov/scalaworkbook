@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Metaprogramming"
+section: scala
 prev: with_java
 next: metaprogramming/inline
 ---

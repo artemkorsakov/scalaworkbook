@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Hello, world!"
+section: scala
 prev: start/getting-started
 next: repl
 ---

@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Soft Keywords"
+section: scala
 prev: metaprogramming/tasty-inspection
 next: scaladoc
 ---

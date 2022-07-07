@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "REPL"
+section: scala
 prev: hello_world
 next: types
 ---

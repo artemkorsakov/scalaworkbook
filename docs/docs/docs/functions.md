@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Функции"
+section: scala
 prev: methods/main-methods
 next: functions/anonymous
 ---

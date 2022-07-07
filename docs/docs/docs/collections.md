@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Коллекции"
+section: scala
 prev: toplevel-definitions
 next: collections/classes
 ---

@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Верхнеур. определения"
+section: scala
 prev: packaging
 next: collections
 ---

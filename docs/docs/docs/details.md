@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Детали"
+section: scala
 prev: abstractions/ca-by-name-parameters
 next: details/export-causes
 ---
