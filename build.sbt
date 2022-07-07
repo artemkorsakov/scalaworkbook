@@ -42,10 +42,6 @@ lazy val docs = project
     micrositeGitterChannel := false,
     micrositeShareOnSocial := false,
     micrositeGithubLinks := false,
-    ScalaUnidoc / unidoc / unidocProjectFilter := inProjects(scaladoc),
-    ScalaUnidoc / siteSubdirName := "api",
-    apiURL := Some(url(s"${micrositeUrl.value}${micrositeBaseUrl.value}/${ScalaUnidoc / siteSubdirName}/")),
-    addMappingsToSiteDir(ScalaUnidoc / packageDoc / mappings, ScalaUnidoc / siteSubdirName),
     mdocExtraArguments := List("--no-link-hygiene"),
     micrositeTheme := "pattern",
     micrositePalette := Map(
@@ -64,6 +60,10 @@ lazy val docs = project
       "DOC" -> "/scalaworkbook/docs/",
       "API" -> "/scalaworkbook/api/"
     ),
+    ScalaUnidoc / unidoc / unidocProjectFilter := inProjects(scaladoc),
+    ScalaUnidoc / siteSubdirName := "api",
+    apiURL := Some(url(s"${micrositeUrl.value}${micrositeBaseUrl.value}/${ScalaUnidoc / siteSubdirName}/")),
+    addMappingsToSiteDir(ScalaUnidoc / packageDoc / mappings, ScalaUnidoc / siteSubdirName),
     // Static site
     Compile / doc / scalacOptions := Seq(
       "-project",
