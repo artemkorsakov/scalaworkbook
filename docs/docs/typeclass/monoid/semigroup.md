@@ -1,6 +1,7 @@
 ---
 layout: typeclass
 title: "Semigroup"
+section: typeclass
 prev: monoid
 next: monoid/monoid
 ---

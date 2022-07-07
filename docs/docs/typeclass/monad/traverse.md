@@ -1,6 +1,7 @@
 ---
 layout: typeclass
 title: "Traverse"
+section: typeclass
 prev: monad/foldable
 next: monad/applicative
 ---

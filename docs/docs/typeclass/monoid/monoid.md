@@ -1,6 +1,7 @@
 ---
 layout: typeclass
 title: "Monoid"
+section: typeclass
 prev: monoid/semigroup
 next: monad
 ---
