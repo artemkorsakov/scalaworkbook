@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Каррирование"
+section: scala
 prev: methods/by-name-parameter
 next: methods/vararg-parameters
 ---

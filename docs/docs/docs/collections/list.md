@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "List"
+section: scala
 prev: collections/classes
 next: collections/lazylist
 ---

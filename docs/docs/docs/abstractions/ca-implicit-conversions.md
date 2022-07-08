@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Неявные преобр."
+section: scala
 prev: abstractions/context-functions
 next: abstractions/ca-by-name-parameters
 ---

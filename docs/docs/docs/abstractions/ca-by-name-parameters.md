@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Конт. пар. по имени"
+section: scala
 prev: abstractions/ca-implicit-conversions
 next: details
 ---

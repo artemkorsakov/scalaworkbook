@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Обработка ошибок"
+section: scala
 prev: fp/functions-are-values
 next: type-system
 ---

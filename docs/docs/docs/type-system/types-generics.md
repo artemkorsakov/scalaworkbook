@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Generics типы"
+section: scala
 prev: type-system/types-inferred
 next: type-system/types-intersection
 ---

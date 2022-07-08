@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Case classes"
+section: scala
 prev: modeling/enums
 next: modeling/oop
 ---

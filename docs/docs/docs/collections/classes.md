@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Типы коллекций"
+section: scala
 prev: collections
 next: collections/list
 ---

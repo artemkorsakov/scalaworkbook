@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "LazyList"
+section: scala
 prev: collections/list
 next: collections/array-seq
 ---

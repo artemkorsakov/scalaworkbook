@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "TASTy Inspection"
+section: scala
 prev: metaprogramming/reflection
 next: soft-keywords
 ---

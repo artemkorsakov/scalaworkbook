@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Зависимые типы функций"
+section: scala
 prev: type-system/types-structural
 next: type-system/type-lambdas
 ---

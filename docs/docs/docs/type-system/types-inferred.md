@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Определение типов"
+section: scala
 prev: type-system
 next: type-system/types-generics
 ---

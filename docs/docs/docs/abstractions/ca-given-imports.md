@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Given imports"
+section: scala
 prev: abstractions/ca-context-bounds
 next: abstractions/ca-extension-methods
 ---

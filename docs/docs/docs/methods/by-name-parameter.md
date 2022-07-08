@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Параметры по имени"
+section: scala
 prev: methods/named-parameters
 next: methods/partially-applied-functions
 ---

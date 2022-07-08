@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Экстракторы"
+section: scala
 prev: details/type-test
 next: concurrency
 ---

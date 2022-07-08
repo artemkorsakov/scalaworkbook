@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Контекстные границы"
+section: scala
 prev: abstractions/type-classes
 next: abstractions/ca-given-imports
 ---

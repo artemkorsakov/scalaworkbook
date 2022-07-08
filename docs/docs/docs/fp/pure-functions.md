@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Чистые функции"
+section: scala
 prev: fp/immutable-values
 next: fp/functions-are-values
 ---

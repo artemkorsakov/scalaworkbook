@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Методы расширения"
+section: scala
 prev: methods/generic-parameter
 next: methods/main-methods
 ---

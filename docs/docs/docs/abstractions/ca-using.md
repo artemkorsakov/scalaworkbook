@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Using"
+section: scala
 prev: abstractions/ca-given
 next: abstractions/type-classes
 ---

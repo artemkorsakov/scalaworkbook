@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Пересечение типов"
+section: scala
 prev: type-system/types-generics
 next: type-system/types-union
 ---

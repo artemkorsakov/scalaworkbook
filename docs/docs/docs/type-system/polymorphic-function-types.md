@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Полимор. типы функций"
+section: scala
 prev: type-system/match-types
 next: type-system/types-others
 ---

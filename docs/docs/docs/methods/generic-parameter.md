@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Generic параметры"
+section: scala
 prev: methods/vararg-parameters
 next: methods/extension-methods
 ---

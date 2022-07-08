@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Контекстные функции"
+section: scala
 prev: abstractions/ca-multiversal-equality
 next: abstractions/ca-implicit-conversions
 ---

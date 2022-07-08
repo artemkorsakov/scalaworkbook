@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Enums"
+section: scala
 prev: modeling/abstract-class
 next: modeling/case-class
 ---

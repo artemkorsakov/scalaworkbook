@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Настройки"
+section: scala
 prev: scaladoc/snippet-compiler
 next: extra
 ---

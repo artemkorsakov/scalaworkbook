@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Multiversal Equality"
+section: scala
 prev: abstractions/ca-type-class-derivation
 next: abstractions/context-functions
 ---

@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Ковариантность"
+section: scala
 prev: type-system/types-adts
 next: type-system/types-opaque
 ---

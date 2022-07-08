@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Анонимные функции"
+section: scala
 prev: functions
 next: functions/variables
 ---

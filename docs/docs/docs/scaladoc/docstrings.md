@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Документы"
+section: scala
 prev: scaladoc
 next: scaladoc/linking
 ---

@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Vector"
+section: scala
 prev: collections/array-seq
 next: collections/array-buffer
 ---

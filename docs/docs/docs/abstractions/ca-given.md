@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Given"
+section: scala
 prev: abstractions
 next: abstractions/ca-using
 ---

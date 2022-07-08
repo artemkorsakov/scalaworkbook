@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Распаковка параметров"
+section: scala
 prev: details/export-causes
 next: details/type-test
 ---

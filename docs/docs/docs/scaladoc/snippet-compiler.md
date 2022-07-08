@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Проверка фрагмента"
+section: scala
 prev: scaladoc/search-engine
 next: scaladoc/settings
 ---

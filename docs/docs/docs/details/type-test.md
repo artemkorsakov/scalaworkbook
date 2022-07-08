@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Проверка типа"
+section: scala
 prev: details/parameter-untupling
 next: details/pattern-matching
 ---

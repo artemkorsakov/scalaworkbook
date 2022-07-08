@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Функции - это значения"
+section: scala
 prev: fp/pure-functions
 next: fp/functional-error-handling
 ---

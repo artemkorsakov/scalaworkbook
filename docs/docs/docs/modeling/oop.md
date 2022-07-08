@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Моделирование ООП"
+section: scala
 prev: modeling/case-class
 next: modeling/fp
 ---

@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Объединение типов"
+section: scala
 prev: type-system/types-intersection
 next: type-system/types-adts
 ---

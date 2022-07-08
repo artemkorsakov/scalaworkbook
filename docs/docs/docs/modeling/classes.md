@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Classes"
+section: scala
 prev: modeling
 next: modeling/objects
 ---

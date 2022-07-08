@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Определение методов"
+section: scala
 prev: methods
 next: methods/default-parameters
 ---

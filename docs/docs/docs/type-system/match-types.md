@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Match Types"
+section: scala
 prev: type-system/type-lambdas
 next: type-system/polymorphic-function-types
 ---

@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Собственный map"
+section: scala
 prev: functions/hofs
 next: functions/returns-function
 ---

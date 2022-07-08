@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Runtime Staging"
+section: scala
 prev: metaprogramming/quoted-code
 next: metaprogramming/reflection
 ---

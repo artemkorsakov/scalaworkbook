@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Другие типы"
+section: scala
 prev: type-system/polymorphic-function-types
 next: abstractions
 ---

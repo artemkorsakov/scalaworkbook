@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Моделирование ФП"
+section: scala
 prev: modeling/oop
 next: methods
 ---

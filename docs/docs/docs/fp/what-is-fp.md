@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Что такое ФП?"
+section: scala
 prev: fp
 next: fp/immutable-values
 ---

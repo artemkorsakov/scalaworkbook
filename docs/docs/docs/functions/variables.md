@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Параметры функции"
+section: scala
 prev: functions/anonymous
 next: functions/eta
 ---

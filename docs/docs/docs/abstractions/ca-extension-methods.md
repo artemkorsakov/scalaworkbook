@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Методы расш. - детали"
+section: scala
 prev: abstractions/ca-given-imports
 next: abstractions/ca-type-classes
 ---

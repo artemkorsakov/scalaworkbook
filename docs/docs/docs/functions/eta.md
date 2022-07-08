@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Eta расширение"
+section: scala
 prev: functions/variables
 next: functions/hofs
 ---

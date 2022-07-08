@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Companion objects"
+section: scala
 prev: modeling/objects
 next: modeling/traits
 ---

@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Предложения export"
+section: scala
 prev: details
 next: details/parameter-untupling
 ---

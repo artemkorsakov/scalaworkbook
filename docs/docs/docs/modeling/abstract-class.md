@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Абстрактные классы"
+section: scala
 prev: modeling/traits
 next: modeling/enums
 ---

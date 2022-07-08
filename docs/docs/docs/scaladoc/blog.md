@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Блог"
+section: scala
 prev: scaladoc/static-site
 next: scaladoc/site-versioning
 ---

@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Импл. type классов"
+section: scala
 prev: abstractions/ca-extension-methods
 next: abstractions/ca-type-class-derivation
 ---

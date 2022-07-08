@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Статика"
+section: scala
 prev: scaladoc/linking
 next: scaladoc/blog
 ---

@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Queue"
+section: scala
 prev: collections/tuple
 next: collections/methods
 ---

@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Версионность"
+section: scala
 prev: scaladoc/blog
 next: scaladoc/search-engine
 ---

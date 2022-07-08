@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Непрозрачные типы"
+section: scala
 prev: type-system/types-variance
 next: type-system/types-structural
 ---

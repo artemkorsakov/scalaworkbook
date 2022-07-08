@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Именованные параметры"
+section: scala
 prev: methods/default-parameters
 next: methods/by-name-parameter
 ---

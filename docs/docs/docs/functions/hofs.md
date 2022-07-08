@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Функции высшего порядка"
+section: scala
 prev: functions/eta
 next: functions/write-map
 ---

@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Inline"
+section: scala
 prev: metaprogramming
 next: metaprogramming/compile-time-ops
 ---

@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "С чего начать?"
+section: scala
 prev: index
 next: hello_world
 ---

@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "ArraySeq"
+section: scala
 prev: collections/lazylist
 next: collections/vector
 ---

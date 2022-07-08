@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Поиск по типу"
+section: scala
 prev: scaladoc/site-versioning
 next: scaladoc/snippet-compiler
 ---

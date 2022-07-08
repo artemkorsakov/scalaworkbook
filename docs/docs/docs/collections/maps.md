@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Maps"
+section: scala
 prev: collections/array-buffer
 next: collections/set
 ---

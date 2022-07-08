@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Методы в коллекциях"
+section: scala
 prev: collections/queue
 next: fp
 ---

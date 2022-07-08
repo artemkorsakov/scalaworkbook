@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "ArrayBuffer"
+section: scala
 prev: collections/vector
 next: collections/maps
 ---

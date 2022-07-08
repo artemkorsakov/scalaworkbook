@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Worksheet"
+section: scala
 prev: tools/tools-sbt
 next: with_java
 ---

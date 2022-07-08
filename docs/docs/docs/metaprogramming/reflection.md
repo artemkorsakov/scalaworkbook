@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Reflection"
+section: scala
 prev: metaprogramming/runtime-staging
 next: metaprogramming/tasty-inspection
 ---

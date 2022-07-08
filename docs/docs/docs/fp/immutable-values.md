@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Неизменяемые значения"
+section: scala
 prev: fp/what-is-fp
 next: fp/pure-functions
 ---

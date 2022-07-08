@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Variable Arguments"
+section: scala
 prev: methods/partially-applied-functions
 next: methods/generic-parameter
 ---

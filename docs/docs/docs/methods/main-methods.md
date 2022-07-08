@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "main методы"
+section: scala
 prev: methods/extension-methods
 next: functions
 ---

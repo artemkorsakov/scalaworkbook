@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Ссылки"
+section: scala
 prev: scaladoc/docstrings
 next: scaladoc/static-site
 ---

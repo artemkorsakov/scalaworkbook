@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Возврат функции в методе"
+section: scala
 prev: functions/write-map
 next: packaging
 ---

@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Macros"
+section: scala
 prev: metaprogramming/compile-time-ops
 next: metaprogramming/quoted-code
 ---

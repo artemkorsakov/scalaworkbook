@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Type Class Derivation"
+section: scala
 prev: abstractions/ca-type-classes
 next: abstractions/ca-multiversal-equality
 ---

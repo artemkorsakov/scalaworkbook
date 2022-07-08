@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Type Lambdas"
+section: scala
 prev: type-system/types-dependent-function
 next: type-system/match-types
 ---

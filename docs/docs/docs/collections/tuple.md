@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Tuple"
+section: scala
 prev: collections/range
 next: collections/queue
 ---

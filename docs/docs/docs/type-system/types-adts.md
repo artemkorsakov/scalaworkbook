@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Алгебр. типы данных"
+section: scala
 prev: type-system/types-union
 next: type-system/types-variance
 ---

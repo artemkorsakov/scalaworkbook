@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Traits"
+section: scala
 prev: modeling/companion-objects
 next: modeling/abstract-class
 ---

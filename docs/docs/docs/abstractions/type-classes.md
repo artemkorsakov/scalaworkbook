@@ -1,6 +1,7 @@
 ---
 layout: docsplus
 title: "Класс типов"
+section: scala
 prev: abstractions/ca-using
 next: abstractions/ca-context-bounds
 ---
