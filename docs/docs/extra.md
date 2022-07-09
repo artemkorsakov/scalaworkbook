@@ -1,8 +1,7 @@
 ---
-layout: docsplus
-title: "Доп. материалы"
-section: scala
-prev: scaladoc/settings
+layout: home
+title:  "Доп. материалы"
+position: 10
 ---
 
 ## Дополнительные материалы

@@ -364,10 +364,6 @@ options:
       - title: Настройки
         url: docs/scaladoc/settings
 
-  - title: Доп. материалы
-    url: docs/extra
-    menu_type: scala
-
   ###########################
   # Functional programming  #
   ###########################
