@@ -369,6 +369,18 @@ options:
     menu_type: scala
 
   ###########################
+  # Functional programming  #
+  ###########################
+
+  - title: Functional programming
+    url: fp/index
+    menu_type: fp
+
+  - title: Next
+    url: fp/next
+    menu_type: fp
+
+  ###########################
   # Type classes options    #
   ###########################
 

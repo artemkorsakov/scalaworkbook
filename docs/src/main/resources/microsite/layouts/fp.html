@@ -1,0 +1,15 @@
+---
+layout: docs
+---
+
+{{ content }}
+
+<hr>
+<div class="edit-button" style="display: flex; justify-content: space-between;">
+    {% if page.prev %}
+    <a href="/scalaworkbook/fp/{{ page.prev }}" class="btn-sm btn-info btn-left"><-- Предыдущая</a>
+    {% endif %}
+    {% if page.next %}
+    <a href="/scalaworkbook/fp/{{ page.next }}" class="btn-sm btn-info btn-right">Следующая --></a>
+    {% endif %}
+</div>

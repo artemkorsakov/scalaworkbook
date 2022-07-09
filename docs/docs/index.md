@@ -20,4 +20,6 @@ technologies:
 
 #### [Обзор Scala](./docs/)
 
-#### [Основные Type Class-ы](./typeclass/)
+#### [Функциональная разработка на Scala](./fp/)
+
+#### [Теория категорий в Scala](./typeclass/)
