@@ -34,6 +34,9 @@ position: 10
 - [Programming in Scala, Fifth Edition by Martin Odersky, Lex Spoon, Bill Venners, and Frank Sommers](https://www.artima.com/shop/programming_in_scala_5ed)
 - на **Scala 2**: [Hello Scala by Alexander Alvin](https://alvinalexander.com/photos/hello-scala-free-pdf-preview/)
 - на **Scala 2**: [Functional Programming by Alexander Alvin](https://alvinalexander.com/photos/functional-programming-simplied-free-pdf-preview/)
+- на **Scala 2**: [Scala Cookbook by Alexander Alvin](https://www.amazon.com/Scala-Cookbook-Object-Oriented-Functional-Programming-dp-1492051543/dp/1492051543?&linkCode=sl1&tag=devdaily-20&linkId=d089a7152c070d0ae50814301bb12d21&language=en_US&ref_=as_li_ss_tl)
+- на **Scala 2**: [Scala for the Impatient by Cay Horstmann](https://horstmann.com/scala/)
+- на **Scala 2**: [Scala & Design Patterns: Exploring Language Expressivity by Frederik Skeel Løkke](https://www.scala-lang.org/old/sites/default/files/FrederikThesis.pdf)
 
 ---
 
