@@ -414,3 +414,15 @@ options:
 
       - title: Monad
         url: typeclass/monad/monad
+
+  ###########################
+  # Design Patterns         #
+  ###########################
+
+  - title: Design Patterns
+    url: design-patterns/index
+    menu_type: dp
+
+  - title: Next
+    url: design-patterns/next
+    menu_type: dp

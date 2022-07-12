@@ -1,5 +1,5 @@
 ---
-layout: home
+layout: page
 title:  "Доп. материалы"
 position: 10
 ---

@@ -23,3 +23,5 @@ technologies:
 #### [Функциональная разработка на Scala](./fp/)
 
 #### [Теория категорий в Scala](./typeclass/)
+
+#### [Паттерны проектирования на Scala](./design-patterns/)
