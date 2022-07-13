@@ -1,0 +1,536 @@
+<!DOCTYPE html><html><head><title>Scala workbook: Моделирование ФП</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Артём Корсаков" /><meta name="description" content="Разработка на Scala." /><meta name="og:image" content="/scalaworkbook/img/poster.png" /><meta name="image" property="og:image" content="/scalaworkbook/img/poster.png" /><meta name="og:title" content="Scala workbook: Моделирование ФП" /><meta name="title" property="og:title" content="Scala workbook: Моделирование ФП" /><meta name="og:site_name" content="Scala workbook" /><meta name="og:url" content="" /><meta name="og:type" content="website" /><meta name="og:description" content="Разработка на Scala." /><link rel="icon" type="image/png" href="/scalaworkbook/img/favicon.png" /><meta name="twitter:title" content="Scala workbook: Моделирование ФП" /><meta name="twitter:image" content="https://artemkorsakov.github.io/scalaworkbook/img/poster.png" /><meta name="twitter:description" content="Разработка на Scala." /><meta name="twitter:card" content="summary_large_image" /><link rel="icon" type="image/png" sizes="16x16" href="/scalaworkbook/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/scalaworkbook/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/scalaworkbook/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/scalaworkbook/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/scalaworkbook/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/scalaworkbook/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/scalaworkbook/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/scalaworkbook/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/scalaworkbook/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/scalaworkbook/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/scalaworkbook/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/scalaworkbook/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/scalaworkbook/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/scalaworkbook/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/scalaworkbook/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/scalaworkbook/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/scalaworkbook/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/scalaworkbook/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/scalaworkbook/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/scalaworkbook/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/scalaworkbook/highlight/styles/vs.css" /><link rel="stylesheet" href="/scalaworkbook/css/pattern-style.css" /><link rel="stylesheet" href="/scalaworkbook/css/override.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/scalaworkbook/" class="brand"><div class="brand-wrapper"><span>Scala workbook</span></div></a></li> <li><a href="/scalaworkbook/docs/index" class="">Обзор Scala</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/start/getting-started" class="">С чего начать?</a></li></ul></li> <li><a href="/scalaworkbook/docs/hello_world" class="">Hello, world!</a></li> <li><a href="/scalaworkbook/docs/repl" class="">REPL</a></li> <li><a href="/scalaworkbook/docs/types" class="">Типы данных</a></li> <li><a href="/scalaworkbook/docs/structures" class="">Структуры управления</a></li> <li><a href="/scalaworkbook/docs/modeling" class="">Моделирование данных</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/modeling/classes" class="">Classes</a></li> <li><a href="/scalaworkbook/docs/modeling/objects" class="">Objects</a></li> <li><a href="/scalaworkbook/docs/modeling/companion-objects" class="">Companion objects</a></li> <li><a href="/scalaworkbook/docs/modeling/traits" class="">Traits</a></li> <li><a href="/scalaworkbook/docs/modeling/abstract-class" class="">Абстрактные классы</a></li> <li><a href="/scalaworkbook/docs/modeling/enums" class="">Enums</a></li> <li><a href="/scalaworkbook/docs/modeling/case-class" class="">Case classes</a></li> <li><a href="/scalaworkbook/docs/modeling/oop" class="">Моделирование ООП</a></li> <li><a href="/scalaworkbook/docs/modeling/fp" class=" active ">Моделирование ФП</a></li></ul></li> <li><a href="/scalaworkbook/docs/methods" class="">Методы</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/methods/method-features" class="">Определение методов</a></li> <li><a href="/scalaworkbook/docs/methods/default-parameters" class="">Параметры по умолчанию</a></li> <li><a href="/scalaworkbook/docs/methods/named-parameters" class="">Именованные параметры</a></li> <li><a href="/scalaworkbook/docs/methods/by-name-parameter" class="">Параметры по имени</a></li> <li><a href="/scalaworkbook/docs/methods/partially-applied-functions" class="">Каррирование</a></li> <li><a href="/scalaworkbook/docs/methods/vararg-parameters" class="">Variable Arguments</a></li> <li><a href="/scalaworkbook/docs/methods/generic-parameter" class="">Generic параметры</a></li> <li><a href="/scalaworkbook/docs/methods/extension-methods" class="">Методы расширения</a></li> <li><a href="/scalaworkbook/docs/methods/main-methods" class="">main методы</a></li></ul></li> <li><a href="/scalaworkbook/docs/functions" class="">Функции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/functions/anonymous" class="">Анонимные функции</a></li> <li><a href="/scalaworkbook/docs/functions/variables" class="">Параметры функции</a></li> <li><a href="/scalaworkbook/docs/functions/eta" class="">Eta расширение</a></li> <li><a href="/scalaworkbook/docs/functions/hofs" class="">Функции высшего порядка</a></li> <li><a href="/scalaworkbook/docs/functions/write-map" class="">Собственный map</a></li> <li><a href="/scalaworkbook/docs/functions/returns-function" class="">Возврат функции в методе</a></li></ul></li> <li><a href="/scalaworkbook/docs/packaging" class="">Пакеты и импорт</a></li> <li><a href="/scalaworkbook/docs/toplevel-definitions" class="">Верхнеур. определения</a></li> <li><a href="/scalaworkbook/docs/collections" class="">Коллекции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/collections/classes" class="">Типы коллекций</a></li> <li><a href="/scalaworkbook/docs/collections/list" class="">List</a></li> <li><a href="/scalaworkbook/docs/collections/lazylist" class="">LazyList</a></li> <li><a href="/scalaworkbook/docs/collections/array-seq" class="">ArraySeq</a></li> <li><a href="/scalaworkbook/docs/collections/vector" class="">Vector</a></li> <li><a href="/scalaworkbook/docs/collections/array-buffer" class="">ArrayBuffer</a></li> <li><a href="/scalaworkbook/docs/collections/maps" class="">Maps</a></li> <li><a href="/scalaworkbook/docs/collections/set" class="">Set</a></li> <li><a href="/scalaworkbook/docs/collections/range" class="">Range</a></li> <li><a href="/scalaworkbook/docs/collections/tuple" class="">Tuple</a></li> <li><a href="/scalaworkbook/docs/collections/queue" class="">Queue</a></li> <li><a href="/scalaworkbook/docs/collections/methods" class="">Методы в коллекциях</a></li></ul></li> <li><a href="/scalaworkbook/docs/fp" class="">Функц. программирование</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/fp/what-is-fp" class="">Что такое ФП?</a></li> <li><a href="/scalaworkbook/docs/fp/immutable-values" class="">Неизменяемые значения</a></li> <li><a href="/scalaworkbook/docs/fp/pure-functions" class="">Чистые функции</a></li> <li><a href="/scalaworkbook/docs/fp/functions-are-values" class="">Функции - это значения</a></li> <li><a href="/scalaworkbook/docs/fp/functional-error-handling" class="">Обработка ошибок</a></li></ul></li> <li><a href="/scalaworkbook/docs/type-system" class="">Система типов</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/type-system/types-inferred" class="">Определение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-generics" class="">Generics типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-intersection" class="">Пересечение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-union" class="">Объединение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-adts" class="">Алгебр. типы данных</a></li> <li><a href="/scalaworkbook/docs/type-system/types-variance" class="">Ковариантность</a></li> <li><a href="/scalaworkbook/docs/type-system/types-opaque" class="">Непрозрачные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-structural" class="">Структурные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-dependent-function" class="">Зависимые типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/type-lambdas" class="">Type Lambdas</a></li> <li><a href="/scalaworkbook/docs/type-system/match-types" class="">Match Types</a></li> <li><a href="/scalaworkbook/docs/type-system/polymorphic-function-types" class="">Полимор. типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/types-others" class="">Другие типы</a></li></ul></li> <li><a href="/scalaworkbook/docs/abstractions" class="">Абстракции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/abstractions/ca-given" class="">Given</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-using" class="">Using</a></li> <li><a href="/scalaworkbook/docs/abstractions/type-classes" class="">Класс типов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-context-bounds" class="">Контекстные границы</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-given-imports" class="">Given imports</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-extension-methods" class="">Методы расш. - детали</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-classes" class="">Импл. type классов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-class-derivation" class="">Type Class Derivation</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-multiversal-equality" class="">Multiversal Equality</a></li> <li><a href="/scalaworkbook/docs/abstractions/context-functions" class="">Контекстные функции</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-implicit-conversions" class="">Неявные преобр.</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-by-name-parameters" class="">Конт. пар. по имени</a></li></ul></li> <li><a href="/scalaworkbook/docs/details" class="">Детали</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/details/export-causes" class="">Предложения export</a></li> <li><a href="/scalaworkbook/docs/details/parameter-untupling" class="">Распаковка параметров</a></li> <li><a href="/scalaworkbook/docs/details/type-test" class="">Проверка типа</a></li> <li><a href="/scalaworkbook/docs/details/pattern-matching" class="">Экстракторы</a></li></ul></li> <li><a href="/scalaworkbook/docs/concurrency" class="">Параллелизм</a></li> <li><a href="/scalaworkbook/docs/tools" class="">Утилиты</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/tools/tools-sbt" class="">Sbt</a></li> <li><a href="/scalaworkbook/docs/tools/tools-worksheets" class="">Worksheet</a></li></ul></li> <li><a href="/scalaworkbook/docs/with_java" class="">Взаимодействие с Java</a></li> <li><a href="/scalaworkbook/docs/metaprogramming" class="">Metaprogramming</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/metaprogramming/inline" class="">Inline</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/compile-time-ops" class="">Compile-time ops</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/macros" class="">Macros</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/quoted-code" class="">Quoted Code</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/runtime-staging" class="">Runtime Staging</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/reflection" class="">Reflection</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/tasty-inspection" class="">TASTy Inspection</a></li></ul></li> <li><a href="/scalaworkbook/docs/soft-keywords" class="">Soft Keywords</a></li> <li><a href="/scalaworkbook/docs/scaladoc" class="">Scaladoc</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/scaladoc/docstrings" class="">Документы</a></li> <li><a href="/scalaworkbook/docs/scaladoc/linking" class="">Ссылки</a></li> <li><a href="/scalaworkbook/docs/scaladoc/static-site" class="">Статика</a></li> <li><a href="/scalaworkbook/docs/scaladoc/blog" class="">Блог</a></li> <li><a href="/scalaworkbook/docs/scaladoc/site-versioning" class="">Версионность</a></li> <li><a href="/scalaworkbook/docs/scaladoc/search-engine" class="">Поиск по типу</a></li> <li><a href="/scalaworkbook/docs/scaladoc/snippet-compiler" class="">Проверка фрагмента</a></li> <li><a href="/scalaworkbook/docs/scaladoc/settings" class="">Настройки</a></li></ul></li>        </ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li class="search-nav hidden-xs hidden-sm"><div id="search-dropdown"><label><i class="fa fa-search"></i>Search</label><input id="search-bar" type="text" placeholder="Enter keywords here..." onclick="displayToggleSearch(event)" /><ul id="search-dropdown-content" class="dropdown dropdown-content"></ul></div></li></ul></div></div></div></div><div id="content" data-github-owner="artemkorsakov" data-github-repo="scalaworkbook"><div class="content-wrapper"><section><h2 id="моделирование-фп">Моделирование ФП</h2>
+
+<p>В этой главе представлено введение в моделирование предметной области 
+с использованием функционального программирования (ФП).</p>
+
+<p>При моделировании с помощью ФП обычно используются следующие конструкции Scala:</p>
+<ul>
+  <li>Enums</li>
+  <li>Case classes</li>
+  <li>Traits</li>
+</ul>
+
+<h3 id="введение">Введение</h3>
+
+<p>В ФП данные и операции над этими данными — это две разные вещи; их необязательно инкапсулировать вместе, как в ООП.</p>
+
+<p>Концепция аналогична числовой алгебре. 
+Когда вы думаете о целых числах, значения которых больше или равны нулю, 
+то у вас есть набор возможных значений, который выглядит следующим образом:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0, 1, 2 ... Int.MaxValue
+</code></pre></div></div>
+
+<p>Игнорируя деление целых чисел, возможные операции над этими значениями такие:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+, -, *
+</code></pre></div></div>
+
+<p>Схема ФП реализуется аналогичным образом:</p>
+<ul>
+  <li>описывается свой набор значений (данные)</li>
+  <li>описываются операции, которые работают с этими значениями (функции)</li>
+</ul>
+
+<blockquote>
+  <p>Как будет видно, рассуждения о программах в этом стиле сильно отличаются 
+от объектно-ориентированного программирования. 
+Отделение функциональности от данных позволяет проверять свои данные, не беспокоясь о поведении.</p>
+</blockquote>
+
+<p>В этой главе мы смоделируем данные и операции для “пиццы” в пиццерии. 
+Будет показано, как реализовать часть “данных” модели Scala/ФП, 
+а затем - несколько различных способов организации операций с этими данными.</p>
+
+<h3 id="моделирование-данных">Моделирование данных</h3>
+
+<p>В Scala достаточно просто описать модель данных:</p>
+<ul>
+  <li>если необходимо смоделировать данные с различными вариантами, то используется конструкция <code class="highlighter-rouge">enum</code></li>
+  <li>если необходимо только сгруппировать сущности (или нужен более детальный контроль), то используются <code class="highlighter-rouge">case class</code>-ы</li>
+</ul>
+
+<h4 id="описание-вариантов">Описание вариантов</h4>
+
+<p>Данные, которые просто состоят из различных вариантов, таких как размер корочки, тип корочки и начинка, 
+кратко моделируются с помощью конструкции <code class="highlighter-rouge">enum</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">enum</span> <span class="nc">CrustSize</span><span class="k">:</span>
+  <span class="kt">case</span> <span class="kt">Small</span><span class="o">,</span> <span class="nc">Medium</span><span class="o">,</span> <span class="nc">Large</span>
+  
+<span class="n">enum</span> <span class="nc">CrustType</span><span class="k">:</span>
+  <span class="kt">case</span> <span class="kt">Thin</span><span class="o">,</span> <span class="nc">Thick</span><span class="o">,</span> <span class="nc">Regular</span>
+  
+<span class="n">enum</span> <span class="nc">Topping</span><span class="k">:</span>
+  <span class="kt">case</span> <span class="kt">Cheese</span><span class="o">,</span> <span class="nc">Pepperoni</span><span class="o">,</span> <span class="nc">BlackOlives</span><span class="o">,</span> <span class="nc">GreenOlives</span><span class="o">,</span> <span class="nc">Onions</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Типы данных, которые описывают различные варианты (например, <code class="highlighter-rouge">CrustSize</code>), 
+также иногда называют типами суммы (<em>sum types</em>).</p>
+</blockquote>
+
+<h4 id="описание-основных-данных">Описание основных данных</h4>
+
+<p>Пиццу можно рассматривать как составной контейнер с различными атрибутами, указанными выше. 
+Мы можем использовать <code class="highlighter-rouge">case class</code>, чтобы описать, что пицца состоит из размеров корки, типа корки 
+и, возможно, нескольких начинок:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">CrustSize.</span><span class="o">*</span>
+<span class="k">import</span> <span class="nn">CrustType.</span><span class="o">*</span>
+<span class="k">import</span> <span class="nn">Topping.</span><span class="o">*</span>
+
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Pizza</span><span class="o">(</span>
+  <span class="n">crustSize</span><span class="k">:</span> <span class="kt">CrustSize</span><span class="o">,</span>
+  <span class="n">crustType</span><span class="k">:</span> <span class="kt">CrustType</span><span class="o">,</span>
+  <span class="n">toppings</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">Topping</span><span class="o">]</span>
+<span class="o">)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Типы данных, объединяющие несколько компонентов (например, <code class="highlighter-rouge">Pizza</code>), 
+также иногда называют типами продуктов (<em>product types</em>).</p>
+</blockquote>
+
+<p>И все. Это модель данных для системы доставки пиццы в стиле ФП. 
+Решение очень лаконично, поскольку оно не требует объединения модели данных с операциями с пиццей. 
+Модель данных легко читается, как объявление дизайна для реляционной базы данных. 
+Также очень легко создавать значения нашей модели данных и проверять их:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">myFavPizza</span> <span class="k">=</span> <span class="nc">Pizza</span><span class="o">(</span><span class="nc">Small</span><span class="o">,</span> <span class="nc">Regular</span><span class="o">,</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Cheese</span><span class="o">,</span> <span class="nc">Pepperoni</span><span class="o">))</span>
+<span class="c1">// myFavPizza: Pizza = Pizza(</span>
+<span class="c1">//   crustSize = Small,</span>
+<span class="c1">//   crustType = Regular,</span>
+<span class="c1">//   toppings = List(Cheese, Pepperoni)</span>
+<span class="c1">// )</span>
+<span class="nf">println</span><span class="o">(</span><span class="nv">myFavPizza</span><span class="o">.</span><span class="py">crustType</span><span class="o">)</span>
+<span class="c1">// Regular</span>
+</code></pre></div></div>
+
+<h5 id="подробнее-о-модели-данных">Подробнее о модели данных</h5>
+
+<p>Таким же образом можно было бы смоделировать всю систему заказа пиццы. 
+Вот несколько других <code class="highlighter-rouge">case class</code>-ов, которые используются для моделирования такой системы:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">case</span> <span class="k">class</span> <span class="nc">Address</span><span class="o">(</span>
+  <span class="n">street1</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span>
+  <span class="n">street2</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">String</span><span class="o">],</span>
+  <span class="n">city</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span>
+  <span class="n">state</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span>
+  <span class="n">zipCode</span><span class="k">:</span> <span class="kt">String</span>
+<span class="o">)</span>
+
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Customer</span><span class="o">(</span>
+  <span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span>
+  <span class="n">phone</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span>
+  <span class="n">address</span><span class="k">:</span> <span class="kt">Address</span>
+<span class="o">)</span>
+
+<span class="k">case</span> <span class="k">class</span> <span class="nc">Order</span><span class="o">(</span>
+  <span class="n">pizzas</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">Pizza</span><span class="o">],</span>
+  <span class="n">customer</span><span class="k">:</span> <span class="kt">Customer</span>
+<span class="o">)</span>
+</code></pre></div></div>
+
+<h5 id="узкие-доменные-объекты">“Узкие доменные объекты”</h5>
+
+<p>В своей книге <a href="https://www.manning.com/books/functional-and-reactive-domain-modeling">Functional and Reactive Domain Modeling</a>, 
+Debasish Ghosh утверждает, 
+что там, где специалисты по ООП описывают свои классы как “широкие модели предметной области”, 
+которые инкапсулируют данные и поведение, 
+модели данных ФП можно рассматривать как “узкие объекты предметной области”. 
+Это связано с тем, что, как показано выше, модели данных определяются как <code class="highlighter-rouge">case class</code>-ы с атрибутами, 
+но без поведения, что приводит к коротким и лаконичным структурам данных.</p>
+
+<h3 id="моделирование-операций">Моделирование операций</h3>
+
+<p>Возникает интересный вопрос: 
+поскольку ФП отделяет данные от операций над этими данными, то как эти операции реализуются в Scala?</p>
+
+<p>Ответ на самом деле довольно прост: пишутся функции/методы, 
+работающие со значениями смоделированных данных. 
+Например, можно определить функцию, которая вычисляет цену пиццы.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">pizzaPrice</span><span class="o">(</span><span class="n">p</span><span class="k">:</span> <span class="kt">Pizza</span><span class="o">)</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="n">p</span> <span class="k">match</span>
+  <span class="k">case</span> <span class="nc">Pizza</span><span class="o">(</span><span class="n">crustSize</span><span class="o">,</span> <span class="n">crustType</span><span class="o">,</span> <span class="n">toppings</span><span class="o">)</span> <span class="k">=&gt;</span>
+    <span class="k">val</span> <span class="nv">base</span>  <span class="k">=</span> <span class="mf">6.00</span>
+    <span class="k">val</span> <span class="nv">crust</span> <span class="k">=</span> <span class="nf">crustPrice</span><span class="o">(</span><span class="n">crustSize</span><span class="o">,</span> <span class="n">crustType</span><span class="o">)</span>
+    <span class="k">val</span> <span class="nv">tops</span>  <span class="k">=</span> <span class="nv">toppings</span><span class="o">.</span><span class="py">map</span><span class="o">(</span><span class="n">toppingPrice</span><span class="o">).</span><span class="py">sum</span>
+    <span class="n">base</span> <span class="o">+</span> <span class="n">crust</span> <span class="o">+</span> <span class="n">tops</span>
+</code></pre></div></div>
+
+<p>Можно заметить, что реализация функции просто повторяет форму данных: 
+поскольку <code class="highlighter-rouge">Pizza</code> является <code class="highlighter-rouge">case class</code>-ом, используется сопоставление с образцом для извлечения компонентов,
+а затем вызываются вспомогательные функции для вычисления отдельных цен.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">toppingPrice</span><span class="o">(</span><span class="n">t</span><span class="k">:</span> <span class="kt">Topping</span><span class="o">)</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="n">t</span> <span class="k">match</span>
+  <span class="k">case</span> <span class="nc">Cheese</span> <span class="o">|</span> <span class="nc">Onions</span> <span class="k">=&gt;</span> <span class="mf">0.5</span>
+  <span class="k">case</span> <span class="nc">Pepperoni</span> <span class="o">|</span> <span class="nc">BlackOlives</span> <span class="o">|</span> <span class="nc">GreenOlives</span> <span class="k">=&gt;</span> <span class="mf">0.75</span>
+</code></pre></div></div>
+
+<p>Точно так же, поскольку <code class="highlighter-rouge">Topping</code> является перечислением, используется сопоставление с образцом, 
+чтобы разделить варианты. Сыр и лук продаются по 50 центов за штуку, остальные — по 75.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">crustPrice</span><span class="o">(</span><span class="n">s</span><span class="k">:</span> <span class="kt">CrustSize</span><span class="o">,</span> <span class="n">t</span><span class="k">:</span> <span class="kt">CrustType</span><span class="o">)</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span>
+  <span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">t</span><span class="o">)</span> <span class="k">match</span>
+    <span class="nf">case</span> <span class="o">(</span><span class="nc">Small</span> <span class="o">|</span> <span class="nc">Medium</span><span class="o">,</span> <span class="k">_</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="mf">0.25</span> <span class="c1">// игнорируем значение t</span>
+    <span class="nf">case</span> <span class="o">(</span><span class="nc">Large</span><span class="o">,</span> <span class="nc">Thin</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="mf">0.50</span>
+    <span class="nf">case</span> <span class="o">(</span><span class="nc">Large</span><span class="o">,</span> <span class="nc">Regular</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="mf">0.75</span>
+    <span class="nf">case</span> <span class="o">(</span><span class="nc">Large</span><span class="o">,</span> <span class="nc">Thick</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="mf">1.00</span>
+</code></pre></div></div>
+
+<p>Чтобы рассчитать цену корки, мы одновременно сопоставляем образцы как по размеру, так и по типу корки.</p>
+
+<blockquote>
+  <p>Важным моментом во всех показанных выше функциях является то, что они являются чистыми функциями (pure functions): 
+они не изменяют данные и не имеют других побочных эффектов (таких, как выдача исключений или запись в файл). 
+Всё, что они делают - это просто получают значения и вычисляют результат.</p>
+</blockquote>
+
+<h3 id="как-организовать-функциональность">Как организовать функциональность?</h3>
+
+<p>При реализации функции расчета цены пиццы, описанной выше, не было сказано, где ее определять.
+В Scala 3 вполне допустимо определить функцию на верхнем уровне файла. 
+Тем не менее язык предоставляет множество отличных инструментов для организации логики 
+в различных пространствах имен и модулях.</p>
+
+<p>Существует несколько способов реализации и организации поведения:</p>
+<ul>
+  <li>определить функции в сопутствующих объектах (companion object)</li>
+  <li>использовать модульный стиль программирования</li>
+  <li>использовать подход “функциональных объектов”</li>
+  <li>определить функциональность в методах расширения</li>
+</ul>
+
+<p>Эти различные решения показаны в оставшейся части этого раздела.</p>
+
+<h4 id="companion-object">Companion Object</h4>
+
+<p>Первый подход — определить поведение (функции) в сопутствующем объекте.</p>
+
+<blockquote>
+  <p>Как обсуждалось в разделе <a href="companion-objects">“Companion objects”</a>, 
+сопутствующий объект — это объект с тем же именем, что и у класса, и объявленный в том же файле, что и класс.</p>
+</blockquote>
+
+<p>При таком подходе в дополнение к <code class="highlighter-rouge">enum</code> или <code class="highlighter-rouge">case class</code> также определяется companion object с таким же именем, 
+который содержит поведение (функции).</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">case</span> <span class="k">class</span> <span class="nc">Pizza</span><span class="o">(</span>
+  <span class="n">crustSize</span><span class="k">:</span> <span class="kt">CrustSize</span><span class="o">,</span>
+  <span class="n">crustType</span><span class="k">:</span> <span class="kt">CrustType</span><span class="o">,</span>
+  <span class="n">toppings</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">Topping</span><span class="o">]</span>
+<span class="o">)</span>
+
+<span class="c1">// companion object для кейс класса Pizza</span>
+<span class="k">object</span> <span class="nc">Pizza</span><span class="k">:</span>
+  <span class="kt">def</span> <span class="kt">price</span><span class="o">(</span><span class="kt">p:</span> <span class="kt">Pizza</span><span class="o">)</span><span class="kt">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">// тоже самое, что и pizzaPrice</span>
+
+<span class="n">enum</span> <span class="nc">Topping</span><span class="k">:</span>
+  <span class="kt">case</span> <span class="kt">Cheese</span><span class="o">,</span> <span class="nc">Pepperoni</span><span class="o">,</span> <span class="nc">BlackOlives</span><span class="o">,</span> <span class="nc">GreenOlives</span><span class="o">,</span> <span class="nc">Onions</span>
+
+<span class="c1">// companion object для перечисления Topping</span>
+<span class="k">object</span> <span class="nc">Topping</span><span class="k">:</span>
+  <span class="kt">def</span> <span class="kt">price</span><span class="o">(</span><span class="kt">t:</span> <span class="kt">Topping</span><span class="o">)</span><span class="kt">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="n">t</span> <span class="k">match</span> <span class="c1">// тоже самое, что и toppingPrice</span>
+    <span class="k">case</span> <span class="nc">Cheese</span> <span class="o">|</span> <span class="nc">Onions</span> <span class="k">=&gt;</span> <span class="mf">0.5</span>
+    <span class="k">case</span> <span class="nc">Pepperoni</span> <span class="o">|</span> <span class="nc">BlackOlives</span> <span class="o">|</span> <span class="nc">GreenOlives</span> <span class="k">=&gt;</span> <span class="mf">0.75</span>
+</code></pre></div></div>
+
+<p>При таком подходе можно создать <code class="highlighter-rouge">Pizza</code> и вычислить ее цену следующим образом:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">pizza1</span> <span class="k">=</span> <span class="nc">Pizza</span><span class="o">(</span><span class="nc">Small</span><span class="o">,</span> <span class="nc">Thin</span><span class="o">,</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Cheese</span><span class="o">,</span> <span class="nc">Onions</span><span class="o">))</span>
+<span class="nv">Pizza</span><span class="o">.</span><span class="py">price</span><span class="o">(</span><span class="n">pizza1</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Группировка функциональности с помощью сопутствующих объектов имеет несколько преимуществ:</p>
+<ul>
+  <li>связывает функциональность с данными и облегчает их поиск программистам (и компилятору).</li>
+  <li>создает пространство имен и, например, позволяет использовать <code class="highlighter-rouge">price</code> в качестве имени метода, 
+не полагаясь на перегрузку.</li>
+  <li>реализация <code class="highlighter-rouge">Topping.price</code> может получить доступ к значениям перечисления, таким как <code class="highlighter-rouge">Cheese</code>, 
+без необходимости их импорта.</li>
+</ul>
+
+<p>Однако также есть несколько компромиссов, которые следует учитывать:</p>
+<ul>
+  <li>модель данных тесно связывается с функциональностью. 
+В частности, сопутствующий объект должен быть определен в том же файле, что и <code class="highlighter-rouge">case class</code>.</li>
+  <li>неясно, где определять такие функции, как <code class="highlighter-rouge">crustPrice</code>, 
+которые с одинаковым успехом можно поместить в сопутствующий объект <code class="highlighter-rouge">CrustSize</code> или <code class="highlighter-rouge">CrustType</code>.</li>
+</ul>
+
+<h3 id="модули">Модули</h3>
+
+<p>Второй способ организации поведения — использование “модульного” подхода. 
+В книге <a href="https://www.artima.com/shop/programming_in_scala_5ed">“Программирование на Scala”</a>
+модуль определяется как “<em>небольшая часть программы с четко определенным интерфейсом и скрытой реализацией</em>”. 
+Давайте посмотрим, что это значит.</p>
+
+<h4 id="создание-интерфейса-pizzaservice">Создание интерфейса <em>PizzaService</em></h4>
+
+<p>Первое, о чем следует подумать, — это “поведение” <code class="highlighter-rouge">Pizza</code>. 
+Делая это, определяем <code class="highlighter-rouge">trait</code> <code class="highlighter-rouge">PizzaServiceInterface</code> следующим образом:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">trait</span> <span class="nc">PizzaServiceInterface</span><span class="k">:</span>
+
+  <span class="kt">def</span> <span class="kt">price</span><span class="o">(</span><span class="kt">p:</span> <span class="kt">Pizza</span><span class="o">)</span><span class="kt">:</span> <span class="kt">Double</span>
+
+  <span class="k">def</span> <span class="nf">addTopping</span><span class="o">(</span><span class="n">p</span><span class="k">:</span> <span class="kt">Pizza</span><span class="o">,</span> <span class="n">t</span><span class="k">:</span> <span class="kt">Topping</span><span class="o">)</span><span class="k">:</span> <span class="kt">Pizza</span>
+  <span class="k">def</span> <span class="nf">removeAllToppings</span><span class="o">(</span><span class="n">p</span><span class="k">:</span> <span class="kt">Pizza</span><span class="o">)</span><span class="k">:</span> <span class="kt">Pizza</span>
+
+  <span class="k">def</span> <span class="nf">updateCrustSize</span><span class="o">(</span><span class="n">p</span><span class="k">:</span> <span class="kt">Pizza</span><span class="o">,</span> <span class="n">cs</span><span class="k">:</span> <span class="kt">CrustSize</span><span class="o">)</span><span class="k">:</span> <span class="kt">Pizza</span>
+  <span class="k">def</span> <span class="nf">updateCrustType</span><span class="o">(</span><span class="n">p</span><span class="k">:</span> <span class="kt">Pizza</span><span class="o">,</span> <span class="n">ct</span><span class="k">:</span> <span class="kt">CrustType</span><span class="o">)</span><span class="k">:</span> <span class="kt">Pizza</span>
+</code></pre></div></div>
+
+<p>Как показано, каждый метод принимает <code class="highlighter-rouge">Pizza</code> в качестве входного параметра вместе с другими параметрами, 
+а затем возвращает экземпляр <code class="highlighter-rouge">Pizza</code> в качестве результата.</p>
+
+<p>Когда пишется такой чистый интерфейс, можно думать о нем как о контракте, в котором говорится: 
+“Все неабстрактные классы, расширяющие этот trait, <em>должны</em> предоставлять реализацию этих сервисов”.</p>
+
+<p>На этом этапе также можно представить, что вы являетесь потребителем этого API. 
+Когда вы это сделаете, будет полезно набросать некоторый пример “потребительского” кода, чтобы убедиться, 
+что API выглядит так, как хотелось:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">p</span> <span class="k">=</span> <span class="nc">Pizza</span><span class="o">(</span><span class="nc">Small</span><span class="o">,</span> <span class="nc">Thin</span><span class="o">,</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Cheese</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">p1</span> <span class="k">=</span> <span class="nf">addTopping</span><span class="o">(</span><span class="n">p</span><span class="o">,</span> <span class="nc">Pepperoni</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">p2</span> <span class="k">=</span> <span class="nf">addTopping</span><span class="o">(</span><span class="n">p1</span><span class="o">,</span> <span class="nc">Onions</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">p3</span> <span class="k">=</span> <span class="nf">updateCrustType</span><span class="o">(</span><span class="n">p2</span><span class="o">,</span> <span class="nc">Thick</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">p4</span> <span class="k">=</span> <span class="nf">updateCrustSize</span><span class="o">(</span><span class="n">p3</span><span class="o">,</span> <span class="nc">Large</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Если с этим кодом все в порядке, как правило, можно начать набрасывать другой API, например API для заказов, 
+но, поскольку сейчас рассматривается только <code class="highlighter-rouge">Pizza</code>, перейдем к созданию конкретной реализации этого интерфейса.</p>
+
+<blockquote>
+  <p>Обратите внимание, что обычно это двухэтапный процесс. 
+На первом шаге набрасывается контракт API в качестве интерфейса. 
+На втором шаге создается конкретная реализация этого интерфейса. 
+В некоторых случаях в конечном итоге создается несколько конкретных реализаций базового интерфейса.</p>
+</blockquote>
+
+<h4 id="создание-конкретной-реализации">Создание конкретной реализации</h4>
+
+<p>Теперь, когда известно, как выглядит <code class="highlighter-rouge">PizzaServiceInterface</code>, можно создать конкретную реализацию, 
+написав тело для всех методов, определенных в интерфейсе:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">object</span> <span class="nc">PizzaService</span> <span class="k">extends</span> <span class="nc">PizzaServiceInterface</span><span class="k">:</span>
+
+  <span class="kt">def</span> <span class="kt">price</span><span class="o">(</span><span class="kt">p:</span> <span class="kt">Pizza</span><span class="o">)</span><span class="kt">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="n">p</span> <span class="k">match</span>
+    <span class="k">case</span> <span class="nc">Pizza</span><span class="o">(</span><span class="n">crustSize</span><span class="o">,</span> <span class="n">crustType</span><span class="o">,</span> <span class="n">toppings</span><span class="o">)</span> <span class="k">=&gt;</span>
+      <span class="k">val</span> <span class="nv">base</span>  <span class="k">=</span> <span class="mf">6.00</span>
+      <span class="k">val</span> <span class="nv">crust</span> <span class="k">=</span> <span class="nf">crustPrice</span><span class="o">(</span><span class="n">crustSize</span><span class="o">,</span> <span class="n">crustType</span><span class="o">)</span>
+      <span class="k">val</span> <span class="nv">tops</span>  <span class="k">=</span> <span class="nv">toppings</span><span class="o">.</span><span class="py">map</span><span class="o">(</span><span class="n">toppingPrice</span><span class="o">).</span><span class="py">sum</span>
+      <span class="n">base</span> <span class="o">+</span> <span class="n">crust</span> <span class="o">+</span> <span class="n">tops</span>
+
+  <span class="k">def</span> <span class="nf">addTopping</span><span class="o">(</span><span class="n">p</span><span class="k">:</span> <span class="kt">Pizza</span><span class="o">,</span> <span class="n">t</span><span class="k">:</span> <span class="kt">Topping</span><span class="o">)</span><span class="k">:</span> <span class="kt">Pizza</span> <span class="o">=</span>
+    <span class="nv">p</span><span class="o">.</span><span class="py">copy</span><span class="o">(</span><span class="n">toppings</span> <span class="k">=</span> <span class="nv">p</span><span class="o">.</span><span class="py">toppings</span> <span class="o">:+</span> <span class="n">t</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="nf">removeAllToppings</span><span class="o">(</span><span class="n">p</span><span class="k">:</span> <span class="kt">Pizza</span><span class="o">)</span><span class="k">:</span> <span class="kt">Pizza</span> <span class="o">=</span>
+    <span class="nv">p</span><span class="o">.</span><span class="py">copy</span><span class="o">(</span><span class="n">toppings</span> <span class="k">=</span> <span class="nv">Seq</span><span class="o">.</span><span class="py">empty</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="nf">updateCrustSize</span><span class="o">(</span><span class="n">p</span><span class="k">:</span> <span class="kt">Pizza</span><span class="o">,</span> <span class="n">cs</span><span class="k">:</span> <span class="kt">CrustSize</span><span class="o">)</span><span class="k">:</span> <span class="kt">Pizza</span> <span class="o">=</span>
+    <span class="nv">p</span><span class="o">.</span><span class="py">copy</span><span class="o">(</span><span class="n">crustSize</span> <span class="k">=</span> <span class="n">cs</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="nf">updateCrustType</span><span class="o">(</span><span class="n">p</span><span class="k">:</span> <span class="kt">Pizza</span><span class="o">,</span> <span class="n">ct</span><span class="k">:</span> <span class="kt">CrustType</span><span class="o">)</span><span class="k">:</span> <span class="kt">Pizza</span> <span class="o">=</span>
+    <span class="nv">p</span><span class="o">.</span><span class="py">copy</span><span class="o">(</span><span class="n">crustType</span> <span class="k">=</span> <span class="n">ct</span><span class="o">)</span>
+
+  <span class="k">private</span> <span class="k">def</span> <span class="nf">toppingPrice</span><span class="o">(</span><span class="n">t</span><span class="k">:</span> <span class="kt">Topping</span><span class="o">)</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="n">t</span> <span class="k">match</span>
+    <span class="k">case</span> <span class="nc">Cheese</span> <span class="o">|</span> <span class="nc">Onions</span> <span class="k">=&gt;</span> <span class="mf">0.5</span>
+    <span class="k">case</span> <span class="nc">Pepperoni</span> <span class="o">|</span> <span class="nc">BlackOlives</span> <span class="o">|</span> <span class="nc">GreenOlives</span> <span class="k">=&gt;</span> <span class="mf">0.75</span>
+  
+  <span class="k">private</span> <span class="k">def</span> <span class="nf">crustPrice</span><span class="o">(</span><span class="n">s</span><span class="k">:</span> <span class="kt">CrustSize</span><span class="o">,</span> <span class="n">t</span><span class="k">:</span> <span class="kt">CrustType</span><span class="o">)</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">t</span><span class="o">)</span> <span class="k">match</span>
+    <span class="nf">case</span> <span class="o">(</span><span class="nc">Small</span> <span class="o">|</span> <span class="nc">Medium</span><span class="o">,</span> <span class="k">_</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="mf">0.25</span>
+    <span class="nf">case</span> <span class="o">(</span><span class="nc">Large</span><span class="o">,</span> <span class="nc">Thin</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="mf">0.50</span>
+    <span class="nf">case</span> <span class="o">(</span><span class="nc">Large</span><span class="o">,</span> <span class="nc">Regular</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="mf">0.75</span>
+    <span class="nf">case</span> <span class="o">(</span><span class="nc">Large</span><span class="o">,</span> <span class="nc">Thick</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="mf">1.00</span>
+    
+<span class="n">end</span> <span class="nc">PizzaService</span>
+</code></pre></div></div>
+
+<p>Хотя двухэтапный процесс создания интерфейса с последующей реализацией не всегда необходим, 
+явное продумывание API и его использования — хороший подход.</p>
+
+<p>Когда все готово, можно использовать <code class="highlighter-rouge">Pizza</code> и <code class="highlighter-rouge">PizzaService</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">PizzaService.</span><span class="o">*</span>
+<span class="k">val</span> <span class="nv">p</span> <span class="k">=</span> <span class="nc">Pizza</span><span class="o">(</span><span class="nc">Small</span><span class="o">,</span> <span class="nc">Thin</span><span class="o">,</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Cheese</span><span class="o">))</span>
+<span class="c1">// p: Pizza = Pizza(crustSize = Small, crustType = Thin, toppings = List(Cheese))</span>
+<span class="k">val</span> <span class="nv">p1</span> <span class="k">=</span> <span class="nf">addTopping</span><span class="o">(</span><span class="n">p</span><span class="o">,</span> <span class="nc">Pepperoni</span><span class="o">)</span>
+<span class="c1">// p1: Pizza = Pizza(crustSize = Small, crustType = Thin, toppings = List(Cheese, Pepperoni))</span>
+<span class="k">val</span> <span class="nv">p2</span> <span class="k">=</span> <span class="nf">addTopping</span><span class="o">(</span><span class="n">p1</span><span class="o">,</span> <span class="nc">Onions</span><span class="o">)</span>
+<span class="c1">// p2: Pizza = Pizza(crustSize = Small, crustType = Thin, toppings = List(Cheese, Pepperoni, Onions))</span>
+<span class="k">val</span> <span class="nv">p3</span> <span class="k">=</span> <span class="nf">updateCrustType</span><span class="o">(</span><span class="n">p2</span><span class="o">,</span> <span class="nc">Thick</span><span class="o">)</span>
+<span class="c1">// p3: Pizza = Pizza(crustSize = Small, crustType = Thick, toppings = List(Cheese, Pepperoni, Onions))</span>
+<span class="k">val</span> <span class="nv">p4</span> <span class="k">=</span> <span class="nf">updateCrustSize</span><span class="o">(</span><span class="n">p3</span><span class="o">,</span> <span class="nc">Large</span><span class="o">)</span>
+<span class="c1">// p4: Pizza = Pizza(crustSize = Large, crustType = Thick, toppings = List(Cheese, Pepperoni, Onions))</span>
+<span class="nf">println</span><span class="o">(</span><span class="nf">price</span><span class="o">(</span><span class="n">p4</span><span class="o">))</span>
+<span class="c1">// 8.75</span>
+</code></pre></div></div>
+
+<h4 id="функциональные-объекты">Функциональные объекты</h4>
+
+<p>В книге <a href="https://www.artima.com/shop/programming_in_scala_5ed">“Программирование на Scala”</a> авторы определяют термин “Функциональные объекты”
+как “объекты, которые не имеют никакого изменяемого состояния”. 
+Это также относится к типам в <code class="highlighter-rouge">scala.collection.immutable</code>. 
+Например, методы в <code class="highlighter-rouge">List</code> не изменяют внутреннего состояния, а вместо этого создают в результате копию <code class="highlighter-rouge">List</code>.</p>
+
+<p>Об этом подходе можно думать, как о “гибридном дизайне ФП/ООП”, потому что:</p>
+<ul>
+  <li>данные моделируются, используя неизменяемые <code class="highlighter-rouge">case class</code>-ы.</li>
+  <li>определяется поведение (методы) того же типа, что и данные.</li>
+  <li>поведение реализуется как чистые функции: они не изменяют никакого внутреннего состояния; скорее - возвращают копию.</li>
+</ul>
+
+<blockquote>
+  <p>Это действительно гибридный подход: как и в дизайне ООП, методы инкапсулированы в класс с данными, 
+но, как это обычно бывает в дизайне ФП, методы реализованы как чистые функции, которые данные не изменяют.</p>
+</blockquote>
+
+<h5 id="пример">Пример</h5>
+
+<p>Используя этот подход, можно напрямую реализовать функциональность пиццы в <code class="highlighter-rouge">case class</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">case</span> <span class="k">class</span> <span class="nc">Pizza</span><span class="o">(</span>
+  <span class="n">crustSize</span><span class="k">:</span> <span class="kt">CrustSize</span><span class="o">,</span>
+  <span class="n">crustType</span><span class="k">:</span> <span class="kt">CrustType</span><span class="o">,</span>
+  <span class="n">toppings</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">Topping</span><span class="o">]</span>
+<span class="o">)</span><span class="k">:</span>
+
+  <span class="c1">// операции этой модели данных</span>
+  <span class="k">def</span> <span class="nf">price</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">// такая же имплементация, как и выше в PizzaService.price</span>
+
+  <span class="k">def</span> <span class="nf">addTopping</span><span class="o">(</span><span class="n">t</span><span class="k">:</span> <span class="kt">Topping</span><span class="o">)</span><span class="k">:</span> <span class="kt">Pizza</span> <span class="o">=</span>
+    <span class="k">this</span><span class="o">.</span><span class="py">copy</span><span class="o">(</span><span class="n">toppings</span> <span class="k">=</span> <span class="k">this</span><span class="o">.</span><span class="py">toppings</span> <span class="o">:+</span> <span class="n">t</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="nf">removeAllToppings</span><span class="k">:</span> <span class="kt">Pizza</span> <span class="o">=</span>
+    <span class="k">this</span><span class="o">.</span><span class="py">copy</span><span class="o">(</span><span class="n">toppings</span> <span class="k">=</span> <span class="nv">Seq</span><span class="o">.</span><span class="py">empty</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="nf">updateCrustSize</span><span class="o">(</span><span class="n">cs</span><span class="k">:</span> <span class="kt">CrustSize</span><span class="o">)</span><span class="k">:</span> <span class="kt">Pizza</span> <span class="o">=</span>
+    <span class="k">this</span><span class="o">.</span><span class="py">copy</span><span class="o">(</span><span class="n">crustSize</span> <span class="k">=</span> <span class="n">cs</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="nf">updateCrustType</span><span class="o">(</span><span class="n">ct</span><span class="k">:</span> <span class="kt">CrustType</span><span class="o">)</span><span class="k">:</span> <span class="kt">Pizza</span> <span class="o">=</span>
+    <span class="k">this</span><span class="o">.</span><span class="py">copy</span><span class="o">(</span><span class="n">crustType</span> <span class="k">=</span> <span class="n">ct</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Обратите внимание, что в отличие от предыдущих подходов, поскольку это методы класса <code class="highlighter-rouge">Pizza</code>, 
+они не принимают ссылку <code class="highlighter-rouge">Pizza</code> в качестве входного параметра. 
+Вместо этого у них есть собственная ссылка на текущий экземпляр пиццы - <code class="highlighter-rouge">this</code>.</p>
+
+<p>Теперь можно использовать этот новый дизайн следующим образом:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Pizza</span><span class="o">(</span><span class="nc">Small</span><span class="o">,</span> <span class="nc">Thin</span><span class="o">,</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Cheese</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">addTopping</span><span class="o">(</span><span class="nc">Pepperoni</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">updateCrustType</span><span class="o">(</span><span class="nc">Thick</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">price</span>
+</code></pre></div></div>
+
+<h4 id="методы-расширения">Методы расширения</h4>
+
+<p>Методы расширения - подход, который находится где-то между первым (определение функций в сопутствующем объекте) 
+и последним (определение функций как методов самого типа).</p>
+
+<p>Методы расширения позволяют создавать API, похожий на API функционального объекта, 
+без необходимости определять функции как методы самого типа. 
+Это может иметь несколько преимуществ:</p>
+<ul>
+  <li>модель данных снова очень лаконична и не упоминает никакого поведения.</li>
+  <li>можно задним числом развить функциональность типов дополнительными методами, не изменяя исходного определения.</li>
+  <li>помимо сопутствующих объектов или прямых методов типов, 
+методы расширения могут быть определены извне в другом файле.</li>
+</ul>
+
+<p>Вернемся к примеру:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">case</span> <span class="k">class</span> <span class="nc">Pizza</span><span class="o">(</span>
+  <span class="n">crustSize</span><span class="k">:</span> <span class="kt">CrustSize</span><span class="o">,</span>
+  <span class="n">crustType</span><span class="k">:</span> <span class="kt">CrustType</span><span class="o">,</span>
+  <span class="n">toppings</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">Topping</span><span class="o">]</span>
+<span class="o">)</span>
+
+<span class="nf">extension</span> <span class="o">(</span><span class="n">p</span><span class="k">:</span> <span class="kt">Pizza</span><span class="o">)</span>
+  <span class="k">def</span> <span class="nf">price</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span>
+    <span class="nf">pizzaPrice</span><span class="o">(</span><span class="n">p</span><span class="o">)</span> <span class="c1">// имплементация выше</span>
+
+  <span class="k">def</span> <span class="nf">addTopping</span><span class="o">(</span><span class="n">t</span><span class="k">:</span> <span class="kt">Topping</span><span class="o">)</span><span class="k">:</span> <span class="kt">Pizza</span> <span class="o">=</span>
+    <span class="nv">p</span><span class="o">.</span><span class="py">copy</span><span class="o">(</span><span class="n">toppings</span> <span class="k">=</span> <span class="nv">p</span><span class="o">.</span><span class="py">toppings</span> <span class="o">:+</span> <span class="n">t</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="nf">removeAllToppings</span><span class="k">:</span> <span class="kt">Pizza</span> <span class="o">=</span>
+    <span class="nv">p</span><span class="o">.</span><span class="py">copy</span><span class="o">(</span><span class="n">toppings</span> <span class="k">=</span> <span class="nv">Seq</span><span class="o">.</span><span class="py">empty</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="nf">updateCrustSize</span><span class="o">(</span><span class="n">cs</span><span class="k">:</span> <span class="kt">CrustSize</span><span class="o">)</span><span class="k">:</span> <span class="kt">Pizza</span> <span class="o">=</span>
+    <span class="nv">p</span><span class="o">.</span><span class="py">copy</span><span class="o">(</span><span class="n">crustSize</span> <span class="k">=</span> <span class="n">cs</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="nf">updateCrustType</span><span class="o">(</span><span class="n">ct</span><span class="k">:</span> <span class="kt">CrustType</span><span class="o">)</span><span class="k">:</span> <span class="kt">Pizza</span> <span class="o">=</span>
+    <span class="nv">p</span><span class="o">.</span><span class="py">copy</span><span class="o">(</span><span class="n">crustType</span> <span class="k">=</span> <span class="n">ct</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>В приведенном выше коде различные методы для пиццы определяются как методы расширения (extension methods). 
+Код <code class="highlighter-rouge">extension (p: Pizza)</code> говорит о том, что мы хотим сделать методы доступными для экземпляров <code class="highlighter-rouge">Pizza</code>, 
+и в дальнейшем ссылаемся на экземпляр, который расширяем, как <code class="highlighter-rouge">p</code>.</p>
+
+<p>Таким образом, получается тот же API, что и раньше:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Pizza</span><span class="o">(</span><span class="nc">Small</span><span class="o">,</span> <span class="nc">Thin</span><span class="o">,</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Cheese</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">addTopping</span><span class="o">(</span><span class="nc">Pepperoni</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">updateCrustType</span><span class="o">(</span><span class="nc">Thick</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">price</span>
+</code></pre></div></div>
+
+<p>При этом методы расширения можно определить в любом другом модуле. 
+Как правило, если вы являетесь разработчиком модели данных, вы определяете свои методы расширения в сопутствующем объекте. 
+Таким образом, они уже доступны всем пользователям. 
+В противном случае методы расширения должны быть импортированы явно, чтобы их можно было использовать.</p>
+
+<h3 id="резюме-функционального-подхода">Резюме функционального подхода</h3>
+
+<p>Определение модели данных в Scala/ФП, как правило, простое: 
+моделируются варианты данных с помощью <code class="highlighter-rouge">enum</code>-ов и составных данных с помощью <code class="highlighter-rouge">case class</code>-ов. 
+Затем, чтобы смоделировать поведение, определяются функции, которые работают со значениями модели данных. 
+Были рассмотрены разные способы организации функций:</p>
+<ul>
+  <li>можно поместить методы в сопутствующие объекты</li>
+  <li>можно использовать модульный стиль программирования, разделяющий интерфейс и реализацию</li>
+  <li>можно использовать подход “функциональных объектов” и хранить методы в определенном типе данных</li>
+  <li>можно использовать методы расширения, чтобы снабдить модель данных функциональностью</li>
+</ul>
+
+<hr />
+
+<p><strong>References:</strong></p>
+<ul>
+  <li><a href="https://docs.scala-lang.org/scala3/book/domain-modeling-fp.html">Scala3 book, domain modeling fp</a></li>
+  <li><a href="https://docs.scala-lang.org/scala3/book/taste-modeling.html">Scala3 book, taste modeling</a></li>
+  <li><a href="https://docs.scala-lang.org/scala3/book/taste-objects.html">Scala3 book, taste objects</a></li>
+</ul>
+
+
+
+<hr>
+<div class="edit-button" style="display: flex; justify-content: space-between;">
+    
+    <a href="/scalaworkbook/docs/modeling/oop" class="btn-sm btn-info btn-left"><-- Предыдущая</a>
+    
+    
+    <a href="/scalaworkbook/docs/methods" class="btn-sm btn-info btn-right">Следующая --></a>
+    
+</div>
+</section><div class="edit-button"><a href="https://github.com/artemkorsakov/scalaworkbook/edit/main/docs/docs/docs/modeling/fp.md" target="_blank" rel="noopener noreferrer" class="btn-sm btn-info">Редактировать страницу</a></div></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalaworkbook/highlight/highlight.pack.js"></script><script src="/scalaworkbook/lunr/lunr.js"></script><script>
+// For all code blocks, copy the language from the containing div
+// to the inner code tag (where hljs expects it to be)
+const langPrefix = 'language-';
+document.querySelectorAll(`div[class^='${langPrefix}']`).forEach(function(div) {
+  div.classList.forEach(function(cssClass) {
+    if (cssClass.startsWith(langPrefix)) {
+      const lang = cssClass.substring(langPrefix.length);
+      div.querySelectorAll('pre code').forEach(function(code) {
+        code.classList.add(lang);
+      });
+    }
+  });
+});
+
+hljs.configure({languages:['scala','java','bash']});
+hljs.initHighlightingOnLoad();
+      </script><script>console.info('\x57\x65\x62\x73\x69\x74\x65\x20\x62\x75\x69\x6c\x74\x20\x77\x69\x74\x68\x3a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x5f\x5f\x0a\x20\x20\x20\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x5f\x20\x20\x2f\x20\x2f\x5f\x20\x20\x20\x20\x20\x20\x5f\x5f\x5f\x5f\x20\x5f\x5f\x5f\x20\x20\x28\x5f\x29\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x28\x5f\x29\x20\x2f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x0a\x20\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x60\x5f\x5f\x20\x5c\x2f\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x20\x2f\x20\x5f\x5f\x2f\x20\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x0a\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x5f\x2f\x20\x2f\x20\x2f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x5f\x5f\x2f\x20\x2f\x20\x20\x2f\x20\x2f\x5f\x2f\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x20\x2f\x5f\x2f\x20\x20\x5f\x5f\x28\x5f\x5f\x20\x20\x29\x0a\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2e\x5f\x5f\x5f\x2f\x5c\x5f\x5f\x2f\x20\x20\x20\x20\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x2f\x20\x20\x20\x5c\x5f\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x0a\x0a\x68\x74\x74\x70\x73\x3a\x2f\x2f\x34\x37\x64\x65\x67\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x73\x62\x74\x2d\x6d\x69\x63\x72\x6f\x73\x69\x74\x65\x73')</script><script src="/scalaworkbook/js/search.js"></script><script src="/scalaworkbook/js/main.js"></script></body></html>
