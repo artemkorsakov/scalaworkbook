@@ -58,7 +58,8 @@ lazy val docs = project
       "SCALA" -> Scala3,
       "SBT_VERSION" -> "1.6.2",
       "DOC" -> "/scalaworkbook/docs/",
-      "API" -> "/scalaworkbook/api/"
+      "API" -> "/scalaworkbook/api/",
+      "PATTERNS" -> "/scalaworkbook/design-patterns/",
     ),
     ScalaUnidoc / unidoc / unidocProjectFilter := inProjects(scaladoc),
     ScalaUnidoc / siteSubdirName := "api",

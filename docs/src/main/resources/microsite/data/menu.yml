@@ -426,3 +426,7 @@ options:
   - title: Abstract Factory
     url: design-patterns/abstract-factory
     menu_type: dp
+
+  - title: Builder
+    url: design-patterns/builder
+    menu_type: dp
