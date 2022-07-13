@@ -26,7 +26,7 @@ lazy val docs = project
   .enablePlugins(MicrositesPlugin, ScalaUnidocPlugin)
   .settings(
     micrositeName := "Scala workbook",
-    micrositeDescription := "Функциональная разработка на Scala.",
+    micrositeDescription := "Разработка на Scala.",
     micrositeUrl := "https://artemkorsakov.github.io",
     micrositeBaseUrl := "/scalaworkbook",
     micrositeDocumentationUrl := "/scalaworkbook/docs",

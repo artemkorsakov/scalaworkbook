@@ -423,6 +423,6 @@ options:
     url: design-patterns/index
     menu_type: dp
 
-  - title: Next
-    url: design-patterns/next
+  - title: Abstract Factory
+    url: design-patterns/abstract-factory
     menu_type: dp
