@@ -450,3 +450,67 @@ options:
   - title: Bridge
     url: design-patterns/bridge
     menu_type: dp
+
+  - title: Composite
+    url: design-patterns/composite
+    menu_type: dp
+
+  - title: Decorator
+    url: design-patterns/decorator
+    menu_type: dp
+
+  - title: Facade
+    url: design-patterns/facade
+    menu_type: dp
+
+  - title: Flyweight
+    url: design-patterns/flyweidht
+    menu_type: dp
+
+  - title: Proxy
+    url: design-patterns/proxy
+    menu_type: dp
+
+  - title: Interpreter
+    url: design-patterns/interpreter
+    menu_type: dp
+
+  - title: Template Method
+    url: design-patterns/template-method
+    menu_type: dp
+
+  - title: Chain of Responsibility
+    url: design-patterns/chain-of-responsibility
+    menu_type: dp
+
+  - title: Command
+    url: design-patterns/command
+    menu_type: dp
+
+  - title: Iterator
+    url: design-patterns/iterator
+    menu_type: dp
+
+  - title: Mediator
+    url: design-patterns/mediator
+    menu_type: dp
+
+  - title: Memento
+    url: design-patterns/memento
+    menu_type: dp
+
+  - title: Observer
+    url: design-patterns/observer
+    menu_type: dp
+
+  - title: State
+    url: design-patterns/state
+    menu_type: dp
+
+  - title: Strategy
+    url: design-patterns/strategy
+    menu_type: dp
+
+  - title: Visitor
+    url: design-patterns/visitor
+    menu_type: dp
