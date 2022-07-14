@@ -430,3 +430,11 @@ options:
   - title: Builder
     url: design-patterns/builder
     menu_type: dp
+
+  - title: Factory Method
+    url: design-patterns/factory-method
+    menu_type: dp
+
+  - title: Prototype
+    url: design-patterns/prototype
+    menu_type: dp

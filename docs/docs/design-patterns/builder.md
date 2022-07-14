@@ -3,6 +3,7 @@ layout: dp
 title: "Builder"
 section: dp
 prev: abstract-factory
+next: factory-method
 ---
 
 ## {{page.title}}
