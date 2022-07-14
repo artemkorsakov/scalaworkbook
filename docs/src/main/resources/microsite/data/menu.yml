@@ -442,3 +442,11 @@ options:
   - title: Singleton
     url: design-patterns/singleton
     menu_type: dp
+
+  - title: Adapter
+    url: design-patterns/adapter
+    menu_type: dp
+
+  - title: Bridge
+    url: design-patterns/bridge
+    menu_type: dp
