@@ -3,6 +3,7 @@ layout: dp
 title: "Prototype"
 section: dp
 prev: factory-method
+next: singleton
 ---
 
 ## {{page.title}}

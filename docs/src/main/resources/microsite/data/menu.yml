@@ -438,3 +438,7 @@ options:
   - title: Prototype
     url: design-patterns/prototype
     menu_type: dp
+
+  - title: Singleton
+    url: design-patterns/singleton
+    menu_type: dp
