@@ -10,18 +10,37 @@ next: flyweidht
 
 #### Назначение
 
-???
+Предоставление унифицированного интерфейса набору интерфейсов в подсистеме. 
+`Facade` определяет высокоуровневый интерфейс, упрощающий использование подсистемы
 
 #### Диаграмма
 
-![Facade](https://commons.wikimedia.org/wiki/File:UML_DP_Fa%C3%A7ade.png?uselang=ru)
+![Facade](https://upload.wikimedia.org/wikipedia/commons/5/56/UML_DP_Fa%C3%A7ade.png?uselang=ru)
 
 #### Пример
 
-???
+```scala mdoc:silent
+trait Facade:
+  type A <: SubSystemA
+  type B <: SubSystemB
+  protected val subA: A
+  protected val subB: B
+  def foo(): Unit = subB.foo(subA)
+  protected class SubSystemA
+  protected class SubSystemB:
+    def foo(sub: SubSystemA): Unit = println("Calling foo")
+end Facade
+
+object FacadeA extends Facade:
+  type A = SubSystemA
+  type B = SubSystemB
+  val subA: A = new SubSystemA
+  val subB: B = new SubSystemB
+end FacadeA
+```
 
 ```scala mdoc
-
+FacadeA.foo()
 ```
 
 
