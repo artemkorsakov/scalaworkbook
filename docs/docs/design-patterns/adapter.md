@@ -15,7 +15,7 @@ next: bridge
 
 #### Диаграмма
 
-![Adapter](https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Adapter_pattern.svg)
+![Adapter](https://upload.wikimedia.org/wikipedia/ru/0/04/Adapter_pattern.svg)
 
 #### Пример
 
