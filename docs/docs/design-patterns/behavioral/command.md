@@ -10,18 +10,21 @@ next: behavioral/iterator
 
 #### Назначение
 
-???
+Инкапсулировать запрос как объект, тем самым позволяя параметризовать клиентов с различными запросами, 
+ставить в очередь или регистрировать запросы и поддерживать операции, которые можно отменить.
 
 #### Диаграмма
 
-![Command](https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Command.gif)
+![Command](https://upload.wikimedia.org/wikipedia/ru/0/0c/Command.gif)
 
 #### Пример
 
-???
+Класс `Button` ожидает функцию обратного вызова, которую он будет выполнять при вызове метода `click`.
 
 ```scala mdoc
-
+class Button(val click: () => Unit)
+val button = new Button(() => println("click!"))
+button.click()
 ```
 
 
