@@ -3,7 +3,7 @@ layout: dp
 title: "Builder"
 section: dp
 prev: creational/abstract-factory
-next: creational/factory-method
+next: creational/prototype
 ---
 
 ## {{page.title}}

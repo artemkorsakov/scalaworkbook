@@ -2,7 +2,7 @@
 layout: dp
 title: "Abstract Factory"
 section: dp
-prev: creational
+prev: creational/factory-method
 next: creational/builder
 ---
 

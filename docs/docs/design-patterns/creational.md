@@ -2,7 +2,8 @@
 layout: dp
 title: "Creational Patterns"
 section: dp
-next: creational/abstract-factory
+prev: index
+next: creational/factory-method
 ---
 
 ## {{page.title}}

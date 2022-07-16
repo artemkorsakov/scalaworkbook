@@ -2,7 +2,7 @@
 layout: dp
 title: "Prototype"
 section: dp
-prev: creational/factory-method
+prev: creational/builder
 next: creational/singleton
 ---
 

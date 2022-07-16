@@ -428,14 +428,14 @@ options:
     menu_type: dp
 
     nested_options:
+      - title: Factory Method
+        url: design-patterns/creational/factory-method
+
       - title: Abstract Factory
         url: design-patterns/creational/abstract-factory
 
       - title: Builder
         url: design-patterns/creational/builder
-
-      - title: Factory Method
-        url: design-patterns/creational/factory-method
 
       - title: Prototype
         url: design-patterns/creational/prototype

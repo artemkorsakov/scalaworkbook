@@ -24,7 +24,17 @@ next: behavioral/command
 
 #### Пример
 
-???
+```scala mdoc
+
+```
+
+```scala mdoc
+
+```
+
+```scala mdoc
+
+```
 
 ```scala mdoc
 
