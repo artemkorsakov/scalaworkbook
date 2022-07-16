@@ -2,7 +2,7 @@
 layout: dp
 title: "Visitor"
 section: dp
-prev: strategy
+prev: behavioral/strategy
 ---
 
 ## {{page.title}}

@@ -2,8 +2,8 @@
 layout: dp
 title: "Factory Method"
 section: dp
-prev: builder
-next: prototype
+prev: creational/builder
+next: creational/prototype
 ---
 
 ## {{page.title}}

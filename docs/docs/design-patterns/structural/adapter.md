@@ -2,8 +2,8 @@
 layout: dp
 title: "Adapter"
 section: dp
-prev: singleton
-next: bridge
+prev: structural
+next: structural/bridge
 ---
 
 ## {{page.title}}

@@ -2,8 +2,8 @@
 layout: dp
 title: "Composite"
 section: dp
-prev: bridge
-next: decorator
+prev: structural/bridge
+next: structural/decorator
 ---
 
 ## {{page.title}}

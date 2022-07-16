@@ -2,8 +2,8 @@
 layout: dp
 title: "Prototype"
 section: dp
-prev: factory-method
-next: singleton
+prev: creational/factory-method
+next: creational/singleton
 ---
 
 ## {{page.title}}

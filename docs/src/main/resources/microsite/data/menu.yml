@@ -423,94 +423,86 @@ options:
     url: design-patterns/index
     menu_type: dp
 
-  - title: Abstract Factory
-    url: design-patterns/abstract-factory
+  - title: Creational Patterns
+    url: design-patterns/creational
     menu_type: dp
 
-  - title: Builder
-    url: design-patterns/builder
+    nested_options:
+      - title: Abstract Factory
+        url: design-patterns/creational/abstract-factory
+
+      - title: Builder
+        url: design-patterns/creational/builder
+
+      - title: Factory Method
+        url: design-patterns/creational/factory-method
+
+      - title: Prototype
+        url: design-patterns/creational/prototype
+
+      - title: Singleton
+        url: design-patterns/creational/singleton
+
+  - title: Structural Patterns
+    url: design-patterns/structural
     menu_type: dp
 
-  - title: Factory Method
-    url: design-patterns/factory-method
+    nested_options:
+      - title: Adapter
+        url: design-patterns/structural/adapter
+
+      - title: Bridge
+        url: design-patterns/structural/bridge
+
+      - title: Composite
+        url: design-patterns/structural/composite
+
+      - title: Decorator
+        url: design-patterns/structural/decorator
+
+      - title: Facade
+        url: design-patterns/structural/facade
+
+      - title: Flyweight
+        url: design-patterns/structural/flyweight
+
+      - title: Proxy
+        url: design-patterns/structural/proxy
+
+  - title: Behavioral Patterns
+    url: design-patterns/behavioral
     menu_type: dp
 
-  - title: Prototype
-    url: design-patterns/prototype
-    menu_type: dp
+    nested_options:
+      - title: Interpreter
+        url: design-patterns/behavioral/interpreter
 
-  - title: Singleton
-    url: design-patterns/singleton
-    menu_type: dp
+      - title: Template Method
+        url: design-patterns/behavioral/template-method
 
-  - title: Adapter
-    url: design-patterns/adapter
-    menu_type: dp
+      - title: Chain of Responsibility
+        url: design-patterns/behavioral/chain-of-responsibility
 
-  - title: Bridge
-    url: design-patterns/bridge
-    menu_type: dp
+      - title: Command
+        url: design-patterns/behavioral/command
 
-  - title: Composite
-    url: design-patterns/composite
-    menu_type: dp
+      - title: Iterator
+        url: design-patterns/behavioral/iterator
 
-  - title: Decorator
-    url: design-patterns/decorator
-    menu_type: dp
+      - title: Mediator
+        url: design-patterns/behavioral/mediator
 
-  - title: Facade
-    url: design-patterns/facade
-    menu_type: dp
+      - title: Memento
+        url: design-patterns/behavioral/memento
 
-  - title: Flyweight
-    url: design-patterns/flyweidht
-    menu_type: dp
+      - title: Observer
+        url: design-patterns/behavioral/observer
 
-  - title: Proxy
-    url: design-patterns/proxy
-    menu_type: dp
+      - title: State
+        url: design-patterns/behavioral/state
 
-  - title: Interpreter
-    url: design-patterns/interpreter
-    menu_type: dp
+      - title: Strategy
+        url: design-patterns/behavioral/strategy
 
-  - title: Template Method
-    url: design-patterns/template-method
-    menu_type: dp
-
-  - title: Chain of Responsibility
-    url: design-patterns/chain-of-responsibility
-    menu_type: dp
-
-  - title: Command
-    url: design-patterns/command
-    menu_type: dp
-
-  - title: Iterator
-    url: design-patterns/iterator
-    menu_type: dp
-
-  - title: Mediator
-    url: design-patterns/mediator
-    menu_type: dp
-
-  - title: Memento
-    url: design-patterns/memento
-    menu_type: dp
-
-  - title: Observer
-    url: design-patterns/observer
-    menu_type: dp
-
-  - title: State
-    url: design-patterns/state
-    menu_type: dp
-
-  - title: Strategy
-    url: design-patterns/strategy
-    menu_type: dp
-
-  - title: Visitor
-    url: design-patterns/visitor
-    menu_type: dp
+      - title: Visitor
+        url: design-patterns/behavioral/visitor

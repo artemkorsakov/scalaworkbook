@@ -2,8 +2,8 @@
 layout: dp
 title: "Abstract Factory"
 section: dp
-prev: index
-next: builder
+prev: creational
+next: creational/builder
 ---
 
 ## {{page.title}}

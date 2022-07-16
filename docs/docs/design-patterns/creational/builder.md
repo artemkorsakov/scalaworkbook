@@ -2,8 +2,8 @@
 layout: dp
 title: "Builder"
 section: dp
-prev: abstract-factory
-next: factory-method
+prev: creational/abstract-factory
+next: creational/factory-method
 ---
 
 ## {{page.title}}

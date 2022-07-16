@@ -2,8 +2,8 @@
 layout: dp
 title: "Observer"
 section: dp
-prev: memento
-next: state
+prev: behavioral/memento
+next: behavioral/state
 ---
 
 ## {{page.title}}

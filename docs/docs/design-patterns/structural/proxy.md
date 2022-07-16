@@ -2,8 +2,8 @@
 layout: dp
 title: "Proxy"
 section: dp
-prev: flyweidht
-next: interpreter
+prev: structural/flyweight
+next: behavioral
 ---
 
 ## {{page.title}}

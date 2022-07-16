@@ -2,8 +2,8 @@
 layout: dp
 title: "Interpreter"
 section: dp
-prev: proxy
-next: template-method
+prev: behavioral
+next: behavioral/template-method
 ---
 
 ## {{page.title}}

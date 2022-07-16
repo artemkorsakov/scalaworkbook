@@ -2,8 +2,8 @@
 layout: dp
 title: "Memento"
 section: dp
-prev: mediator
-next: observer
+prev: behavioral/mediator
+next: behavioral/observer
 ---
 
 ## {{page.title}}

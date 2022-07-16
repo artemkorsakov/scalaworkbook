@@ -2,8 +2,8 @@
 layout: dp
 title: "State"
 section: dp
-prev: observer
-next: strategy
+prev: behavioral/observer
+next: behavioral/strategy
 ---
 
 ## {{page.title}}

@@ -2,8 +2,8 @@
 layout: dp
 title: "Decorator"
 section: dp
-prev: composite
-next: facade
+prev: structural/composite
+next: structural/facade
 ---
 
 ## {{page.title}}

@@ -2,8 +2,8 @@
 layout: dp
 title: "Singleton"
 section: dp
-prev: prototype
-next: adapter
+prev: creational/prototype
+next: structural
 ---
 
 ## {{page.title}}

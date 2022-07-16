@@ -2,8 +2,8 @@
 layout: dp
 title: "Iterator"
 section: dp
-prev: command
-next: mediator
+prev: behavioral/command
+next: behavioral/mediator
 ---
 
 ## {{page.title}}

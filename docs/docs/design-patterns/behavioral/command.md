@@ -2,8 +2,8 @@
 layout: dp
 title: "Command"
 section: dp
-prev: chain-of-responsibility
-next: iterator
+prev: behavioral/chain-of-responsibility
+next: behavioral/iterator
 ---
 
 ## {{page.title}}

@@ -2,8 +2,8 @@
 layout: dp
 title: "Flyweight"
 section: dp
-prev: facade
-next: proxy
+prev: structural/facade
+next: structural/proxy
 ---
 
 ## {{page.title}}

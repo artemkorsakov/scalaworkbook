@@ -2,8 +2,8 @@
 layout: dp
 title: "Template Method"
 section: dp
-prev: interpreter
-next: chain-of-responsibility
+prev: behavioral/interpreter
+next: behavioral/chain-of-responsibility
 ---
 
 ## {{page.title}}

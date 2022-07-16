@@ -2,8 +2,8 @@
 layout: dp
 title: "Bridge"
 section: dp
-prev: adapter
-next: composite
+prev: structural/adapter
+next: structural/composite
 ---
 
 ## {{page.title}}

@@ -2,8 +2,8 @@
 layout: dp
 title: "Facade"
 section: dp
-prev: decorator
-next: flyweidht
+prev: structural/decorator
+next: structural/flyweight
 ---
 
 ## {{page.title}}
