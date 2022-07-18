@@ -14,7 +14,7 @@ next: behavioral/visitor
 
 #### Диаграмма
 
-![Strategy](https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Strategy_pattern.PNG)
+![Strategy](https://upload.wikimedia.org/wikipedia/ru/4/4c/Strategy_pattern.PNG)
 
 #### Пример
 

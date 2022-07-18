@@ -13,7 +13,7 @@ prev: behavioral/strategy
 
 #### Диаграмма
 
-![Visitor](https://commons.wikimedia.org/wiki/File:VisitorDiagram.svg?uselang=ru)
+![Visitor](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/VisitorDiagram.svg/515px-VisitorDiagram.svg.png?uselang=ru)
 
 #### Пример
 

@@ -14,7 +14,7 @@ next: behavioral/chain-of-responsibility
 
 #### Диаграмма
 
-![Template Method](https://commons.wikimedia.org/wiki/File:Template_Method_UML.svg?uselang=ru)
+![Template Method](https://upload.wikimedia.org/wikipedia/commons/5/52/Template_Method_UML.svg?uselang=ru)
 
 #### Пример
 

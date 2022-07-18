@@ -14,7 +14,7 @@ next: behavioral/observer
 
 #### Диаграмма
 
-![Memento](https://commons.wikimedia.org/wiki/File:Memento_design_pattern.png?uselang=ru)
+![Memento](https://upload.wikimedia.org/wikipedia/commons/1/18/Memento_design_pattern.png?uselang=ru)
 
 #### Пример
 

@@ -14,7 +14,7 @@ next: behavioral/state
 
 #### Диаграмма
 
-![Observer](https://commons.wikimedia.org/wiki/File:Observer_UML_smal.png?uselang=ru)
+![Observer](https://upload.wikimedia.org/wikipedia/commons/b/bd/Observer_UML_smal.png?uselang=ru)
 
 #### Пример
 

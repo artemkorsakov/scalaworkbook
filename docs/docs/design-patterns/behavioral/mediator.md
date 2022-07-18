@@ -14,7 +14,7 @@ next: behavioral/memento
 
 #### Диаграмма
 
-![Mediator](https://commons.wikimedia.org/wiki/File:Mediator_design_pattern.png?uselang=ru)
+![Mediator](https://upload.wikimedia.org/wikipedia/commons/e/e4/Mediator_design_pattern.png?uselang=ru)
 
 #### Пример
 
