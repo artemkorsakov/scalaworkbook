@@ -10,7 +10,8 @@ next: behavioral/observer
 
 #### Назначение
 
-???
+Не нарушая инкапсуляцию, захватить и вывести наружу внутреннее состояние объекта, 
+чтобы объект можно было позже восстановить в это состояние.
 
 #### Диаграмма
 
@@ -18,10 +19,15 @@ next: behavioral/observer
 
 #### Пример
 
-???
-
 ```scala mdoc
+trait Originator:
+  def createMemento: Memento
 
+  def setMemento(m: Memento): Unit
+
+  trait Memento:
+    def getState: Originator
+    def setState(originator: Originator): Unit
 ```
 
 
