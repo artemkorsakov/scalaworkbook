@@ -9,7 +9,8 @@ prev: behavioral/strategy
 
 #### Назначение
 
-???
+Представление операции, которая должна быть выполнена над элементами структуры объекта. 
+Visitor позволяет определить новую операцию без изменения классов элементов, над которыми она работает.
 
 #### Диаграмма
 
@@ -17,10 +18,29 @@ prev: behavioral/strategy
 
 #### Пример
 
-???
+```scala mdoc:silent
+trait Expr
+case class Num(n: Int) extends Expr
+case class Sum(l: Expr, r: Expr) extends Expr
+
+def prettyPrint(e: Expr): Unit =
+  e match
+    case Num(n) => print(n)
+    case Sum(l, r) =>
+      prettyPrint(l)
+      print(" + ")
+      prettyPrint(r)
+
+def eval(e: Expr): Int =
+  e match
+    case Num(n)    => n
+    case Sum(l, r) => eval(l) + eval(r)
+```
 
 ```scala mdoc
-
+val e1 = Sum(Sum(Num(1), Num(2)), Num(3))
+prettyPrint(e1)
+print(eval(e1))
 ```
 
 

@@ -10,18 +10,42 @@ next: behavioral/strategy
 
 #### Назначение
 
-???
+Позволить объекту изменить свое поведение при изменении его внутреннего состояния. Объект изменит свой класс. 
+Паттерн состояния актуален, когда поведение объекта зависит от его внутреннего состояния.
 
 #### Диаграмма
 
-![State]()
+![State](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/State_Design_Pattern_UML_Class_Diagram.svg/475px-State_Design_Pattern_UML_Class_Diagram.svg.png)
 
 #### Пример
 
-???
+```scala mdoc:silent
+class Context:
+  private var currentState: State = State1
+
+  def operation(): Unit = currentState.operation()
+
+  trait State:
+    def operation(): Unit
+
+  private object State1 extends State:
+    def operation(): Unit =
+      println("State1")
+      currentState = State2
+
+  private object State2 extends State:
+    def operation(): Unit =
+      println("State2")
+      currentState = State1
+
+end Context
+```
 
 ```scala mdoc
-
+val c = new Context
+c.operation()
+c.operation()
+c.operation()
 ```
 
 

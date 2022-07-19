@@ -10,7 +10,8 @@ next: behavioral/chain-of-responsibility
 
 #### Назначение
 
-???
+Определить скелет алгоритма в операции, отложив некоторые шаги на подклассы. 
+Шаблонный метод позволяет подклассам переопределять определенные шаги алгоритма без изменения структуры алгоритма.
 
 #### Диаграмма
 
@@ -18,10 +19,13 @@ next: behavioral/chain-of-responsibility
 
 #### Пример
 
-???
-
 ```scala mdoc
-
+trait Template extends (Unit => Int):
+  def subStepA(): Unit
+  def subStepB: Int
+  def apply: Int =
+    subStepA()
+    subStepB
 ```
 
 

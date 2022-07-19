@@ -10,7 +10,8 @@ next: behavioral/visitor
 
 #### Назначение
 
-???
+Определение семейства алгоритмов, инкапсулирование каждого из них и создание их взаимозаменяемыми. 
+Стратегия позволяет алгоритму изменяться независимо от клиентов, которые его используют.
 
 #### Диаграмма
 
@@ -18,10 +19,48 @@ next: behavioral/visitor
 
 #### Пример
 
-???
+`Strategy` определяет интерфейс алгоритма. 
+`Context` поддерживает ссылку на текущий объект `Strategy` и перенаправляет запросы от клиентов конкретному алгоритму.
+
+```scala mdoc:silent
+object FileMatcher:
+  private val filesHere: Seq[String] =
+    Seq(
+      "example.txt",
+      "file.txt.png",
+      "1txt"
+    )
+
+  // Strategy selection
+  def filesContaining(query: String): Seq[String] =
+    filesMatching(_.contains(query)) // inline strategy
+
+  def filesRegex(query: String): Seq[String] =
+    filesMatching(matchRegex(query)) // using a method
+
+  def filesEnding(query: String): Seq[String] =
+    filesMatching(new FilesEnding(query).matchEnding) // lifting a method
+
+  // matcher is a strategy
+  private def filesMatching(matcher: String => Boolean): Seq[String] =
+    for
+      file <- filesHere
+      if matcher(file)
+    yield file
+
+  // Strategies
+  private def matchRegex(query: String): String => Boolean =
+    (s: String) => s.matches(query)
+
+  private class FilesEnding(query: String):
+    def matchEnding(s: String): Boolean = s.endsWith(query)
+```
 
 ```scala mdoc
-
+val query = ".txt"
+FileMatcher.filesContaining(query)
+FileMatcher.filesRegex(query)
+FileMatcher.filesEnding(query)
 ```
 
 
