@@ -372,8 +372,8 @@ options:
     url: fp/index
     menu_type: fp
 
-  - title: Next
-    url: fp/next
+  - title: Functional data structures
+    url: fp/data-structures
     menu_type: fp
 
   ###########################
