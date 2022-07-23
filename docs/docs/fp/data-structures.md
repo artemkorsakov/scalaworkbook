@@ -86,6 +86,18 @@ def product(ds: List[Double]): Double = ds match
 
 ![Data sharing](https://drek4537l1klr.cloudfront.net/pilquist/v-5/Figures/figure-3-3.png)
 
+Пример операции удаления:
+
+```scala
+def tail[A](l: List[A]): List[A] =
+  l match
+    case Nil         => sys.error("tail of empty list")
+    case Cons(_, xs) => xs
+```
+
+В результате останутся две неизменяемые структуры данных: `l` и `xs`.
+
+### Деревья
 
 
 
