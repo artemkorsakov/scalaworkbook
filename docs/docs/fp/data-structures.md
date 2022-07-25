@@ -99,8 +99,15 @@ def tail[A](l: List[A]): List[A] =
 
 ### Деревья
 
+Ещё одним примером функциональной структуры данных является двоичное дерево:
 
+```scala
+enum Tree[+A]:
+  case Leaf(value: A)
+  case Branch(left: Tree[A], right: Tree[A])
+```
 
+![Tree](https://drek4537l1klr.cloudfront.net/pilquist/v-5/Figures/figure-3-4.png)
 
 
 ---
