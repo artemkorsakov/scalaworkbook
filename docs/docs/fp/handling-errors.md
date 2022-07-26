@@ -121,25 +121,18 @@ def mean(xs: Seq[Double]): Option[Double] =
 
 #### Сценарии использования основных функций Option
 
-Основными операциями Option являются:
+Основными операциями `Option` являются:
 
 ```scala
-def map[B](f: A => B): Option[B] = this match
-  case Some(a) => Some(f(a))
-  case None    => None
+def map[B](f: A => B): Option[B]
 
-def getOrElse[B >: A](default: => B): B = this match
-  case Some(a) => a
-  case None    => default
+def getOrElse[B >: A](default: => B): B
 
-def flatMap[B](f: A => Option[B]): Option[B] =
-  map(f).getOrElse(None)
+def flatMap[B](f: A => Option[B]): Option[B]
 
-def orElse[B >: A](ob: => Option[B]): Option[B] =
-  map(a => Some(a)).getOrElse(ob)
+def orElse[B >: A](ob: => Option[B]): Option[B]
 
-def filter(f: A => Boolean): Option[A] =
-  map(a => if f(a) then Some(a) else None).getOrElse(None)
+def filter(f: A => Boolean): Option[A]
 ```
 
 Ниже даны некоторые рекомендации о том, когда использовать каждую из них.
@@ -151,15 +144,15 @@ def filter(f: A => Boolean): Option[A] =
 `flatMap` аналогичен, за исключением того, 
 что функция, предоставляемая для преобразования результата, сама по себе может дать сбой.
 
+Пример:
+
 ```scala mdoc:reset
 case class Employee(name: String, department: String, manager: Option[Employee])
-
 def lookupByName(name: String): Option[Employee] =
   name match
     case "Jack" => Some(Employee("Jack", "department1", None))
     case "Joe"  => Some(Employee("Joe", "department2", lookupByName("Jack")))
     case _      => None
-
 lookupByName("Joe").map(_.department)
 lookupByName("Joe").flatMap(_.manager)
 ```
@@ -175,6 +168,23 @@ lookupByName("Joe")
   .filter(_ != "department2")
   .getOrElse("Default Dept")
 ```
+
+`getOrElse` используется для преобразования из `Option[String]` в `String`, 
+предоставляя значение по умолчанию на случай ошибки. 
+`orElse` похож на `getOrElse`, за исключением того, что возвращается другой `Option`, если первый не определен. 
+Это часто бывает полезно, когда нужно вместе связать возможные неудачные вычисления, 
+пробуя второе, если первое не удалось. 
+Обычная идиома состоит в том, чтобы сделать `o.getOrElse(throw new Exception("FAIL"))` 
+для преобразования варианта `None` обратно в исключение. 
+
+Общее эмпирическое правило состоит в том, что исключения используются только в том случае, 
+если никакая разумная программа никогда не перехватит исключение; 
+если для некоторых вызывающих объектов исключение может быть исправимой ошибкой,
+используется `Option` (или `Either`, обсуждается позже), чтобы предоставить гибкость.
+
+
+
+
 
 
 
