@@ -368,12 +368,16 @@ options:
   # Functional programming  #
   ###########################
 
-  - title: Functional programming
+  - title: Функц. программирование
     url: fp/index
     menu_type: fp
 
-  - title: Functional data structures
+  - title: Функц. структура данных
     url: fp/data-structures
+    menu_type: fp
+
+  - title: Обработка ошибок
+    url: fp/handling-errors
     menu_type: fp
 
   ###########################
