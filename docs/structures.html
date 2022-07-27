@@ -1,0 +1,547 @@
+<!DOCTYPE html><html><head><title>Scala workbook: Структуры управления</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Артём Корсаков" /><meta name="description" content="Разработка на Scala." /><meta name="og:image" content="/scalaworkbook/img/poster.png" /><meta name="image" property="og:image" content="/scalaworkbook/img/poster.png" /><meta name="og:title" content="Scala workbook: Структуры управления" /><meta name="title" property="og:title" content="Scala workbook: Структуры управления" /><meta name="og:site_name" content="Scala workbook" /><meta name="og:url" content="" /><meta name="og:type" content="website" /><meta name="og:description" content="Разработка на Scala." /><link rel="icon" type="image/png" href="/scalaworkbook/img/favicon.png" /><meta name="twitter:title" content="Scala workbook: Структуры управления" /><meta name="twitter:image" content="https://artemkorsakov.github.io/scalaworkbook/img/poster.png" /><meta name="twitter:description" content="Разработка на Scala." /><meta name="twitter:card" content="summary_large_image" /><link rel="icon" type="image/png" sizes="16x16" href="/scalaworkbook/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/scalaworkbook/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/scalaworkbook/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/scalaworkbook/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/scalaworkbook/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/scalaworkbook/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/scalaworkbook/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/scalaworkbook/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/scalaworkbook/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/scalaworkbook/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/scalaworkbook/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/scalaworkbook/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/scalaworkbook/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/scalaworkbook/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/scalaworkbook/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/scalaworkbook/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/scalaworkbook/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/scalaworkbook/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/scalaworkbook/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/scalaworkbook/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/scalaworkbook/highlight/styles/vs.css" /><link rel="stylesheet" href="/scalaworkbook/css/pattern-style.css" /><link rel="stylesheet" href="/scalaworkbook/css/override.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/scalaworkbook/" class="brand"><div class="brand-wrapper"><span>Scala workbook</span></div></a></li> <li><a href="/scalaworkbook/docs/index" class="">Обзор Scala</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/start/getting-started" class="">С чего начать?</a></li></ul></li> <li><a href="/scalaworkbook/docs/hello_world" class="">Hello, world!</a></li> <li><a href="/scalaworkbook/docs/repl" class="">REPL</a></li> <li><a href="/scalaworkbook/docs/types" class="">Типы данных</a></li> <li><a href="/scalaworkbook/docs/structures" class=" active ">Структуры управления</a></li> <li><a href="/scalaworkbook/docs/modeling" class="">Моделирование данных</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/modeling/classes" class="">Classes</a></li> <li><a href="/scalaworkbook/docs/modeling/objects" class="">Objects</a></li> <li><a href="/scalaworkbook/docs/modeling/companion-objects" class="">Companion objects</a></li> <li><a href="/scalaworkbook/docs/modeling/traits" class="">Traits</a></li> <li><a href="/scalaworkbook/docs/modeling/abstract-class" class="">Абстрактные классы</a></li> <li><a href="/scalaworkbook/docs/modeling/enums" class="">Enums</a></li> <li><a href="/scalaworkbook/docs/modeling/case-class" class="">Case classes</a></li> <li><a href="/scalaworkbook/docs/modeling/oop" class="">Моделирование ООП</a></li> <li><a href="/scalaworkbook/docs/modeling/fp" class="">Моделирование ФП</a></li></ul></li> <li><a href="/scalaworkbook/docs/methods" class="">Методы</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/methods/method-features" class="">Определение методов</a></li> <li><a href="/scalaworkbook/docs/methods/default-parameters" class="">Параметры по умолчанию</a></li> <li><a href="/scalaworkbook/docs/methods/named-parameters" class="">Именованные параметры</a></li> <li><a href="/scalaworkbook/docs/methods/by-name-parameter" class="">Параметры по имени</a></li> <li><a href="/scalaworkbook/docs/methods/partially-applied-functions" class="">Каррирование</a></li> <li><a href="/scalaworkbook/docs/methods/vararg-parameters" class="">Variable Arguments</a></li> <li><a href="/scalaworkbook/docs/methods/generic-parameter" class="">Generic параметры</a></li> <li><a href="/scalaworkbook/docs/methods/extension-methods" class="">Методы расширения</a></li> <li><a href="/scalaworkbook/docs/methods/main-methods" class="">main методы</a></li></ul></li> <li><a href="/scalaworkbook/docs/functions" class="">Функции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/functions/anonymous" class="">Анонимные функции</a></li> <li><a href="/scalaworkbook/docs/functions/variables" class="">Параметры функции</a></li> <li><a href="/scalaworkbook/docs/functions/eta" class="">Eta расширение</a></li> <li><a href="/scalaworkbook/docs/functions/hofs" class="">Функции высшего порядка</a></li> <li><a href="/scalaworkbook/docs/functions/write-map" class="">Собственный map</a></li> <li><a href="/scalaworkbook/docs/functions/returns-function" class="">Возврат функции в методе</a></li></ul></li> <li><a href="/scalaworkbook/docs/packaging" class="">Пакеты и импорт</a></li> <li><a href="/scalaworkbook/docs/toplevel-definitions" class="">Верхнеур. определения</a></li> <li><a href="/scalaworkbook/docs/collections" class="">Коллекции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/collections/classes" class="">Типы коллекций</a></li> <li><a href="/scalaworkbook/docs/collections/list" class="">List</a></li> <li><a href="/scalaworkbook/docs/collections/lazylist" class="">LazyList</a></li> <li><a href="/scalaworkbook/docs/collections/array-seq" class="">ArraySeq</a></li> <li><a href="/scalaworkbook/docs/collections/vector" class="">Vector</a></li> <li><a href="/scalaworkbook/docs/collections/array-buffer" class="">ArrayBuffer</a></li> <li><a href="/scalaworkbook/docs/collections/maps" class="">Maps</a></li> <li><a href="/scalaworkbook/docs/collections/set" class="">Set</a></li> <li><a href="/scalaworkbook/docs/collections/range" class="">Range</a></li> <li><a href="/scalaworkbook/docs/collections/tuple" class="">Tuple</a></li> <li><a href="/scalaworkbook/docs/collections/queue" class="">Queue</a></li> <li><a href="/scalaworkbook/docs/collections/methods" class="">Методы в коллекциях</a></li></ul></li> <li><a href="/scalaworkbook/docs/fp" class="">Функц. программирование</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/fp/what-is-fp" class="">Что такое ФП?</a></li> <li><a href="/scalaworkbook/docs/fp/immutable-values" class="">Неизменяемые значения</a></li> <li><a href="/scalaworkbook/docs/fp/pure-functions" class="">Чистые функции</a></li> <li><a href="/scalaworkbook/docs/fp/functions-are-values" class="">Функции - это значения</a></li> <li><a href="/scalaworkbook/docs/fp/functional-error-handling" class="">Обработка ошибок</a></li></ul></li> <li><a href="/scalaworkbook/docs/type-system" class="">Система типов</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/type-system/types-inferred" class="">Определение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-generics" class="">Generics типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-intersection" class="">Пересечение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-union" class="">Объединение типов</a></li> <li><a href="/scalaworkbook/docs/type-system/types-adts" class="">Алгебр. типы данных</a></li> <li><a href="/scalaworkbook/docs/type-system/types-variance" class="">Ковариантность</a></li> <li><a href="/scalaworkbook/docs/type-system/types-opaque" class="">Непрозрачные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-structural" class="">Структурные типы</a></li> <li><a href="/scalaworkbook/docs/type-system/types-dependent-function" class="">Зависимые типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/type-lambdas" class="">Type Lambdas</a></li> <li><a href="/scalaworkbook/docs/type-system/match-types" class="">Match Types</a></li> <li><a href="/scalaworkbook/docs/type-system/polymorphic-function-types" class="">Полимор. типы функций</a></li> <li><a href="/scalaworkbook/docs/type-system/types-others" class="">Другие типы</a></li></ul></li> <li><a href="/scalaworkbook/docs/abstractions" class="">Абстракции</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/abstractions/ca-given" class="">Given</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-using" class="">Using</a></li> <li><a href="/scalaworkbook/docs/abstractions/type-classes" class="">Класс типов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-context-bounds" class="">Контекстные границы</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-given-imports" class="">Given imports</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-extension-methods" class="">Методы расш. - детали</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-classes" class="">Импл. type классов</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-type-class-derivation" class="">Type Class Derivation</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-multiversal-equality" class="">Multiversal Equality</a></li> <li><a href="/scalaworkbook/docs/abstractions/context-functions" class="">Контекстные функции</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-implicit-conversions" class="">Неявные преобр.</a></li> <li><a href="/scalaworkbook/docs/abstractions/ca-by-name-parameters" class="">Конт. пар. по имени</a></li></ul></li> <li><a href="/scalaworkbook/docs/details" class="">Детали</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/details/export-causes" class="">Предложения export</a></li> <li><a href="/scalaworkbook/docs/details/parameter-untupling" class="">Распаковка параметров</a></li> <li><a href="/scalaworkbook/docs/details/type-test" class="">Проверка типа</a></li> <li><a href="/scalaworkbook/docs/details/pattern-matching" class="">Экстракторы</a></li></ul></li> <li><a href="/scalaworkbook/docs/concurrency" class="">Параллелизм</a></li> <li><a href="/scalaworkbook/docs/tools" class="">Утилиты</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/tools/tools-sbt" class="">Sbt</a></li> <li><a href="/scalaworkbook/docs/tools/tools-worksheets" class="">Worksheet</a></li></ul></li> <li><a href="/scalaworkbook/docs/with_java" class="">Взаимодействие с Java</a></li> <li><a href="/scalaworkbook/docs/metaprogramming" class="">Metaprogramming</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/metaprogramming/inline" class="">Inline</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/compile-time-ops" class="">Compile-time ops</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/macros" class="">Macros</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/quoted-code" class="">Quoted Code</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/runtime-staging" class="">Runtime Staging</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/reflection" class="">Reflection</a></li> <li><a href="/scalaworkbook/docs/metaprogramming/tasty-inspection" class="">TASTy Inspection</a></li></ul></li> <li><a href="/scalaworkbook/docs/soft-keywords" class="">Soft Keywords</a></li> <li><a href="/scalaworkbook/docs/scaladoc" class="">Scaladoc</a> <ul class="sub-section"> <li><a href="/scalaworkbook/docs/scaladoc/docstrings" class="">Документы</a></li> <li><a href="/scalaworkbook/docs/scaladoc/linking" class="">Ссылки</a></li> <li><a href="/scalaworkbook/docs/scaladoc/static-site" class="">Статика</a></li> <li><a href="/scalaworkbook/docs/scaladoc/blog" class="">Блог</a></li> <li><a href="/scalaworkbook/docs/scaladoc/site-versioning" class="">Версионность</a></li> <li><a href="/scalaworkbook/docs/scaladoc/search-engine" class="">Поиск по типу</a></li> <li><a href="/scalaworkbook/docs/scaladoc/snippet-compiler" class="">Проверка фрагмента</a></li> <li><a href="/scalaworkbook/docs/scaladoc/settings" class="">Настройки</a></li></ul></li>          </ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li class="search-nav hidden-xs hidden-sm"><div id="search-dropdown"><label><i class="fa fa-search"></i>Search</label><input id="search-bar" type="text" placeholder="Enter keywords here..." onclick="displayToggleSearch(event)" /><ul id="search-dropdown-content" class="dropdown dropdown-content"></ul></div></li></ul></div></div></div></div><div id="content" data-github-owner="artemkorsakov" data-github-repo="scalaworkbook"><div class="content-wrapper"><section><h2 id="структуры-управления">Структуры управления</h2>
+
+<p>В Scala есть все ожидаемые структуры управления, в том числе:</p>
+<ul>
+  <li><code class="highlighter-rouge">if</code>/<code class="highlighter-rouge">then</code>/<code class="highlighter-rouge">else</code></li>
+  <li>циклы <code class="highlighter-rouge">for</code></li>
+  <li>циклы <code class="highlighter-rouge">while</code></li>
+  <li><code class="highlighter-rouge">try</code>/<code class="highlighter-rouge">catch</code>/<code class="highlighter-rouge">finally</code></li>
+</ul>
+
+<p>Здесь также есть две другие мощные конструкции, присутствующие не во всех языках программирования:</p>
+<ul>
+  <li><code class="highlighter-rouge">for</code> выражения (также известные как <em>for comprehensions</em>)</li>
+  <li><code class="highlighter-rouge">match</code> выражения</li>
+</ul>
+
+<h3 id="ifelse">if/else</h3>
+
+<p>Однострочное <code class="highlighter-rouge">if</code> выражение выглядит так:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">x</span> <span class="k">=</span> <span class="mi">1</span>
+</code></pre></div></div>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="n">then</span> <span class="nf">println</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+<span class="c1">// 1</span>
+</code></pre></div></div>
+
+<p>Когда необходимо выполнить несколько строк кода после <code class="highlighter-rouge">if</code>, используется синтаксис:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="n">then</span>
+  <span class="nf">println</span><span class="o">(</span><span class="s">"x is 1, as you can see:"</span><span class="o">)</span>
+  <span class="nf">println</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+<span class="c1">// x is 1, as you can see:</span>
+<span class="c1">// 1</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">if</code>/<code class="highlighter-rouge">else</code> синтаксис выглядит так:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="n">then</span>
+  <span class="nf">println</span><span class="o">(</span><span class="s">"x is 1, as you can see:"</span><span class="o">)</span>
+  <span class="nf">println</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+<span class="k">else</span>
+  <span class="nf">println</span><span class="o">(</span><span class="s">"x was not 1"</span><span class="o">)</span>
+<span class="c1">// x is 1, as you can see:</span>
+<span class="c1">// 1</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">if</code>/<code class="highlighter-rouge">else if</code>/<code class="highlighter-rouge">else</code> выглядит так же, как и в других языках:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">detect</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="k">=</span> 
+  <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="n">then</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"negative"</span><span class="o">)</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span> <span class="n">then</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"zero"</span><span class="o">)</span>
+  <span class="k">else</span>
+    <span class="nf">println</span><span class="o">(</span><span class="s">"positive"</span><span class="o">)</span>
+<span class="nf">detect</span><span class="o">(-</span><span class="mi">1</span><span class="o">)</span>    
+<span class="c1">// negative    </span>
+<span class="nf">detect</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> 
+<span class="c1">// zero </span>
+<span class="nf">detect</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> 
+<span class="c1">// positive</span>
+</code></pre></div></div>
+
+<p>При желании можно дополнительно включить оператор <code class="highlighter-rouge">end if</code> в конце каждого выражения:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="n">then</span>
+  <span class="nf">println</span><span class="o">(</span><span class="s">"x is 1, as you can see:"</span><span class="o">)</span>
+  <span class="nf">println</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+<span class="n">end</span> <span class="k">if</span>
+</code></pre></div></div>
+
+<h4 id="ifelse-выражение-всегда-возвращает-результат">if/else выражение всегда возвращает результат</h4>
+
+<p>Сравнения <code class="highlighter-rouge">if/else</code> образуют выражения - это означает, что они возвращают значение,  которое можно присвоить переменной.
+Поэтому нет необходимости в специальном тернарном операторе. 
+Пример:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">minValue</span> <span class="k">=</span> <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="n">then</span> <span class="n">a</span> <span class="k">else</span> <span class="n">b</span>
+</code></pre></div></div>
+
+<p>Можно использовать <code class="highlighter-rouge">if/else</code> выражение в качестве тела метода:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">compare</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">b</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span>
+  <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="n">then</span> <span class="o">-</span><span class="mi">1</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span> <span class="n">then</span> <span class="mi">0</span>
+  <span class="k">else</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>Как будет видно дальше, все структуры управления Scala можно использовать в качестве выражений.</p>
+
+<blockquote>
+  <p>Программирование, ориентированное на выражения (<em>expression-oriented programming</em> или <em>EOP</em>) -
+стиль разработки, когда каждое написанное выражение возвращает значение.</p>
+
+  <p>И наоборот, строки кода, которые не возвращают значения, называются операторами или утверждениями 
+и используются для получения побочных эффектов.</p>
+
+  <p>По мере погружения в Scala можно обнаружить, что пишется больше выражений и меньше утверждений.</p>
+</blockquote>
+
+<h3 id="for-loops">for loops</h3>
+
+<p>В самом простом случае цикл <code class="highlighter-rouge">for</code> в Scala можно использовать для перебора элементов в коллекции. 
+Например, имея последовательность целых чисел, можно перебрать ее элементы и вывести значения следующим образом:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">ints</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">)</span>
+</code></pre></div></div>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="k">&lt;-</span> <span class="n">ints</span> <span class="k">do</span> <span class="nf">println</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
+<span class="c1">// 1</span>
+<span class="c1">// 2</span>
+<span class="c1">// 3</span>
+<span class="c1">// 4</span>
+<span class="c1">// 5</span>
+</code></pre></div></div>
+
+<p>Код <code class="highlighter-rouge">i &lt;- ints</code> называется генератором.</p>
+
+<p>Если необходим многострочный блок кода после генератора <code class="highlighter-rouge">for</code>, используется следующий синтаксис:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span>
+  <span class="n">i</span> <span class="k">&lt;-</span> <span class="n">ints</span>
+<span class="k">do</span>
+  <span class="k">val</span> <span class="nv">x</span> <span class="k">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span>
+  <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"i = $i, x = $x"</span><span class="o">)</span>
+<span class="c1">// i = 1, x = 2</span>
+<span class="c1">// i = 2, x = 4</span>
+<span class="c1">// i = 3, x = 6</span>
+<span class="c1">// i = 4, x = 8</span>
+<span class="c1">// i = 5, x = 10</span>
+</code></pre></div></div>
+
+<h4 id="несколько-генераторов">Несколько генераторов</h4>
+
+<p>В цикле <code class="highlighter-rouge">for</code> можно использовать несколько генераторов, например:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span>
+  <span class="n">i</span> <span class="k">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">2</span>
+  <span class="n">j</span> <span class="k">&lt;-</span> <span class="sc">'a'</span> <span class="n">to</span> <span class="sc">'b'</span>
+  <span class="n">k</span> <span class="k">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">10</span> <span class="n">by</span> <span class="mi">5</span>
+<span class="k">do</span>
+  <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"i = $i, j = $j, k = $k"</span><span class="o">)</span>
+<span class="c1">// i = 1, j = a, k = 1</span>
+<span class="c1">// i = 1, j = a, k = 6</span>
+<span class="c1">// i = 1, j = b, k = 1</span>
+<span class="c1">// i = 1, j = b, k = 6</span>
+<span class="c1">// i = 2, j = a, k = 1</span>
+<span class="c1">// i = 2, j = a, k = 6</span>
+<span class="c1">// i = 2, j = b, k = 1</span>
+<span class="c1">// i = 2, j = b, k = 6</span>
+</code></pre></div></div>
+
+<h4 id="guards">Guards</h4>
+
+<p>Циклы <code class="highlighter-rouge">for</code> также могут содержать условия, называемые <em>guards</em>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span>
+  <span class="n">i</span> <span class="k">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">5</span>
+  <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">do</span>
+  <span class="nf">println</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
+<span class="c1">// 2</span>
+<span class="c1">// 4</span>
+</code></pre></div></div>
+
+<p>Можно добавлять столько условий, сколько необходимо:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span>
+  <span class="n">i</span> <span class="k">&lt;-</span> <span class="mi">1</span> <span class="n">to</span> <span class="mi">10</span>
+  <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">3</span>
+  <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">6</span>
+  <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">do</span>
+  <span class="nf">println</span><span class="o">(</span><span class="n">i</span><span class="o">)</span>
+<span class="c1">// 4</span>
+</code></pre></div></div>
+
+<h4 id="использование-for-с-map-ами">Использование for с Map-ами</h4>
+
+<p>Циклы <code class="highlighter-rouge">for</code> можно использовать с <code class="highlighter-rouge">Map</code>-ами.
+Например, если есть карта ключ/значение:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">states</span> <span class="k">=</span> <span class="nc">Map</span><span class="o">(</span>
+  <span class="s">"AK"</span> <span class="o">-&gt;</span> <span class="s">"Alaska"</span><span class="o">,</span>
+  <span class="s">"AL"</span> <span class="o">-&gt;</span> <span class="s">"Alabama"</span><span class="o">,</span> 
+  <span class="s">"AR"</span> <span class="o">-&gt;</span> <span class="s">"Arizona"</span>
+<span class="o">)</span>
+</code></pre></div></div>
+
+<p>Можно обойти все пары ключ/значение так:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">for</span> <span class="o">(</span><span class="n">abbrev</span><span class="o">,</span> <span class="n">fullName</span><span class="o">)</span> <span class="k">&lt;-</span> <span class="n">states</span> <span class="k">do</span> <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"$abbrev: $fullName"</span><span class="o">)</span>
+<span class="c1">// AK: Alaska</span>
+<span class="c1">// AL: Alabama</span>
+<span class="c1">// AR: Arizona</span>
+</code></pre></div></div>
+
+<p>Когда цикл <code class="highlighter-rouge">for</code> перебирает <code class="highlighter-rouge">Map</code>, каждая пара ключ/значение привязывается к переменным <code class="highlighter-rouge">abbrev</code> и <code class="highlighter-rouge">fullName</code>.
+По мере выполнения цикла переменная <code class="highlighter-rouge">abbrev</code> принимает значение текущего ключа, 
+а переменная <code class="highlighter-rouge">fullName</code> - соответствующему ключу значению.</p>
+
+<h3 id="for-expressions">for expressions</h3>
+
+<p>В предыдущих примерах все циклы <code class="highlighter-rouge">for</code> использовались для побочных эффектов, 
+в частности, для вывода результата в STDOUT с помощью <code class="highlighter-rouge">println</code>.</p>
+
+<p>Важно знать, что <code class="highlighter-rouge">for</code> также можно использовать для выражений, возвращающих значения. 
+Для этого <code class="highlighter-rouge">for</code> создается с ключевым словом <code class="highlighter-rouge">yield</code> вместо <code class="highlighter-rouge">do</code> и возвращаемым выражением, например:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">list</span> <span class="k">=</span>
+  <span class="k">for</span>
+    <span class="n">i</span> <span class="k">&lt;-</span> <span class="mi">10</span> <span class="n">to</span> <span class="mi">12</span>
+  <span class="k">yield</span>
+    <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="c1">// list: IndexedSeq[Int] = Vector(20, 22, 24)</span>
+</code></pre></div></div>
+
+<p>После присваивания <code class="highlighter-rouge">list</code> содержит <code class="highlighter-rouge">Vector</code> с отображаемыми значениями. Вот как работает это выражение:</p>
+<ul>
+  <li>Выражение <code class="highlighter-rouge">for</code> начинает перебирать значения в диапазоне <code class="highlighter-rouge">(10, 11, 12)</code>. Сначала оно работает со значением <code class="highlighter-rouge">10</code>, 
+умножает его на <code class="highlighter-rouge">2</code>, затем выдает результат - <code class="highlighter-rouge">20</code>.</li>
+  <li>Далее берет <code class="highlighter-rouge">11</code> — второе значение в диапазоне. Умножает его на <code class="highlighter-rouge">2</code>, 
+а затем выдает значение <code class="highlighter-rouge">22</code>. Можно представить эти полученные значения как накопление во временном хранилище.</li>
+  <li>Наконец, цикл берет число <code class="highlighter-rouge">12</code> из диапазона, умножает его на <code class="highlighter-rouge">2</code>, получая число <code class="highlighter-rouge">24</code>. 
+Цикл завершается в этой точке и выдает конечный результат - <code class="highlighter-rouge">(20, 22, 24)</code>.</li>
+</ul>
+
+<p>В данном случае показанное выражение <code class="highlighter-rouge">for</code> эквивалентно вызову метода <code class="highlighter-rouge">map</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">list</span> <span class="k">=</span> <span class="o">(</span><span class="mi">10</span> <span class="n">to</span> <span class="mi">12</span><span class="o">).</span><span class="py">map</span><span class="o">(</span><span class="n">i</span> <span class="k">=&gt;</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)</span>
+<span class="c1">// list: IndexedSeq[Int] = Vector(20, 22, 24)</span>
+</code></pre></div></div>
+
+<p>Выражения <code class="highlighter-rouge">for</code> можно использовать всегда, когда нужно обойти все элементы в коллекции 
+и применить алгоритм к этим элементам для создания нового списка.</p>
+
+<p>Вот пример, который показывает, как использовать блок кода после <code class="highlighter-rouge">yield</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">names</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span><span class="s">"_olivia"</span><span class="o">,</span> <span class="s">"_walter"</span><span class="o">,</span> <span class="s">"_peter"</span><span class="o">)</span>
+<span class="c1">// names: List[String] = List("_olivia", "_walter", "_peter")</span>
+<span class="k">val</span> <span class="nv">capNames</span> <span class="k">=</span> <span class="k">for</span> <span class="n">name</span> <span class="k">&lt;-</span> <span class="n">names</span> <span class="k">yield</span>
+  <span class="k">val</span> <span class="nv">nameWithoutUnderscore</span> <span class="k">=</span> <span class="nv">name</span><span class="o">.</span><span class="py">drop</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+  <span class="k">val</span> <span class="nv">capName</span> <span class="k">=</span> <span class="nv">nameWithoutUnderscore</span><span class="o">.</span><span class="py">capitalize</span>
+  <span class="n">capName</span>
+<span class="c1">// capNames: List[String] = List("Olivia", "Walter", "Peter")</span>
+</code></pre></div></div>
+
+<p>Поскольку выражение <code class="highlighter-rouge">for</code> возвращает результат, его можно использовать в качестве тела метода. 
+Пример:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">between3and10</span><span class="o">(</span><span class="n">xs</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span>
+  <span class="k">for</span>
+    <span class="n">x</span> <span class="k">&lt;-</span> <span class="n">xs</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">3</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">10</span>
+  <span class="k">yield</span> <span class="n">x</span>
+<span class="nf">between3and10</span><span class="o">(</span><span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">11</span><span class="o">))</span> 
+<span class="c1">// res15: List[Int] = List(3, 7)</span>
+</code></pre></div></div>
+
+<h3 id="while-loops">while loops</h3>
+
+<p>Цикл <code class="highlighter-rouge">while</code> имеет следующий синтаксис:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">x</span> <span class="k">=</span> <span class="mi">1</span>
+<span class="c1">// x: Int = 1</span>
+<span class="k">while</span>
+  <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">3</span>
+<span class="k">do</span>
+  <span class="nf">println</span><span class="o">(</span><span class="n">x</span><span class="o">)</span>
+  <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="c1">// 1</span>
+<span class="c1">// 2</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>В Scala не приветствуется использование изменяемых переменных <code class="highlighter-rouge">var</code>, поэтому следует избегать <code class="highlighter-rouge">while</code>.
+Аналогичный результат можно достигнуть используя вспомогательный метод:</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def loop(x: Int): Unit =
+  if x &lt; 3 then
+    println(x)
+    loop(x + 1)  
+loop(1)
+</code></pre></div>  </div>
+</blockquote>
+
+<h3 id="match-expressions">match expressions</h3>
+
+<p>Сопоставление с образцом (pattern matching) является основой функциональных языков программирования, 
+и Scala включает в себя pattern matching, обладающий множеством возможностей.</p>
+
+<p>В самом простом случае можно использовать выражение <code class="highlighter-rouge">match</code>, подобное оператору Java <code class="highlighter-rouge">switch</code>, 
+сопоставляя на основе целочисленного значения. 
+Как и предыдущие структуры, pattern matching - это действительно выражение, поскольку оно вычисляет результат:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">scala.annotation.switch</span>
+<span class="k">val</span> <span class="nv">i</span> <span class="k">=</span> <span class="mi">6</span>
+<span class="c1">// i: Int = 6</span>
+<span class="k">val</span> <span class="nv">day</span> <span class="k">=</span> <span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">@switch</span><span class="o">)</span> <span class="k">match</span>
+  <span class="k">case</span> <span class="mi">0</span> <span class="k">=&gt;</span> <span class="s">"Sunday"</span>
+  <span class="k">case</span> <span class="mi">1</span> <span class="k">=&gt;</span> <span class="s">"Monday"</span>
+  <span class="k">case</span> <span class="mi">2</span> <span class="k">=&gt;</span> <span class="s">"Tuesday"</span>
+  <span class="k">case</span> <span class="mi">3</span> <span class="k">=&gt;</span> <span class="s">"Wednesday"</span>
+  <span class="k">case</span> <span class="mi">4</span> <span class="k">=&gt;</span> <span class="s">"Thursday"</span>
+  <span class="k">case</span> <span class="mi">5</span> <span class="k">=&gt;</span> <span class="s">"Friday"</span>
+  <span class="k">case</span> <span class="mi">6</span> <span class="k">=&gt;</span> <span class="s">"Saturday"</span>
+  <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="s">"invalid day"</span>
+<span class="c1">// day: String = "Saturday"</span>
+</code></pre></div></div>
+
+<p>В примере выше переменная <code class="highlighter-rouge">i</code> сопоставляется с числом и если равна от 0 до 6, то в <code class="highlighter-rouge">day</code> возвращается день недели.
+Иной случай обозначается символом <code class="highlighter-rouge">_</code> и если <code class="highlighter-rouge">i</code> не равен от 0 до 6, то возвращается значение <code class="highlighter-rouge">invalid day</code>.</p>
+
+<blockquote>
+  <p>При написании простых выражений соответствия, подобных этому, рекомендуется использовать аннотацию <code class="highlighter-rouge">@switch</code> для переменной <code class="highlighter-rouge">i</code>. 
+Эта аннотация содержит предупреждение во время компиляции, если <em>switch</em> не может быть скомпилирован в <em>tableswitch</em> 
+или <em>lookupswitch</em>, которые лучше подходят с точки зрения производительности.</p>
+</blockquote>
+
+<h4 id="значение-по-умолчанию">Значение по умолчанию</h4>
+
+<p>Когда нужно получить доступ к универсальному значению по умолчанию в pattern matching, 
+достаточно указать имя переменной в левой части оператора <code class="highlighter-rouge">case</code>, 
+а затем использовать это имя в правой части оператора:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">i</span> <span class="k">match</span>
+  <span class="k">case</span> <span class="mi">0</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"1"</span><span class="o">)</span>
+  <span class="k">case</span> <span class="mi">1</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"2"</span><span class="o">)</span>
+  <span class="k">case</span> <span class="n">what</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"Получено значение: $what"</span> <span class="o">)</span>
+<span class="c1">// Получено значение: 6</span>
+</code></pre></div></div>
+
+<p>Переменной можно дать любое допустимое имя. Можно также использовать <code class="highlighter-rouge">_</code> в качестве имени, чтобы игнорировать значение.</p>
+
+<h4 id="обработка-нескольких-возможных-значений-в-одной-строке">Обработка нескольких возможных значений в одной строке</h4>
+
+<p>В этом примере показано, как использовать несколько возможных совпадений с образцом в каждом операторе <code class="highlighter-rouge">case</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">evenOrOdd</span> <span class="k">=</span> <span class="n">i</span> <span class="k">match</span>
+  <span class="k">case</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">3</span> <span class="o">|</span> <span class="mi">5</span> <span class="o">|</span> <span class="mi">7</span> <span class="o">|</span> <span class="mi">9</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"odd"</span><span class="o">)</span>
+  <span class="k">case</span> <span class="mi">2</span> <span class="o">|</span> <span class="mi">4</span> <span class="o">|</span> <span class="mi">6</span> <span class="o">|</span> <span class="mi">8</span> <span class="o">|</span> <span class="mi">10</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"even"</span><span class="o">)</span>
+  <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"some other number"</span><span class="o">)</span>
+<span class="c1">// even</span>
+</code></pre></div></div>
+
+<h4 id="использование-if-в-pattern-matching">Использование if в pattern matching</h4>
+
+<p>В pattern matching можно использовать условия:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">i</span> <span class="k">match</span>
+  <span class="k">case</span> <span class="mi">1</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"one, a lonely number"</span><span class="o">)</span>
+  <span class="k">case</span> <span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">||</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">3</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"two’s company, three’s a crowd"</span><span class="o">)</span>
+  <span class="k">case</span> <span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"4+, that’s a party"</span><span class="o">)</span>
+  <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"i’m guessing your number is zero or less"</span><span class="o">)</span>
+<span class="c1">// 4+, that’s a party</span>
+</code></pre></div></div>
+
+<p>Ещё пример:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">i</span> <span class="k">match</span>
+  <span class="k">case</span> <span class="n">a</span> <span class="k">if</span> <span class="mi">0</span> <span class="n">to</span> <span class="mi">9</span> <span class="n">contains</span> <span class="n">a</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"0-9 range: $a"</span><span class="o">)</span>
+  <span class="k">case</span> <span class="n">b</span> <span class="k">if</span> <span class="mi">10</span> <span class="n">to</span> <span class="mi">19</span> <span class="n">contains</span> <span class="n">b</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"10-19 range: $b"</span><span class="o">)</span>
+  <span class="k">case</span> <span class="n">c</span> <span class="k">if</span> <span class="mi">20</span> <span class="n">to</span> <span class="mi">29</span> <span class="n">contains</span> <span class="n">c</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"20-29 range: $c"</span><span class="o">)</span>
+  <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"Hmmm..."</span><span class="o">)</span>
+<span class="c1">// 0-9 range: 6</span>
+</code></pre></div></div>
+
+<h4 id="case-classes-и-выражение-match">case classes и выражение match</h4>
+
+<p>Также можно извлекать поля из <code class="highlighter-rouge">case class</code>-ов — и классов, которые имеют правильно написанные методы <code class="highlighter-rouge">apply</code>/<code class="highlighter-rouge">unapply</code> — 
+и использовать их в pattern matching. 
+Вот пример использования простого <code class="highlighter-rouge">case class Person</code></p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">case</span> <span class="k">class</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span>
+<span class="k">def</span> <span class="nf">speak</span><span class="o">(</span><span class="n">p</span><span class="k">:</span> <span class="kt">Person</span><span class="o">)</span> <span class="k">=</span> <span class="n">p</span> <span class="k">match</span>
+  <span class="k">case</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="o">)</span> <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s">"Fred"</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"$name says, Yubba dubba doo"</span><span class="o">)</span>
+  <span class="k">case</span> <span class="nc">Person</span><span class="o">(</span><span class="n">name</span><span class="o">)</span> <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s">"Bam Bam"</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="n">s</span><span class="s">"$name says, Bam bam!"</span><span class="o">)</span>
+  <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="nf">println</span><span class="o">(</span><span class="s">"Watch the Flintstones!"</span><span class="o">)</span>
+<span class="nf">speak</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">"Fred"</span><span class="o">))</span>
+<span class="c1">// Fred says, Yubba dubba doo</span>
+<span class="nf">speak</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">"Bam Bam"</span><span class="o">))</span>
+<span class="c1">// Bam Bam says, Bam bam!</span>
+<span class="nf">speak</span><span class="o">(</span><span class="nc">Person</span><span class="o">(</span><span class="s">"Wilma"</span><span class="o">))</span>
+<span class="c1">// Watch the Flintstones!</span>
+</code></pre></div></div>
+
+<h4 id="использование-выражения-match-в-теле-метода">Использование выражения match в теле метода</h4>
+
+<p>Поскольку выражения match возвращают значение, их можно использовать в теле метода. 
+Этот метод принимает значение <code class="highlighter-rouge">Matchable</code> в качестве входного параметра 
+и возвращает логическое значение на основе результата выражения соответствия:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">isTruthy</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">Matchable</span><span class="o">)</span> <span class="k">=</span> <span class="n">a</span> <span class="k">match</span>
+  <span class="k">case</span> <span class="mi">0</span> <span class="o">|</span> <span class="s">""</span> <span class="o">|</span> <span class="kc">false</span> <span class="k">=&gt;</span> <span class="kc">false</span>
+  <span class="k">case</span> <span class="k">_</span>              <span class="k">=&gt;</span> <span class="kc">true</span>
+</code></pre></div></div>
+
+<p>Входной параметр <code class="highlighter-rouge">a</code> определяется как тип <code class="highlighter-rouge">Matchable</code>, который является родителем всех типов Scala.
+Для <code class="highlighter-rouge">Matchable</code> может выполняться сопоставление с образцом.
+Метод реализуется путем сопоставления входных данных, обеспечивая два случая: 
+первый проверяет, является ли заданное значение целым числом <code class="highlighter-rouge">0</code>, пустой строкой или <code class="highlighter-rouge">false</code>, 
+и в этом случае возвращает <code class="highlighter-rouge">false</code>. 
+Для иных случаев возвращается значение <code class="highlighter-rouge">true</code>.</p>
+
+<p>Эти примеры показывают, как работает метод:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">isTruthy</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
+<span class="c1">// res23: Boolean = false</span>
+<span class="nf">isTruthy</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+<span class="c1">// res24: Boolean = false</span>
+<span class="nf">isTruthy</span><span class="o">(</span><span class="s">""</span><span class="o">)</span>
+<span class="c1">// res25: Boolean = false</span>
+<span class="nf">isTruthy</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+<span class="c1">// res26: Boolean = true</span>
+<span class="nf">isTruthy</span><span class="o">(</span><span class="s">" "</span><span class="o">)</span>
+<span class="c1">// res27: Boolean = true</span>
+<span class="nf">isTruthy</span><span class="o">(</span><span class="mf">2F</span><span class="o">)</span>
+<span class="c1">// res28: Boolean = true</span>
+</code></pre></div></div>
+
+<p>Использование pattern matching в качестве тела метода очень распространено.</p>
+
+<h4 id="использование-различных-шаблонов-в-pattern-matching">Использование различных шаблонов в pattern matching</h4>
+
+<p>Для выражения <code class="highlighter-rouge">match</code> можно использовать множество различных шаблонов. Например:</p>
+<ul>
+  <li>Сравнение с константой (<code class="highlighter-rouge">case 3 =&gt;</code>)</li>
+  <li>Сравнение с последовательностями (<code class="highlighter-rouge">case List(els : _*) =&gt;</code>)</li>
+  <li>Сравнение с кортежами (<code class="highlighter-rouge">case (x, y) =&gt;</code>)</li>
+  <li>Сравнение с конструктором класса (<code class="highlighter-rouge">case Person(first, last) =&gt;</code>)</li>
+  <li>Сравнение по типу (<code class="highlighter-rouge">case p: Person =&gt;</code>)</li>
+</ul>
+
+<p>Все эти виды шаблонов показаны в следующем примере:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">pattern</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Matchable</span><span class="o">)</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="n">x</span> <span class="k">match</span>
+
+  <span class="c1">// Сравнение с константой</span>
+  <span class="k">case</span> <span class="mi">0</span> <span class="k">=&gt;</span> <span class="s">"ноль"</span>
+  <span class="k">case</span> <span class="kc">true</span> <span class="k">=&gt;</span> <span class="s">"true"</span>
+  <span class="k">case</span> <span class="s">"hello"</span> <span class="k">=&gt;</span> <span class="s">"строка 'hello'"</span>
+  <span class="k">case</span> <span class="nc">Nil</span> <span class="k">=&gt;</span> <span class="s">"пустой List"</span>
+
+  <span class="c1">// Сравнение с последовательностями</span>
+  <span class="k">case</span> <span class="nc">List</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="k">_</span><span class="o">,</span> <span class="k">_</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="s">"список из 3 элементов с 0 в качестве первого элемента"</span>
+  <span class="k">case</span> <span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="k">_</span><span class="o">*)</span> <span class="k">=&gt;</span> <span class="s">"Непустой список, начинающийся с 1, и имеющий любой размер &gt; 0"</span>
+  <span class="k">case</span> <span class="nc">Vector</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="k">_</span><span class="o">*)</span> <span class="k">=&gt;</span> <span class="s">"Vector, начинающийся с 1, и имеющий любой размер &gt; 0"</span>
+
+  <span class="c1">// Сравнение с кортежами</span>
+  <span class="nf">case</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">s</span><span class="s">"получено $a и $b"</span>
+  <span class="nf">case</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">,</span> <span class="n">c</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">s</span><span class="s">"получено $a, $b и $c"</span>
+
+  <span class="c1">// Сравнение с конструктором класса</span>
+  <span class="k">case</span> <span class="nc">Person</span><span class="o">(</span><span class="n">first</span><span class="o">,</span> <span class="s">"Alexander"</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">s</span><span class="s">"Alexander, first name = $first"</span>
+  <span class="k">case</span> <span class="nc">Dog</span><span class="o">(</span><span class="s">"Zeus"</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="s">"Собака с именем Zeus"</span>
+
+  <span class="c1">// Сравнение по типу</span>
+  <span class="k">case</span> <span class="n">s</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=&gt;</span> <span class="n">s</span><span class="s">"получена строка: $s"</span>
+  <span class="k">case</span> <span class="n">i</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=&gt;</span> <span class="n">s</span><span class="s">"получено число: $i"</span>
+  <span class="k">case</span> <span class="n">f</span><span class="k">:</span> <span class="kt">Float</span> <span class="o">=&gt;</span> <span class="n">s</span><span class="s">"получено число с плавающей точкой: $f"</span>
+  <span class="k">case</span> <span class="n">a</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=&gt;</span> <span class="n">s</span><span class="s">"массив чисел: ${a.mkString("</span><span class="o">,</span><span class="s">")}"</span>
+  <span class="k">case</span> <span class="n">as</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=&gt;</span> <span class="n">s</span><span class="s">"массив строк: ${as.mkString("</span><span class="o">,</span><span class="s">")}"</span>
+  <span class="k">case</span> <span class="n">d</span><span class="k">:</span> <span class="kt">Dog</span> <span class="o">=&gt;</span> <span class="n">s</span><span class="s">"Экземпляр класса Dog: ${d.name}"</span>
+  <span class="k">case</span> <span class="n">list</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">?</span><span class="o">]</span> <span class="k">=&gt;</span> <span class="n">s</span><span class="s">"получен List: $list"</span>
+  <span class="k">case</span> <span class="n">m</span><span class="k">:</span> <span class="kt">Map</span><span class="o">[</span><span class="kt">?</span>, <span class="kt">?</span><span class="o">]</span> <span class="k">=&gt;</span> <span class="nv">m</span><span class="o">.</span><span class="py">toString</span>
+
+  <span class="c1">// Сравнение по умолчанию</span>
+  <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="s">"Unknown"</span>
+</code></pre></div></div>
+
+<h4 id="дополнительные-возможности-выражений-match">Дополнительные возможности выражений match</h4>
+
+<p><code class="highlighter-rouge">match</code> выражения могут быть объединены в цепочку:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">chain</span><span class="o">(</span><span class="n">xs</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span> <span class="k">=</span>
+  <span class="n">xs</span> <span class="k">match</span>
+    <span class="k">case</span> <span class="nc">Nil</span> <span class="k">=&gt;</span> <span class="s">"empty"</span>
+    <span class="k">case</span> <span class="k">_</span>   <span class="k">=&gt;</span> <span class="s">"nonempty"</span>
+  <span class="k">match</span>
+    <span class="k">case</span> <span class="s">"empty"</span>    <span class="k">=&gt;</span> <span class="mi">0</span>
+    <span class="k">case</span> <span class="s">"nonempty"</span> <span class="k">=&gt;</span> <span class="mi">1</span>
+
+<span class="nf">chain</span><span class="o">(</span><span class="nv">List</span><span class="o">.</span><span class="py">empty</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span>
+<span class="c1">// res30: Int = 0</span>
+<span class="nf">chain</span><span class="o">(</span><span class="nc">List</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">))</span>
+<span class="c1">// res31: Int = 1</span>
+</code></pre></div></div>
+
+<h3 id="trycatchfinally">try/catch/finally</h3>
+
+<p>Как и в Java, в Scala есть конструкция <code class="highlighter-rouge">try</code>/<code class="highlighter-rouge">catch</code>/<code class="highlighter-rouge">finally</code>, позволяющая перехватывать исключения и управлять ими. 
+Для обеспечения согласованности Scala использует тот же синтаксис, что и выражения <code class="highlighter-rouge">match</code>, 
+и поддерживает pattern matching для различных возможных исключений.</p>
+
+<p>В следующем примере <code class="highlighter-rouge">openAndReadAFile</code> - это метод, который выполняет то, что следует из его названия: 
+он открывает файл и считывает текст в нем, присваивая результат изменяемой переменной <code class="highlighter-rouge">text</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">text</span> <span class="k">=</span> <span class="s">""</span>
+<span class="k">try</span>
+  <span class="n">text</span> <span class="k">=</span> <span class="nf">openAndReadAFile</span><span class="o">(</span><span class="n">filename</span><span class="o">)</span>
+<span class="k">catch</span>
+  <span class="k">case</span> <span class="n">fnf</span><span class="k">:</span> <span class="kt">FileNotFoundException</span> <span class="o">=&gt;</span> <span class="nv">fnf</span><span class="o">.</span><span class="py">printStackTrace</span><span class="o">()</span>
+  <span class="k">case</span> <span class="n">ioe</span><span class="k">:</span> <span class="kt">IOException</span> <span class="o">=&gt;</span> <span class="nv">ioe</span><span class="o">.</span><span class="py">printStackTrace</span><span class="o">()</span>
+<span class="k">finally</span>
+  <span class="nf">println</span><span class="o">(</span><span class="s">"Здесь необходимо закрыть ресурсы."</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Предполагая, что метод <code class="highlighter-rouge">openAndReadAFile</code> использует Java <code class="highlighter-rouge">java.io.*</code> классы для чтения файла 
+и не перехватывает его исключения, попытка открыть и прочитать файл может привести как к <code class="highlighter-rouge">FileNotFoundException</code>, 
+так и к <code class="highlighter-rouge">IOException</code>, и эти два исключения перехватываются в блоке <code class="highlighter-rouge">catch</code> этого примера.</p>
+
+<hr />
+
+<p><strong>References:</strong></p>
+<ul>
+  <li><a href="https://docs.scala-lang.org/scala3/book/taste-control-structures.html">Scala3 book, taste Control Structures</a></li>
+  <li><a href="https://docs.scala-lang.org/scala3/book/control-structures.html">Scala3 book, Control Structures</a></li>
+  <li><a href="https://docs.scala-lang.org/scala3/reference/changed-features/match-syntax.html">Scala 3 Reference</a></li>
+</ul>
+
+
+<hr>
+<div class="edit-button" style="display: flex; justify-content: space-between;">
+    
+    <a href="/scalaworkbook/docs/types" class="btn-sm btn-info btn-left"><-- Предыдущая</a>
+    
+    
+    <a href="/scalaworkbook/docs/modeling" class="btn-sm btn-info btn-right">Следующая --></a>
+    
+</div>
+</section><div class="edit-button"><a href="https://github.com/artemkorsakov/scalaworkbook/edit/main/docs/docs/docs/structures.md" target="_blank" rel="noopener noreferrer" class="btn-sm btn-info">Редактировать страницу</a></div></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalaworkbook/highlight/highlight.pack.js"></script><script src="/scalaworkbook/lunr/lunr.js"></script><script>
+// For all code blocks, copy the language from the containing div
+// to the inner code tag (where hljs expects it to be)
+const langPrefix = 'language-';
+document.querySelectorAll(`div[class^='${langPrefix}']`).forEach(function(div) {
+  div.classList.forEach(function(cssClass) {
+    if (cssClass.startsWith(langPrefix)) {
+      const lang = cssClass.substring(langPrefix.length);
+      div.querySelectorAll('pre code').forEach(function(code) {
+        code.classList.add(lang);
+      });
+    }
+  });
+});
+
+hljs.configure({languages:['scala','java','bash']});
+hljs.initHighlightingOnLoad();
+      </script><script>console.info('\x57\x65\x62\x73\x69\x74\x65\x20\x62\x75\x69\x6c\x74\x20\x77\x69\x74\x68\x3a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x5f\x5f\x0a\x20\x20\x20\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x5f\x20\x20\x2f\x20\x2f\x5f\x20\x20\x20\x20\x20\x20\x5f\x5f\x5f\x5f\x20\x5f\x5f\x5f\x20\x20\x28\x5f\x29\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x28\x5f\x29\x20\x2f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x0a\x20\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x60\x5f\x5f\x20\x5c\x2f\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x20\x2f\x20\x5f\x5f\x2f\x20\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x0a\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x5f\x2f\x20\x2f\x20\x2f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x5f\x5f\x2f\x20\x2f\x20\x20\x2f\x20\x2f\x5f\x2f\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x20\x2f\x5f\x2f\x20\x20\x5f\x5f\x28\x5f\x5f\x20\x20\x29\x0a\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2e\x5f\x5f\x5f\x2f\x5c\x5f\x5f\x2f\x20\x20\x20\x20\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x2f\x20\x20\x20\x5c\x5f\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x0a\x0a\x68\x74\x74\x70\x73\x3a\x2f\x2f\x34\x37\x64\x65\x67\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x73\x62\x74\x2d\x6d\x69\x63\x72\x6f\x73\x69\x74\x65\x73')</script><script src="/scalaworkbook/js/search.js"></script><script src="/scalaworkbook/js/main.js"></script></body></html>
