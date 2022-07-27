@@ -380,6 +380,10 @@ options:
     url: fp/handling-errors
     menu_type: fp
 
+  - title: Ленивые вычисления
+    url: fp/laziness
+    menu_type: fp
+
   ###########################
   # Type classes options    #
   ###########################

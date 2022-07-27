@@ -3,7 +3,7 @@ layout: fp
 title: "Обработка ошибок"
 section: fp
 prev: data-structures
-next: ???
+next: laziness
 ---
 
 ## {{page.title}}
