@@ -1,0 +1,262 @@
+<!DOCTYPE html><html><head><title>Scala workbook: Обработка ошибок</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Артём Корсаков" /><meta name="description" content="Разработка на Scala." /><meta name="og:image" content="/scalaworkbook/img/poster.png" /><meta name="image" property="og:image" content="/scalaworkbook/img/poster.png" /><meta name="og:title" content="Scala workbook: Обработка ошибок" /><meta name="title" property="og:title" content="Scala workbook: Обработка ошибок" /><meta name="og:site_name" content="Scala workbook" /><meta name="og:url" content="" /><meta name="og:type" content="website" /><meta name="og:description" content="Разработка на Scala." /><link rel="icon" type="image/png" href="/scalaworkbook/img/favicon.png" /><meta name="twitter:title" content="Scala workbook: Обработка ошибок" /><meta name="twitter:image" content="https://artemkorsakov.github.io/scalaworkbook/img/poster.png" /><meta name="twitter:description" content="Разработка на Scala." /><meta name="twitter:card" content="summary_large_image" /><link rel="icon" type="image/png" sizes="16x16" href="/scalaworkbook/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/scalaworkbook/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/scalaworkbook/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/scalaworkbook/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/scalaworkbook/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/scalaworkbook/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/scalaworkbook/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/scalaworkbook/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/scalaworkbook/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/scalaworkbook/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/scalaworkbook/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/scalaworkbook/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/scalaworkbook/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/scalaworkbook/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/scalaworkbook/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/scalaworkbook/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/scalaworkbook/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/scalaworkbook/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/scalaworkbook/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/scalaworkbook/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/scalaworkbook/highlight/styles/vs.css" /><link rel="stylesheet" href="/scalaworkbook/css/pattern-style.css" /><link rel="stylesheet" href="/scalaworkbook/css/override.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/scalaworkbook/" class="brand"><div class="brand-wrapper"><span>Scala workbook</span></div></a></li>                      <li><a href="/scalaworkbook/fp/index" class="">Функц. программирование</a></li> <li><a href="/scalaworkbook/fp/data-structures" class="">Функц. структура данных</a></li> <li><a href="/scalaworkbook/fp/handling-errors" class=" active ">Обработка ошибок</a></li> <li><a href="/scalaworkbook/fp/laziness" class="">Ленивые вычисления</a></li>       </ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li class="search-nav hidden-xs hidden-sm"><div id="search-dropdown"><label><i class="fa fa-search"></i>Search</label><input id="search-bar" type="text" placeholder="Enter keywords here..." onclick="displayToggleSearch(event)" /><ul id="search-dropdown-content" class="dropdown dropdown-content"></ul></div></li></ul></div></div></div></div><div id="content" data-github-owner="artemkorsakov" data-github-repo="scalaworkbook"><div class="content-wrapper"><section><h2 id="обработка-ошибок">Обработка ошибок</h2>
+
+<h3 id="основные-принципы-функционального-возникновения-и-обработки-ошибок">Основные принципы функционального возникновения и обработки ошибок</h3>
+
+<p>Создание исключений является побочным эффектом, поэтому не используется в функциональном коде. 
+Вместо этого можно представлять сбои и исключения с помощью обычных значений, 
+и можно писать функции высшего порядка, которые абстрагируются от общих шаблонов обработки ошибок и восстановления. 
+Функциональное решение, возвращающее ошибки в виде значений, 
+является более безопасным и сохраняет ссылочную прозрачность, 
+а благодаря использованию функций высшего порядка можно сохранить основное преимущество исключений — 
+консолидацию логики обработки ошибок.</p>
+
+<p>Есть две основные проблемы с исключениями:</p>
+<ul>
+  <li>исключения нарушают <strong>ссылочную прозрачность</strong> (RT - <em>referentially transparent</em>) <strong>и вводят зависимость от контекста</strong>, 
+уводя от простых рассуждений модели подстановки и позволяя писать запутанный код на основе исключений. 
+Исключения следует использовать только для обработки ошибок, а не для потока управления.</li>
+  <li><strong>исключения не являются типобезопасными</strong>. Тип <code class="highlighter-rouge">failingFn</code>, <code class="highlighter-rouge">Int =&gt; Int</code>, ничего не говорит о том, 
+что могут возникать исключения, и компилятор, конечно же, 
+не будет заставлять вызывающую функцию <code class="highlighter-rouge">failingFn</code> принимать решение о том, как обрабатывать эти исключения. 
+Если забыть проверить наличие исключения в <code class="highlighter-rouge">failingFn</code>, это не будет обнаружено до времени выполнения.</li>
+</ul>
+
+<h4 id="возможные-альтернативы-исключениям">Возможные альтернативы исключениям</h4>
+
+<p>Рассмотрим ситуацию, когда можно было бы использовать исключение, 
+и рассмотрим различные подходы, которые можно было бы использовать вместо него. 
+Вот реализация функции, вычисляющей среднее значение списка, которое не определено, если список пуст:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mean</span><span class="o">(</span><span class="n">xs</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">Double</span><span class="o">])</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span>
+  <span class="k">if</span> <span class="nv">xs</span><span class="o">.</span><span class="py">isEmpty</span> <span class="n">then</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nc">ArithmeticException</span><span class="o">(</span><span class="s">"mean of empty list!"</span><span class="o">)</span>
+  <span class="k">else</span> <span class="nv">xs</span><span class="o">.</span><span class="py">sum</span> <span class="o">/</span> <span class="nv">xs</span><span class="o">.</span><span class="py">length</span>
+</code></pre></div></div>
+
+<p>Функция среднего — это пример так называемой <em>частичной функции</em>: она не определена для некоторых входных данных. 
+Функция обычно является частичной, потому что она делает некоторые предположения о своих входных данных, 
+которые не подразумеваются типами входных данных.</p>
+
+<p>Рассмотрим несколько альтернатив исключениям.</p>
+
+<p>Первая возможность — вернуть какое-то поддельное значение типа <code class="highlighter-rouge">Double</code>. 
+Можно было бы просто вернуть <code class="highlighter-rouge">xs.sum / xs.length</code> во всех случаях и получить результат <code class="highlighter-rouge">0.0/0.0</code>, 
+когда ввод пуст, что равно <code class="highlighter-rouge">Double.NaN</code>; 
+или можно было бы вернуть какое-то другое сигнальное значение. 
+В других ситуациях можно было бы вернуть <code class="highlighter-rouge">null</code> вместо значения нужного типа. 
+Это решение следует отвергнуть по нескольким причинам:</p>
+<ul>
+  <li>Это позволяет ошибкам распространяться незаметно — вызывающая сторона может просто забыть проверить это условие 
+и не будет предупреждена компилятором, что может привести к тому, что последующий код не будет работать должным образом. 
+Часто ошибка будет обнаружена в коде намного позже.</li>
+  <li>Помимо того, что метод подвержен ошибкам, он приводит к изрядному количеству шаблонного кода на сайтах вызовов 
+с явными операторами <code class="highlighter-rouge">if</code> для проверки того, получил ли вызывающий «настоящий» результат. 
+Этот шаблон увеличивается, если вызвать несколько функций, каждая из которых использует коды ошибок,
+которые должны быть проверены и каким-то образом агрегированы.</li>
+  <li>Это не применимо к полиморфному коду. 
+Для некоторых типов вывода может даже не быть сигнального значения нужного типа! 
+Рассмотрим такую функцию, как <code class="highlighter-rouge">max</code>, которая находит максимальное значение в последовательности 
+в соответствии с пользовательской функцией сравнения: <code class="highlighter-rouge">def max[A](xs: Seq[A])(greater: (A,A) =&gt; Boolean): A</code>. 
+Если ввод пуст, мы не можем изобрести значение типа <code class="highlighter-rouge">A</code>. 
+Здесь также нельзя использовать <code class="highlighter-rouge">null</code>, поскольку <code class="highlighter-rouge">null</code> допустим только для непримитивных типов, 
+а <code class="highlighter-rouge">A</code> на самом деле может быть примитивом, таким как <code class="highlighter-rouge">Double</code> или <code class="highlighter-rouge">Int</code>.</li>
+  <li>Для этого требуется особая политика или соглашение о вызовах вызывающих объектов — 
+правильное использование функции <code class="highlighter-rouge">mean</code> потребует, чтобы вызывающие выполняли что-то иное, 
+кроме вызова <code class="highlighter-rouge">mean</code> и использования результата. 
+Предоставление функциям специальных политик, подобных этой, затрудняет их передачу функциям высшего порядка, 
+которые должны обрабатывать все аргументы единообразно.</li>
+</ul>
+
+<p>Вторая возможность — заставить вызывающую программу предоставить аргумент, 
+который говорит, что делать, если мы не знаем, как обрабатывать ввод:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mean</span><span class="o">(</span><span class="n">xs</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">Double</span><span class="o">],</span> <span class="n">onEmpty</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span>
+  <span class="k">if</span> <span class="nv">xs</span><span class="o">.</span><span class="py">isEmpty</span> <span class="n">then</span> <span class="n">onEmpty</span>
+  <span class="k">else</span> <span class="nv">xs</span><span class="o">.</span><span class="py">sum</span> <span class="o">/</span> <span class="nv">xs</span><span class="o">.</span><span class="py">length</span>
+</code></pre></div></div>
+
+<p>Это превращает <code class="highlighter-rouge">mean</code> в полную функцию, но у нее есть недостатки — 
+она требует, чтобы вызывающие функции имели непосредственное представление о том, 
+как обрабатывать неопределенный случай, и ограничивает их возвратом значения <code class="highlighter-rouge">Double</code>. 
+Что, если среднее значение вызывается как часть более крупного вычисления, 
+и хотелось бы прервать это вычисление, если среднее значение не определено? 
+Или, может быть, в этом случае мы хотели бы выбрать совершенно другую ветвь вычислений? 
+Простая передача параметра <code class="highlighter-rouge">onEmpty</code> не дает этой свободы. 
+Нам нужен способ отложить решение о том, как обрабатывать неопределенные случаи, 
+чтобы их можно было обрабатывать на наиболее подходящем уровне.</p>
+
+<h3 id="тип-данных-option">Тип данных Option</h3>
+
+<p>Решение состоит в том, чтобы явно указать в возвращаемом типе, что функция не всегда может иметь ответ. 
+Можно думать об этом как о передаче вызывающей стороне стратегии обработки ошибок.</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">enum</span> <span class="nc">Option</span><span class="o">[</span><span class="kt">+A</span><span class="o">]</span><span class="k">:</span>
+  <span class="kt">case</span> <span class="kt">Some</span><span class="o">(</span><span class="kt">get:</span> <span class="kt">A</span><span class="o">)</span>
+  <span class="kt">case</span> <span class="kt">None</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">Option</code> имеет два случая: он может быть определен, и в этом случае он равен <code class="highlighter-rouge">Some</code>, 
+или не определен, и в этом случае - <code class="highlighter-rouge">None</code>. 
+Можно использовать <code class="highlighter-rouge">Option</code> для определения среднего значения следующим образом:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">Option.</span><span class="o">{</span><span class="nc">Some</span><span class="o">,</span> <span class="nc">None</span><span class="o">}</span>
+
+<span class="k">def</span> <span class="nf">mean</span><span class="o">(</span><span class="n">xs</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">Double</span><span class="o">])</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Double</span><span class="o">]</span> <span class="k">=</span>
+  <span class="k">if</span> <span class="nv">xs</span><span class="o">.</span><span class="py">isEmpty</span> <span class="n">then</span> <span class="nc">None</span>
+  <span class="k">else</span> <span class="nc">Some</span><span class="o">(</span><span class="nv">xs</span><span class="o">.</span><span class="py">sum</span> <span class="o">/</span> <span class="nv">xs</span><span class="o">.</span><span class="py">length</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Тип возвращаемого значения теперь отражает возможность того, что результат не всегда может быть определен. 
+Функция по-прежнему всегда возвращает результат объявленного типа (теперь <code class="highlighter-rouge">Option[Double]</code>), 
+т.е. это общая функция. 
+Каждое значение входного типа принимает ровно одно значение выходного типа.</p>
+
+<h4 id="сценарии-использования-основных-функций-option">Сценарии использования основных функций Option</h4>
+
+<p>Основными операциями <code class="highlighter-rouge">Option</code> являются:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">map</span><span class="o">[</span><span class="kt">B</span><span class="o">](</span><span class="n">f</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=&gt;</span> <span class="n">B</span><span class="o">)</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">B</span><span class="o">]</span>
+
+<span class="k">def</span> <span class="nf">getOrElse</span><span class="o">[</span><span class="kt">B</span> <span class="k">&gt;:</span> <span class="kt">A</span><span class="o">](</span><span class="n">default</span><span class="k">:</span> <span class="o">=&gt;</span> <span class="n">B</span><span class="o">)</span><span class="k">:</span> <span class="kt">B</span>
+
+<span class="k">def</span> <span class="nf">flatMap</span><span class="o">[</span><span class="kt">B</span><span class="o">](</span><span class="n">f</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=&gt;</span> <span class="nc">Option</span><span class="o">[</span><span class="kt">B</span><span class="o">])</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">B</span><span class="o">]</span>
+
+<span class="k">def</span> <span class="nf">orElse</span><span class="o">[</span><span class="kt">B</span> <span class="k">&gt;:</span> <span class="kt">A</span><span class="o">](</span><span class="n">ob</span><span class="k">:</span> <span class="o">=&gt;</span> <span class="nc">Option</span><span class="o">[</span><span class="kt">B</span><span class="o">])</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">B</span><span class="o">]</span>
+
+<span class="k">def</span> <span class="nf">filter</span><span class="o">(</span><span class="n">f</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=&gt;</span> <span class="nc">Boolean</span><span class="o">)</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span>
+</code></pre></div></div>
+
+<p>Ниже даны некоторые рекомендации о том, когда использовать каждую из них.</p>
+
+<p>Функцию <code class="highlighter-rouge">map</code> можно использовать для преобразования результата внутри параметра, если он существует. 
+Можно думать об этом как о продолжении вычислений в предположении, что ошибки не произошло; 
+это также способ отложить обработку ошибок на более поздний код:</p>
+
+<p><code class="highlighter-rouge">flatMap</code> аналогичен, за исключением того, 
+что функция, предоставляемая для преобразования результата, сама по себе может дать сбой.</p>
+
+<p>Пример:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">case</span> <span class="k">class</span> <span class="nc">Employee</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">department</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">manager</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Employee</span><span class="o">])</span>
+<span class="k">def</span> <span class="nf">lookupByName</span><span class="o">(</span><span class="n">name</span><span class="k">:</span> <span class="kt">String</span><span class="o">)</span><span class="k">:</span> <span class="kt">Option</span><span class="o">[</span><span class="kt">Employee</span><span class="o">]</span> <span class="k">=</span>
+  <span class="n">name</span> <span class="k">match</span>
+    <span class="k">case</span> <span class="s">"Jack"</span> <span class="k">=&gt;</span> <span class="nc">Some</span><span class="o">(</span><span class="nc">Employee</span><span class="o">(</span><span class="s">"Jack"</span><span class="o">,</span> <span class="s">"department1"</span><span class="o">,</span> <span class="nc">None</span><span class="o">))</span>
+    <span class="k">case</span> <span class="s">"Joe"</span>  <span class="k">=&gt;</span> <span class="nc">Some</span><span class="o">(</span><span class="nc">Employee</span><span class="o">(</span><span class="s">"Joe"</span><span class="o">,</span> <span class="s">"department2"</span><span class="o">,</span> <span class="nf">lookupByName</span><span class="o">(</span><span class="s">"Jack"</span><span class="o">)))</span>
+    <span class="k">case</span> <span class="k">_</span>      <span class="k">=&gt;</span> <span class="nc">None</span>
+<span class="nf">lookupByName</span><span class="o">(</span><span class="s">"Joe"</span><span class="o">).</span><span class="py">map</span><span class="o">(</span><span class="nv">_</span><span class="o">.</span><span class="py">department</span><span class="o">)</span>
+<span class="c1">// res1: Option[String] = Some(value = "department2")</span>
+<span class="nf">lookupByName</span><span class="o">(</span><span class="s">"Joe"</span><span class="o">).</span><span class="py">flatMap</span><span class="o">(</span><span class="nv">_</span><span class="o">.</span><span class="py">manager</span><span class="o">)</span>
+<span class="c1">// res2: Option[Employee] = Some(</span>
+<span class="c1">//   value = Employee(name = "Jack", department = "department1", manager = None)</span>
+<span class="c1">// )</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">filter</code> можно использовать для преобразования успехов в неудачи, 
+если успешные значения не соответствуют заданному предикату. 
+Распространенным шаблоном является преобразование <code class="highlighter-rouge">Option</code> через вызовы <code class="highlighter-rouge">map</code>, <code class="highlighter-rouge">flatMap</code> и/или <code class="highlighter-rouge">filter</code>, 
+а затем использование <code class="highlighter-rouge">getOrElse</code> для обработки ошибок в конце:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">lookupByName</span><span class="o">(</span><span class="s">"Joe"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">map</span><span class="o">(</span><span class="nv">_</span><span class="o">.</span><span class="py">department</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">filter</span><span class="o">(</span><span class="k">_</span> <span class="o">!=</span> <span class="s">"department2"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">getOrElse</span><span class="o">(</span><span class="s">"Default Dept"</span><span class="o">)</span>
+<span class="c1">// res3: String = "Default Dept"</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">getOrElse</code> используется для преобразования из <code class="highlighter-rouge">Option[String]</code> в <code class="highlighter-rouge">String</code>, 
+предоставляя значение по умолчанию на случай ошибки. 
+<code class="highlighter-rouge">orElse</code> похож на <code class="highlighter-rouge">getOrElse</code>, за исключением того, что возвращается другой <code class="highlighter-rouge">Option</code>, если первый не определен. 
+Это часто бывает полезно, когда нужно вместе связать возможные неудачные вычисления, 
+пробуя второе, если первое не удалось. 
+Обычная идиома состоит в том, чтобы сделать <code class="highlighter-rouge">o.getOrElse(throw new Exception("FAIL"))</code> 
+для преобразования варианта <code class="highlighter-rouge">None</code> обратно в исключение.</p>
+
+<p>Общее эмпирическое правило состоит в том, что исключения используются только в том случае, 
+если никакая разумная программа никогда не перехватит исключение; 
+если для некоторых вызывающих объектов исключение может быть исправимой ошибкой,
+используется <code class="highlighter-rouge">Option</code> (или <code class="highlighter-rouge">Either</code>, обсуждается позже), чтобы предоставить гибкость.</p>
+
+<h3 id="тип-данных-either">Тип данных Either</h3>
+
+<p>Основная идея заключается в том, что сбои и исключения можно представлять с помощью обычных значений 
+и писать функции, которые абстрагируются от общих шаблонов обработки ошибок и восстановления.
+<code class="highlighter-rouge">Option</code> — не единственный тип данных, который можно использовать для этой цели, 
+и хотя он используется часто, он довольно прост. 
+<code class="highlighter-rouge">Option</code> ничего не говорит о том, что пошло не так в случае падения. 
+Все, что он может сделать, это дать <code class="highlighter-rouge">None</code>, указывая на отсутствие значения. 
+Но иногда необходимо узнать больше. 
+Например, может понадобиться строка, которая дает больше информации, 
+или, если возникло исключение, хотелось бы узнать, что это за ошибка на самом деле.</p>
+
+<p>Можно создать тип данных, который кодирует любую необходимую информацию о сбоях. 
+Иногда достаточно просто знать, произошел ли сбой, и в этом случае можно использовать <code class="highlighter-rouge">Option</code>; 
+в других случаях нужна дополнительная информация. 
+В этом разделе будет рассмотрено простое расширение <code class="highlighter-rouge">Option</code> - 
+тип данных <code class="highlighter-rouge">Either</code>, который позволяет отслеживать причину сбоя.</p>
+
+<p>Его определение:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">enum</span> <span class="nc">Either</span><span class="o">[</span><span class="kt">+E</span>, <span class="kt">+A</span><span class="o">]</span><span class="k">:</span>
+  <span class="kt">case</span> <span class="kt">Left</span><span class="o">(</span><span class="kt">value:</span> <span class="kt">E</span><span class="o">)</span>
+  <span class="kt">case</span> <span class="kt">Right</span><span class="o">(</span><span class="kt">value:</span> <span class="kt">A</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">Either</code> имеет только два варианта (<em>case</em>), как и <code class="highlighter-rouge">Option</code>. 
+Существенная разница состоит в том, что оба варианта содержат значение. 
+Тип данных <code class="highlighter-rouge">Either</code> представляет в очень общем виде значения, которые могут быть одним из двух. 
+Можно сказать, что это дизъюнктное объединение двух типов. 
+По соглашению конструктор <code class="highlighter-rouge">Right</code> зарезервирован для случая успеха, а конструктор <code class="highlighter-rouge">Left</code> - для неудачи.</p>
+
+<p>Пример <code class="highlighter-rouge">mean</code>, возвращающий <code class="highlighter-rouge">String</code> в случае ошибки:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">mean</span><span class="o">(</span><span class="n">xs</span><span class="k">:</span> <span class="kt">Seq</span><span class="o">[</span><span class="kt">Double</span><span class="o">])</span><span class="k">:</span> <span class="kt">Either</span><span class="o">[</span><span class="kt">String</span>, <span class="kt">Double</span><span class="o">]</span> <span class="k">=</span>
+  <span class="k">if</span> <span class="nv">xs</span><span class="o">.</span><span class="py">isEmpty</span> <span class="n">then</span>
+    <span class="nc">Left</span><span class="o">(</span><span class="s">"Пустой список!"</span><span class="o">)</span>
+  <span class="k">else</span>
+    <span class="nc">Right</span><span class="o">(</span><span class="nv">xs</span><span class="o">.</span><span class="py">sum</span> <span class="o">/</span> <span class="nv">xs</span><span class="o">.</span><span class="py">length</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">Left</code> можно использовать и для возврата самого исключения:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">scala.util.control.NonFatal</span>
+
+<span class="k">def</span> <span class="nf">catchNonFatal</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">a</span><span class="k">:</span> <span class="o">=&gt;</span> <span class="n">A</span><span class="o">)</span><span class="k">:</span> <span class="kt">Either</span><span class="o">[</span><span class="kt">Throwable</span>, <span class="kt">A</span><span class="o">]</span> <span class="k">=</span>
+  <span class="k">try</span> <span class="nc">Right</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+  <span class="k">catch</span> <span class="k">case</span> <span class="nc">NonFatal</span><span class="o">(</span><span class="n">t</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">Left</span><span class="o">(</span><span class="n">t</span><span class="o">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>References:</strong></p>
+<ul>
+  <li><a href="https://www.manning.com/books/functional-programming-in-scala-second-edition?query=Functional%20Programming%20in%20Scala,%20Second%20Edition">Functional Programming in Scala, Second Edition, Chapter 4</a></li>
+</ul>
+
+
+<hr>
+<div class="edit-button" style="display: flex; justify-content: space-between;">
+    
+    <a href="/scalaworkbook/fp/data-structures" class="btn-sm btn-info btn-left"><-- Предыдущая</a>
+    
+    
+    <a href="/scalaworkbook/fp/laziness" class="btn-sm btn-info btn-right">Следующая --></a>
+    
+</div>
+</section><div class="edit-button"><a href="https://github.com/artemkorsakov/scalaworkbook/edit/main/docs/docs/fp/handling-errors.md" target="_blank" rel="noopener noreferrer" class="btn-sm btn-info">Редактировать страницу</a></div></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalaworkbook/highlight/highlight.pack.js"></script><script src="/scalaworkbook/lunr/lunr.js"></script><script>
+// For all code blocks, copy the language from the containing div
+// to the inner code tag (where hljs expects it to be)
+const langPrefix = 'language-';
+document.querySelectorAll(`div[class^='${langPrefix}']`).forEach(function(div) {
+  div.classList.forEach(function(cssClass) {
+    if (cssClass.startsWith(langPrefix)) {
+      const lang = cssClass.substring(langPrefix.length);
+      div.querySelectorAll('pre code').forEach(function(code) {
+        code.classList.add(lang);
+      });
+    }
+  });
+});
+
+hljs.configure({languages:['scala','java','bash']});
+hljs.initHighlightingOnLoad();
+      </script><script>console.info('\x57\x65\x62\x73\x69\x74\x65\x20\x62\x75\x69\x6c\x74\x20\x77\x69\x74\x68\x3a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x5f\x5f\x0a\x20\x20\x20\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x5f\x20\x20\x2f\x20\x2f\x5f\x20\x20\x20\x20\x20\x20\x5f\x5f\x5f\x5f\x20\x5f\x5f\x5f\x20\x20\x28\x5f\x29\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x28\x5f\x29\x20\x2f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x0a\x20\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x60\x5f\x5f\x20\x5c\x2f\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x20\x2f\x20\x5f\x5f\x2f\x20\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x0a\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x5f\x2f\x20\x2f\x20\x2f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x5f\x5f\x2f\x20\x2f\x20\x20\x2f\x20\x2f\x5f\x2f\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x20\x2f\x5f\x2f\x20\x20\x5f\x5f\x28\x5f\x5f\x20\x20\x29\x0a\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2e\x5f\x5f\x5f\x2f\x5c\x5f\x5f\x2f\x20\x20\x20\x20\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x2f\x20\x20\x20\x5c\x5f\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x0a\x0a\x68\x74\x74\x70\x73\x3a\x2f\x2f\x34\x37\x64\x65\x67\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x73\x62\x74\x2d\x6d\x69\x63\x72\x6f\x73\x69\x74\x65\x73')</script><script src="/scalaworkbook/js/search.js"></script><script src="/scalaworkbook/js/main.js"></script></body></html>

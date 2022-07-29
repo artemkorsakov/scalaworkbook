@@ -1,0 +1,137 @@
+<!DOCTYPE html><html><head><title>Scala workbook: Функц. структура данных</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Артём Корсаков" /><meta name="description" content="Разработка на Scala." /><meta name="og:image" content="/scalaworkbook/img/poster.png" /><meta name="image" property="og:image" content="/scalaworkbook/img/poster.png" /><meta name="og:title" content="Scala workbook: Функц. структура данных" /><meta name="title" property="og:title" content="Scala workbook: Функц. структура данных" /><meta name="og:site_name" content="Scala workbook" /><meta name="og:url" content="" /><meta name="og:type" content="website" /><meta name="og:description" content="Разработка на Scala." /><link rel="icon" type="image/png" href="/scalaworkbook/img/favicon.png" /><meta name="twitter:title" content="Scala workbook: Функц. структура данных" /><meta name="twitter:image" content="https://artemkorsakov.github.io/scalaworkbook/img/poster.png" /><meta name="twitter:description" content="Разработка на Scala." /><meta name="twitter:card" content="summary_large_image" /><link rel="icon" type="image/png" sizes="16x16" href="/scalaworkbook/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/scalaworkbook/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/scalaworkbook/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/scalaworkbook/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/scalaworkbook/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/scalaworkbook/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/scalaworkbook/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/scalaworkbook/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/scalaworkbook/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/scalaworkbook/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/scalaworkbook/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/scalaworkbook/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/scalaworkbook/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/scalaworkbook/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/scalaworkbook/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/scalaworkbook/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/scalaworkbook/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/scalaworkbook/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/scalaworkbook/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/scalaworkbook/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/scalaworkbook/highlight/styles/vs.css" /><link rel="stylesheet" href="/scalaworkbook/css/pattern-style.css" /><link rel="stylesheet" href="/scalaworkbook/css/override.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/scalaworkbook/" class="brand"><div class="brand-wrapper"><span>Scala workbook</span></div></a></li>                      <li><a href="/scalaworkbook/fp/index" class="">Функц. программирование</a></li> <li><a href="/scalaworkbook/fp/data-structures" class=" active ">Функц. структура данных</a></li> <li><a href="/scalaworkbook/fp/handling-errors" class="">Обработка ошибок</a></li> <li><a href="/scalaworkbook/fp/laziness" class="">Ленивые вычисления</a></li>       </ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li class="search-nav hidden-xs hidden-sm"><div id="search-dropdown"><label><i class="fa fa-search"></i>Search</label><input id="search-bar" type="text" placeholder="Enter keywords here..." onclick="displayToggleSearch(event)" /><ul id="search-dropdown-content" class="dropdown dropdown-content"></ul></div></li></ul></div></div></div></div><div id="content" data-github-owner="artemkorsakov" data-github-repo="scalaworkbook"><div class="content-wrapper"><section><h2 id="функциональная-структура-данных">Функциональная структура данных</h2>
+
+<p>Функциональная структура данных (<em>functional data structures</em>) работает с использованием только чистых функций. 
+Напомним, что чистая функция не должна изменять данные или выполнять другие побочные эффекты. 
+Следовательно, <strong>функциональные структуры данных по определению являются неизменяемыми</strong>.</p>
+
+<h3 id="односвязный-список">Односвязный список</h3>
+
+<p>Одной из самых распространённых функциональных структур данных является односвязный список.</p>
+
+<p>Односвязный список можно определить так:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">enum</span> <span class="nc">List</span><span class="o">[</span><span class="kt">+A</span><span class="o">]</span><span class="k">:</span>
+  <span class="kt">case</span> <span class="kt">Nil</span>
+  <span class="k">case</span> <span class="nc">Cons</span><span class="o">(</span><span class="n">head</span><span class="k">:</span> <span class="kt">A</span><span class="o">,</span> <span class="n">tail</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span>
+
+<span class="k">import</span> <span class="nn">List.</span><span class="o">*</span>
+
+<span class="k">object</span> <span class="nc">List</span><span class="k">:</span>
+  <span class="kt">def</span> <span class="kt">apply</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">as</span><span class="k">:</span> <span class="kt">A*</span><span class="o">)</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="k">=</span>
+    <span class="k">if</span> <span class="nv">as</span><span class="o">.</span><span class="py">isEmpty</span> <span class="n">then</span> <span class="nc">Nil</span>
+    <span class="k">else</span> <span class="nc">Cons</span><span class="o">(</span><span class="nv">as</span><span class="o">.</span><span class="py">head</span><span class="o">,</span> <span class="nf">apply</span><span class="o">(</span><span class="nv">as</span><span class="o">.</span><span class="py">tail</span><span class="o">*))</span>
+</code></pre></div></div>
+
+<p>Перечисление <code class="highlighter-rouge">List</code> содержит два конструктора данных, которые представляют две возможные формы <code class="highlighter-rouge">List</code>. 
+<code class="highlighter-rouge">List</code> может быть пустым, обозначаемым конструктором данных <code class="highlighter-rouge">Nil</code>, 
+или непустым, обозначаемым конструктором данных <code class="highlighter-rouge">Cons</code> (сокращение от <em>construction</em>). 
+Непустой список состоит из начального элемента <code class="highlighter-rouge">head</code>, 
+за которым следует <code class="highlighter-rouge">List</code> (возможно, пустой) оставшихся элементов (<code class="highlighter-rouge">tail</code>):</p>
+
+<p><img src="https://drek4537l1klr.cloudfront.net/pilquist/v-5/Figures/figure-3-1.png" alt="List" /></p>
+
+<p>Создать список можно следующим образом:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">ex1</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Double</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Nil</span>
+<span class="c1">// ex1: List[Double] = Nil</span>
+<span class="k">val</span> <span class="nv">ex2</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Cons</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="nc">Nil</span><span class="o">)</span>
+<span class="c1">// ex2: List[Int] = Cons(head = 1, tail = Nil)</span>
+<span class="k">val</span> <span class="nv">ex3</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Cons</span><span class="o">(</span><span class="s">"a"</span><span class="o">,</span> <span class="nc">Cons</span><span class="o">(</span><span class="s">"b"</span><span class="o">,</span> <span class="nc">Nil</span><span class="o">))</span>
+<span class="c1">// ex3: List[String] = Cons(head = "a", tail = Cons(head = "b", tail = Nil))</span>
+<span class="k">val</span> <span class="nv">ex4</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">String</span><span class="o">]</span> <span class="k">=</span> <span class="nv">List</span><span class="o">.</span><span class="py">apply</span><span class="o">(</span><span class="s">"a"</span><span class="o">,</span> <span class="s">"b"</span><span class="o">)</span>
+<span class="c1">// ex4: List[String] = Cons(head = "a", tail = Cons(head = "b", tail = Nil))</span>
+</code></pre></div></div>
+
+<h4 id="операции-над-односвязным-списком">Операции над односвязным списком</h4>
+
+<p>Над этой функциональной структурой данных можно определить, например, следующие операции суммы и произведения,
+которые используют <a href="/scalaworkbook/docs/structures#match-expressions">сопоставление с образцом</a>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sum</span><span class="o">(</span><span class="n">ints</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Int</span><span class="o">])</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">ints</span> <span class="k">match</span>
+  <span class="k">case</span> <span class="nc">Nil</span> <span class="k">=&gt;</span> <span class="mi">0</span>
+  <span class="k">case</span> <span class="nc">Cons</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">xs</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="nf">sum</span><span class="o">(</span><span class="n">xs</span><span class="o">)</span>
+
+<span class="k">def</span> <span class="nf">product</span><span class="o">(</span><span class="n">ds</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">Double</span><span class="o">])</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="n">ds</span> <span class="k">match</span>
+  <span class="k">case</span> <span class="nc">Nil</span> <span class="k">=&gt;</span> <span class="mf">1.0</span>
+  <span class="k">case</span> <span class="nc">Cons</span><span class="o">(</span><span class="mf">0.0</span><span class="o">,</span> <span class="k">_</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="mf">0.0</span>
+  <span class="k">case</span> <span class="nc">Cons</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">xs</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="nf">product</span><span class="o">(</span><span class="n">xs</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>Рекурсивные определения довольно часто встречаются при написании функций, 
+работающими с рекурсивными типами данных, такими как <code class="highlighter-rouge">List</code> 
+(который рекурсивно ссылается сам на себя в конструкторе данных <code class="highlighter-rouge">Cons</code>).</p>
+
+<h4 id="совместное-использование-данных-в-функциональных-структурах-данных">Совместное использование данных в функциональных структурах данных</h4>
+
+<p>Когда данные неизменяемы, как писать функции, которые, например, добавляют или удаляют элементы из списка? 
+Когда добавляется элемент <code class="highlighter-rouge">e</code> в начало существующего списка, скажем <code class="highlighter-rouge">xs</code>, 
+возвращается новый список, в данном случае <code class="highlighter-rouge">Cons(e, xs)</code>. 
+Поскольку списки неизменяемы, на самом деле не нужно копировать <code class="highlighter-rouge">xs</code>; можно просто использовать его повторно. 
+Это называется обменом данными (<em>data sharing</em>). 
+Совместное использование неизменяемых данных часто позволяет более эффективно реализовывать функции; 
+всегда можно вернуть неизменяемые структуры данных, не беспокоясь о том, что последующий код что-то изменит. 
+Нет необходимости делать копии, чтобы избежать модификации или повреждения.</p>
+
+<p>Точно так же, чтобы удалить элемент из начала списка <code class="highlighter-rouge">val mylist = Cons(x, xs)</code>, можно просто вернуть его “хвост” - <code class="highlighter-rouge">xs</code>. 
+Никакого реального удаления не происходит. Первоначальный список <code class="highlighter-rouge">mylist</code> все еще доступен в целости и сохранности. 
+Говорится, что функциональные структуры данных являются <em>постоянными</em>, 
+что означает, что существующие ссылки никогда не изменяются операциями над структурой данных.</p>
+
+<p><img src="https://drek4537l1klr.cloudfront.net/pilquist/v-5/Figures/figure-3-3.png" alt="Data sharing" /></p>
+
+<p>Пример операции удаления:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">tail</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">l</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span><span class="k">:</span> <span class="kt">List</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="k">=</span>
+  <span class="n">l</span> <span class="k">match</span>
+    <span class="k">case</span> <span class="nc">Nil</span>         <span class="k">=&gt;</span> <span class="nv">sys</span><span class="o">.</span><span class="py">error</span><span class="o">(</span><span class="s">"tail of empty list"</span><span class="o">)</span>
+    <span class="k">case</span> <span class="nc">Cons</span><span class="o">(</span><span class="k">_</span><span class="o">,</span> <span class="n">xs</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">xs</span>
+</code></pre></div></div>
+
+<p>В результате останутся две неизменяемые структуры данных: <code class="highlighter-rouge">l</code> и <code class="highlighter-rouge">xs</code>.</p>
+
+<h3 id="деревья">Деревья</h3>
+
+<p>Ещё одним примером функциональной структуры данных является двоичное дерево:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">enum</span> <span class="nc">Tree</span><span class="o">[</span><span class="kt">+A</span><span class="o">]</span><span class="k">:</span>
+  <span class="kt">case</span> <span class="kt">Leaf</span><span class="o">(</span><span class="kt">value:</span> <span class="kt">A</span><span class="o">)</span>
+  <span class="kt">case</span> <span class="kt">Branch</span><span class="o">(</span><span class="kt">left:</span> <span class="kt">Tree</span><span class="o">[</span><span class="kt">A</span><span class="o">],</span> <span class="n">right</span><span class="k">:</span> <span class="kt">Tree</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span>
+</code></pre></div></div>
+
+<p><img src="https://drek4537l1klr.cloudfront.net/pilquist/v-5/Figures/figure-3-4.png" alt="Tree" /></p>
+
+<hr />
+
+<p><strong>References:</strong></p>
+<ul>
+  <li><a href="https://www.manning.com/books/functional-programming-in-scala-second-edition?query=Functional%20Programming%20in%20Scala,%20Second%20Edition">Functional Programming in Scala, Second Edition, Chapter 3</a></li>
+</ul>
+
+
+<hr>
+<div class="edit-button" style="display: flex; justify-content: space-between;">
+    
+    <a href="/scalaworkbook/fp/index" class="btn-sm btn-info btn-left"><-- Предыдущая</a>
+    
+    
+    <a href="/scalaworkbook/fp/handling-errors" class="btn-sm btn-info btn-right">Следующая --></a>
+    
+</div>
+</section><div class="edit-button"><a href="https://github.com/artemkorsakov/scalaworkbook/edit/main/docs/docs/fp/data-structures.md" target="_blank" rel="noopener noreferrer" class="btn-sm btn-info">Редактировать страницу</a></div></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalaworkbook/highlight/highlight.pack.js"></script><script src="/scalaworkbook/lunr/lunr.js"></script><script>
+// For all code blocks, copy the language from the containing div
+// to the inner code tag (where hljs expects it to be)
+const langPrefix = 'language-';
+document.querySelectorAll(`div[class^='${langPrefix}']`).forEach(function(div) {
+  div.classList.forEach(function(cssClass) {
+    if (cssClass.startsWith(langPrefix)) {
+      const lang = cssClass.substring(langPrefix.length);
+      div.querySelectorAll('pre code').forEach(function(code) {
+        code.classList.add(lang);
+      });
+    }
+  });
+});
+
+hljs.configure({languages:['scala','java','bash']});
+hljs.initHighlightingOnLoad();
+      </script><script>console.info('\x57\x65\x62\x73\x69\x74\x65\x20\x62\x75\x69\x6c\x74\x20\x77\x69\x74\x68\x3a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x5f\x5f\x0a\x20\x20\x20\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x5f\x20\x20\x2f\x20\x2f\x5f\x20\x20\x20\x20\x20\x20\x5f\x5f\x5f\x5f\x20\x5f\x5f\x5f\x20\x20\x28\x5f\x29\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x28\x5f\x29\x20\x2f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x0a\x20\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x60\x5f\x5f\x20\x5c\x2f\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x20\x2f\x20\x5f\x5f\x2f\x20\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x0a\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x5f\x2f\x20\x2f\x20\x2f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x5f\x5f\x2f\x20\x2f\x20\x20\x2f\x20\x2f\x5f\x2f\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x20\x2f\x5f\x2f\x20\x20\x5f\x5f\x28\x5f\x5f\x20\x20\x29\x0a\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2e\x5f\x5f\x5f\x2f\x5c\x5f\x5f\x2f\x20\x20\x20\x20\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x2f\x20\x20\x20\x5c\x5f\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x0a\x0a\x68\x74\x74\x70\x73\x3a\x2f\x2f\x34\x37\x64\x65\x67\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x73\x62\x74\x2d\x6d\x69\x63\x72\x6f\x73\x69\x74\x65\x73')</script><script src="/scalaworkbook/js/search.js"></script><script src="/scalaworkbook/js/main.js"></script></body></html>

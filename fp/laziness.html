@@ -1,0 +1,174 @@
+<!DOCTYPE html><html><head><title>Scala workbook: Ленивые вычисления</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Артём Корсаков" /><meta name="description" content="Разработка на Scala." /><meta name="og:image" content="/scalaworkbook/img/poster.png" /><meta name="image" property="og:image" content="/scalaworkbook/img/poster.png" /><meta name="og:title" content="Scala workbook: Ленивые вычисления" /><meta name="title" property="og:title" content="Scala workbook: Ленивые вычисления" /><meta name="og:site_name" content="Scala workbook" /><meta name="og:url" content="" /><meta name="og:type" content="website" /><meta name="og:description" content="Разработка на Scala." /><link rel="icon" type="image/png" href="/scalaworkbook/img/favicon.png" /><meta name="twitter:title" content="Scala workbook: Ленивые вычисления" /><meta name="twitter:image" content="https://artemkorsakov.github.io/scalaworkbook/img/poster.png" /><meta name="twitter:description" content="Разработка на Scala." /><meta name="twitter:card" content="summary_large_image" /><link rel="icon" type="image/png" sizes="16x16" href="/scalaworkbook/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/scalaworkbook/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/scalaworkbook/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/scalaworkbook/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/scalaworkbook/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/scalaworkbook/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/scalaworkbook/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/scalaworkbook/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/scalaworkbook/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/scalaworkbook/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/scalaworkbook/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/scalaworkbook/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/scalaworkbook/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/scalaworkbook/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/scalaworkbook/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/scalaworkbook/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/scalaworkbook/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/scalaworkbook/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/scalaworkbook/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/scalaworkbook/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/scalaworkbook/highlight/styles/vs.css" /><link rel="stylesheet" href="/scalaworkbook/css/pattern-style.css" /><link rel="stylesheet" href="/scalaworkbook/css/override.css" /></head><body class="docs"><div id="wrapper"><div id="sidebar-wrapper"><ul id="sidebar" class="sidebar-nav"><li class="sidebar-brand"><a href="/scalaworkbook/" class="brand"><div class="brand-wrapper"><span>Scala workbook</span></div></a></li>                      <li><a href="/scalaworkbook/fp/index" class="">Функц. программирование</a></li> <li><a href="/scalaworkbook/fp/data-structures" class="">Функц. структура данных</a></li> <li><a href="/scalaworkbook/fp/handling-errors" class="">Обработка ошибок</a></li> <li><a href="/scalaworkbook/fp/laziness" class=" active ">Ленивые вычисления</a></li>       </ul></div><div id="page-content-wrapper"><div class="nav"><div class="container-fluid"><div class="row"><div class="col-lg-12"><div class="action-menu pull-left clearfix"><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div><ul class="pull-right"><li class="search-nav hidden-xs hidden-sm"><div id="search-dropdown"><label><i class="fa fa-search"></i>Search</label><input id="search-bar" type="text" placeholder="Enter keywords here..." onclick="displayToggleSearch(event)" /><ul id="search-dropdown-content" class="dropdown dropdown-content"></ul></div></li></ul></div></div></div></div><div id="content" data-github-owner="artemkorsakov" data-github-repo="scalaworkbook"><div class="content-wrapper"><section><h2 id="ленивые-вычисления">Ленивые вычисления</h2>
+
+<p>Нестрогость (или ленивое вычисление) — это свойство функции. 
+Сказать, что функция не является строгой, просто означает, 
+что функция может решить не оценивать один или несколько своих аргументов. 
+Напротив, строгая функция всегда оценивает свои аргументы. 
+Строгие функции являются нормой в большинстве языков программирования. 
+Если не указано иное, любое определение функции в Scala будет строгим.</p>
+
+<p>В качестве примера рассмотрим следующую функцию:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">square</span><span class="o">(</span><span class="n">x</span><span class="k">:</span> <span class="kt">Double</span><span class="o">)</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+</code></pre></div></div>
+
+<p>При вызове <code class="highlighter-rouge">square(41.0 + 1.0)</code>, функция <code class="highlighter-rouge">square</code> получит оценочное значение <code class="highlighter-rouge">42.0</code>, потому что она строгая.
+Напротив, сокращающие логические функции <code class="highlighter-rouge">&amp;&amp;</code> и <code class="highlighter-rouge">||</code>, 
+встречающиеся во многих языках программирования, включая Scala, не являются строгими.
+Функция <code class="highlighter-rouge">&amp;&amp;</code> принимает два логических аргумента, но оценивает второй аргумент только в том случае, если первый истинен:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="o">{</span> <span class="nf">println</span><span class="o">(</span><span class="s">"!!"</span><span class="o">);</span> <span class="kc">true</span> <span class="o">}</span>
+<span class="c1">// res0: Boolean = false</span>
+</code></pre></div></div>
+
+<p>Аналогично <code class="highlighter-rouge">||</code> оценивает свой второй аргумент, только если первый <code class="highlighter-rouge">false</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kc">true</span> <span class="o">||</span> <span class="o">{</span> <span class="nf">println</span><span class="o">(</span><span class="s">"!!"</span><span class="o">);</span> <span class="kc">false</span> <span class="o">}</span>
+<span class="c1">// res1: Boolean = true</span>
+</code></pre></div></div>
+
+<p>Еще одним примером нестрогости является управляющая конструкция <code class="highlighter-rouge">if</code> в Scala:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="k">if</span> <span class="nv">input</span><span class="o">.</span><span class="py">isEmpty</span> <span class="n">then</span> <span class="nv">sys</span><span class="o">.</span><span class="py">error</span><span class="o">(</span><span class="s">"empty input"</span><span class="o">)</span> <span class="k">else</span> <span class="n">input</span>
+</code></pre></div></div>
+
+<p>Нестрогие вычисления не кэшируются и вычисляются каждый раз при вызове:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">maybeTwice</span><span class="o">(</span><span class="n">b</span><span class="k">:</span> <span class="kt">Boolean</span><span class="o">,</span> <span class="n">i</span><span class="k">:</span> <span class="o">=&gt;</span> <span class="nc">Int</span><span class="o">)</span> <span class="k">=</span> <span class="k">if</span> <span class="n">b</span> <span class="n">then</span> <span class="n">i</span> <span class="o">+</span> <span class="n">i</span> <span class="k">else</span> <span class="mi">0</span>
+<span class="k">val</span> <span class="nv">x</span> <span class="k">=</span> <span class="nf">maybeTwice</span><span class="o">(</span><span class="kc">true</span><span class="o">,</span> <span class="o">{</span> <span class="nf">println</span><span class="o">(</span><span class="s">"hi"</span><span class="o">);</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">41</span> <span class="o">})</span>
+<span class="c1">// hi</span>
+<span class="c1">// hi</span>
+<span class="c1">// x: Int = 84</span>
+</code></pre></div></div>
+
+<h3 id="lazy-list">Lazy List</h3>
+
+<p>Рассмотрим, как можно использовать нестрогость для повышения эффективности 
+и модульности функциональных программ на примере ленивых списков. 
+Цепочки преобразований в ленивых списках объединяются в один проход благодаря использованию нестрогости. 
+Вот простое определение <code class="highlighter-rouge">LazyList</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">enum</span> <span class="nc">LazyList</span><span class="o">[</span><span class="kt">+A</span><span class="o">]</span><span class="k">:</span>
+  <span class="kt">case</span> <span class="kt">Empty</span>
+  <span class="k">case</span> <span class="nc">Cons</span><span class="o">(</span><span class="n">h</span><span class="k">:</span> <span class="o">()</span> <span class="o">=&gt;</span> <span class="n">A</span><span class="o">,</span> <span class="n">t</span><span class="k">:</span> <span class="o">()</span> <span class="o">=&gt;</span> <span class="nc">LazyList</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span>
+
+<span class="k">import</span> <span class="nn">LazyList.</span><span class="o">*</span>
+
+<span class="k">object</span> <span class="nc">LazyList</span><span class="k">:</span>
+  <span class="kt">def</span> <span class="kt">cons</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">hd</span><span class="k">:</span> <span class="o">=&gt;</span> <span class="n">A</span><span class="o">,</span> <span class="n">tl</span><span class="k">:</span> <span class="o">=&gt;</span> <span class="nc">LazyList</span><span class="o">[</span><span class="kt">A</span><span class="o">])</span><span class="k">:</span> <span class="kt">LazyList</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="k">=</span>
+    <span class="k">lazy</span> <span class="k">val</span> <span class="nv">head</span> <span class="k">=</span> <span class="n">hd</span>
+    <span class="k">lazy</span> <span class="k">val</span> <span class="nv">tail</span> <span class="k">=</span> <span class="n">tl</span>
+    <span class="nc">Cons</span><span class="o">(()</span> <span class="k">=&gt;</span> <span class="n">head</span><span class="o">,</span> <span class="o">()</span> <span class="k">=&gt;</span> <span class="n">tail</span><span class="o">)</span>
+
+  <span class="k">def</span> <span class="nf">empty</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span><span class="k">:</span> <span class="kt">LazyList</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Empty</span>
+
+  <span class="k">def</span> <span class="nf">apply</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="n">as</span><span class="k">:</span> <span class="kt">A*</span><span class="o">)</span><span class="k">:</span> <span class="kt">LazyList</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="k">=</span>
+    <span class="k">if</span> <span class="nv">as</span><span class="o">.</span><span class="py">isEmpty</span> <span class="n">then</span> <span class="n">empty</span>
+    <span class="k">else</span> <span class="nf">cons</span><span class="o">(</span><span class="nv">as</span><span class="o">.</span><span class="py">head</span><span class="o">,</span> <span class="nf">apply</span><span class="o">(</span><span class="nv">as</span><span class="o">.</span><span class="py">tail</span><span class="o">*))</span>
+</code></pre></div></div>
+
+<p>С помощью <code class="highlighter-rouge">LazyList</code> можно построить вычисление, которое производит последовательность элементов, 
+не выполняя шаги этого вычисления до тех пор, пока эти элементы действительно не понадобятся. 
+Вообще говоря, нестрогость позволяет отделить описание выражения от вычисления этого выражения. 
+Это дает мощную возможность — можно описать «бОльшее» выражение, чем нужно, а затем вычислить только его часть.</p>
+
+<p>В качестве примера может служить функция <code class="highlighter-rouge">exists</code>, 
+которая проверяет, существует ли в <code class="highlighter-rouge">LazyList</code> элемент, соответствующий логической функции:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">exists</span><span class="o">(</span><span class="n">p</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=&gt;</span> <span class="nc">Boolean</span><span class="o">)</span><span class="k">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="k">this</span> <span class="k">match</span>
+  <span class="k">case</span> <span class="nc">Cons</span><span class="o">(</span><span class="n">h</span><span class="o">,</span> <span class="n">t</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nf">p</span><span class="o">(</span><span class="nf">h</span><span class="o">())</span> <span class="o">||</span> <span class="nf">t</span><span class="o">().</span><span class="py">exists</span><span class="o">(</span><span class="n">p</span><span class="o">)</span>
+  <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="kc">false</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">||</code> не является строгим по второму аргументу, а значит если <code class="highlighter-rouge">p(h())</code> возвращает <code class="highlighter-rouge">true</code>, 
+то <code class="highlighter-rouge">exists</code> завершает обход досрочно и также возвращает <code class="highlighter-rouge">true</code>. 
+Заметим, что конец <code class="highlighter-rouge">LazyList</code> — это lazy val. 
+Таким образом, обход завершается не только раньше, но и хвост <code class="highlighter-rouge">LazyList</code> вообще никогда не оценивается! 
+Таким образом, любой код, который сгенерировал бы хвост, на самом деле никогда не выполняется.</p>
+
+<p>Аналогично с реализациями других методов: эти реализации являются инкрементными — они не полностью генерируют свои ответы. 
+Только после того, как какое-то другое вычисление просмотрит элементы результирующего LazyList, 
+вычисление для создания этого <code class="highlighter-rouge">LazyList</code> действительно не произойдет, 
+и тогда оно выполнит ровно столько работы, сколько нужно для создания запрошенных элементов. 
+Из-за этого инкрементного характера можно вызывать эти функции 
+одну за другой без полного создания промежуточных результатов.</p>
+
+<p>Инкрементальный характер ленивых преобразований списка также имеет важные последствия для использования памяти. 
+Поскольку промежуточные ленивые списки не генерируются, 
+преобразование ленивого списка требует ровно столько рабочей памяти, 
+сколько необходимо для хранения и преобразования текущего элемента.</p>
+
+<h3 id="бесконечные-ленивые-списки">Бесконечные ленивые списки</h3>
+
+<p>Поскольку преобразования являются инкрементальными, написанные функции также работают с бесконечными <code class="highlighter-rouge">LazyList</code>. 
+Вот пример бесконечного <code class="highlighter-rouge">LazyList</code> из единиц:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">ones</span><span class="k">:</span> <span class="kt">LazyList</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="nv">LazyList</span><span class="o">.</span><span class="py">cons</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">ones</span><span class="o">)</span>        
+</code></pre></div></div>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">ones</span><span class="o">.</span><span class="py">take</span><span class="o">(</span><span class="mi">5</span><span class="o">).</span><span class="py">toList</span>
+<span class="c1">// res2: List[Int] = List(1, 1, 1, 1, 1)</span>
+<span class="nv">ones</span><span class="o">.</span><span class="py">exists</span><span class="o">(</span><span class="k">_</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span>
+<span class="c1">// res3: Boolean = true</span>
+</code></pre></div></div>
+
+<h3 id="корекурсия">Корекурсия</h3>
+
+<p>Рассмотрим функцию <code class="highlighter-rouge">unfold</code>:</p>
+
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">unfold</span><span class="o">[</span><span class="kt">A</span>, <span class="kt">S</span><span class="o">](</span><span class="n">state</span><span class="k">:</span> <span class="kt">S</span><span class="o">)(</span><span class="n">f</span><span class="k">:</span> <span class="kt">S</span> <span class="o">=&gt;</span> <span class="nc">Option</span><span class="o">[(</span><span class="kt">A</span>, <span class="kt">S</span><span class="o">)])</span><span class="k">:</span> <span class="kt">LazyList</span><span class="o">[</span><span class="kt">A</span><span class="o">]</span> <span class="k">=</span> <span class="nf">f</span><span class="o">(</span><span class="n">state</span><span class="o">)</span> <span class="k">match</span>
+  <span class="k">case</span> <span class="nc">None</span>         <span class="k">=&gt;</span> <span class="nc">Empty</span>
+  <span class="k">case</span> <span class="nc">Some</span><span class="o">((</span><span class="n">a</span><span class="o">,</span> <span class="n">s</span><span class="o">))</span> <span class="k">=&gt;</span> <span class="nc">Cons</span><span class="o">(()</span> <span class="k">=&gt;</span> <span class="n">a</span><span class="o">,</span> <span class="o">()</span> <span class="k">=&gt;</span> <span class="nf">unfold</span><span class="o">(</span><span class="n">s</span><span class="o">)(</span><span class="n">f</span><span class="o">))</span>       
+</code></pre></div></div>
+
+<p>Функция <code class="highlighter-rouge">unfold</code> является примером того, что иногда называют корекурсивной функцией. 
+В то время как рекурсивная функция потребляет данные, корекурсивная функция их производит. 
+И в то время как рекурсивные функции завершаются рекурсией на меньших входных данных, 
+корекурсивные функции не должны завершаться, пока они остаются продуктивными, 
+что означает, что всегда можно оценить больше результата за конечное время. 
+Функция развертывания продуктивна до тех пор, пока <code class="highlighter-rouge">f</code> завершается, 
+поскольку нужно просто запустить функцию <code class="highlighter-rouge">f</code> еще раз, чтобы сгенерировать следующий элемент <code class="highlighter-rouge">LazyList</code>. 
+Корекурсию также иногда называют защищенной рекурсией, а производительность также иногда называют котерминацией.</p>
+
+<h3 id="резюме">Резюме</h3>
+
+<ul>
+  <li>Нестрогость — полезный метод, который позволяет разделить задачи и улучшить модульность.</li>
+  <li>Отделение описания вычисления от его выполнения предоставляет возможности 
+для повторного использования и повышения эффективности.</li>
+</ul>
+
+<hr />
+
+<p><strong>References:</strong></p>
+<ul>
+  <li><a href="https://www.manning.com/books/functional-programming-in-scala-second-edition?query=Functional%20Programming%20in%20Scala,%20Second%20Edition">Functional Programming in Scala, Second Edition, Chapter 5</a></li>
+</ul>
+
+
+<hr>
+<div class="edit-button" style="display: flex; justify-content: space-between;">
+    
+    <a href="/scalaworkbook/fp/handling-errors" class="btn-sm btn-info btn-left"><-- Предыдущая</a>
+    
+    
+    <a href="/scalaworkbook/fp/???" class="btn-sm btn-info btn-right">Следующая --></a>
+    
+</div>
+</section><div class="edit-button"><a href="https://github.com/artemkorsakov/scalaworkbook/edit/main/docs/docs/fp/laziness.md" target="_blank" rel="noopener noreferrer" class="btn-sm btn-info">Редактировать страницу</a></div></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/scalaworkbook/highlight/highlight.pack.js"></script><script src="/scalaworkbook/lunr/lunr.js"></script><script>
+// For all code blocks, copy the language from the containing div
+// to the inner code tag (where hljs expects it to be)
+const langPrefix = 'language-';
+document.querySelectorAll(`div[class^='${langPrefix}']`).forEach(function(div) {
+  div.classList.forEach(function(cssClass) {
+    if (cssClass.startsWith(langPrefix)) {
+      const lang = cssClass.substring(langPrefix.length);
+      div.querySelectorAll('pre code').forEach(function(code) {
+        code.classList.add(lang);
+      });
+    }
+  });
+});
+
+hljs.configure({languages:['scala','java','bash']});
+hljs.initHighlightingOnLoad();
+      </script><script>console.info('\x57\x65\x62\x73\x69\x74\x65\x20\x62\x75\x69\x6c\x74\x20\x77\x69\x74\x68\x3a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x5f\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x5f\x20\x5f\x5f\x0a\x20\x20\x20\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x5f\x20\x20\x2f\x20\x2f\x5f\x20\x20\x20\x20\x20\x20\x5f\x5f\x5f\x5f\x20\x5f\x5f\x5f\x20\x20\x28\x5f\x29\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x28\x5f\x29\x20\x2f\x5f\x5f\x5f\x5f\x20\x20\x5f\x5f\x5f\x5f\x5f\x0a\x20\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x60\x5f\x5f\x20\x5c\x2f\x20\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x5f\x2f\x20\x5f\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x20\x2f\x20\x5f\x5f\x2f\x20\x5f\x20\x5c\x2f\x20\x5f\x5f\x5f\x2f\x0a\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x5f\x2f\x20\x2f\x20\x2f\x5f\x2f\x5f\x5f\x5f\x5f\x5f\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x20\x2f\x5f\x5f\x2f\x20\x2f\x20\x20\x2f\x20\x2f\x5f\x2f\x20\x28\x5f\x5f\x20\x20\x29\x20\x2f\x20\x2f\x5f\x2f\x20\x20\x5f\x5f\x28\x5f\x5f\x20\x20\x29\x0a\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2e\x5f\x5f\x5f\x2f\x5c\x5f\x5f\x2f\x20\x20\x20\x20\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x20\x2f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x2f\x20\x20\x20\x5c\x5f\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x5f\x2f\x5c\x5f\x5f\x2f\x5c\x5f\x5f\x5f\x2f\x5f\x5f\x5f\x5f\x2f\x0a\x0a\x68\x74\x74\x70\x73\x3a\x2f\x2f\x34\x37\x64\x65\x67\x2e\x67\x69\x74\x68\x75\x62\x2e\x69\x6f\x2f\x73\x62\x74\x2d\x6d\x69\x63\x72\x6f\x73\x69\x74\x65\x73')</script><script src="/scalaworkbook/js/search.js"></script><script src="/scalaworkbook/js/main.js"></script></body></html>
